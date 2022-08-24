@@ -7,6 +7,7 @@ import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import CartPage from "./pages/CartPage";
 import ListPage from "./pages/ListPage";
+import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/mypage" element={<MyPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/list" element={<ListPage />}></Route>
+        <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/detail" element={<DetailPage />}></Route>
         <Route path="/payment" element={<PaymentPage />}></Route>
         <Route path="/complete" element={<CompletePage />}></Route>
