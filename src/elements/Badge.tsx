@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
-// 사각 선 뱃지
-
 interface BadgeType {
   children?: React.ReactNode;
   type: "new" | "best" | "sale" | "soldout";
@@ -11,6 +8,10 @@ interface BadgeType {
 export const Badge = (props: BadgeType) => {
   return <BadgeBox type={props.type}>{props.children}</BadgeBox>;
 };
+
+export const SquareBadge = () => {
+  return <SqBadge>필수</SqBadge>;
+}
 
 const BadgeBox = styled.div<BadgeType>`
   background-color: ${({ type, theme }) =>
@@ -22,3 +23,11 @@ const BadgeBox = styled.div<BadgeType>`
   text-align: center;
   padding: 2px 8px;
 `;
+
+const SqBadge = styled.div`
+width: 20px;
+font-size: 10px;
+color: #999999;
+border: 1px solid rgba(33,33,33,0.2);
+padding: 2px 4px;
+`
