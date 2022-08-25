@@ -1,25 +1,29 @@
 import Tooltip from "@mui/material/Tooltip";
 import styled from "styled-components";
 
-interface ColorType {
-  colorCode: string;
-  colorName: string | undefined;
+interface ColorIconType {
+  colorCode?: string;
+  colorName?: string;
+  onClick?: () => void;
 }
 
-// 작은사이즈 컬러 박스
-export const ColorIcon = ({ data }: { data: ColorType }) => {
-  return (
-    <SmallBox>
-      <ColorBox colorCode={data.colorCode}></ColorBox>
-    </SmallBox>
-  );
-};
+// 작은사이즈 컬러  박스+ 호버
+export const ColorIcon = (props: ColorIconType) => (
+  <SmallBox>
+    <ColorBox colorCode={props.colorCode}></ColorBox>
+  </SmallBox>
+);
+
 // 큰사이즈 컬러  박스+ 호버
-export const ColorHoverIcon = ({ data }: { data: ColorType }) => {
+export const ColorHoverIcon = ({
+  colorCode,
+  colorName,
+  onClick,
+}: ColorIconType) => {
   return (
     <BigBox>
-      <Tooltip title={`${data.colorName}`}>
-        <ColorBox colorCode={data.colorCode}></ColorBox>
+      <Tooltip title={`${colorName}`}>
+        <ColorBox colorCode={colorCode} onClick={onClick}></ColorBox>
       </Tooltip>
     </BigBox>
   );
@@ -32,8 +36,8 @@ const BigBox = styled.div`
   width: 24px;
   height: 24px;
 `;
-const ColorBox = styled.div<any>`
-  background-color: ${(data) => data.colorCode && data.colorCode};
+const ColorBox = styled.div<ColorIconType>`
+  background-color: ${(props) => props.colorCode};
   border: 1px solid #e0e0e0;
   border-radius: 50%;
   width: 100%;
