@@ -11,10 +11,13 @@ import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
 import Footer from "./containers/Footer";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./style/theme";
 
 function App() {
   return (
     <div className="App">
+      <ThemeProvider theme={theme}>
       <Header />
       <Routes>
         <Route path="/login" element={<LogInPage />}></Route>
@@ -28,8 +31,9 @@ function App() {
         <Route path="/complete" element={<CompletePage />}></Route>
       </Routes>
       <Footer />
+      </ThemeProvider>
     </div>
-  );
+  ); 
 }
 
 export default App;

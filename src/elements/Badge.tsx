@@ -26,8 +26,8 @@ const BadgeBox = styled.div<BadgeType>`
 
 const SqBadge = styled.div`
 width: 20px;
-font-size: 10px;
-color: #999999;
+font-size: ${({theme}) => theme.fontSize.xsmall};
+color: ${({theme}) => theme.colors.gray2};
 border: 1px solid rgba(33,33,33,0.2);
 padding: 2px 4px;
 `
