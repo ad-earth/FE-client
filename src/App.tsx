@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Header from "./containers/Header";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -23,23 +23,21 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Router>
-        <Routes>
-          <Route path="/login" element={<LogInPage />}></Route>
-          <Route path="/signup" element={<SignUpPage />}></Route>
-          <Route path="/" element={<MainPage />}></Route>
-          <Route path="/mypage/*" element={<Mypage />}>
-            <Route path="" element={<Order />} />
-            <Route path="wish" element={<Wish />} />
-            <Route path="cancel" element={<Cancel />} />
-          </Route>
-          <Route path="/cart" element={<CartPage />}></Route>
-          <Route path="/list" element={<ListPage />}></Route>
-          <Route path="/detail" element={<DetailPage />}></Route>
-          <Route path="/payment" element={<PaymentPage />}></Route>
-          <Route path="/complete" element={<CompletePage />}></Route>
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/login" element={<LogInPage />}></Route>
+        <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/mypage/*" element={<Mypage />}>
+          <Route path="" element={<Order />} />
+          <Route path="wish" element={<Wish />} />
+          <Route path="cancel" element={<Cancel />} />
+        </Route>
+        <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/list" element={<ListPage />}></Route>
+        <Route path="/detail" element={<DetailPage />}></Route>
+        <Route path="/payment" element={<PaymentPage />}></Route>
+        <Route path="/complete" element={<CompletePage />}></Route>
+      </Routes>
       <Footer />
     </div>
   );
