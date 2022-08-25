@@ -11,6 +11,10 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+  ::selection {
+    background-color: #00913a;
+    color: #fff;
+  }
 }
 
 .App-header {

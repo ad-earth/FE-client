@@ -15,8 +15,4 @@ export const MyInput = styled.input<InputType>`
   padding: ${(props) => (props.primary ? '8px 12px' : '12px 16px')};
   box-sizing: border-box;
   font-wieght: 400;
-  ::selection {
-    background-color: ${(props) => (props.primary ? '#009139' : '#212121')};
-    color: #fff;
-  }
 `
