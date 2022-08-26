@@ -5,8 +5,6 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 import { theme } from "../style/theme";
 
-//컬러 옵션 버튼
-
 interface BtnType {
   width?: string;
   fontSize?: string;
@@ -53,6 +51,7 @@ export const CountButton = () => {
     </CountBtn>
   );
 };
+
 
 export const ColorButton: React.FC = () => {
   return <button></button>;

@@ -5,7 +5,6 @@ import Header from "./containers/Header";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
 import MainPage from "./pages/MainPage";
-import MyPage from "./pages/MyPage";
 import CartPage from "./pages/CartPage";
 import ListPage from "./pages/ListPage";
 import SearchPage from "./pages/SearchPage";
@@ -14,6 +13,12 @@ import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
 import Footer from "./containers/Footer";
 import { theme } from "./style/theme";
+
+//mypage
+import Mypage from "./pages/MyPage";
+import Order from "./containers/mypage/Order";
+import Wish from "./containers/mypage/Wish";
+import Cancel from "./containers/mypage/Cancel";
 
 function App() {
   return (
