@@ -33,17 +33,19 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
+  top: 0;
 `;
-const ContentBox = styled.dialog`
+const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
   box-sizing: border-box;
   background-color: white;
   z-index: 10000;
+  overflow: hidden;
 `;
 const ModalBackdrop = styled.div`
   width: 100vw;
@@ -51,6 +53,6 @@ const ModalBackdrop = styled.div`
   position: fixed;
   top: 0;
   z-index: 9999;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 export default Modal;
