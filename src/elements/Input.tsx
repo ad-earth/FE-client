@@ -1,18 +1,26 @@
 import styled from 'styled-components'
 
 interface InputType {
-  primary?: string
-  fontsize?: string
+  type?: string
+  outline?: string
+  fontSize?: string
+  width?: string
+  marginTop?: string
+  padding?: string
 }
 
-export const MyInput = styled.input<InputType>`
-  outline: none;
-  font-size: inherit;
-  display: block;
-  width: 100%;
+export const Input = () => {
+  return <MyInput></MyInput>
+}
+
+const MyInput = styled.input<InputType>`
+  type: ${(props) => (props.type ? props.type : 'text')};
+  outline: ${(props) => (props.outline ? props.outline : 'none')};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : 'inherit')};
+  width: ${(props) => (props.width ? props.width : '100%')};
   border: 1px solid #e5e7eb;
-  margin-top: -1px;
-  padding: ${(props) => (props.primary ? '8px 12px' : '12px 16px')};
+  margin-top: ${(props) => (props.marginTop ? props.marginTop : '-1px')};
+  padding: ${(props) => (props.padding ? props.padding : '8px 16px')};
   box-sizing: border-box;
   font-wieght: 400;
 `
