@@ -7,14 +7,14 @@ interface ColorIconType {
   onClick?: () => void;
 }
 
-// 작은사이즈 컬러  박스+ 호버
+// 작은 사이즈 컬러박스
 export const ColorIcon = (props: ColorIconType) => (
   <SmallBox>
     <ColorBox colorCode={props.colorCode}></ColorBox>
   </SmallBox>
 );
 
-// 큰사이즈 컬러  박스+ 호버
+// 큰 사이즈 컬러박스 + hover
 export const ColorHoverIcon = ({
   colorCode,
   colorName,
