@@ -13,7 +13,9 @@ interface PropsType {
 }
 
 const ProdOpt = () => {
+  // 옵션 드롭박스
   const [drop, setDrop] = useState(false);
+  // 옵션 추가
   const [optCheck, setOptCheck] = useState(false);
   return (
     <OptContainer>

@@ -42,5 +42,5 @@ const Price = styled.div`
 const Line = styled.div`
   width: 100%;
   height: 24px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 0.5px solid #e5e7eb;
 `;
