@@ -21,6 +21,7 @@ const MainBanner = () => {
   };
   return (
     <Slider {...setting}>
+      {/* 각각의 배너 이미지에 해당 제품 상세페이지 navigate 걸어주기 */}
       <BannerImg src="/img/b1.jpeg" />
       <BannerImg src="/img/b2.jpeg" />
       <BannerImg src="/img/b3.png" />
