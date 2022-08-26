@@ -28,11 +28,11 @@ export const CountButton = () => {
   return (
     <CountBtn>
       <Minus>
-        <RemoveRoundedIcon sx={{ fontSize: 18 }} />
+        <RemoveRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Minus>
       <Input type="text" />
       <Plus>
-        <AddRoundedIcon sx={{ fontSize: 18 }} />
+        <AddRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Plus>
     </CountBtn>
   );
@@ -69,15 +69,17 @@ const CountBtn = styled.div<BtnType>`
 `;
 const Minus = styled.a<BtnType>`
   width: 26px;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid #ccc;
   color: #888;
 `;
 const Plus = styled.a<BtnType>`
   width: 26px;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: 1px solid #ccc;
   color: #888;
 `;
