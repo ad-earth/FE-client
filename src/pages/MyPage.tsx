@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Aside from "../containers/mypage/Aside";
-import UserHead from "../containers/mypage/UserHead";
+import Aside from "../containers/myPage/Aside";
+import UserHead from "../containers/myPage/UserHead";
 
 const MyPage = () => {
   return (

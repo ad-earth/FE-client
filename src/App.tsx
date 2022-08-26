@@ -14,9 +14,9 @@ import Footer from "./containers/Footer";
 
 //mypage
 import Mypage from "./pages/MyPage";
-import Order from "./containers/mypage/Order";
-import Wish from "./containers/mypage/Wish";
-import Cancel from "./containers/mypage/Cancel";
+import Order from "./containers/myPage/Order";
+import Wish from "./containers/myPage/Wish";
+import Cancel from "./containers/myPage/Cancel";
 
 function App() {
   return (
