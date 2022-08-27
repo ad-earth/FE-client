@@ -13,7 +13,9 @@ const BestProdList = () => {
           <br />
           베스트 제품!
         </p>
-        <section></section>
+        <Image>
+          <img src="https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg" />
+        </Image>
       </BestTitle>
       <BestCard>카드 들어갈 자리</BestCard>
     </BestContainer>
@@ -21,10 +23,13 @@ const BestProdList = () => {
 };
 
 export default BestProdList;
+
 const BestContainer = styled.div`
-  display: flex;
   width: 100%;
+  display: flex;
+  justify-content: center;
   margin-top: 50px;
+  gap: 70px;
   color: ${theme.colors.gray1};
   span {
     font-size: 20px;
@@ -32,18 +37,21 @@ const BestContainer = styled.div`
   }
 `;
 const BestTitle = styled.div`
-  width: 40%;
+  width: 28%;
   font-size: 16px;
   line-height: 1.5;
-  section {
-    width: 390px;
-    height: 390px;
-    border-radius: 200px;
-    margin-top: 30px;
-    background: lightblue;
+`;
+const Image = styled.div`
+  display: flex;
+  width: 100%;
+  border-radius: 500px;
+  margin-top: 30px;
+  overflow: hidden;
+  img {
+    width: 100%;
   }
 `;
 const BestCard = styled.div`
-  width: 60%;
-  background: orange;
+  width: 50%;
+  background: #e2e1e0;
 `;
