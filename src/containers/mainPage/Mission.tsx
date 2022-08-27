@@ -35,7 +35,12 @@ const Mission = () => {
             <br />
             지구를 위한 택배서비스 "지속"런칭
           </p>
-          <MainButton bgColor="#339999" hBgColor="#216b6b" radius="30px">
+          <MainButton
+            bgColor="#339999"
+            hBgColor="#216b6b"
+            radius="30px"
+            onClick={() => window.open("http://www.jisok.co.kr/")}
+          >
             <LinkIcon /> &nbsp; 더 알아보기
           </MainButton>
         </Contents>
