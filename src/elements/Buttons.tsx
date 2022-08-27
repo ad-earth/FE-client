@@ -23,15 +23,10 @@ interface BtnType {
 export const MainButton = (props: BtnType) => {
   return (
     <Btn
+      {...props}
       onClick={() => {
         console.log(props.radius);
       }}
-      radius={props.radius}
-      border={props.border}
-      bgColor={props.bgColor}
-      color={props.color}
-      hBorder={props.hBorder}
-      hBgColor={props.hBgColor}
     >
       {props.children}
     </Btn>
@@ -52,11 +47,6 @@ export const CountButton = () => {
   );
 };
 
-
-export const ColorButton: React.FC = () => {
-  return <button></button>;
-};
-
 const Btn = styled.button`
   display: flex;
   justify-content: center;
@@ -69,7 +59,7 @@ const Btn = styled.button`
   border-radius: ${(props: BtnType) => (props.radius ? props.radius : "none")};
   background-color: ${(props: BtnType) =>
     props.bgColor ? props.bgColor : theme.colors.green2};
-  padding: ${(props) => (props.padding ? props.padding : "10px 0")};
+  padding: ${(props) => (props.padding ? `${props.padding}` : "10px 0")};
   :hover {
     border: ${(props: BtnType) => (props.hBorder ? props.hBorder : "none")};
     background-color: ${(props) =>
@@ -78,14 +68,14 @@ const Btn = styled.button`
     cursor: pointer;
   }
 `;
-const CountBtn = styled.div<BtnType>`
+const CountBtn = styled.div`
   width: 100px;
   height: 27px;
   border: 1px solid #ccc;
   background: #fff;
   display: flex;
 `;
-const Minus = styled.a<BtnType>`
+const Minus = styled.a`
   width: 26px;
   display: flex;
   justify-content: center;
@@ -93,7 +83,7 @@ const Minus = styled.a<BtnType>`
   border-right: 1px solid #ccc;
   color: #888;
 `;
-const Plus = styled.a<BtnType>`
+const Plus = styled.a`
   width: 26px;
   display: flex;
   justify-content: center;

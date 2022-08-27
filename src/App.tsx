@@ -16,9 +16,9 @@ import { theme } from "./style/theme";
 
 //mypage
 import Mypage from "./pages/MyPage";
-import Order from "./containers/mypage/Order";
-import Wish from "./containers/mypage/Wish";
-import Cancel from "./containers/mypage/Cancel";
+import Order from "./containers/myPage/Order";
+import Wish from "./containers/myPage/Wish";
+import Cancel from "./containers/myPage/Cancel";
 
 function App() {
   return (
@@ -29,7 +29,11 @@ function App() {
           <Route path="/login" element={<LogInPage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route path="/" element={<MainPage />}></Route>
-          <Route path="/mypage" element={<MyPage />}></Route>
+          <Route path="/mypage/*" element={<Mypage />}>
+            <Route path="" element={<Order />} />
+            <Route path="wish" element={<Wish />} />
+            <Route path="cancel" element={<Cancel />} />
+          </Route>
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/list" element={<ListPage />}></Route>
           <Route path="/search" element={<SearchPage />}></Route>
