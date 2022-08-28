@@ -3,7 +3,7 @@ import styled from "styled-components";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-//컬러 옵션 버튼
+import { theme } from "../style/theme";
 
 interface BtnType {
   width?: string;
@@ -21,63 +21,73 @@ interface BtnType {
 }
 
 export const MainButton = (props: BtnType) => {
-  return <Btn>{props.children}</Btn>;
+  return (
+    <Btn
+      {...props}
+      onClick={() => {
+        console.log(props.radius);
+      }}
+    >
+      {props.children}
+    </Btn>
+  );
 };
 
 export const CountButton = () => {
   return (
     <CountBtn>
       <Minus>
-        <RemoveRoundedIcon sx={{ fontSize: 18 }} />
+        <RemoveRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Minus>
       <Input type="text" />
       <Plus>
-        <AddRoundedIcon sx={{ fontSize: 18 }} />
+        <AddRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Plus>
     </CountBtn>
   );
 };
 
-export const ColorButton: React.FC = () => {
-  return <button></button>;
-};
-
-const Btn = styled.button<BtnType>`
-  text-align: center;
-  width: ${(props) => (props.width ? props.width : " 100%")};
+const Btn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${(props) => (props.width ? props.width : "100%")};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "14px")};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "bold")};
   color: ${(props) => (props.color ? props.color : "#fff")};
-  border: ${(props) => (props.border ? props.border : "none")};
-  border-radius: ${(props) => (props.radius ? props.radius : "none")};
-  background-color: ${(props) => (props.bgColor ? props.bgColor : "green2")};
-  padding: ${(props) => (props.padding ? props.padding : "12px 0")};
+  border: ${(props: BtnType) => (props.border ? props.border : "none")};
+  border-radius: ${(props: BtnType) => (props.radius ? props.radius : "none")};
+  background-color: ${(props: BtnType) =>
+    props.bgColor ? props.bgColor : theme.colors.green2};
+  padding: ${(props) => (props.padding ? `${props.padding}` : "10px 0")};
   :hover {
-    color: ${(props) => (props.hColor ? props.hColor : "#fff")};
-    border: ${(props) => (props.hBorder ? props.hBorder : "none")};
+    border: ${(props: BtnType) => (props.hBorder ? props.hBorder : "none")};
     background-color: ${(props) =>
-      props.hBgColor ? props.hBgColor : "green1"};
+      props.hBgColor ? props.hBgColor : theme.colors.green1};
+    transition: 0.5s;
     cursor: pointer;
   }
 `;
-const CountBtn = styled.div<BtnType>`
+const CountBtn = styled.div`
   width: 100px;
   height: 27px;
   border: 1px solid #ccc;
   background: #fff;
   display: flex;
 `;
-const Minus = styled.a<BtnType>`
+const Minus = styled.a`
   width: 26px;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-right: 1px solid #ccc;
   color: #888;
 `;
-const Plus = styled.a<BtnType>`
+const Plus = styled.a`
   width: 26px;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: 1px solid #ccc;
   color: #888;
 `;
