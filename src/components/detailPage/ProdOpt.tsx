@@ -3,10 +3,11 @@ import styled from "styled-components";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
-import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
+import { ReactComponent as Heart } from "../../assets/icon/heart.svg";
 
 import { theme } from "../../style/theme";
 import { CountButton, MainButton } from "../../elements/Buttons";
+
 
 interface PropsType {
   drop: boolean;
@@ -93,7 +94,7 @@ const ProdOpt = () => {
           hBorder={"0.5px solid #646464"}
           hBgColor={"#fff"}
         >
-          <FavoriteBorderRoundedIcon sx={{ color: "#bbb", fontSize: 18 }} />
+          <Heart style={{ color: "#bbb" ,paddingRight: '4px'}} />
           13
         </MainButton>
       </BtnWrapper>
