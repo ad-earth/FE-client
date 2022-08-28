@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useEffect, useState } from "react";
+
 import "../../style/carousel.css";
 
 const MainBanner = () => {
