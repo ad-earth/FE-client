@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import { ReactComponent as Heart } from '../assets/icon/heart.svg'
-import { ReactComponent as Message } from '../assets/icon/message-circle.svg'
-import { ReactComponent as Cart } from '../assets/icon/shopping-cart.svg'
+import { ReactComponent as Heart } from '../assets/icons/heart.svg'
+import { ReactComponent as Message } from '../assets/icons/message-circle.svg'
+import { ReactComponent as Cart } from '../assets/icons/shopping-cart.svg'
 import { ColorIcon } from '../elements/ColorIcons'
 import { theme } from '../style/theme'
 import { DataType } from '../pages/ListPage'
