@@ -12,7 +12,6 @@ import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
 import Footer from "./containers/Footer";
-import { theme } from "./style/theme";
 
 //mypage
 import Mypage from "./pages/MyPage";
@@ -20,9 +19,14 @@ import Order from "./containers/myPage/Order";
 import Wish from "./containers/myPage/Wish";
 import Cancel from "./containers/myPage/Cancel";
 
+//style
+import { theme } from "./style/theme";
+import GlobalStyle from "./style/GlobalStyle";
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <div className="App">
         <Header />
         <Routes>
