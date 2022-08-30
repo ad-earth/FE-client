@@ -34,6 +34,7 @@ const ModalContainer = styled.div`
   justify-content: center;
   position: fixed;
   top: 0;
+  left: 0;
 `;
 const ContentBox = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BestCards from "../../components/mainPage/BestCards";
 import { theme } from "../../style/theme";
+import NewCarousel from "../../components/mainPage/NewCarousel";
 
 const NewProdList = () => {
   return (
@@ -16,7 +16,7 @@ const NewProdList = () => {
           </p>
         </Title>
       </TitleWrapper>
-      <BestCards />
+      <NewCarousel />
     </MainContainer>
   );
 };
@@ -26,6 +26,7 @@ export default NewProdList;
 const MainContainer = styled.div`
   margin: 50px auto;
   display: flex;
+  justify-content: space-between;
   color: ${theme.colors.gray1};
   width: 1200px;
   @media (min-width: 991px) and (max-width: 1200px) {
