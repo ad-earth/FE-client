@@ -1,6 +1,6 @@
-import { CateButton } from '../components/listPage/CateButton'
-import { CateDrop } from '../components/listPage/CateDrop'
-import CardList from '../containers/listPage/CardList'
+import { CateButton } from "../components/listPage/CateButton";
+import CateDrop from "../components/listPage/CateDrop";
+import CardList from "../containers/listPage/CardList";
 
 const ListPage = () => {
   return (
@@ -9,7 +9,7 @@ const ListPage = () => {
       <CateDrop />
       <CardList />
     </>
-  )
-}
+  );
+};
 
-export default ListPage
+export default ListPage;
