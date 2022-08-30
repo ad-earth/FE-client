@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Card from '../../components/Card'
 import CardIcon from '../../components/listPage/CardIcon'
+import { CateDrop } from '../../components/listPage/CateDrop'
 
 export interface DataType {
   p_Thumbnail?: string
@@ -74,6 +75,7 @@ const ListPage = () => {
 
   return (
     <CardArea>
+      <CateDrop />
       <CardWrap>
         {data.map((val, i) => {
           return (
@@ -103,9 +105,8 @@ const CardArea = styled.div`
   max-width: 1200px;
   min-width: 900px;
   height: auto;
-  min-height: 300px;
   padding: 0 12px 0 12px;
-  margin: 3rem auto;
+  margin: 0.1rem auto;
   & h3 {
     font-size: 1.5rem;
     text-transform: capitalize;
