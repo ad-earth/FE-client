@@ -19,7 +19,6 @@ export default MyPage;
 
 const Wrap = styled.div`
   max-width: 1200px;
-  background-color: red;
   margin: 80px auto 100px;
   padding: 0 20px;
   position: relative;
@@ -28,5 +27,6 @@ const Wrap = styled.div`
 `;
 const Section = styled.div`
   width: 84%;
-  background: blue;
+  padding: 0 15px;
+  box-sizing: border-box;
 `;
