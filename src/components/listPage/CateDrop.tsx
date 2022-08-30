@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const CateDrop = () => {
-  return <div>CateDrop</div>
-}
+  return <div>CateDrop</div>;
+};
 
-export default CateDrop
+export default CateDrop;
