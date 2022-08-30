@@ -18,19 +18,11 @@ interface BtnType {
   hBorder?: string;
   hBgColor?: string;
   children?: React.ReactNode;
+  onClick?: () => void;
 }
 
 export const MainButton = (props: BtnType) => {
-  return (
-    <Btn
-      {...props}
-      onClick={() => {
-        console.log(props.radius);
-      }}
-    >
-      {props.children}
-    </Btn>
-  );
+  return <Btn {...props}>{props.children}</Btn>;
 };
 
 export const CountButton = () => {
