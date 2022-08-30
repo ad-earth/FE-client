@@ -32,7 +32,7 @@ function WithdrawalModal(props: ModalType) {
                 width="initial"
                 padding="10px 25px"
               >
-                탈퇴하기
+                취소
               </MainButton>
               <MainButton radius="30px" width="initial" padding="10px 25px">
                 탈퇴하기
