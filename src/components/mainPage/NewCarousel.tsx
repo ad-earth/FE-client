@@ -92,8 +92,6 @@ export default NewCarousel;
 
 const MainContainer = styled.div`
   width: 55%;
-  margin-left: 9%;
-  /* background: blue; */
   @media (max-width: 990px) {
     width: 100%;
     margin: 0 auto;

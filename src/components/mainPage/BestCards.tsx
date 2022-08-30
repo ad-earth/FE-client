@@ -67,7 +67,7 @@ export default BestCards;
 
 const MainContainer = styled.div`
   width: 55%;
-  margin-left: 9%;
+  /* margin-left: 9%; */
   display: grid;
   grid-template-columns: repeat(3, 33%);
   row-gap: 30px;
