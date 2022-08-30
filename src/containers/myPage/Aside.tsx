@@ -1,4 +1,3 @@
-import React from "react";
 import AsideNav from "../../components/myPage/AsideNav";
 import styled from "styled-components";
 
@@ -14,5 +13,6 @@ export default Aside;
 
 const Section = styled.div`
   width: 16%;
-  background: gray;
+  padding: 0 12px;
+  box-sizing: border-box;
 `;
