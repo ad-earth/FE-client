@@ -1,15 +1,32 @@
-import { useState } from "react";
-import ReviewModal from "../../components/modal/reaviewModal/ReviewModal";
+import styled from "styled-components";
+// components
+import OderList from "../../components/myPage/OderList";
+import OrderNumber from "../../components/myPage/OrderNumber";
 
 const Order = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div>
-      Order
-      <button onClick={() => setIsOpen(true)}>모달 열기</button>
-      <ReviewModal isOpen={true} handleClose={() => setIsOpen(false)} />
-    </div>
+    <Section>
+      <OrderListBox>
+        <Title>주문조회</Title>
+        {["1", "2", "3"].map((data, i: number) => (
+          <List>
+            <OrderNumber />
+            <OderList />
+          </List>
+        ))}
+      </OrderListBox>
+    </Section>
   );
 };
 
 export default Order;
+
+const Section = styled.div``;
+const OrderListBox = styled.div``;
+const Title = styled.div`
+  font-size: 21px;
+  font-weight: 600;
+`;
+const List = styled.div`
+  margin-bottom: 20px;
+`;
