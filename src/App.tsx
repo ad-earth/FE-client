@@ -24,7 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/login" element={<LogInPage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
@@ -41,7 +41,7 @@ function App() {
           <Route path="/payment" element={<PaymentPage />}></Route>
           <Route path="/complete" element={<CompletePage />}></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );
