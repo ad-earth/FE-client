@@ -41,7 +41,7 @@ function App() {
           <Route path="/payment" element={<PaymentPage />}></Route>
           <Route path="/complete" element={<CompletePage />}></Route>
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );
