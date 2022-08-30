@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BestCards from "../../components/mainPage/BestCards";
 import { theme } from "../../style/theme";
+import NewCarousel from "../../components/mainPage/NewCarousel";
 
 const NewProdList = () => {
   return (
@@ -16,7 +16,7 @@ const NewProdList = () => {
           </p>
         </Title>
       </TitleWrapper>
-      <BestCards />
+      <NewCarousel />
     </MainContainer>
   );
 };
