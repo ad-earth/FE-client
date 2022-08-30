@@ -1,12 +1,9 @@
 import styled from "styled-components";
+
 import { Input } from "../elements/Input";
 
 import logInLogo from "./../assets/logo/logInLogo.jpeg";
-import Checkbox from "@mui/material/Checkbox";
 import { MainButton } from "../elements/Buttons";
-export interface PropsType {
-  holderName?: string;
-}
 
 const LogInPage = () => {
   return (
