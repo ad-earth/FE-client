@@ -9,7 +9,7 @@ const Order = () => {
       <OrderListBox>
         <Title>주문조회</Title>
         {["1", "2", "3"].map((data, i: number) => (
-          <List>
+          <List key={i}>
             <OrderNumber />
             <OderList />
           </List>
