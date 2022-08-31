@@ -22,6 +22,7 @@ import Cancel from "./containers/myPage/Cancel";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
+import OrderDetail from "./containers/myPage/OrderDetail";
 
 function App() {
   return (
@@ -34,9 +35,13 @@ function App() {
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/mypage/*" element={<Mypage />}>
-            <Route path="" element={<Order />} />
+            <Route index element={<Order />} />
+            <Route path=":id" element={<OrderDetail />} />
             <Route path="wish" element={<Wish />} />
-            <Route path="cancel" element={<Cancel />} />
+            <Route path="cancel/*">
+              <Route index element={<Cancel />} />
+              <Route path=":id" element={<OrderDetail />} />
+            </Route>
           </Route>
           <Route path="/cart" element={<CartPage />}></Route>
           <Route path="/list" element={<ListPage />}></Route>
