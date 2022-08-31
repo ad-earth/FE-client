@@ -7,6 +7,7 @@ interface ModalType {
   isOpen: boolean;
   handleClose: () => void;
 }
+
 function WithdrawalModal(props: ModalType) {
   return (
     <>
@@ -31,6 +32,7 @@ function WithdrawalModal(props: ModalType) {
                 radius="30px"
                 width="initial"
                 padding="10px 25px"
+                onClick={close}
               >
                 취소
               </MainButton>
@@ -43,6 +45,10 @@ function WithdrawalModal(props: ModalType) {
       )}
     </>
   );
+  //닫기 버튼 이벤트
+  function close() {
+    props.handleClose();
+  }
 }
 
 export default WithdrawalModal;

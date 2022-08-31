@@ -13,13 +13,14 @@ interface ModalType {
   isOpen: boolean;
   handleClose: () => void;
 }
+
 export default function ReviewModal(props: ModalType) {
   return (
     <>
       {props.isOpen && (
         <Modal handleClose={() => props.handleClose()} isOpen={props.isOpen}>
           <t.Base>
-            <Header />
+            <Header {...props} />
             <Body />
             <Footer />
           </t.Base>
@@ -29,13 +30,17 @@ export default function ReviewModal(props: ModalType) {
   );
 }
 
-const Header = () => {
+const Header = (props: ModalType) => {
   return (
     <t.Header>
       <t.Title>구매평 작성</t.Title>
-      <t.CloseBtn />
+      <t.CloseBtn onClick={close} />
     </t.Header>
   );
+  //닫기 버튼 이벤트
+  function close() {
+    props.handleClose();
+  }
 };
 
 const Body = () => {
