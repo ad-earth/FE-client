@@ -1,9 +1,6 @@
-
-import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 
-export const CateDrop = () => {
-  const [isActive, setIsActive] = useState(false)
+const CateDrop = () => {
   return (
     <>
       <BtnArea>
@@ -23,7 +20,7 @@ export const CateDrop = () => {
 const BtnArea = styled.div`
 width: 100%
   padding: 0 30px
-  margin: 0 20px;
+  margin: 0px 20px;
   text-align: right;
 `
 const DropBtn = styled.select`
@@ -31,10 +28,10 @@ const DropBtn = styled.select`
   cursor: pointer;
   color: #646464;
   padding: 0 25px;
-  margin: 0 20px 15px;
+  margin: 30px 20px 15px;
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
   outline-color: #fff;
 `
-
+export default CateDrop
