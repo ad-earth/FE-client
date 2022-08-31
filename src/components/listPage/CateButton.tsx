@@ -69,7 +69,6 @@ const CBtn = styled.button`
 const LineArea = styled.div`
   display: flex;
   flex-flow: row wrap;
-
   padding: 0 40px 0 40px;
 `
 const Line = styled.hr`
@@ -78,4 +77,5 @@ const Line = styled.hr`
   border-color: #fcfdff2e;
   max-width: 1180px;
   min-width: 900px;
+  margin: 15px auto;
 `
