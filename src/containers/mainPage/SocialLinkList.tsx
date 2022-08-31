@@ -60,6 +60,7 @@ const Link = styled.div`
   img {
     width: 100%;
     object-fit: contain;
+    cursor: pointer;
   }
   @media (max-width: 990px) {
     width: 96%;
