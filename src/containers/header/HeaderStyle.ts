@@ -5,10 +5,14 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import Badge from "@mui/material/Badge";
 
 export const HeaderContainer = styled.div`
-  width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   display: flex;
   height: 80px;
+  border-bottom: 1px solid #e5e7eb;
+`;
+export const HeaderWrapper = styled.div`
+  width: 1200px;
+  margin: 0 auto;
   justify-content: space-between;
 `;
 export const LeftDiv = styled.div`
@@ -30,7 +34,7 @@ export const CategorySpan = styled.span`
 `;
 export const RightDiv = styled.div`
   display: flex;
-  flat: right;
+  float: right;
 `;
 export const LogInSpan = styled.span`
   font-size: ${({ theme }) => theme.fontSize.medium};

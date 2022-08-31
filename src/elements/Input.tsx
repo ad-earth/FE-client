@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
-import { PropsType } from "./../pages/LogInPage";
-
 interface InputType {
   outline?: string;
   fontSize?: string;
   width?: string;
   marginTop?: string;
   padding?: string;
+  holderName?: string;
 }
 
-export const Input = (props: PropsType) => {
-  return <MyInput type="text" placeholder={props.holderName}></MyInput>;
+export const Input = (props: InputType) => {
+  return (
+    <MyInput type="text" placeholder={props.holderName} {...props}></MyInput>
+  );
 };
 
 const MyInput = styled.input<InputType>`
@@ -22,5 +23,5 @@ const MyInput = styled.input<InputType>`
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "-1px")};
   padding: ${(props) => (props.padding ? props.padding : "8px 16px")};
   box-sizing: border-box;
-  font-wieght: 400;
+  font-weight: 400;
 `;
