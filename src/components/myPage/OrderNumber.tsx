@@ -46,6 +46,7 @@ const ArrowIcon = styled.button`
   position: relative;
   left: 4px;
   background: none;
+  cursor: pointer;
   :after {
     content: "";
     width: 5px;
