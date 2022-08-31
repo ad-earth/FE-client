@@ -6,13 +6,15 @@ interface PropsType {
 }
 const ProdImg = () => {
   const [img, setImg] = useState([
-    "/img/test1.jpeg",
-    "/img/test2.jpeg",
-    "/img/test3.jpeg",
+    "https://cdn.imweb.me/thumbnail/20220816/ed7c65d28916d.jpg",
+    "https://cdn.imweb.me/thumbnail/20220816/1ff8ce0d9cc08.jpg",
+    "https://cdn.imweb.me/thumbnail/20220331/6a2e9b4face67.jpg",
   ]);
-  const [url, setUrl] = useState("/img/test1.jpeg");
+  const [url, setUrl] = useState(
+    "https://cdn.imweb.me/thumbnail/20220816/ed7c65d28916d.jpg"
+  );
   return (
-    <ImgContainer>
+    <MainContainer>
       <MainImg imgUrl={url} />
       <SubImgWrapper>
         {img.map((item, index) => {
@@ -27,23 +29,25 @@ const ProdImg = () => {
           );
         })}
       </SubImgWrapper>
-    </ImgContainer>
+    </MainContainer>
   );
 };
 
 export default ProdImg;
 
-const ImgContainer = styled.div`
-  /* width: 585px; */
+const MainContainer = styled.div`
   width: 49%;
-  /* height: 655px; */
 `;
 const MainImg = styled.div`
-  width: calc(100%-15px);
+  width: 100%;
   height: 588px;
   background-image: url(${(props: PropsType) => props.imgUrl});
   transition: background-image 0.5s ease-in-out;
   background-size: cover;
+  @media (min-width: 991px) and (max-width: 1200px) {
+    width: 550px;
+    height: 550px;
+  }
 `;
 const SubImgWrapper = styled.div`
   display: flex;
