@@ -47,7 +47,7 @@ const TipOff = styled.div`
   flex-direction: column;
 `
 export const OrderInfoDiv = styled.div`
-  font-size: inherit;
+  font-size: 19px;
   font-weight: bold;
   padding-bottom: 20px;
 }
