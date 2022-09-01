@@ -33,32 +33,6 @@ const OderList = () => {
               취소
             </MainButton>
             <MainButton
-              bgColor="transparent"
-              radius="30px"
-              border="1px solid rgba(100,100,100,0.2)"
-              hBorder="1px solid #646464"
-              hBgColor="transparent"
-              color="#212121"
-              fontSize="12px"
-              fontWeight="500"
-              padding="10px 16px"
-            >
-              취소 상세
-            </MainButton>
-            <MainButton
-              bgColor="transparent"
-              radius="30px"
-              border="1px solid rgba(100,100,100,0.2)"
-              hBorder="1px solid #646464"
-              hBgColor="transparent"
-              color="#212121"
-              fontSize="12px"
-              fontWeight="500"
-              padding="10px 16px"
-            >
-              취소 철회
-            </MainButton>
-            <MainButton
               radius="30px"
               border="1px solid transparent"
               hBorder="1px solid transparent"
