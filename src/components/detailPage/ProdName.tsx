@@ -1,46 +1,45 @@
-import React from "react";
 import styled from "styled-components";
-import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 
-import { theme } from "../../style/theme";
 import { Badge } from "../../elements/Badge";
 
 const ProdName = () => {
   return (
-    <ProdNameContainer>
-      <Name>[지구샵] 스트롱고체치약 (쿨민트향) 150정입</Name>
-      <IconWrapper>
-        <Price>13,400원</Price>
-        <ShareOutlinedIcon sx={{ color: "#999999", cursor: "pointer" }} />
-      </IconWrapper>
-      {/* 뱃지 타입 에러 해결 필요 */}
-      {/* <Badge type={"best"}>BEST</Badge> */}
+    <MainContainer>
+      <NameWrapper>
+        <Name>[지구샵] 스트롱고체치약 (쿨민트향) 150정입</Name>
+        <Badge type={"best"}>BEST</Badge>
+      </NameWrapper>
+
+      <Price>13,400원</Price>
+
       <Line />
-    </ProdNameContainer>
+    </MainContainer>
   );
 };
 
 export default ProdName;
 
-const ProdNameContainer = styled.div`
-  width: 100%;
-`;
-const Name = styled.div`
-  color: ${theme.colors.gray1};
-  font-size: ${theme.fontSize.medium};
-`;
-const IconWrapper = styled.div`
+const MainContainer = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+`;
+const NameWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+const Name = styled.div`
+  color: #656565;
+  font-size: 16px;
 `;
 const Price = styled.div`
-  color: ${theme.colors.green2};
-  font-size: 15px;
+  color: #00913a;
+  font-size: 16px;
   margin-top: 7px;
 `;
 const Line = styled.div`
   width: 100%;
   height: 24px;
-  border-bottom: 0.5px solid #e5e7eb;
+  border-bottom: 0.5px solid #bbb;
 `;

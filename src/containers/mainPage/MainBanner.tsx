@@ -61,5 +61,5 @@ const DotsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: -10px;
+  bottom: 10px;
 `;

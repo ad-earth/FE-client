@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Card from '../../components/Card'
 import CardIcon from '../../components/listPage/CardIcon'
-import { CateDrop } from '../../components/listPage/CateDrop'
+import CateDrop from '../../components/listPage/CateDrop'
 
 export interface DataType {
   p_Thumbnail?: string
@@ -102,7 +102,7 @@ const ListPage = () => {
 export default ListPage
 
 const CardArea = styled.div`
-  max-width: 1200px;
+  max-width: 1220px;
   min-width: 900px;
   height: auto;
   padding: 0 12px 0 12px;
