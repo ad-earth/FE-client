@@ -44,7 +44,7 @@ const NameDiv = styled.div`
   & span {
     width: 80px;
     font-size: 15px;
-    color: ${({ theme }) => theme.colors.gray1};
+    color: #20252b;
   }
 `
 
