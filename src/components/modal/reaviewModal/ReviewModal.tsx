@@ -10,7 +10,7 @@ import Rating from "@mui/material/Rating";
 import { styled } from "@mui/material/styles";
 
 interface ModalType {
-  isOpen: boolean;
+  isOpen?: boolean;
   handleClose: () => void;
 }
 export default function ReviewModal(props: ModalType) {
@@ -19,7 +19,7 @@ export default function ReviewModal(props: ModalType) {
       {props.isOpen && (
         <Modal handleClose={() => props.handleClose()} isOpen={props.isOpen}>
           <t.Base>
-            <Header />
+            <Header handleClose={() => props.handleClose()} />
             <Body />
             <Footer />
           </t.Base>
@@ -29,11 +29,11 @@ export default function ReviewModal(props: ModalType) {
   );
 }
 
-const Header = () => {
+const Header = (props: ModalType) => {
   return (
     <t.Header>
       <t.Title>구매평 작성</t.Title>
-      <t.CloseBtn />
+      <t.CloseBtn onClick={() => props.handleClose()} />
     </t.Header>
   );
 };
