@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { MainButton } from "../../elements/Buttons";
+import { MainButton } from "../../../elements/Buttons";
+import Product from "./Product";
 
 const OderList = () => {
   return (
@@ -8,14 +9,7 @@ const OderList = () => {
       {["1", "2"].map((data, i: number) => (
         <OderListBox key={i}>
           <ProductBox>
-            <ProductInfoBox>
-              <ProductImg />
-              <ProductInfo>
-                <ProducName>[지구샵] 대나무 칫솔</ProducName>
-                <ProducOption>성인용(19cm)</ProducOption>
-                <ProducPrice>3,000원 / 3 개</ProducPrice>
-              </ProductInfo>
-            </ProductInfoBox>
+            <Product />
             <Status>주문 확인</Status>
           </ProductBox>
           <ButtonBox>
@@ -79,31 +73,7 @@ const ProductBox = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-const ProductInfoBox = styled.div`
-  display: flex;
-  cursor: pointer;
-`;
-const ProductImg = styled.img`
-  width: 80px;
-  height: 80px;
-  src= "";
-  margin-right:16px;
-`;
-const ProductInfo = styled.div`
-  font-size: 15px;
-  line-height: 24px;
-  & p {
-    margin: 0;
-  }
-`;
-const ProducName = styled.p`
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.black};
-`;
-const ProducOption = styled.p`
-  opacity: 0.7;
-`;
-const ProducPrice = styled.p``;
+
 const Status = styled.p`
   width: 100px;
   margin: 0;

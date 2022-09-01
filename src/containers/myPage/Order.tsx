@@ -1,7 +1,7 @@
 import styled from "styled-components";
 // components
-import OderList from "../../components/myPage/OderList";
-import OrderNumber from "../../components/myPage/OrderNumber";
+import OderList from "../../components/myPage/order/OderList";
+import OrderNumber from "../../components/myPage/order/OrderNumber";
 
 const Order = () => {
   return (

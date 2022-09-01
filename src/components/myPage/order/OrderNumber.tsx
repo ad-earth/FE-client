@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const OrderNumber = () => {
   return (
     <OrderNumberBox>
       <OrderNumberInfo>
         주문번호
-        <span>
-          20228344848
-          <ArrowIcon />
-        </span>
+        <Link to={`${"1?detail=true"}`}>
+          <span>
+            20228344848
+            <ArrowIcon />
+          </span>
+        </Link>
       </OrderNumberInfo>
       <OrderDate>
         <span>주문일자 </span>
@@ -46,7 +49,7 @@ const ArrowIcon = styled.button`
   position: relative;
   left: 4px;
   background: none;
-  cursor: pointer;
+
   :after {
     content: "";
     width: 5px;

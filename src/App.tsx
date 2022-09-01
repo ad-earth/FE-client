@@ -34,11 +34,11 @@ function App() {
           <Route path="/login" element={<LogInPage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
           <Route path="/" element={<MainPage />}></Route>
-          <Route path="/mypage/*" element={<Mypage />}>
+          <Route path="/mypage" element={<Mypage />}>
             <Route index element={<Order />} />
             <Route path=":id" element={<OrderDetail />} />
             <Route path="wish" element={<Wish />} />
-            <Route path="cancel/*">
+            <Route path="cancel">
               <Route index element={<Cancel />} />
               <Route path=":id" element={<OrderDetail />} />
             </Route>
