@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
-import ReviewModal from "../../modal/reaviewModal/ReviewModal";
+import ReviewModal from "../../modal/reviewModal/ReviewModal";
 import Product from "./Product";
 
 const OderList = () => {
