@@ -15,24 +15,7 @@ const OrderAddress = () => {
           </Item>
           <Item>
             <span>배송지</span>
-            <div>
-              대구광역시 달서구 장기로 145
-              <ButtenBox>
-                <MainButton
-                  bgColor="transparent"
-                  radius="30px"
-                  border="1px solid rgba(100,100,100,0.2)"
-                  hBorder="1px solid #646464"
-                  hBgColor="transparent"
-                  color="#212121"
-                  fontSize="13px"
-                  fontWeight="500"
-                  padding="6px 12px"
-                >
-                  수정
-                </MainButton>
-              </ButtenBox>
-            </div>
+            <div>대구광역시 달서구 장기로 145</div>
           </Item>
           <Item>
             <span>베송메모</span>젠장!!!!
