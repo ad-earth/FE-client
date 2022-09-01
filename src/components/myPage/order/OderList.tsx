@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
+import ReviewModal from "../../modal/reaviewModal/ReviewModal";
 import Product from "./Product";
 
 const OderList = () => {
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   return (
     <>
+      <ReviewModal
+        isOpen={infoIsOpen}
+        handleClose={() => setInfoIsOpen(false)}
+      />
       {["1", "2"].map((data, i: number) => (
         <OderListBox key={i}>
           <ProductBox>
@@ -46,6 +52,9 @@ const OderList = () => {
               fontSize="12px"
               fontWeight="500"
               padding="10px 16px"
+              onClick={() => {
+                setInfoIsOpen(true);
+              }}
             >
               구매평 작성
             </MainButton>

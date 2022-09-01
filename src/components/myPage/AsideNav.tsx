@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ReviewModal from "../modal/reaviewModal/ReviewModal";
 import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 import styled from "styled-components";
 
 const AsideNav = () => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
   return (
     <>
-      <ReviewModal
-        isOpen={infoIsOpen}
-        handleClose={() => setInfoIsOpen(false)}
-      />
       <WithdrawalModal
         isOpen={withdrawaIsOpen}
         handleClose={() => setWithdrawaIsOpen(false)}
@@ -27,11 +21,7 @@ const AsideNav = () => {
         <li>
           <Link to="cancel">취소조회</Link>
         </li>
-        <li
-          onClick={() => {
-            setInfoIsOpen(!infoIsOpen);
-          }}
-        >
+        <li>
           <a href=" # "> 정보 수정 </a>
         </li>
         <li
