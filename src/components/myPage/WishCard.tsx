@@ -38,9 +38,6 @@ const WishCard = (props: DataType) => {
           <Heart
             fill={`${theme.colors.green2}`}
             stroke={`${theme.colors.green2}`}
-            // style={{
-            //   color: `${theme.colors.gray2}`,
-            // }}
           />
           <Count>{props.p_Like}10</Count>
         </IconSpan>
