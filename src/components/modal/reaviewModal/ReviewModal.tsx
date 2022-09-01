@@ -13,6 +13,7 @@ interface ModalType {
   isOpen?: boolean;
   handleClose: () => void;
 }
+
 export default function ReviewModal(props: ModalType) {
   return (
     <>
@@ -36,6 +37,10 @@ const Header = (props: ModalType) => {
       <t.CloseBtn onClick={() => props.handleClose()} />
     </t.Header>
   );
+  //닫기 버튼 이벤트
+  function close() {
+    props.handleClose();
+  }
 };
 
 const Body = () => {

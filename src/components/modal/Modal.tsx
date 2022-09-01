@@ -35,6 +35,7 @@ const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
 `;
 const ContentBox = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ const ModalBackdrop = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
-  z-index: 9999;
+
   background-color: rgba(0, 0, 0, 0.4);
 `;
 export default Modal;
