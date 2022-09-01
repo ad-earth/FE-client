@@ -45,6 +45,13 @@ const ProdOpt = () => {
           </DropMenu>
         </div>
       ) : null}
+      <OptBox>
+        <OptWrapper>수량</OptWrapper>
+        <CountWrapper>
+          <CountButton />
+          13,400원
+        </CountWrapper>
+      </OptBox>
       {optCheck ? (
         <OptBox>
           <OptWrapper>
