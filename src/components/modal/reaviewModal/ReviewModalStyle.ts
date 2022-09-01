@@ -61,6 +61,7 @@ export const InfoText = styled.p`
   height: 70px;
   margin: 0;
   font-size: 15px;
+  line-height: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
