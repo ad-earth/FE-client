@@ -1,16 +1,23 @@
+import { useState } from "react";
 import styled from "styled-components";
 
+import ProdComments from "../../components/detailPage/ProdComments";
 import ProdDetails from "../../components/detailPage/ProdDetails";
 
 const ProdContents = () => {
+  //상세정보 & 구매평 스위치
+  const [contentsChange, setContentsChange] = useState(false);
+
   return (
     <MainContainer>
       <MenuWrapper>
-        <Menu>상세정보</Menu>
-        <Menu className="right">구매평 (3)</Menu>
+        <Menu onClick={() => setContentsChange(false)}>상세정보</Menu>
+        <Menu onClick={() => setContentsChange(true)} className="right">
+          구매평 (3)
+        </Menu>
       </MenuWrapper>
       <ContentsWrapper>
-        <ProdDetails />
+        {contentsChange ? <ProdComments /> : <ProdDetails />}
       </ContentsWrapper>
     </MainContainer>
   );
@@ -24,10 +31,6 @@ const MainContainer = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
   }
-  /* @media (max-width: 990px) {
-    width: 100%;
-    flex-direction: column;
-  } */
 `;
 const MenuWrapper = styled.div`
   width: 98%;
