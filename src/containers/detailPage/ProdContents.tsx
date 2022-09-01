@@ -47,6 +47,7 @@ const Menu = styled.div`
   justify-content: center;
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer;
   &.right {
     border-left: 1px solid #e5e7ebbb;
   }
