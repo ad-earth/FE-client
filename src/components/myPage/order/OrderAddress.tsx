@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { MainButton } from "../../../elements/Buttons";
 
 const OrderAddress = () => {
   return (
@@ -58,7 +57,4 @@ const Item = styled.div`
     margin-right: 20px;
     color: ${({ theme }) => theme.colors.gray1};
   }
-`;
-const ButtenBox = styled.p`
-  width: 50px;
 `;
