@@ -7,9 +7,9 @@ import { theme } from "../../style/theme";
 import Card from "../../components/Card";
 
 interface DataType {
-  p_Thumbnail?: string;
-  p_Brand?: string;
-  p_Name?: string;
+  // p_Thumbnail?: string;
+  // p_Brand?: string;
+  // p_Name?: string;
   p_Price?: number;
   p_Color?: string;
   p_Review?: number;
@@ -24,6 +24,7 @@ const WishCard = (props: DataType) => {
         }
         p_Brand={"지구샵"}
         p_Name={"키친클로스(체크)"}
+        type={"wish"}
       />
       <Icons>
         <IconSpan>

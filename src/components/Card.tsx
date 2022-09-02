@@ -4,11 +4,27 @@ import { ColorIcon } from "../elements/ColorIcons";
 import { theme } from "../style/theme";
 import { DataType } from "../containers/listPage/CardList";
 
+import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+
 const Card = (props: DataType) => {
   return (
     <>
       <CardCp>
-        <CardImg src={props.p_Thumbnail} />
+        {props.type === "wish" ? (
+          <WishCard>
+            <CardImg src={props.p_Thumbnail} />
+            <span>
+              <HighlightOffRoundedIcon
+                style={{ fill: "#fff", width: "25px" }}
+              />
+            </span>
+          </WishCard>
+        ) : (
+          <>
+            <CardImg src={props.p_Thumbnail} />
+          </>
+        )}
+
         <Div>
           {props.p_Color ? (
             <Div>
@@ -59,4 +75,27 @@ const CardTitle = styled.div`
 const Cardprice = styled.div`
   font-size: ${theme.fontSize.small};
   color: ${theme.colors.green2};
+`;
+
+//위시리스트
+const WishCard = styled.div`
+  position: relative;
+  filter: brightness(1);
+  &:hover {
+    & img {
+      transition: 0.5s;
+      filter: brightness(0.5);
+    }
+    & span {
+      opacity: 1;
+    }
+  }
+  & span {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    z-index: 99;
+    opacity: 0;
+    cursor: pointer;
+  }
 `;
