@@ -14,6 +14,7 @@ export interface DataType {
   p_Color?: string
   p_Review?: number
   p_Like?: number
+  p_Ad?: boolean
 }
 
 const ListPage = () => {
@@ -117,17 +118,16 @@ const CardArea = styled.div`
 `
 const CardWrap = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
-  gap: 0.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(21%, auto));
+  margin-left: 0px;
+  gap: 0 0.1px;
   width: 100%;
   height: auto;
-  box-sizing: border-box;
   padding: 0;
 `
 const CardCp = styled.div`
   width: 100%;
   margin-bottom: 10px;
-  padding: 0 10px;
   box-sizing: border-box;
   font-size: inherit;
 `

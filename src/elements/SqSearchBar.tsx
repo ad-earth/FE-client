@@ -19,7 +19,7 @@ export default SqSearchBar
 
 const Div = styled.div`
   max-width: 350px;
-  margin: 50px auto;
+  margin: 55px auto;
   position: relative;
 `
 const InputDiv = styled.div`
@@ -29,7 +29,7 @@ const InputDiv = styled.div`
   width: 80%;
   height: 34px;
   padding: 0 20px;
-  border: 1px solid ${({ theme }) => theme.colors.gray3};
+  border: 1px solid #212121;
   border-radius: 3px;
   ::selection {
     background-color: #00913a;
