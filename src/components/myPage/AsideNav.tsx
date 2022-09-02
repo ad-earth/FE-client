@@ -23,8 +23,6 @@ const AsideNav = () => {
 
   useEffect(() => {
     let pathName = location.pathname.split("/")[1];
-    console.log(pathName);
-    console.log(isActive);
   }, []);
 
   const navClickEvent = (data: LinkType) => {
