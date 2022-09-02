@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 
 import Card from '../../components/Card'
+import CardBadge from '../../components/listPage/CardBadge'
 import CardIcon from '../../components/listPage/CardIcon'
 import CateDrop from '../../components/listPage/CateDrop'
 
@@ -89,6 +90,7 @@ const ListPage = () => {
                   p_Price={val.p_Price}
                   p_Color={val.p_Color}
                 />
+                <CardBadge />
                 <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
               </CardCp>
             </>
