@@ -82,7 +82,7 @@ const BtnArea = styled.div`
   padding: 0 30px
   margin-bottom: 18px;
 `
-const DropBtn = styled.select`
+export const DropBtn = styled.select`
   width: 100%;
   font-size: 14px;
   position: relative;
