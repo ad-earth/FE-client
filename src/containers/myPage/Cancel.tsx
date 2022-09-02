@@ -9,8 +9,8 @@ const Cancel = () => {
   return (
     <Section>
       <OrderListBox>
-        {state === null && <DataNull>취소 내역이 없습니다.</DataNull>}
         <Title>주문조회</Title>
+        {state === null && <DataNull>취소 내역이 없습니다.</DataNull>}
         {["1", "2"].map((data, i: number) => (
           <List key={i}>
             <OrderNumber />
