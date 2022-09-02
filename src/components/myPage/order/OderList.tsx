@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
-import ReviewModal from "../../modal/reaviewModal/ReviewModal";
+import ReviewModal from "../../modal/reviewModal/ReviewModal";
 import Product from "./Product";
 
 const OderList = () => {
@@ -31,19 +31,6 @@ const OderList = () => {
               padding="10px 16px"
             >
               취소
-            </MainButton>
-            <MainButton
-              bgColor="transparent"
-              radius="30px"
-              border="1px solid rgba(100,100,100,0.2)"
-              hBorder="1px solid #646464"
-              hBgColor="transparent"
-              color="#212121"
-              fontSize="12px"
-              fontWeight="500"
-              padding="10px 16px"
-            >
-              취소 상세
             </MainButton>
             <MainButton
               radius="30px"

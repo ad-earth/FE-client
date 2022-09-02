@@ -3,7 +3,7 @@ import Pagination from "@mui/material/Pagination";
 
 import Comment from "./Comment";
 import { MainButton } from "../../elements/Buttons";
-import ReviewModal from "../modal/reaviewModal/ReviewModal";
+import ReviewModal from "../modal/reviewModal/ReviewModal";
 import { useState } from "react";
 
 const CommentList = () => {
