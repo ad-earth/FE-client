@@ -36,8 +36,43 @@ const PayRadioBtn = () => {
         holderName={'입금자명 (미입력시 주문자명)'}
         marginTop="10px"
       />
+      <LineDiv>
+        <PayText>주문 후 24시간동안 미입금시 자동취소됩니다.</PayText>
+      </LineDiv>
 
-      <PayText>주문 후 24시간동안 미입금시 자동취소됩니다.</PayText>
+      <Item style={{ margin: '15px 0 20px' }}>
+        <CheckBtn type="checkbox" />
+        <Text>현금영수증 신청</Text>
+      </Item>
+      <div style={{ display: 'flex' }}>
+        <Item>
+          <RadioButton
+            type="radio"
+            name="paycheck"
+            value="paycheck1"
+            checked={select === 'paycheck1'}
+            onChange={(e) => handleSelectChange(e)}
+          />
+          <RadioButtonLabel />
+          <Text>소득공제용</Text>
+        </Item>
+        <Item style={{ marginLeft: '30px' }}>
+          <RadioButton
+            type="radio"
+            name="paycheck"
+            value="paycheck2"
+            checked={select === 'paycheck2'}
+            onChange={(e) => handleSelectChange(e)}
+          />
+          <RadioButtonLabel />
+          <Text>지출증빙용</Text>
+        </Item>
+      </div>
+      <Input
+        fontSize="14px"
+        holderName={'휴대전화번호 입력'}
+        marginTop="10px"
+      />
     </Wrapper>
   )
 }
@@ -102,7 +137,6 @@ const RadioButton = styled.input`
   `}
 `
 const Text = styled.span`
-  width: 80px;
   font-size: 14px;
   color: #20252b;
 `
@@ -110,4 +144,18 @@ const PayText = styled.div`
   font-size: 13px;
   color: #757575;
   margin-top: 8px;
+`
+const CheckBtn = styled.input`
+  width: 20px;
+  height: 20px;
+  accent-color: #00913a;
+  margin: 0px 8px 0 0px;
+  border: 1px solid #cfd6d9;
+`
+const LineDiv = styled.div`
+  width: 100%;
+  border-width: 0 0 1px;
+  border-style: solid;
+  border-color: rgba(33, 33, 33, 0.15);
+  padding: 5px 0 25px;
 `
