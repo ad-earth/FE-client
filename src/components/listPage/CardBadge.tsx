@@ -16,7 +16,7 @@ export default CardBadge
 
 const Div = styled.div`
   display: flex;
-  margin: 0.5em 0;
+  margin: -3px 8px 20px;
   width: 100%;
   box-sizing: border-box;
   font-size: inherit;
