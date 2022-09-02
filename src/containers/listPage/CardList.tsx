@@ -111,7 +111,7 @@ const CardArea = styled.div`
   padding: 0 12px 0 12px;
   margin: 0.1rem auto;
   & h3 {
-    font-size: 1.5rem;
+    font-size: 24px;
     text-transform: capitalize;
     margin-bottom: 1rem;
   }

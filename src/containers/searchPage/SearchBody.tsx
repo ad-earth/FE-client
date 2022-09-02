@@ -7,7 +7,6 @@ import { DataType } from '../listPage/CardList'
 import SearchCateDrop from '../../components/searchPage/SearchCateDrop'
 import SearchNav from '../../components/searchPage/SearchNav'
 import CardBadge from '../../components/listPage/CardBadge'
-import AdList from './AdList'
 
 const SearchBody = () => {
   const [dummy, setDummy] = useState<DataType[]>([
@@ -53,7 +52,6 @@ const SearchBody = () => {
       <CardArea>
         <SearchNav />
         <SearchCateDrop />
-        <AdList />
         <CardWrap>
           {dummy.map((v, i) => {
             return (
@@ -91,7 +89,7 @@ const CardArea = styled.div`
   padding: 0 12px 0 12px;
   margin: 0.1rem auto;
   & h3 {
-    font-size: 1.5rem;
+    font-size: 24px;
     text-transform: capitalize;
     margin-bottom: 1rem;
   }
