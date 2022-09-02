@@ -113,7 +113,7 @@ const IconBox = styled.div`
 `;
 const Icon = styled.strong``;
 const Price = styled.p`
-  font-size: 22.5px;
+  font-size: 22px;
   color: #212121;
   font-weight: bold;
   &.green {
