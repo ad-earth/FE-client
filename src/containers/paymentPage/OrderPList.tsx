@@ -35,7 +35,6 @@ const PListArea = styled.div`
   visibility: visible;
   float: left;
   display: flex;
-  background-color: yellow;
   flex-direction: column;
 `
 const TipOff = styled.div`
