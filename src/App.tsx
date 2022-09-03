@@ -20,7 +20,6 @@ import Wish from "./containers/myPage/Wish";
 import Cancel from "./containers/myPage/Cancel";
 import OrderDetail from "./containers/myPage/OrderDetail";
 import CancelDetail from "./containers/myPage/CancelDetail";
-
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
@@ -37,7 +36,8 @@ function App() {
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/mypage" element={<Mypage />}>
             <Route index element={<Order />} />
-            <Route path=":id" element={<OrderDetail />} />
+            <Route path="order" element={<Order />} />
+            <Route path="order/:id" element={<OrderDetail />} />
             <Route path="wish" element={<Wish />} />
             <Route path="cancel-call" element={<CancelDetail />} />
             <Route path="cancel">
