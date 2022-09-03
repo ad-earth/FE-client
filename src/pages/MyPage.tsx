@@ -22,11 +22,16 @@ const Wrap = styled.div`
   margin: 80px auto 100px;
   padding: 0 20px;
   position: relative;
-  box-sizing: border-box;
   display: flex;
+  @media (max-width: 990px) {
+    padding: 0;
+  }
 `;
 const Section = styled.div`
   width: 84%;
   padding: 0 15px;
   box-sizing: border-box;
+  @media (max-width: 990px) {
+    width: 100%;
+  }
 `;
