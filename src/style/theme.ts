@@ -101,29 +101,6 @@ export const theme = {
   rgba10: "rgba(100,100,100,0.6)",
   rgba11: "rgba(0,94,38,1)",
 
-  //badge style
-  badgeBackground: {
-    new: "#00913a",
-    best: "#fff",
-    soldout: "#666",
-    sale: "#fe5356",
-    ad: "#666",
-  },
-  badgeColor: {
-    new: "#fff",
-    best: "#fb4637",
-    soldout: "#fff",
-    sale: "#fff",
-    ad: "#fff",
-  },
-  badgeBorder: {
-    new: "1px solid #00913a",
-    best: "1px solid #ccc",
-    soldout: "1px solid #666",
-    sale: "1px solid #fe5356",
-    ad: "1px solid #666",
-  },
-
   // 반응형
   device,
 };
