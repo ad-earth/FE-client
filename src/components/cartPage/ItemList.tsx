@@ -1,7 +1,8 @@
+import { useState } from "react";
 import * as t from "./CartItemStyle";
+
 import { SquareBadge } from "../../elements/Badge";
 import { MainButton } from "../../elements/Buttons";
-import { useState } from "react";
 import OptionModal from "../modal/optionModal/OptionModal";
 
 const ItemList = () => {
