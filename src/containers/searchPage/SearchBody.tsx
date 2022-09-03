@@ -1,24 +1,15 @@
-import { useState } from 'react'
 import styled from 'styled-components'
+import { useState } from 'react'
 
 import Card from '../../components/Card'
-import CardBadge from '../../components/listPage/CardBadge'
 import CardIcon from '../../components/listPage/CardIcon'
-import CateDrop from '../../components/listPage/CateDrop'
+import { DataType } from '../listPage/CardList'
+import SearchCateDrop from '../../components/searchPage/SearchCateDrop'
+import SearchNav from '../../components/searchPage/SearchNav'
+import CardBadge from '../../components/listPage/CardBadge'
 
-export interface DataType {
-  p_Thumbnail?: string
-  p_Brand?: string
-  p_Name?: string
-  p_Price?: number
-  p_Color?: string
-  p_Review?: number
-  p_Like?: number
-  p_Ad?: boolean
-}
-
-const ListPage = () => {
-  const [data, setData] = useState<DataType[]>([
+const SearchBody = () => {
+  const [dummy, setDummy] = useState<DataType[]>([
     {
       p_Thumbnail: 'https://cdn.imweb.me/thumbnail/20210913/cb26c35cc2cf9.jpg',
       p_Brand: '러버랩',
@@ -52,57 +43,44 @@ const ListPage = () => {
       p_Name: '삼베수세미(3개입)',
       p_Price: 20000,
       p_Color: '그린',
-      p_Review: 20,
-      p_Like: 15,
-    },
-    {
-      p_Thumbnail: 'https://cdn.imweb.me/thumbnail/20220126/13643efcabbf2.jpg',
-      p_Brand: '예고은 ',
-      p_Name: '삼베수세미(3개입)',
-      p_Price: 20000,
-      p_Color: '그린',
-      p_Review: 20,
-      p_Like: 15,
-    },
-    {
-      p_Thumbnail: 'https://cdn.imweb.me/thumbnail/20220126/13643efcabbf2.jpg',
-      p_Brand: '예고은 ',
-      p_Name: '삼베수세미(3개입)',
-      p_Price: 20000,
-      p_Color: '그린',
-      p_Review: 20,
+      p_Review: 19,
       p_Like: 15,
     },
   ])
-
   return (
-    <CardArea>
-      <CateDrop />
-      <CardWrap>
-        {data.map((val, i) => {
-          return (
-            <>
-              <CardCp>
-                <Card
-                  key={i}
-                  p_Thumbnail={val.p_Thumbnail}
-                  p_Brand={val.p_Brand}
-                  p_Name={val.p_Name}
-                  p_Price={val.p_Price}
-                  p_Color={val.p_Color}
-                />
-                <CardBadge />
-                <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
-              </CardCp>
-            </>
-          )
-        })}
-      </CardWrap>
-    </CardArea>
+    <>
+      <CardArea>
+        <SearchNav />
+        <SearchCateDrop />
+        <CardWrap>
+          {dummy.map((v, i) => {
+            return (
+              <>
+                <CardCp>
+                  <Card
+                    key={i}
+                    p_Thumbnail={v.p_Thumbnail}
+                    p_Brand={v.p_Brand}
+                    p_Name={v.p_Name}
+                    p_Price={v.p_Price}
+                    p_Color={v.p_Color}
+                    p_Ad={true}
+                  />
+                  <CardBadge />
+                  <div>
+                    <CardIcon p_Review={v.p_Review} p_Like={v.p_Like} />
+                  </div>
+                </CardCp>
+              </>
+            )
+          })}
+        </CardWrap>
+      </CardArea>
+    </>
   )
 }
 
-export default ListPage
+export default SearchBody
 
 const CardArea = styled.div`
   max-width: 1220px;
@@ -119,7 +97,7 @@ const CardArea = styled.div`
 const CardWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21%, auto));
-  margin-left: 0px;
+  margin-left: 6px;
   gap: 0 0.1px;
   width: 100%;
   height: auto;
@@ -127,7 +105,7 @@ const CardWrap = styled.div`
 `
 const CardCp = styled.div`
   width: 100%;
-  margin-bottom: 10px;
+  margin: 0 -6px 10px -6px;
   box-sizing: border-box;
   font-size: inherit;
 `

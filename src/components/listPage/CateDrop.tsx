@@ -4,13 +4,11 @@ const CateDrop = () => {
   return (
     <>
       <BtnArea>
-        <DropBtn name="pets" id="pet-select">
-          <option value="">등록순</option>
-          <option value="first" selected>
-            인기순
-          </option>
-          <option value="cat">낮은가격순</option>
-          <option value="hamster">높은가격순</option>
+        <DropBtn name="select" id="select" defaultValue={'second'}>
+          <option value="first">등록순</option>
+          <option value="second">인기순</option>
+          <option value="third">낮은가격순</option>
+          <option value="fourth">높은가격순</option>
         </DropBtn>
       </BtnArea>
     </>

@@ -52,14 +52,6 @@ const BodyDiv = styled.div`
   grid-template-rows: repeat(5, minmax(50px, auto));
   margin-top: 30px;
 `
-const LineDiv = styled.div`
-  width: 100%;
-  border-width: 0 0 1px;
-  border-style: solid;
-  border-color: rgba(33, 33, 33, 0.15);
-  padding: 5px 0 25px;
-`
-
 const CellL = styled.div`
   font-size: 14px;
   vertical-align: top;
