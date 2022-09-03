@@ -56,6 +56,9 @@ const CardContent = styled.div`
 `;
 const List = styled.div`
   max-width: 25%;
+  @media (max-width: 990px) {
+    max-width: 50%;
+  }
 `;
 const DataNull = styled.div`
   width: 100%;

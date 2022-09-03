@@ -50,7 +50,7 @@ const WishCard = (props: DataType) => {
 export default WishCard;
 
 const WishCardBox = styled.div`
-  height: 411px;
+  /* height: 411px; */
 `;
 
 const Count = styled.span`
@@ -60,14 +60,13 @@ const Count = styled.span`
 const Icons = styled.div`
   display: inline-flex;
   gap: 10px;
-  align-items: flex-end;
-  padding: 0 10px;
+  /* align-items: flex-end; */
 `;
 const IconSpan = styled.span`
   cursor: pointer;
   display: inline-flex !important;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: flex-end; */
+  /* flex-direction: row; */
   gap: 5px;
 `;
