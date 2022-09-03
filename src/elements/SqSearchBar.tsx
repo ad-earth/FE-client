@@ -23,6 +23,7 @@ const Div = styled.div`
   position: relative;
 `
 const InputDiv = styled.div`
+  background-color: rgba(100, 100, 100, 0.05);
   display: flex;
   align-items: center;
   justify-content: flex-start
@@ -36,6 +37,7 @@ const InputDiv = styled.div`
     color: #fff;
   }
   & input {
+  background-color: transparent;
   width: 100%;
   padding: 0 14px 0 0;
   margin: 0 10px;

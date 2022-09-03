@@ -50,7 +50,7 @@ const BtnWrap = styled.div`
 const CBtn = styled.button`
   width: 25%;
   padding: 0.4rem 0;
-  border: 0.3px solid #cdcfd0c4;
+  border: 0.3px solid #dddddd;
   background-color: ${theme.badgeColor.new};
   margin: -0 -1px -1px 0;
   vertical-align: middle;
