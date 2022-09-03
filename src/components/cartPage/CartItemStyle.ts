@@ -22,6 +22,12 @@ export const ProdInfo = styled.div`
   width: 63%;
   display: flex;
   flex-direction: row;
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-right: 20px;
+  }
 `;
 export const CheckBox = styled.input`
   width: 16px;
@@ -53,12 +59,6 @@ export const ItemWrapper = styled.div`
   padding: 15px 0;
   font-size: 15px;
   border-bottom: 1px solid rgba(100, 100, 100, 0.15);
-`;
-export const ProdImg = styled.img`
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-right: 20px;
 `;
 export const InfoDiv = styled.div`
   font-size: 15px;
