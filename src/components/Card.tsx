@@ -3,12 +3,38 @@ import styled from "styled-components";
 import { ColorIcon } from "../elements/ColorIcons";
 import { theme } from "../style/theme";
 import { DataType } from "../containers/listPage/CardList";
+import { Badge } from "../elements/Badge";
+
+import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
 const Card = (props: DataType) => {
+  // console.log(props.p_Ad);
+
   return (
     <>
       <CardCp>
-        <CardImg src={props.p_Thumbnail} />
+        {props.type === "wish" ? (
+          <WishCard>
+            <CardImg src={props.p_Thumbnail} />
+            <span>
+              <HighlightOffRoundedIcon
+                style={{ fill: "#fff", width: "25px" }}
+              />
+            </span>
+          </WishCard>
+        ) : (
+          <>
+            {props.p_Ad ? (
+              <AdCardArea>
+                <AdCard src={props.p_Thumbnail} />
+                <Badge type={"ad"}>AD</Badge>
+              </AdCardArea>
+            ) : (
+              <CardImg src={props.p_Thumbnail} />
+            )}
+          </>
+        )}
+
         <Div>
           {props.p_Color ? (
             <Div>
@@ -59,4 +85,46 @@ const CardTitle = styled.div`
 const Cardprice = styled.div`
   font-size: ${theme.fontSize.small};
   color: ${theme.colors.green2};
+`;
+
+const AdCard = styled.img`
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 1px solid #666666;
+  background-color: grey;
+  background-size: cover;
+  & hover {
+  }
+`;
+const AdCardArea = styled.div`
+  position: relative;
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
+
+//위시리스트
+const WishCard = styled.div`
+  position: relative;
+  filter: brightness(1);
+  &:hover {
+    & img {
+      transition: 0.5s;
+      filter: brightness(0.5);
+    }
+    & span {
+      opacity: 1;
+    }
+  }
+  & span {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    z-index: 99;
+    opacity: 0;
+    cursor: pointer;
+  }
 `;

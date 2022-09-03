@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 import styled from "styled-components";
-import { useEffect } from "react";
 
 interface LinkType {
   id: number;
@@ -21,9 +20,9 @@ const AsideNav = () => {
     location.pathname.split("/")[1]
   );
 
-  useEffect(() => {
-    let pathName = location.pathname.split("/")[1];
-  }, []);
+  // useEffect(() => {
+  //   let pathName = location.pathname.split("/")[1];
+  // }, []);
 
   const navClickEvent = (data: LinkType) => {
     setIsActive(data.path);
@@ -40,9 +39,12 @@ const AsideNav = () => {
         {data.map((data, i: number) => (
           <ul key={i}>
             <li>
-              <Link
+              <NavLink
                 to={data.path}
                 onClick={(e) => data.path === "modal" && e.preventDefault()}
+                style={({ isActive }) => ({
+                  color: isActive ? "red" : "#888",
+                })}
               >
                 <Text
                   onClick={() => {
@@ -52,7 +54,7 @@ const AsideNav = () => {
                 >
                   {data.name}
                 </Text>
-              </Link>
+              </NavLink>
             </li>
           </ul>
         ))}
@@ -64,7 +66,7 @@ const AsideNav = () => {
 export default AsideNav;
 
 const data = [
-  { id: 1, name: "주문 조회", path: "" },
+  { id: 1, name: "주문 조회", path: "order" },
   { id: 2, name: "위시 리스트", path: "wish" },
   { id: 3, name: "취소 조회", path: "cancel" },
   { id: 4, name: "정보 수정", path: "modal" },
@@ -84,7 +86,4 @@ const NavListBox = styled.ul`
     color: ${({ theme }) => theme.colors.black};
   }
 `;
-const Text = styled.span`
-  /* border-bottom: 1px solid lightblue; */
-  border-bottom: 1px solid red;
-`;
+const Text = styled.span``;

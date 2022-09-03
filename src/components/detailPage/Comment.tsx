@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
+import { theme } from "../../style/theme";
+
 const Comment = () => {
   // 구매평 작성자 아이디 마스킹 처리(뒤 4자리)
   let username = "thisisusername";
@@ -11,11 +13,11 @@ const Comment = () => {
     <MainContainer>
       <CommentText>
         <StarWrapper>
-          <StarRoundedIcon sx={{ color: "#ff472b", fontSize: 18 }} />
-          <StarRoundedIcon sx={{ color: "#ff472b", fontSize: 18 }} />
-          <StarRoundedIcon sx={{ color: "#ff472b", fontSize: 18 }} />
-          <StarRoundedIcon sx={{ color: "#ff472b", fontSize: 18 }} />
-          <StarRoundedIcon sx={{ color: "#999", fontSize: 18 }} />
+          <StarRoundedIcon sx={{ color: theme.fc18, fontSize: 18 }} />
+          <StarRoundedIcon sx={{ color: theme.fc18, fontSize: 18 }} />
+          <StarRoundedIcon sx={{ color: theme.fc18, fontSize: 18 }} />
+          <StarRoundedIcon sx={{ color: theme.fc18, fontSize: 18 }} />
+          <StarRoundedIcon sx={{ color: theme.bg09, fontSize: 18 }} />
         </StarWrapper>
         치카치카 너무 좋아요
       </CommentText>
@@ -36,10 +38,10 @@ export default Comment;
 const MainContainer = styled.div`
   width: 100%;
   display: flex;
-  color: #646464;
+  color: ${theme.fc09};
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid ${theme.ls13};
   padding: 15px 0;
   box-sizing: border-box;
 `;
@@ -47,7 +49,7 @@ const CommentText = styled.div`
   width: 60%;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: ${theme.fs14};
   gap: 5px;
 `;
 const StarWrapper = styled.div`
@@ -57,7 +59,7 @@ const WriterInfo = styled.div`
   width: 17%;
   display: flex;
   flex-direction: column;
-  font-size: 13px;
+  font-size: ${theme.fs13};
   gap: 5px;
 `;
 const BtnWrapper = styled.div`
@@ -68,7 +70,7 @@ const BtnWrapper = styled.div`
     padding: 0;
     border: 0;
     outline: none;
-    background: #fff;
+    background: ${theme.bg01};
     cursor: pointer;
   }
 `;
