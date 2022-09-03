@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 interface BadgeType {
   children?: React.ReactNode;
-  type: "new" | "best" | "sale" | "soldout";
+  type: "new" | "best" | "sale" | "soldout"| "ad";
 }
 
 export const Badge = (props: BadgeType) => {
@@ -12,6 +12,7 @@ export const Badge = (props: BadgeType) => {
 export const SquareBadge = () => {
   return <SqBadge>필수</SqBadge>;
 }
+
 
 const BadgeBox = styled.div<BadgeType>`
   background-color: ${({ type, theme }) =>

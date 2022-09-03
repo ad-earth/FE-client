@@ -3,10 +3,13 @@ import styled from "styled-components";
 import { ColorIcon } from "../elements/ColorIcons";
 import { theme } from "../style/theme";
 import { DataType } from "../containers/listPage/CardList";
+import { Badge } from "../elements/Badge";
 
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
 const Card = (props: DataType) => {
+  // console.log(props.p_Ad);
+
   return (
     <>
       <CardCp>
@@ -21,7 +24,14 @@ const Card = (props: DataType) => {
           </WishCard>
         ) : (
           <>
-            <CardImg src={props.p_Thumbnail} />
+            {props.p_Ad ? (
+              <AdCardArea>
+                <AdCard src={props.p_Thumbnail} />
+                <Badge type={"ad"}>AD</Badge>
+              </AdCardArea>
+            ) : (
+              <CardImg src={props.p_Thumbnail} />
+            )}
           </>
         )}
 
@@ -77,6 +87,24 @@ const Cardprice = styled.div`
   color: ${theme.colors.green2};
 `;
 
+const AdCard = styled.img`
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 1px solid #666666;
+  background-color: grey;
+  background-size: cover;
+  & hover {
+  }
+`;
+const AdCardArea = styled.div`
+  position: relative;
+  div {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`;
 //위시리스트
 const WishCard = styled.div`
   position: relative;
