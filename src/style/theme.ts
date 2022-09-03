@@ -10,6 +10,7 @@ const device = {
 
 export const theme = {
   // font-size
+  fs10: "10px",
   fs11: "11px",
   fs12: "12px",
   fs13: "13px",
