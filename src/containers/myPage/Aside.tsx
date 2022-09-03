@@ -15,4 +15,8 @@ const Section = styled.div`
   width: 16%;
   padding: 0 12px;
   box-sizing: border-box;
+
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;

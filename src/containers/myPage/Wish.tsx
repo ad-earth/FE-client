@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import WishCard from "../../components/myPage/WishCard";
 import styled from "styled-components";
 
 const Wish = () => {
+  const [state, setState] = useState(null);
   return (
     <Section>
       <OrderListBox>
@@ -10,6 +11,7 @@ const Wish = () => {
           위시리스트 <span>5</span>
         </Title>
         <CardContent>
+          {state === null && <DataNull>위시리스트가 없습니다.</DataNull>}
           {["1", "2", "3", "4", "5"].map((data, i: number) => (
             <List key={i}>
               <WishCard />
@@ -54,4 +56,15 @@ const CardContent = styled.div`
 `;
 const List = styled.div`
   max-width: 25%;
+  @media (max-width: 990px) {
+    max-width: 50%;
+  }
+`;
+const DataNull = styled.div`
+  width: 100%;
+  text-align: center;
+  padding: 70px;
+  box-sizing: border-box;
+  color: #999999;
+  size: 15px;
 `;

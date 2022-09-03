@@ -7,9 +7,9 @@ import { theme } from "../../style/theme";
 import Card from "../../components/Card";
 
 interface DataType {
-  p_Thumbnail?: string;
-  p_Brand?: string;
-  p_Name?: string;
+  // p_Thumbnail?: string;
+  // p_Brand?: string;
+  // p_Name?: string;
   p_Price?: number;
   p_Color?: string;
   p_Review?: number;
@@ -24,6 +24,7 @@ const WishCard = (props: DataType) => {
         }
         p_Brand={"지구샵"}
         p_Name={"키친클로스(체크)"}
+        type={"wish"}
       />
       <Icons>
         <IconSpan>
@@ -49,7 +50,7 @@ const WishCard = (props: DataType) => {
 export default WishCard;
 
 const WishCardBox = styled.div`
-  height: 411px;
+  /* height: 411px; */
 `;
 
 const Count = styled.span`
@@ -59,14 +60,13 @@ const Count = styled.span`
 const Icons = styled.div`
   display: inline-flex;
   gap: 10px;
-  align-items: flex-end;
-  padding: 0 10px;
+  /* align-items: flex-end; */
 `;
 const IconSpan = styled.span`
   cursor: pointer;
   display: inline-flex !important;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: row;
+  /* align-items: center; */
+  /* justify-content: flex-end; */
+  /* flex-direction: row; */
   gap: 5px;
 `;

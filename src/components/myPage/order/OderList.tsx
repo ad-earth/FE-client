@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
 import ReviewModal from "../../modal/reviewModal/ReviewModal";
 import Product from "./Product";
+import { useNavigate } from "react-router-dom";
 
 const OderList = () => {
+  let navigate = useNavigate();
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   return (
     <>
@@ -29,9 +31,13 @@ const OderList = () => {
               fontSize="12px"
               fontWeight="500"
               padding="10px 16px"
+              onClick={() => {
+                navigate("cancel-call");
+              }}
             >
               취소
             </MainButton>
+
             <MainButton
               radius="30px"
               border="1px solid transparent"
@@ -62,6 +68,12 @@ const OderListBox = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: -1px;
+  @media (max-width: 990px) {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 20px 15px;
+    flex-direction: column;
+  }
 `;
 const ProductBox = styled.div`
   width: 100%;
@@ -72,11 +84,20 @@ const ProductBox = styled.div`
 
 const Status = styled.p`
   width: 100px;
-  margin: 0;
   text-align: center;
   margin-right: 144px;
   cursor: pointer;
+  color: #646464;
+  font-weight: 600;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;
 const ButtonBox = styled.div`
   width: 100px;
+  @media (max-width: 990px) {
+    width: 100%;
+    padding: 10px 0 0 85px;
+    box-sizing: border-box;
+  }
 `;

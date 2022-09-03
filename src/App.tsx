@@ -18,11 +18,11 @@ import Mypage from "./pages/MyPage";
 import Order from "./containers/myPage/Order";
 import Wish from "./containers/myPage/Wish";
 import Cancel from "./containers/myPage/Cancel";
-
+import OrderDetail from "./containers/myPage/OrderDetail";
+import CancelDetail from "./containers/myPage/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
-import OrderDetail from "./containers/myPage/OrderDetail";
 
 function App() {
   return (
@@ -36,8 +36,10 @@ function App() {
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/mypage" element={<Mypage />}>
             <Route index element={<Order />} />
-            <Route path=":id" element={<OrderDetail />} />
+            <Route path="order" element={<Order />} />
+            <Route path="order/:id" element={<OrderDetail />} />
             <Route path="wish" element={<Wish />} />
+            <Route path="cancel-call" element={<CancelDetail />} />
             <Route path="cancel">
               <Route index element={<Cancel />} />
               <Route path=":id" element={<OrderDetail />} />
