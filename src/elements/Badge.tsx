@@ -11,7 +11,7 @@ export const Badge = (props: BadgeType) => {
 
 export const SquareBadge = () => {
   return <SqBadge>필수</SqBadge>;
-}
+};
 
 const BadgeBox = styled.div<BadgeType>`
   background-color: ${({ type, theme }) =>
@@ -25,9 +25,11 @@ const BadgeBox = styled.div<BadgeType>`
 `;
 
 const SqBadge = styled.div`
-width: 20px;
-font-size: ${({theme}) => theme.fontSize.xsmall};
-color: ${({theme}) => theme.colors.gray2};
-border: 1px solid rgba(33,33,33,0.2);
-padding: 2px 4px;
-`
+  width: 20px;
+  font-size: ${({ theme }) => theme.fontSize.xsmall};
+  color: ${({ theme }) => theme.colors.gray2};
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+`;
