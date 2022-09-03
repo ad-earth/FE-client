@@ -1,13 +1,3 @@
-// screen size
-const deviceSize = {
-  mobile: "990px",
-  web: "1200px",
-};
-const device = {
-  mobile: `(max-width: ${deviceSize.mobile})`,
-  web: `(min-width: ${deviceSize.mobile}) and (max-width: ${deviceSize.web})`,
-};
-
 export const theme = {
   // font-size
   fs10: "10px",
