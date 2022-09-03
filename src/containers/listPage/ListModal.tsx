@@ -2,7 +2,6 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import Modal from '../../components/modal/Modal'
 import ProdInfo from '../ProdInfo'
-import * as t from '../../components/modal/reviewModal/ReviewModalStyle'
 import styled from 'styled-components'
 interface ModalType {
   isOpen: boolean
