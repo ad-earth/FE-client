@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-
-import Card from "../../components/Card";
-import CardIcon from "../../components/listPage/CardIcon";
-import CateDrop from "../../components/listPage/CateDrop";
+import Card from '../../components/Card'
+import CardBadge from '../../components/listPage/CardBadge'
+import CardIcon from '../../components/listPage/CardIcon'
+import CateDrop from '../../components/listPage/CateDrop'
 
 export interface DataType {
   p_Thumbnail?: string;
@@ -13,8 +13,9 @@ export interface DataType {
   p_Color?: string;
   p_Review?: number;
   p_Like?: number;
+  p_Ad?: boolean;
   type?: "wish";
-}
+
 
 const ListPage = () => {
   const [data, setData] = useState<DataType[]>([
@@ -90,6 +91,7 @@ const ListPage = () => {
                   p_Price={val.p_Price}
                   p_Color={val.p_Color}
                 />
+                <CardBadge />
                 <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
               </CardCp>
             </>
@@ -109,24 +111,23 @@ const CardArea = styled.div`
   padding: 0 12px 0 12px;
   margin: 0.1rem auto;
   & h3 {
-    font-size: 1.5rem;
+    font-size: 24px;
     text-transform: capitalize;
     margin-bottom: 1rem;
   }
 `;
 const CardWrap = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20%, auto));
-  gap: 0.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(21%, auto));
+  margin-left: 0px;
+  gap: 0 0.1px;
   width: 100%;
   height: auto;
-  box-sizing: border-box;
   padding: 0;
 `;
 const CardCp = styled.div`
   width: 100%;
   margin-bottom: 10px;
-  padding: 0 10px;
   box-sizing: border-box;
   font-size: inherit;
 `;

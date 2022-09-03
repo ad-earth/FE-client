@@ -27,17 +27,20 @@ export const theme = {
     best: "#fff",
     soldout: "#666",
     sale: "#fe5356",
+    ad:  "#666",
   },
   badgeColor: {
     new: "#fff",
     best: "#fb4637",
     soldout: "#fff",
     sale: "#fff",
+    ad:  "#fff",
   },
   badgeBorder: {
     new: "1px solid #00913a",
     best: "1px solid #ccc",
     soldout: "1px solid #666",
     sale: "1px solid #fe5356",
+    ad:  "1px solid #666",
   },
 };
