@@ -1,16 +1,16 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import { ReactComponent as Heart } from '../../assets/icons/heart.svg'
-import { ReactComponent as Message } from '../../assets/icons/message-circle.svg'
-import { ReactComponent as Cart } from '../../assets/icons/shopping-cart.svg'
+import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
+import { ReactComponent as Message } from "../../assets/icons/message-circle.svg";
+import { ReactComponent as Cart } from "../../assets/icons/shopping-cart.svg";
 
-import { theme } from '../../style/theme'
-import { DataType } from '../../containers/listPage/CardList'
-import ListModal from '../../containers/listPage/ListModal'
-import { useState } from 'react'
+import { theme } from "../../style/theme";
+import { DataType } from "../../containers/listPage/CardList";
+import ListModal from "../../containers/listPage/ListModal";
+import { useState } from "react";
 
 const CardIcon = (props: DataType) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false)
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   return (
     <>
       <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
@@ -19,7 +19,7 @@ const CardIcon = (props: DataType) => {
           <IconSpan>
             <Message
               style={{
-                color: `${theme.colors.gray2}`,
+                color: `${theme.bg09}`,
               }}
             />
             <Count>{props.p_Review}</Count>
@@ -27,28 +27,28 @@ const CardIcon = (props: DataType) => {
           <IconSpan>
             <Heart
               style={{
-                color: `${theme.colors.gray2}`,
-                width: '20px',
+                color: `${theme.bg09}`,
+                width: "20px",
               }}
             />
             <Count>{props.p_Like}</Count>
           </IconSpan>
           <Cart
             style={{
-              color: `${theme.colors.gray2}`,
-              cursor: 'pointer',
+              color: `${theme.bg09}`,
+              cursor: "pointer",
             }}
             onClick={() => {
-              setInfoIsOpen(true)
+              setInfoIsOpen(true);
             }}
           />
         </IconDiv>
       </CardCp>
     </>
-  )
-}
+  );
+};
 
-export default CardIcon
+export default CardIcon;
 
 const CardCp = styled.div`
   width: 100%;
@@ -57,11 +57,11 @@ const CardCp = styled.div`
   box-sizing: border-box;
   font-size: inherit;
   margin: -10px 0 25px 0;
-`
+`;
 const Count = styled.span`
-  font-size: ${theme.fontSize.small};
-  color: ${theme.colors.gray2};
-`
+  font-size: ${theme.fs13};
+  color: ${theme.bg09};
+`;
 const IconSpan = styled.span`
   cursor: pointer;
   display: inline-flex !important;
@@ -70,7 +70,7 @@ const IconSpan = styled.span`
   flex-direction: row;
   gap: 5px;
   margin: 0 !important;
-`
+`;
 const IconDiv = styled.div`
   display: inline-flex;
   gap: 10px;
@@ -81,4 +81,4 @@ const IconDiv = styled.div`
   flex-wrap: wrap;
   align-items: center;
   text-align: center;
-`
+`;
