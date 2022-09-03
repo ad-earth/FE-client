@@ -6,6 +6,7 @@ import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
 import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
 import { CountButton, MainButton } from "../../elements/Buttons";
+import { theme } from "../../style/theme";
 
 interface PropsType {
   drop: boolean;
@@ -27,9 +28,9 @@ const ProdOpt = () => {
       >
         틴케이스 추가구매 (선택)
         {drop ? (
-          <KeyboardArrowUpRoundedIcon sx={{ color: "#aaa" }} />
+          <KeyboardArrowUpRoundedIcon sx={{ color: theme.fc04 }} />
         ) : (
-          <KeyboardArrowDownRoundedIcon sx={{ color: "#aaa" }} />
+          <KeyboardArrowDownRoundedIcon sx={{ color: theme.fc04 }} />
         )}
       </OptDropDown>
       {drop ? (
@@ -57,7 +58,7 @@ const ProdOpt = () => {
           <OptWrapper>
             틴케이스
             <HighlightOffRoundedIcon
-              sx={{ color: "#aaa", cursor: "pointer" }}
+              sx={{ color: theme.fc04, cursor: "pointer" }}
               onClick={() => {
                 setOptCheck(false);
               }}
@@ -76,21 +77,21 @@ const ProdOpt = () => {
         <MainButton radius={"30px"}>구매하기</MainButton>
         <MainButton
           radius={"30px"}
-          border={"0.5px solid #e5e7eb"}
-          bgColor={"#fff"}
-          color={"#646464"}
-          hBorder={"0.5px solid #646464"}
-          hBgColor={"#fff"}
+          border={`0.5px solid ${theme.ls03}`}
+          bgColor={theme.bg01}
+          color={theme.fc09}
+          hBorder={`0.5px solid ${theme.ls11}`}
+          hBgColor={theme.bg01}
         >
           장바구니
         </MainButton>
         <MainButton
           radius={"30px"}
-          border={"0.5px solid #e5e7eb"}
-          bgColor={"#fff"}
-          color={"#646464"}
-          hBorder={"0.5px solid #646464"}
-          hBgColor={"#fff"}
+          border={`0.5px solid ${theme.ls03}`}
+          bgColor={theme.bg01}
+          color={theme.fc09}
+          hBorder={`0.5px solid ${theme.ls11}`}
+          hBgColor={theme.bg01}
         >
           <Heart style={{ color: "#bbb", paddingRight: "4px" }} />
           13
@@ -108,8 +109,8 @@ const MainContainer = styled.div`
 `;
 const Option = styled.div`
   margin-top: 24px;
-  color: #646464;
-  font-size: 12px;
+  color: ${theme.fc09};
+  font-size: ${theme.fs12};
   font-weight: 600;
 `;
 const OptDropDown = styled.div`
@@ -117,40 +118,40 @@ const OptDropDown = styled.div`
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  color: #646464;
-  font-size: 14px;
+  color: ${theme.fc09};
+  font-size: ${theme.fs14};
   padding: 8px 12px;
   box-sizing: border-box;
   border: ${(props: PropsType) =>
-    props.drop ? "0.5px solid #212121" : "0.5px solid #bbb"};
+    props.drop ? `0.5px solid ${theme.ls14}` : `0.5px solid ${theme.ls08}`};
   cursor: pointer;
 `;
 const DropMenu = styled.div`
   position: absolute;
   width: 100%;
   z-index: 5px;
-  color: #646464;
-  background: #fff;
-  font-size: 14px;
+  color: ${theme.fc09};
+  background: ${theme.bg01};
+  font-size: ${theme.fs14};
   padding: 8px 12px;
   box-sizing: border-box;
   border-top: none;
-  border-bottom: 0.5px solid #212121;
-  border-left: 0.5px solid #212121;
-  border-right: 0.5px solid #212121;
+  border-bottom: 0.5px solid ${theme.ls14};
+  border-left: 0.5px solid ${theme.ls14};
+  border-right: 0.5px solid ${theme.ls14};
   cursor: pointer;
   span {
     font-weight: 600;
   }
   :hover {
-    background: #f6f6f6;
+    background: ${theme.bg04};
   }
 `;
 const OptBox = styled.div`
   width: 100%;
-  font-size: 12px;
-  color: #646464;
-  background: rgba(100, 100, 100, 0.03);
+  font-size: ${theme.fs12};
+  color: ${theme.fc09};
+  background: ${theme.rgba01};
   margin-top: 10px;
   box-sizing: border-box;
   padding: 10px;
@@ -163,17 +164,17 @@ const CountWrapper = styled.div`
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
-  color: #646464;
+  font-size: ${theme.fs15};
+  color: ${theme.fc09};
 `;
 const Price = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
-  color: #646464;
+  font-size: ${theme.fs15};
+  color: ${theme.fc09};
   margin-top: 25px;
   span {
-    color: #00913a;
+    color: ${theme.fc15};
   }
 `;
 const BtnWrapper = styled.div`

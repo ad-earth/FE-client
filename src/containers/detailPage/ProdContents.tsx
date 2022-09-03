@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import ProdComments from "../../components/detailPage/ProdComments";
 import ProdDetails from "../../components/detailPage/ProdDetails";
+import { theme } from "../../style/theme";
 
 const ProdContents = () => {
   //상세정보 & 구매평 스위치
@@ -34,14 +35,14 @@ const MainContainer = styled.div`
 `;
 const MenuWrapper = styled.div`
   width: 98%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid ${theme.ls03};
   display: flex;
   margin: 0 auto;
 `;
 const Menu = styled.div`
   width: 50%;
-  color: #646464;
-  font-size: 15px;
+  color: ${theme.fc09};
+  font-size: ${theme.fs15};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,7 +50,7 @@ const Menu = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   &.right {
-    border-left: 1px solid #e5e7eb;
+    border-left: 1px solid ${theme.ls03};
   }
 `;
 const ContentsWrapper = styled.div`

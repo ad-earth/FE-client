@@ -24,11 +24,11 @@ const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background: ${theme.bg01};
   border-radius: 15px;
   gap: 8px;
   padding: 50px;
-  color: ${theme.colors.green2};
+  color: ${theme.fc15};
   @media (max-width: 990px) {
     width: 97%;
     padding: 20px;
@@ -36,17 +36,17 @@ const MainContainer = styled.div`
   }
 `;
 const Category = styled.div`
-  font-size: 18px;
+  font-size: ${theme.fs18};
   font-weight: 600;
   @media (max-width: 990px) {
-    font-size: 15px;
+    font-size: ${theme.fs15};
     font-weight: 400;
   }
 `;
 const Amount = styled.div`
-  font-size: 30px;
+  font-size: ${theme.fs30};
   font-weight: 600;
   @media (max-width: 990px) {
-    font-size: 26px;
+    font-size: ${theme.fs26};
   }
 `;

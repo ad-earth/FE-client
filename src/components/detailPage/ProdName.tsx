@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Badge } from "../../elements/Badge";
+import { theme } from "../../style/theme";
 
 const ProdName = () => {
   return (
@@ -30,16 +31,16 @@ const NameWrapper = styled.div`
   gap: 8px;
 `;
 const Name = styled.div`
-  color: #656565;
-  font-size: 16px;
+  color: ${theme.fc10};
+  font-size: ${theme.fs16};
 `;
 const Price = styled.div`
-  color: #00913a;
-  font-size: 16px;
+  color: ${theme.fc15};
+  font-size: ${theme.fs16};
   margin-top: 7px;
 `;
 const Line = styled.div`
   width: 100%;
   height: 24px;
-  border-bottom: 0.5px solid #bbb;
+  border-bottom: 0.5px solid ${theme.ls08};
 `;

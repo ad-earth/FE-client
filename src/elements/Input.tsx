@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "../style/theme";
+
 interface InputType {
   outline?: string;
   fontSize?: string;
@@ -19,7 +21,7 @@ const MyInput = styled.input<InputType>`
   outline: ${(props) => (props.outline ? props.outline : "none")};
   font-size: ${(props) => (props.fontSize ? props.fontSize : "inherit")};
   width: ${(props) => (props.width ? props.width : "100%")};
-  border: 1px solid #e5e7eb;
+  border: 1px solid ${theme.ls03};
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "-1px")};
   padding: ${(props) => (props.padding ? props.padding : "8px 16px")};
   box-sizing: border-box;
