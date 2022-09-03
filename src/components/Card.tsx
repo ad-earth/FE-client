@@ -13,10 +13,6 @@ const Card = (props: DataType) => {
   return (
     <>
       <CardCp>
-<<<<<<< HEAD
-=======
-
->>>>>>> aae1ec1f78b409755f6f120f5bec714babe725bc
         {props.type === "wish" ? (
           <WishCard>
             <CardImg src={props.p_Thumbnail} />
@@ -38,17 +34,6 @@ const Card = (props: DataType) => {
             )}
           </>
         )}
-//------
-
-        {props.p_Ad ? (
-          <AdCardArea>
-            <AdCard src={props.p_Thumbnail} />
-            <Badge type={'ad'}>AD</Badge>
-          </AdCardArea>
-        ) : (
-          <CardImg src={props.p_Thumbnail} />
-        )}
-//---------
 
         <Div>
           {props.p_Color ? (
@@ -102,11 +87,6 @@ const Cardprice = styled.div`
   color: ${theme.colors.green2};
 `;
 
-<<<<<<< HEAD
-=======
-
-`
->>>>>>> aae1ec1f78b409755f6f120f5bec714babe725bc
 const AdCard = styled.img`
   width: 100%;
   margin: 0 auto;
@@ -124,11 +104,8 @@ const AdCardArea = styled.div`
     top: 0;
     left: 0;
   }
-<<<<<<< HEAD
 `;
-=======
-`
->>>>>>> aae1ec1f78b409755f6f120f5bec714babe725bc
+
 //위시리스트
 const WishCard = styled.div`
   position: relative;

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 import styled from "styled-components";
-import { useEffect } from "react";
 
 interface LinkType {
   id: number;

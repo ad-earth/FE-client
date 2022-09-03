@@ -1,16 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-<<<<<<< HEAD
 import Card from "../../components/Card";
 import CardBadge from "../../components/listPage/CardBadge";
 import CardIcon from "../../components/listPage/CardIcon";
 import CateDrop from "../../components/listPage/CateDrop";
-=======
-import Card from '../../components/Card'
-import CardBadge from '../../components/listPage/CardBadge'
-import CardIcon from '../../components/listPage/CardIcon'
-import CateDrop from '../../components/listPage/CateDrop'
->>>>>>> aae1ec1f78b409755f6f120f5bec714babe725bc
 
 export interface DataType {
   p_Thumbnail?: string;
@@ -22,12 +15,7 @@ export interface DataType {
   p_Like?: number;
   p_Ad?: boolean;
   type?: "wish";
-<<<<<<< HEAD
 }
-=======
-
-
->>>>>>> aae1ec1f78b409755f6f120f5bec714babe725bc
 const ListPage = () => {
   const [data, setData] = useState<DataType[]>([
     {
