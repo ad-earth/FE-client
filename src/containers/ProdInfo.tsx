@@ -32,8 +32,8 @@ export default ProdInfo;
 
 const ProdInfoContainer = styled.div`
   width: 1200px;
-  margin: 15px auto;
-  padding: 15px;
+  margin: 0 auto;
+  padding: 0 15px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
