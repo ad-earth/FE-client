@@ -51,7 +51,7 @@ const InfoWrapper = styled.div`
   width: 41%;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 0px 15px;
   box-sizing: border-box;
   @media (max-width: 990px) {
     padding: 0px;
