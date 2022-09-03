@@ -6,10 +6,14 @@ import { ReactComponent as Cart } from '../../assets/icons/shopping-cart.svg'
 
 import { theme } from '../../style/theme'
 import { DataType } from '../../containers/listPage/CardList'
+import ListModal from '../../containers/listPage/ListModal'
+import { useState } from 'react'
 
-const Card = (props: DataType) => {
+const CardIcon = (props: DataType) => {
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false)
   return (
     <>
+      <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
       <CardCp>
         <IconDiv>
           <IconSpan>
@@ -32,6 +36,10 @@ const Card = (props: DataType) => {
           <Cart
             style={{
               color: `${theme.colors.gray2}`,
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              setInfoIsOpen(true)
             }}
           />
         </IconDiv>
@@ -40,7 +48,7 @@ const Card = (props: DataType) => {
   )
 }
 
-export default Card
+export default CardIcon
 
 const CardCp = styled.div`
   width: 100%;
