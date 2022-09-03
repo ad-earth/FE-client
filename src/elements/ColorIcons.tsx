@@ -1,6 +1,8 @@
 import Tooltip from "@mui/material/Tooltip";
 import styled from "styled-components";
 
+import { theme } from "../style/theme";
+
 interface ColorIconType {
   colorCode?: string;
   colorName?: string;
@@ -38,7 +40,7 @@ const BigBox = styled.div`
 `;
 const ColorBox = styled.div<ColorIconType>`
   background-color: ${(props) => props.colorCode};
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${theme.ls04};
   border-radius: 50%;
   width: 100%;
   height: 100%;

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "../../style/theme";
+
 const DeliveryInfo = () => {
   return (
     <MainContainer>
@@ -25,8 +27,8 @@ const MainContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  color: #646464;
-  font-size: 15px;
+  color: ${theme.fc09};
+  font-size: ${theme.fs15};
   p {
     line-height: 25px;
   }
@@ -34,5 +36,5 @@ const MainContainer = styled.div`
 const Title = styled.div`
   padding: 10px 0;
   box-sizing: border-box;
-  border-bottom: 0.5px solid #bbb;
+  border-bottom: 0.5px solid ${theme.ls08};
 `;

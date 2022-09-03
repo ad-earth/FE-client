@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "../../style/theme";
+
 const History = () => {
   return (
     <HistoryNav>
@@ -19,10 +21,10 @@ const HistoryNav = styled.div`
   margin: 10px auto;
   padding: 13px 15px;
   box-sizing: border-box;
-  font-size: 15px;
-  color: #646464;
+  font-size: ${theme.fs15};
+  color: ${theme.fc09};
   cursor: pointer;
   span {
-    color: #bbb;
+    color: ${theme.fc04};
   }
 `;
