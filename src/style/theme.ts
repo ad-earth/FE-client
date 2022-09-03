@@ -47,6 +47,7 @@ export const theme = {
   fc18: "#ff472b",
   fc19: "#fb4637",
   fc20: "#ffda03",
+  fc21: "#00993a",
 
   // background-color
   bg01: "#ffffff",
@@ -68,6 +69,7 @@ export const theme = {
   bg17: "#fe5356",
   bg18: "#339999",
   bg19: "#216b6b",
+  bg20: "#ffda03",
 
   // border-color
   ls01: "#ffffff",
