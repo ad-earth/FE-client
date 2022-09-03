@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import CancelInfo from "../../components/myPage/cancel/CancelInfo";
 import CancelListDetail from "../../components/myPage/cancel/CancelListDetail";
 import CancelAmount from "../../components/myPage/cancel/CancelAmount";
+
 const CancelDetail = () => {
   const navigate = useNavigate();
+
   return (
     <Section>
       <Title>
@@ -31,13 +33,16 @@ const CancelDetail = () => {
 export default CancelDetail;
 
 const Section = styled.div`
-  width: 100%;
+  @media (max-width: 990px) {
+    margin: 0 -15px;
+  }
 `;
 const Title = styled.div`
   font-size: 21px;
   font-weight: 600;
   margin-bottom: 24px;
   display: flex;
+  align-items: center;
   & span {
     width: 30px;
     position: relative;
@@ -59,6 +64,20 @@ const Title = styled.div`
       border-left: 1px solid #333;
     }
   }
+  @media (max-width: 990px) {
+    font-size: 18px;
+    padding: 0 15px 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    & span {
+      width: 18px;
+      height: 18px;
+      :before {
+        width: 10px;
+        height: 10px;
+        top: 50%;
+      }
+    }
+  }
 `;
 const OrderNumber = styled.div`
   padding-left: 10px;
@@ -67,12 +86,21 @@ const OrderNumber = styled.div`
 const Contents = styled.div`
   width: 100%;
   display: flex;
+  @media (max-width: 990px) {
+    flex-direction: column;
+  }
 `;
 const ContentsBox = styled.div`
   width: 50%;
+  width: 100%;
   margin-right: 30px;
   &:last-child {
     margin-right: 0;
   }
-  /* background: red; */
+  @media (max-width: 990px) {
+    /* border: none; */
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    flex-direction: column;
+  }
 `;

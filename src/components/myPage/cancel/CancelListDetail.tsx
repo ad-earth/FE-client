@@ -28,6 +28,10 @@ export default CancelListDetail;
 const CancelListBox = styled.div`
   border: 1px solid rgba(100, 100, 100, 0.1);
   padding: 20px;
+  @media (max-width: 990px) {
+    border: none;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+  }
 `;
 const Title = styled.div`
   font-size: 21px;

@@ -28,6 +28,7 @@ const Description = styled.div`
   line-height: 20px;
   padding: 20px;
   box-sizing: border-box;
+  margin-bottom: 40px;
   color: ${({ theme }) => theme.colors.gray2};
   & p {
     padding-bottom: 10px;
@@ -36,8 +37,15 @@ const Description = styled.div`
     padding-top: 5px;
     color: red;
   }
+  @media (max-width: 990px) {
+    border: none;
+    margin: 0;
+  }
 `;
 const ButtomBox = styled.div`
   width: 100px;
-  margin: 40px auto;
+  margin: 0 auto;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;

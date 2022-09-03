@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { MainButton } from "../../../elements/Buttons";
+import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
 
 const CancelAmount = () => {
+  const isMobile = useMobileMediaQuery();
   return (
     <CancelAmountBox>
       <Title>환불 예정금액 </Title>
@@ -37,6 +40,11 @@ const CancelAmount = () => {
           </Item>
         </Content>
       </CancelList>
+      {isMobile && (
+        <ButtomBox>
+          <MainButton radius="50px">주문 취소</MainButton>
+        </ButtomBox>
+      )}
     </CancelAmountBox>
   );
 };
@@ -46,7 +54,10 @@ export default CancelAmount;
 const CancelAmountBox = styled.div`
   border: 1px solid rgba(100, 100, 100, 0.1);
   padding: 20px 20px 80px;
-  margin-top: 30px;
+  margin: 30px 0;
+  @media (max-width: 990px) {
+    border: none;
+  }
 `;
 const Title = styled.div`
   font-size: 21px;
@@ -116,6 +127,7 @@ const TitleText = styled.span`
   font-weight: bold;
   color: ${({ theme }) => theme.colors.black};
 `;
-const TotalText = styled.div`
-  font-size: 14px;
+
+const ButtomBox = styled.div`
+  margin-top: 40px;
 `;
