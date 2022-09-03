@@ -9,6 +9,8 @@ interface InputType {
   marginTop?: string;
   padding?: string;
   holderName?: string;
+  bgColor?: string;
+  fBorder?: string;
 }
 
 export const Input = (props: InputType) => {
@@ -26,4 +28,10 @@ const MyInput = styled.input<InputType>`
   padding: ${(props) => (props.padding ? props.padding : "8px 16px")};
   box-sizing: border-box;
   font-weight: 400;
+  background-color: ${(props) =>
+    props.bgColor ? props.bgColor : `${theme.bg01}`};
+  :focus {
+    border: ${(props) =>
+      props.fBorder ? props.fBorder : `1px solid ${theme.ls03}`};
+  }
 `;
