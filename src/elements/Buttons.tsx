@@ -44,18 +44,18 @@ const Btn = styled.button`
   justify-content: center;
   align-items: center;
   width: ${(props) => (props.width ? props.width : "100%")};
-  font-size: ${(props) => (props.fontSize ? props.fontSize : "14px")};
+  font-size: ${(props) => (props.fontSize ? props.fontSize : theme.fs14)};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "bold")};
-  color: ${(props) => (props.color ? props.color : "#fff")};
+  color: ${(props) => (props.color ? props.color : theme.fc01)};
   border: ${(props: BtnType) => (props.border ? props.border : "none")};
   border-radius: ${(props: BtnType) => (props.radius ? props.radius : "none")};
   background-color: ${(props: BtnType) =>
-    props.bgColor ? props.bgColor : theme.colors.green2};
+    props.bgColor ? props.bgColor : theme.bg16};
   padding: ${(props) => (props.padding ? `${props.padding}` : "10px 0")};
   :hover {
     border: ${(props: BtnType) => (props.hBorder ? props.hBorder : "none")};
     background-color: ${(props) =>
-      props.hBgColor ? props.hBgColor : theme.colors.green1};
+      props.hBgColor ? props.hBgColor : theme.bg16};
     transition: 0.5s;
     cursor: pointer;
   }
@@ -63,8 +63,8 @@ const Btn = styled.button`
 const CountBtn = styled.div`
   width: 100px;
   height: 27px;
-  border: 1px solid #ccc;
-  background: #fff;
+  border: 1px solid ${theme.ls07};
+  background: ${theme.bg01};
   display: flex;
 `;
 const Minus = styled.a`
@@ -72,16 +72,16 @@ const Minus = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid #ccc;
-  color: #888;
+  border-right: 1px solid ${theme.ls07};
+  color: ${theme.fc06};
 `;
 const Plus = styled.a`
   width: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid #ccc;
-  color: #888;
+  border-right: 1px solid ${theme.ls07};
+  color: ${theme.fc06};
 `;
 const Input = styled.input`
   width: 46px;

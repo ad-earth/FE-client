@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { theme } from "../../style/theme";
+
 const SocialLinkList = () => {
   return (
     <Background>
@@ -33,7 +35,7 @@ const Background = styled.div`
   padding: 4% 0;
   display: flex;
   align-items: center;
-  background: #ffffe9;
+  background: ${theme.bg14};
 `;
 const MainContainer = styled.div`
   width: 1200px;
