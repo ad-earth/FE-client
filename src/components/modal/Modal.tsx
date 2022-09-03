@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useEffect } from "react";
 
 interface ModalType {
   isOpen: boolean;
@@ -7,6 +8,20 @@ interface ModalType {
 }
 
 function Modal(props: ModalType) {
+  // 모달 오버레이에서 스크롤 방지
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
+
   return (
     <>
       {props.isOpen && (
@@ -48,6 +63,9 @@ const ContentBox = styled.div`
   background-color: white;
   z-index: 10000;
   overflow: hidden;
+  @media (max-width: 990px) {
+    border-radius: 0;
+  }
 `;
 const ModalBackdrop = styled.div`
   width: 100vw;

@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const Base = styled.div`
   width: 462px;
   color: ${({ theme }) => theme.colors.black};
+  @media (max-width: 990px) {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
 `;
 export const Header = styled.div`
   padding: 0 24px;
@@ -119,4 +124,11 @@ export const GuideText = styled.p`
   font-size: 12px;
   display: flex;
   margin: 0;
+`;
+export const BottonBox = styled.div`
+  @media (max-width: 990px) {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 `;
