@@ -34,7 +34,7 @@ const MainContainer = styled.div`
 `;
 const MenuWrapper = styled.div`
   width: 98%;
-  border: 1px solid #e5e7ebbb;
+  border: 1px solid #e5e7eb;
   display: flex;
   margin: 0 auto;
 `;
@@ -49,7 +49,7 @@ const Menu = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   &.right {
-    border-left: 1px solid #e5e7ebbb;
+    border-left: 1px solid #e5e7eb;
   }
 `;
 const ContentsWrapper = styled.div`
