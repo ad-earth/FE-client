@@ -53,6 +53,7 @@ const ModalContainer = styled.div`
   z-index: 9999;
 `;
 const ContentBox = styled.div`
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,9 +64,6 @@ const ContentBox = styled.div`
   background-color: ${({ theme }) => theme.bg01};
   z-index: 10000;
   overflow: hidden;
-  @media (max-width: 990px) {
-    border-radius: 0;
-  }
 `;
 const ModalBackdrop = styled.div`
   width: 100vw;
