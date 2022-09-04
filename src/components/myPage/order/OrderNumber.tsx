@@ -34,7 +34,6 @@ const OrderNumberBox = styled.div`
   padding: 12px 0;
   font-size: 15px;
   line-height: 15px;
-  /* background: red; */
   @media (max-width: 990px) {
     flex-direction: row-reverse;
     padding: 12px 15px;
@@ -83,7 +82,6 @@ const ArrowIcon = styled.button`
 `;
 const OrderDate = styled.div`
   color: #757575;
-  /* display: inherit; */
   display: flex;
   & span {
     padding-left: 4px;

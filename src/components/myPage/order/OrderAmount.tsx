@@ -1,59 +1,54 @@
 import styled from "styled-components";
-
+import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
 const OrderAmount = () => {
+  const isMobile = useMobileMediaQuery();
   return (
     <OrderAmountBox>
       <Title>주문 금액 상세</Title>
       <Contents>
-        <TitleBoxBlod>
-          <Box>
+        <Section>
+          <Box className="topText">
             <span>주문금액</span>
-            <Price>9,900원</Price>
+            <span className="bigText">1000원</span>
           </Box>
-          <IconBox>
-            <Icon style={{ marginTop: "-4px" }}>&#00;-&#08;</Icon>
-          </IconBox>
-
-          <Box>
-            <span>주문금액</span>
-            <Price className="selector">0원</Price>
+          <ItemBox>
+            <Box>
+              {isMobile ? <span>ㄴ 상품 금액</span> : <span>상품 금액</span>}
+              <span>1000원</span>
+            </Box>
+            <Box>
+              <span>
+                {isMobile ? <span>ㄴ 배송비</span> : <span>배송비</span>}
+              </span>
+              <span>1000원</span>
+            </Box>
+          </ItemBox>
+        </Section>
+        <Section>
+          <IconBox className="left">&#00;-&#08;</IconBox>
+          <Box className="topText">
+            <span>할인금액</span>
+            <span className="bigText">0원</span>
+            <IconBox className="right"> &#61;</IconBox>
           </Box>
-          <IconBox>
-            <Icon style={{ marginTop: "-2px" }}> &#61;</Icon>
-          </IconBox>
-
-          <Box>
+        </Section>
+        <Section>
+          <Box className="topText">
             <span>총 주문금액</span>
-            <Price className="green">9,900원</Price>
+            <span className="bigText green">6000원</span>
           </Box>
-        </TitleBoxBlod>
-        <TableBody>
-          <section>
-            <Box>
-              <span>상품금액</span>
-              <span>6,900원</span>
-            </Box>
-            <Box className="boxTop">
-              <span>배송비</span>
-              <span>무료</span>
-            </Box>
-          </section>
-          <section>
-            <Box>
-              <span>주문금액</span>
-              <span></span>
-            </Box>
-          </section>
-          <section>
+          <ItemBox className="webItemBox">
             <Box>
               <span>
                 <strong>무통장입금</strong>
+                <br />
                 지구은행 0123456789
-                <br /> 예금주 광고지구
+                <br />
+                예금주 광고지구
               </span>
             </Box>
-          </section>
-        </TableBody>
+          </ItemBox>
+        </Section>
       </Contents>
     </OrderAmountBox>
   );
@@ -64,75 +59,131 @@ export default OrderAmount;
 const OrderAmountBox = styled.div`
   margin-bottom: 40px;
 `;
-const Contents = styled.div`
-  border: 1px solid rgba(100, 100, 100, 0.1);
-  margin-bottom: 40px;
-  box-sizing: border-box;
-`;
 const Title = styled.div`
   font-size: 18px;
   color: #212121;
   margin-bottom: 16px;
   font-weight: bold;
-`;
-const TitleBoxBlod = styled.div`
-  width: 100%;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
-  display: flex;
-  align-items: center;
+  @media (max-width: 990px) {
+    padding: 0px 15px;
+  }
 
-  & span {
-    color: #212121;
-    font-weight: bold;
-    font-size: 15px;
+  //
+`;
+const Contents = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(100, 100, 100, 0.1);
+  @media (max-width: 990px) {
+    flex-direction: column;
   }
 `;
 const Box = styled.div`
-  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  & span {
+    /* line-height: 24px; */
+    @media (max-width: 990px) {
+    margin-top:9px;
+  }
+  & strong {
+    color: #212121;
+  }
+  & i {
+    :before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 50%;
+      top: -15px;
+      background: #fff;
+      border-radius: 50%;
+      border: 1px solid ${({ theme }) => theme.colors.gray3};
+      transform: translateX(-50%);
+    }
+  }
+`;
+
+const ItemBox = styled.div`
   padding: 16px 20px;
-  box-sizing: border-box;
-  &.boxTop {
-    padding-top: 0;
+  height: 80px;
+  @media (max-width: 990px) {
+    padding: 0;
+    &.webItemBox {
+      display: none;
+    }
+  }
+`;
+
+const Section = styled.div`
+  position: relative;
+  font-size: 15px;
+  width: 100%;
+  @media (max-width: 990px) {
+      padding :12px 15px;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+  }
+  ${Box} {
+    font-size:14px;
+    color: gray;
+  }
+  & .topText {
+    color: #212121;
+    font-weight: bold;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+    @media (max-width: 990px) {
+      font-weight: normal;
+      font-size:15px;
+      border-bottom:none;
+      padding:0 ;
+  }
+  }
+  & .bigText {
+    font-size: 22px;
+    @media (max-width: 990px) {
+      font-size: 15px;
+    }
+  }
+  & .green {
+    color: ${({ theme }) => theme.colors.green2};
+    @media (max-width: 990px) {
+      font-size: 18px;
+      font-weight:bold;
+    }
+  }
+  & {Section}:first-child ${ItemBox} {
+  border-right: 1px solid rgba(100, 100, 100, 0.1);
+  @media (max-width: 990px) {border:none;}
+  }
+  & {Section}:last-child ${ItemBox} {
+  border-left: 1px solid rgba(100, 100, 100, 0.1);
+  @media (max-width: 990px) {border:none;}
   }
 `;
 const IconBox = styled.div`
-  width: 70px;
+  width: 20px;
   height: 20px;
-  background-color: gray;
+  line-height: 20px;
   border-radius: 100%;
   text-align: center;
   background-color: gray;
   color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 20px;
-`;
-const Icon = styled.strong``;
-const Price = styled.p`
-  font-size: 22px;
-  color: #212121;
-  font-weight: bold;
-  &.green {
-    color: ${({ theme }) => theme.colors.green2};
+  position: absolute;
+  &.left {
+    top: 22px;
+    left: -10px;
+    font-weight: 900;
   }
-`;
-const TableBody = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-weight: nomal;
-  & section:nth-child(2) {
-    border-left: 1px solid rgba(100, 100, 100, 0.1);
-    border-right: 1px solid rgba(100, 100, 100, 0.1);
+  &.right {
+    top: 22px;
+    right: -10px;
   }
-  & section {
-    width: 100%;
-    font-size: 14px;
-  }
-  & strong {
-    display: block;
+  @media (max-width: 990px) {
+    display: none;
   }
 `;

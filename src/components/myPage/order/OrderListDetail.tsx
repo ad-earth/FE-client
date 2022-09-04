@@ -1,71 +1,122 @@
 import React from "react";
 import Product from "./Product";
 import styled from "styled-components";
+import { MainButton } from "../../../elements/Buttons";
+import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
 
 const OrderListDetail = () => {
+  const isMobile = useMobileMediaQuery();
   return (
-    <OderListBox>
-      <OrderList>
-        <Info>상품정보</Info>
-        <Service className="info_center">배송비</Service>
-        <Status>진행상태</Status>
-      </OrderList>
-      <OrderInfo>
-        <Info>
-          <Product />
-        </Info>
-        <Service className="servie_center">0원</Service>
-        <Status>
-          <strong>취소완료</strong>
-        </Status>
-      </OrderInfo>
-    </OderListBox>
+    <Table>
+      <Thead>
+        <tr>
+          <th>상품정보</th>
+          <th>배송비</th>
+          <th>진행상태</th>
+        </tr>
+      </Thead>
+
+      <TBody>
+        {["1ddd", "2dddd", "3ddd"].map((data, i: number) => (
+          <tr key={i}>
+            <td>
+              <Product />
+            </td>
+            {i === 0 ? (
+              <td rowSpan={data.length} className="center">
+                무료
+              </td>
+            ) : (
+              <td style={{ display: "none" }}></td>
+            )}
+            <td className="buttonBox">
+              <span>배송왼료</span>
+              <ButtonBox>
+                <MainButton radius="50px">배송왼료</MainButton>
+              </ButtonBox>
+            </td>
+          </tr>
+        ))}
+        {isMobile && (
+          <IsMobile>
+            <td>
+              배송비 <strong>3000원</strong>
+            </td>
+          </IsMobile>
+        )}
+      </TBody>
+    </Table>
   );
 };
 
-export default OrderListDetail;
-
-const OderListBox = styled.div`
+const Table = styled.table`
+  display: table;
   width: 100%;
-  border: 1px solid rgba(100, 100, 100, 0.1);
-  margin-bottom: 40px;
-  color: ${({ theme }) => theme.colors.gray1};
   font-size: 15px;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  & th,
+  tr,
+  td {
+    border: 1px solid rgba(100, 100, 100, 0.1);
+  }
+  @media (max-width: 990px) {
+    & tr td {
+      border: none;
+      padding: 0;
+    }
+  }
 `;
-const OrderList = styled.div`
+const Thead = styled.thead`
   width: 100%;
-  height: 42px;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.1);
-  display: flex;
-  align-items: center;
+  & th {
+    font-weight: initial;
+    padding: 10px 16px;
+  }
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;
-const OrderInfo = styled.div`
-  width: 100%;
-  height: 100px;
-  display: flex;
-  align-items: center;
+const TBody = styled.tbody`
+  & tr {
+    @media (max-width: 990px) {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 15px;
+    }
+  }
+  & .center {
+    text-align: center;
+    @media (max-width: 990px) {
+      display: none;
+    }
+  }
+  & td {
+    padding: 16px 20px;
+  }
+  & .buttonBox {
+    height: 100%;
+    display: revert;
+    color: #646464;
+    font-weight: 600;
+    @media (max-width: 990px) {
+      margin: 10px 0 0 100px;
+      box-sizing: border-box;
+      padding: 0;
+    }
+  }
 `;
-const Info = styled.div`
-  width: 100%;
-  flex-grow: 1;
-  padding: 10px 16px;
+const ButtonBox = styled.div`
+  width: 130px;
+  float: right;
+  @media (max-width: 990px) {
+    width: 100%;
+    float: none;
+    margin-top: 14px;
+  }
 `;
-const Service = styled.div`
-  width: 100%;
+const IsMobile = styled.tr`
   text-align: center;
-  border-left: 1px solid rgba(100, 100, 100, 0.1);
-  border-right: 1px solid rgba(100, 100, 100, 0.1);
-  flex-grow: 1;
-  padding: 0 16px;
-  &.info_center {
-    line-height: 42px;
-  }
-  &.servie_center {
-    line-height: 100px;
-  }
 `;
-const Status = styled.div`
-  width: 100%;
-  flex-grow: 1;
-  padding: 10px 16px;
-`;
+
+export default OrderListDetail;

@@ -21,10 +21,15 @@ const OrderNumberBox = styled.div`
   padding: 16px 20px;
   display: flex;
   font-size: 15px;
-  line-height: 15px;
+  line-height: 1.6;
   margin-bottom: 10px;
   & span {
     margin-right: 4px;
+  }
+  @media (max-width: 990px) {
+    border: none;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
   }
 `;
 const OrderDate = styled.div`

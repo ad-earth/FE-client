@@ -28,6 +28,9 @@ const Title = styled.div`
 
   margin-bottom: 16px;
   font-weight: bold;
+  @media (max-width: 990px) {
+    padding: 0px 15px;
+  }
 `;
 const Contents = styled.div`
   border: 1px solid rgba(100, 100, 100, 0.1);

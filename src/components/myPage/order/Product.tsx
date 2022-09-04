@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
 
 const Product = () => {
-  const isMobile = useMobileMediaQuery();
   return (
     <ProductInfoBox>
       <ProductImg />
@@ -10,7 +8,6 @@ const Product = () => {
         <ProducName>[지구샵] 대나무 칫솔</ProducName>
         <ProducOption>성인용(19cm)</ProducOption>
         <ProducPrice>3,000원 / 3 개</ProducPrice>
-        {isMobile && <Status>주문 확인</Status>}
       </ProductInfo>
     </ProductInfoBox>
   );
@@ -45,9 +42,4 @@ const ProducOption = styled.p`
 `;
 const ProducPrice = styled.p`
   font-size: 0.85rem;
-`;
-
-const Status = styled.p`
-  color: #646464;
-  font-weight: 600;
 `;

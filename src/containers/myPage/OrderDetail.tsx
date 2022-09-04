@@ -7,7 +7,11 @@ import OrderAmount from "../../components/myPage/order/OrderAmount";
 
 import { useNavigate } from "react-router-dom";
 
+import OrderPaymentMethod from "../../components/myPage/order/OrderPaymentMethod";
+import useMobileMediaQuery from "../../hook/useMobileMediaQuery";
+
 const OrderDetail = () => {
+  const isMobile = useMobileMediaQuery();
   const navigate = useNavigate();
   return (
     <Section>
@@ -24,18 +28,29 @@ const OrderDetail = () => {
       <OrderUserInfo />
       <OrderAddress />
       <OrderAmount />
+      {isMobile && <OrderPaymentMethod />}
     </Section>
   );
 };
 
 export default OrderDetail;
 
-const Section = styled.div``;
+const Section = styled.div`
+  @media (max-width: 990px) {
+    margin: 0 -15px;
+  }
+`;
 const Title = styled.div`
   font-size: 21px;
   font-weight: 600;
   margin-bottom: 24px;
   display: flex;
+  @media (max-width: 990px) {
+    padding: 0 20px 20px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    margin: 0;
+  }
   & span {
     width: 30px;
     position: relative;
