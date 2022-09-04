@@ -62,8 +62,9 @@ const PListArea = styled.div`
   flex-direction: column;
      @media (max-width: 930px) {
     display: flex;
-    width: 88%;
-   align-items: flex-start;
+    width: 95%;
+    margin: 0 20px;
+   align-items: center;
   }
 `
 const TipOff = styled.div`

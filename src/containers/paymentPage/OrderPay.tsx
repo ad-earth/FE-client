@@ -45,8 +45,9 @@ const PayArea = styled.div`
   align-items: flex-end;
    @media (max-width: 930px) {
     display: flex;
-    width: 100%;
-    align-items: center;
+    width: 120%;
+    margin: 10 auto;
+    align-items: flex-end;
   }
 `
 const TipOff = styled.div`
