@@ -1,10 +1,11 @@
-import React from 'react'
 import styled from 'styled-components'
+
 import PayRadioBtn from '../../components/paymentPage/PayRadioBtn'
 import PaySummary from '../../components/paymentPage/PaySummary'
-import { OrderInfoDiv } from './OrderPList'
 import PayAgree from '../../components/paymentPage/PayAgree'
+import { OrderInfoDiv } from './OrderPList'
 import { MainButton } from '../../elements/Buttons'
+import { theme } from '../../style/theme'
 
 const OrderPay = () => {
   const titles = ['주문 요약', '결제수단']
@@ -55,7 +56,7 @@ const TipOff = styled.div`
   display: flex;
   padding: 24px;
   margin-bottom: 16px;
-  background-color: #fff;
+  background-color:${theme.bg01};
   flex-direction: column;
 `
 const BtnDiv = styled.div`
