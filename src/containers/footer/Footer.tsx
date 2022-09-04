@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import footLogo from "./../assets/logo/footLogo.png";
 
 const Footer = () => {
