@@ -12,7 +12,7 @@ const CancelDetail = () => {
       <Title>
         <span
           onClick={() => {
-            navigate(-1);
+            navigate("..");
           }}
         ></span>
         주문 취소요청
@@ -61,7 +61,7 @@ const Title = styled.div`
       transform: translate(-50%, -50%) rotate(-45deg);
       margin-top: 2px;
       border-top: 1px solid ${({ theme }) => theme.ls13};
-      border-left: 1px solid #${({ theme }) => theme.ls13};
+      border-left: 1px solid ${({ theme }) => theme.ls13};
     }
   }
   @media (max-width: 990px) {

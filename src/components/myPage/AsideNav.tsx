@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 import styled from "styled-components";
+import { theme } from "../../style/theme";
 
 interface LinkType {
   id: number;
@@ -43,8 +44,11 @@ const AsideNav = () => {
                 to={data.path}
                 onClick={(e) => data.path === "modal" && e.preventDefault()}
                 style={({ isActive }) => ({
-                  color: isActive ? "red" : "#888",
+                  borderBottom: `2px solid ${
+                    isActive ? `${theme.fc15}` : `${theme.fc01}`
+                  }`,
                 })}
+                end
               >
                 <Text
                   onClick={() => {
@@ -66,7 +70,7 @@ const AsideNav = () => {
 export default AsideNav;
 
 const data = [
-  { id: 1, name: "주문 조회", path: "order" },
+  { id: 1, name: "주문 조회", path: "" },
   { id: 2, name: "위시 리스트", path: "wish" },
   { id: 3, name: "취소 조회", path: "cancel" },
   { id: 4, name: "정보 수정", path: "modal" },
@@ -80,6 +84,9 @@ const NavListBox = styled.ul`
   }
   & li a {
     color: ${({ theme }) => theme.fc14};
+  }
+  @media (max-width: 990px) {
+    display: none;
   }
 `;
 const Text = styled.span``;

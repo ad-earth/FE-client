@@ -34,7 +34,9 @@ const OderList = () => {
               fontWeight="500"
               padding="10px 16px"
               onClick={() => {
-                navigate("cancel-call");
+                navigate(`/mypage/cancel-call/${"1?detail=true"}`, {
+                  replace: true,
+                });
               }}
             >
               취소
