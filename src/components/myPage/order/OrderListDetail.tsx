@@ -29,7 +29,7 @@ const OderListBox = styled.div`
   width: 100%;
   border: 1px solid rgba(100, 100, 100, 0.1);
   margin-bottom: 40px;
-  color: ${({ theme }) => theme.colors.gray1};
+  color: ${({ theme }) => theme.fc09};
   font-size: 15px;
 `;
 const OrderList = styled.div`

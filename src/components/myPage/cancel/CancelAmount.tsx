@@ -89,7 +89,7 @@ const Content = styled.div`
       left: 50%;
       top: 0;
       margin-left: -8px;
-      background: ${({ theme }) => theme.colors.gray2};
+      background: ${({ theme }) => theme.bg09};
     }
   }
 `;
@@ -104,13 +104,13 @@ const Item = styled.div`
   }
   & .green {
     font-weight: bold;
-    color: ${({ theme }) => theme.colors.green2};
+    color: ${({ theme }) => theme.fc15};
   }
 `;
 
 const SubText = styled.span`
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.gray1};
+  color: ${({ theme }) => theme.fc09};
 `;
 const TitleText = styled.span`
   font-weight: bold;

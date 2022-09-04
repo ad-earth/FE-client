@@ -13,7 +13,7 @@ export const Header = styled.div`
   text-align: center;
 `;
 export const Title = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fs16};
 `;
 export const CloseBtn = styled.div`
   position: absolute;
@@ -100,7 +100,7 @@ export const Textarea = styled.textarea`
   border: thin solid #e5e5e5;
   background: ${({ theme }) => theme.colors.gray4};
   :focus {
-    outline: 1px solid ${({ theme }) => theme.colors.green2};
+    outline: 1px solid ${({ theme }) => theme.ls16};
   }
 `;
 export const TextareaCount = styled.span`

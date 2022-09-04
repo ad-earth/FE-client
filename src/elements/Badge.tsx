@@ -52,7 +52,7 @@ const BadgeBox = styled.div<BadgeType>`
 
 const SqBadge = styled.div`
   width: 20px;
-  font-size: ${theme.fs11};
+  font-size: ${theme.fs10};
   color: ${theme.fc09};
   border: 1px solid ${theme.rgba05};
   padding: 2px 4px;

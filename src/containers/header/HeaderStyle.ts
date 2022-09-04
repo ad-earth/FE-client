@@ -28,8 +28,8 @@ export const LogoImg = styled.img`
   object-fit: contain;
 `;
 export const CategorySpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.medium};
-  color: ${({ theme }) => theme.colors.green2};
+  font-size: ${({ theme }) => theme.fs16};
+  color: ${({ theme }) => theme.fc15};
   margin: 30px 10px;
 `;
 export const RightDiv = styled.div`
@@ -37,13 +37,13 @@ export const RightDiv = styled.div`
   float: right;
 `;
 export const LogInSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.medium};
-  color: ${({ theme }) => theme.colors.green2};
+  font-size: ${({ theme }) => theme.fs16};
+  color: ${({ theme }) => theme.fc15};
   margin: auto 10px;
 `;
 export const LogOutSpan = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.medium};
-  color: ${({ theme }) => theme.colors.green2};
+  font-size: ${({ theme }) => theme.fs16};
+  color: ${({ theme }) => theme.fc15};
   margin: auto 10px;
 `;
 export const IconDiv = styled.div`
