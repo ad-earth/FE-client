@@ -1,30 +1,41 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import { Input } from "../elements/Input";
-
-import logInLogo from "./../assets/logo/logInLogo.jpeg";
 import { MainButton } from "../elements/Buttons";
 
+import logInLogo from "./../assets/logo/logInLogo.jpeg";
+import SearchModal from "../components/modal/searchModal/SearchModal";
+
 const LogInPage = () => {
+  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   return (
-    <LogInContainer>
-      <LogInWrapper>
-        <LogInLogo src={logInLogo} />
-        <Input holderName={"아이디"} />
-        <Input holderName={"비밀번호"} />
-        <CheckWrapper>
-          <LogInCheckbox type="checkbox" />
-          <CheckLabel>로그인 상태유지</CheckLabel>
-        </CheckWrapper>
-        <MainButton radius={"30px"} fontSize={"14px"}>
-          {"로그인"}
-        </MainButton>
-        <AddWrapper>
-          <AddInfo>회원가입</AddInfo>
-          <AddInfo>아이디 ∙ 비밀번호 찾기</AddInfo>
-        </AddWrapper>
-      </LogInWrapper>
-    </LogInContainer>
+    <>
+      <SearchModal
+        isOpen={searchIsOpen}
+        handleClose={() => setSearchIsOpen(false)}
+      />
+      <LogInContainer>
+        <LogInWrapper>
+          <LogInLogo src={logInLogo} />
+          <Input holderName={"아이디"} />
+          <Input holderName={"비밀번호"} />
+          <CheckWrapper>
+            <LogInCheckbox type="checkbox" />
+            <CheckLabel>로그인 상태유지</CheckLabel>
+          </CheckWrapper>
+          <MainButton radius={"30px"} fontSize={"14px"}>
+            {"로그인"}
+          </MainButton>
+          <AddWrapper>
+            <AddInfo>회원가입</AddInfo>
+            <AddInfo onClick={() => setSearchIsOpen(true)}>
+              아이디 ∙ 비밀번호 찾기
+            </AddInfo>
+          </AddWrapper>
+        </LogInWrapper>
+      </LogInContainer>
+    </>
   );
 };
 export default LogInPage;
@@ -74,4 +85,5 @@ const AddWrapper = styled.div`
 const AddInfo = styled.span`
   font-size: 15px;
   color: #646464;
+  cursor: pointer;
 `;

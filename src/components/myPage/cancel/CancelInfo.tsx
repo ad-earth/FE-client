@@ -29,7 +29,7 @@ const Description = styled.div`
   padding: 20px;
   box-sizing: border-box;
   margin-bottom: 40px;
-  color: ${({ theme }) => theme.colors.gray2};
+  color: ${({ theme }) => theme.bg09};
   & p {
     padding-bottom: 10px;
   }

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
-import HighlightOffIcon from '@mui/icons-material/HighlightOff'
+import styled from "styled-components";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const SqSearchBar = () => {
   return (
@@ -13,16 +13,17 @@ const SqSearchBar = () => {
         </InputDiv>
       </Div>
     </>
-  )
-}
-export default SqSearchBar
+  );
+};
+export default SqSearchBar;
 
 const Div = styled.div`
   max-width: 350px;
   margin: 55px auto;
   position: relative;
-`
+`;
 const InputDiv = styled.div`
+  background-color: rgba(100, 100, 100, 0.05);
   display: flex;
   align-items: center;
   justify-content: flex-start
@@ -36,6 +37,7 @@ const InputDiv = styled.div`
     color: #fff;
   }
   & input {
+  background-color: transparent;
   width: 100%;
   padding: 0 14px 0 0;
   margin: 0 10px;
@@ -48,17 +50,17 @@ const InputDiv = styled.div`
     color: #fff;
   }
   ::placeholder {
-    color: ${({ theme }) => theme.colors.gray2};
+    color: ${({ theme }) => theme.bg09};
     font-size: 14px;
   }}
 
-`
+`;
 const SearchIcon = styled(SearchRoundedIcon)({
-  color: '#999',
-  cursor: 'pointer',
-})
+  color: "#999",
+  cursor: "pointer",
+});
 
 const Officon = styled(HighlightOffIcon)({
-  color: '#999',
-  cursor: 'pointer',
-})
+  color: "#999",
+  cursor: "pointer",
+});

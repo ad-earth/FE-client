@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { theme } from "../../style/theme";
+
 const ProdCarousel = () => {
   // carousel option
   const setting = {
@@ -38,9 +40,9 @@ const Page = styled.div`
   width: 40px;
   padding: 3px 8px;
   box-sizing: border-box;
-  background: #646464;
-  color: #fff;
-  font-size: 12px;
+  background: ${theme.bg11};
+  color: ${theme.fc01};
+  font-size: ${theme.fs12};
   display: flex;
   justify-content: center;
   align-items: center;

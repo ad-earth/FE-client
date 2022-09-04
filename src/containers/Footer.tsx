@@ -63,21 +63,21 @@ const FootInfoDiv = styled.div`
 `;
 const SmallInfo = styled.span`
   width: 100%;
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fs16};
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray1};
+  color: ${({ theme }) => theme.fc09};
 `;
 const BigInfo = styled.span`
   width: 100%;
   font-size: 24px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.gray1};
+  color: ${({ theme }) => theme.fc09};
 `;
 
 const FootGrWrapper = styled.div`
   width: 100%;
   height: 200px;
-  background-color: ${({ theme }) => theme.colors.green2};
+  background-color: ${({ theme }) => theme.bg16};
 `;
 const FootWrapper = styled.div`
   display: flex;
@@ -110,7 +110,7 @@ const FootTopDiv = styled.div`
 `;
 const TopTextSpan = styled.span`
   width: 100%;
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fs16};
   font-weight: 600;
   color: #fff;
 `;
@@ -122,7 +122,7 @@ const FootBottomDiv = styled.div`
 `;
 const BotTextSpan = styled.span`
   width: 100%;
-  font-size: ${({ theme }) => theme.fontSize.medium};
+  font-size: ${({ theme }) => theme.fs16};
   font-weight: 400;
   color: #fff;
 `;

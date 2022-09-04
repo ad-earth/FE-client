@@ -5,6 +5,7 @@ import Comment from "./Comment";
 import { MainButton } from "../../elements/Buttons";
 import ReviewModal from "../modal/reviewModal/ReviewModal";
 import { useState } from "react";
+import { theme } from "../../style/theme";
 
 const CommentList = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -21,8 +22,8 @@ const CommentList = () => {
       <MainButton
         width={"120px"}
         radius={"20px"}
-        hBgColor={"#23b85f"}
-        fontSize={"12px"}
+        hBgColor={theme.bg15}
+        fontSize={theme.fs12}
         onClick={() => setModalOpen(true)}
       >
         구매평 작성
@@ -47,8 +48,8 @@ const MainContainer = styled.div`
   flex-direction: column;
   margin: 20px 0;
   p {
-    color: #646464;
-    font-size: 13px;
+    color: ${theme.fc09};
+    font-size: ${theme.fs13};
     margin: 10px 0;
   }
 `;
@@ -56,7 +57,7 @@ const CommentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #333;
+  border-top: 1px solid ${theme.ls13};
   margin-top: 30px;
 `;
 const Page = styled.div`

@@ -173,11 +173,23 @@ const IconBox = styled.div`
   background-color: gray;
   color: #fff;
   font-size: 20px;
-  position: absolute;
-  &.left {
-    top: 22px;
-    left: -10px;
-    font-weight: 900;
+`;
+const Icon = styled.strong``;
+const Price = styled.p`
+  font-size: 22px;
+  color: #212121;
+  font-weight: bold;
+  &.green {
+    color: ${({ theme }) => theme.fc15};
+  }
+`;
+const TableBody = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-weight: nomal;
+  & section:nth-child(2) {
+    border-left: 1px solid rgba(100, 100, 100, 0.1);
+    border-right: 1px solid rgba(100, 100, 100, 0.1);
   }
   &.right {
     top: 22px;

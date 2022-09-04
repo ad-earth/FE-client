@@ -83,8 +83,8 @@ const CardTitle = styled.div`
   color: #666666;
 `;
 const Cardprice = styled.div`
-  font-size: ${theme.fontSize.small};
-  color: ${theme.colors.green2};
+  font-size: ${theme.fs13};
+  color: ${theme.fc15};
 `;
 
 const AdCard = styled.img`

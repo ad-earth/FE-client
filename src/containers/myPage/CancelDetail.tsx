@@ -81,7 +81,7 @@ const Title = styled.div`
 `;
 const OrderNumber = styled.div`
   padding-left: 10px;
-  color: ${({ theme }) => theme.colors.green3};
+  color: ${({ theme }) => theme.fc21};
 `;
 const Contents = styled.div`
   width: 100%;

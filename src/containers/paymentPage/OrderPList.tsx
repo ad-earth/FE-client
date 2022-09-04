@@ -3,9 +3,14 @@ import { FreeShipping } from '../../components/paymentPage/OrderPdtInfo'
 import PdtInfo from '../../components/paymentPage/PdtInfo'
 import PayMethod from '../../components/paymentPage/PayMethod'
 import PayUserInfo from '../../components/paymentPage/PayUserInfo'
+import PayUserInput from '../../components/paymentPage/PayUserInput'
+import PayMethodInput from '../../components/paymentPage/PayMethodInput'
+import { useState } from 'react'
 
 const OrderPList = () => {
   const titles = ['주문 상품 정보', '주문자 정보', '배송 정보']
+  const [btnopen, setBtnopen] = useState<boolean>(false)
+  const [btnchange, setBtnchange] = useState<boolean>(false)
   return (
     <>
       <PListArea>
@@ -15,14 +20,29 @@ const OrderPList = () => {
           <PdtInfo />
           <FreeShipping />
         </TipOff>
-        <TipOff>
-          <OrderInfoDiv>{titles[1]}</OrderInfoDiv>
-          <PayUserInfo />
-        </TipOff>
-        <TipOff>
-          <OrderInfoDiv>{titles[2]}</OrderInfoDiv>
-          <PayMethod />
-        </TipOff>
+
+        {btnopen ? (
+          <TipOff>
+            <OrderInfoDiv>{titles[1]}</OrderInfoDiv>
+            <PayUserInput />
+          </TipOff>
+        ) : (
+          <TipOff>
+            <OrderInfoDiv>{titles[1]}</OrderInfoDiv>
+            <PayUserInfo BtnonClick={() => setBtnopen(true)} />
+          </TipOff>
+        )}
+        {btnchange ? (
+          <TipOff>
+            <OrderInfoDiv>{titles[2]}</OrderInfoDiv>
+            <PayMethodInput />
+          </TipOff>
+        ) : (
+          <TipOff>
+            <OrderInfoDiv>{titles[2]}</OrderInfoDiv>
+            <PayMethod BtnonClick={() => setBtnchange(true)} />
+          </TipOff>
+        )}
       </PListArea>
     </>
   )

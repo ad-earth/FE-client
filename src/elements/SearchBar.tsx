@@ -1,14 +1,16 @@
-import styled from 'styled-components'
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import styled from "styled-components";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+
+import { theme } from "../style/theme";
 
 export const SearchBar = () => {
   return (
     <InputDiv>
-      <SearchInput placeholder='Search'/>
-      <SearchIcon/>
+      <SearchInput placeholder="Search" />
+      <SearchIcon />
     </InputDiv>
-  )
-}
+  );
+};
 
 const InputDiv = styled.div`
   display: flex;
@@ -18,9 +20,9 @@ const InputDiv = styled.div`
   height: 34px;
   padding: 0 20px;
   margin: 25px 30px 10px 30px;
-  border: 1px solid ${({theme}) => theme.colors.gray3};
-  border-radius: ${({theme}) => theme.radius.round};
-`
+  border: 1px solid ${theme.ls03};
+  border-radius: 30px;
+`;
 const SearchInput = styled.input`
   width: 180px;
   padding: 0 10px 0 0;
@@ -29,10 +31,10 @@ const SearchInput = styled.input`
     outline: none;
   }
   ::placeholder {
-    color: ${({theme}) => theme.colors.gray2};
-    font-size: 14px;
+    color: ${theme.fc05};
+    font-size: ${theme.fs14};
   }
-`
+`;
 const SearchIcon = styled(SearchRoundedIcon)({
-  color: '#999',
-})
+  color: `${theme.fc05}`,
+});

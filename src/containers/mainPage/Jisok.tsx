@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { MainButton } from "../../elements/Buttons";
+import { theme } from "../../style/theme";
 
 const Jisok = () => {
   return (
@@ -13,8 +14,8 @@ const Jisok = () => {
           지구를 위한 택배서비스 "지속"런칭
         </Text>
         <MainButton
-          bgColor="#339999"
-          hBgColor="#216b6b"
+          bgColor={theme.bg18}
+          hBgColor={theme.bg19}
           radius="30px"
           onClick={() => window.open("http://www.jisok.co.kr/")}
         >
@@ -47,7 +48,7 @@ const Contents = styled.div`
     width: 120px;
   }
   button {
-    font-size: 14px;
+    font-size: ${theme.fs14};
     margin-left: 30px;
     width: 178px;
     height: 48px;
@@ -61,7 +62,7 @@ const Contents = styled.div`
       width: 15%;
     }
     button {
-      font-size: 1%;
+      font-size: ${theme.fs12};
       margin-left: 30px;
       width: 15%;
       height: 4%;
@@ -69,11 +70,11 @@ const Contents = styled.div`
   }
 `;
 const Text = styled.div`
-  font-size: 16px;
-  color: #339999;
+  font-size: ${theme.fs16};
+  color: ${theme.fc16};
   margin-left: 50px;
   @media (max-width: 1200px) {
-    font-size: 0.5rem;
+    font-size: ${theme.fs12};
     white-space: nowrap;
   }
 `;

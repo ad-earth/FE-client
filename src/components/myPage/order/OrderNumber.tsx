@@ -44,7 +44,7 @@ const OrderNumberInfo = styled.div`
   color: #333;
   display: flex;
   & span {
-    color: ${({ theme }) => theme.colors.green3};
+    color: ${({ theme }) => theme.fc21};
     padding-left: 8px;
     cursor: pointer;
     display: flex;
@@ -63,7 +63,7 @@ const ArrowIcon = styled.button`
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.green3};
+  border: 1px solid ${({ theme }) => theme.ls15};
   position: relative;
   left: 4px;
   background: none;
@@ -75,8 +75,8 @@ const ArrowIcon = styled.button`
     position: absolute;
     left: 43%;
     top: 4px;
-    border-left: 1px solid ${({ theme }) => theme.colors.green3};
-    border-top: 1px solid ${({ theme }) => theme.colors.green3};
+    border-left: 1px solid ${({ theme }) => theme.ls15};
+    border-top: 1px solid ${({ theme }) => theme.ls15};
     transform: translateX(-50%) rotate(130deg);
   }
 `;
