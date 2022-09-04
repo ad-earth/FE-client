@@ -1,9 +1,11 @@
-import React from 'react'
 import styled from 'styled-components'
+
 import PayRadioBtn from '../../components/paymentPage/PayRadioBtn'
 import PaySummary from '../../components/paymentPage/PaySummary'
-import { OrderInfoDiv } from './OrderPList'
 import PayAgree from '../../components/paymentPage/PayAgree'
+import { OrderInfoDiv } from './OrderPList'
+import { MainButton } from '../../elements/Buttons'
+import { theme } from '../../style/theme'
 
 const OrderPay = () => {
   const titles = ['주문 요약', '결제수단']
@@ -17,9 +19,16 @@ const OrderPay = () => {
         <OrderInfoDiv>{titles[1]}</OrderInfoDiv>
         <PayRadioBtn></PayRadioBtn>
       </TipOff>
-      <TipOff>
+      <TipOff style={{display: 'rleative'}}>
         <PayAgree />
+        <BtnDiv>
+        <MainButton
+        width='100%'
+        >결제하기</MainButton>
+        </BtnDiv>
+       
       </TipOff>
+
     </PayArea>
   )
 }
@@ -35,12 +44,21 @@ const PayArea = styled.div`
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   align-items: flex-end;
+   @media (max-width: 930px) {
+    display: flex;
+    width: 120%;
+    margin: 10 auto;
+    align-items: flex-end;
+  }
 `
 const TipOff = styled.div`
   width: 79%;
   display: flex;
   padding: 24px;
   margin-bottom: 16px;
-  background-color: #fff;
+  background-color:${theme.bg01};
   flex-direction: column;
+`
+const BtnDiv = styled.div`
+margin-top: 22px;
 `
