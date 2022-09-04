@@ -2,6 +2,14 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Input } from '../../elements/Input'
 import { DropBtn } from './PayMethod'
+export interface RadiobtnType {
+  value?: string
+  checked?: boolean
+  type?: string
+  select?: boolean
+  top?: string
+  bgColor?: string
+}
 
 const PayRadioBtn = () => {
   const [select, setSelect] = useState('optionA')
@@ -76,6 +84,26 @@ const PayRadioBtn = () => {
     </Wrapper>
   )
 }
+
+export const RadioBtn = (props: RadiobtnType) => {
+  // const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSelect(e.target.value)
+  // }
+  const [select, setSelect] = useState(false)
+  return (
+    <>
+      <Item>
+        <RadioButton
+          type={props.type}
+          value={props.value}
+          checked={props.checked}
+        />
+        <RadioButtonLabel top={props.top} />
+      </Item>
+    </>
+  )
+}
+
 export default PayRadioBtn
 const Wrapper = styled.div`
   height: auto;
@@ -83,23 +111,22 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `
 
-const Item = styled.div`
+export const Item = styled.div`
   display: flex;
   align-items: center;
   height: 48px;
   position: relative;
 `
-
-const RadioButtonLabel = styled.label`
+export const RadioButtonLabel = styled.label<RadiobtnType>`
   position: absolute;
-  top: 25%;
+  top: ${(props) => (props.top ? props.top : '25%')};
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background: white;
   border: 1px solid #bebebe;
 `
-const RadioButton = styled.input`
+export const RadioButton = styled.input`
   opacity: 0;
   z-index: 1;
   border-radius: 50%;
