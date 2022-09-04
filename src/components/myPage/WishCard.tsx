@@ -30,16 +30,13 @@ const WishCard = (props: DataType) => {
         <IconSpan>
           <Message
             style={{
-              color: `${theme.colors.gray2}`,
+              color: `${theme.bg09}`,
             }}
           />
           <Count>{props.p_Review}17</Count>
         </IconSpan>
         <IconSpan>
-          <Heart
-            fill={`${theme.colors.green2}`}
-            stroke={`${theme.colors.green2}`}
-          />
+          <Heart fill={`${theme.bg16}`} stroke={`${theme.ls16}`} />
           <Count>{props.p_Like}10</Count>
         </IconSpan>
       </Icons>
@@ -54,8 +51,8 @@ const WishCardBox = styled.div`
 `;
 
 const Count = styled.span`
-  font-size: ${theme.fontSize.small};
-  color: ${theme.colors.gray2};
+  font-size: ${theme.fs13};
+  color: ${theme.bg09};
 `;
 const Icons = styled.div`
   display: inline-flex;

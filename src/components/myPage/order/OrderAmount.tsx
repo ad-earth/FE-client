@@ -117,7 +117,7 @@ const Price = styled.p`
   color: #212121;
   font-weight: bold;
   &.green {
-    color: ${({ theme }) => theme.colors.green2};
+    color: ${({ theme }) => theme.fc15};
   }
 `;
 const TableBody = styled.div`

@@ -28,7 +28,7 @@ const Description = styled.div`
   line-height: 20px;
   padding: 20px;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.gray2};
+  color: ${({ theme }) => theme.bg09};
   & p {
     padding-bottom: 10px;
   }

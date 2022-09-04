@@ -32,7 +32,7 @@ const MainContainer = styled.div`
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
-  color: ${theme.colors.gray1};
+  color: ${theme.fc09};
   width: 1200px;
   @media (min-width: 991px) and (max-width: 1200px) {
     width: 100%;
@@ -45,14 +45,14 @@ const MainContainer = styled.div`
 const TitleWrapper = styled.div`
   width: 32%;
   margin-left: 2%;
-  font-size: 16px;
+  font-size: ${theme.fs16};
   line-height: 1.5;
   @media (max-width: 990px) {
     width: 98%;
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
-    font-size: 14px;
+    font-size: ${theme.fs14};
   }
 `;
 const Title = styled.div`
@@ -60,12 +60,12 @@ const Title = styled.div`
   display: flex;
   flex-direction: column;
   span {
-    font-size: 20px;
+    font-size: ${theme.fs20};
     font-weight: 700;
   }
   @media (max-width: 990px) {
     span {
-      font-size: 15px;
+      font-size: ${theme.fs15};
     }
   }
 `;

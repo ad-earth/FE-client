@@ -55,6 +55,6 @@ const Item = styled.div`
   & span {
     width: 80px;
     margin-right: 20px;
-    color: ${({ theme }) => theme.colors.gray1};
+    color: ${({ theme }) => theme.fc09};
   }
 `;

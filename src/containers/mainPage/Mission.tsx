@@ -36,16 +36,16 @@ const Background = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: ${theme.colors.green2};
+  background: ${theme.bg16};
 `;
 const MissionWrapper = styled.div`
   width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: ${theme.fc01};
   span {
-    font-size: 28px;
+    font-size: ${theme.fs28};
     font-weight: 700;
   }
   @media (min-width: 991px) and (max-width: 1200px) {
@@ -54,7 +54,7 @@ const MissionWrapper = styled.div`
   @media (max-width: 990px) {
     width: 97%;
     span {
-      font-size: 20px;
+      font-size: ${theme.fs20};
     }
   }
 `;
@@ -73,11 +73,11 @@ const BoxWrapper = styled.div`
 const Date = styled.div`
   width: 97%;
   text-align: right;
-  font-size: 16px;
+  font-size: ${theme.fs16};
   @media (min-width: 991px) and (max-width: 1200px) {
-    font-size: 14px;
+    font-size: ${theme.fs14};
   }
   @media (max-width: 990px) {
-    font-size: 12px;
+    font-size: ${theme.fs12};
   }
 `;
