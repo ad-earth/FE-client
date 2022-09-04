@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { useEffect } from "react";
+import styled from "styled-components";
 
 interface ModalType {
   isOpen: boolean;
@@ -44,12 +44,12 @@ function Modal(props: ModalType) {
 const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
-  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
+  justify-content: center;
   z-index: 9999;
 `;
 const ContentBox = styled.div`
@@ -58,9 +58,9 @@ const ContentBox = styled.div`
   align-items: center;
   border: none;
   border-radius: 4px;
-  box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
+  box-shadow: 0 0 30px ${({ theme }) => theme.rgba04};
   box-sizing: border-box;
-  background-color: white;
+  background-color: ${({ theme }) => theme.bg01};
   z-index: 10000;
   overflow: hidden;
   @media (max-width: 990px) {
@@ -72,7 +72,6 @@ const ModalBackdrop = styled.div`
   height: 100vh;
   position: fixed;
   top: 0;
-
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${({ theme }) => theme.rgba04};
 `;
 export default Modal;

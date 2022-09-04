@@ -16,7 +16,7 @@ const Product = () => {
 export default Product;
 
 const ProductInfoBox = styled.div`
-  font-size: 15px;
+  font-size: ${({ theme }) => theme.fs15};
   display: flex;
   cursor: pointer;
 `;
@@ -34,7 +34,7 @@ const ProductInfo = styled.div`
 `;
 const ProducName = styled.p`
   font-weight: 600;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.fc14};
 `;
 const ProducOption = styled.p`
   font-size: 0.85rem;

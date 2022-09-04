@@ -22,16 +22,16 @@ const OrderPaymentBox = styled.div`
   margin-bottom: 40px;
 `;
 const Title = styled.div`
-  font-size: 18px;
-  color: #212121;
-  margin-bottom: 16px;
+  font-size: ${({ theme }) => theme.fs18};
   font-weight: bold;
+  color: ${({ theme }) => theme.fc14};
+  margin-bottom: 16px;
   @media (max-width: 990px) {
     padding: 0px 15px;
   }
 `;
 const Contents = styled.div`
-  padding: 16px 15px;
-  border: 1px solid rgba(100, 100, 100, 0.1);
   line-height: 30px;
+  border: 1px solid ${({ theme }) => theme.rgba06};
+  padding: 16px 15px;
 `;

@@ -31,8 +31,8 @@ const OrderAddressBox = styled.div`
   margin-bottom: 40px;
 `;
 const Title = styled.div`
-  font-size: 18px;
-  color: #212121;
+  font-size: ${({ theme }) => theme.fs18};
+  color: ${({ theme }) => theme.fc14};
   display: inline-block;
 
   margin-bottom: 16px;
@@ -42,22 +42,22 @@ const Title = styled.div`
   }
 `;
 const Contents = styled.div`
-  border: 1px solid rgba(100, 100, 100, 0.1);
-  padding: 20px;
+  border: 1px solid ${({ theme }) => theme.rgba06};
   margin-bottom: 40px;
+  padding: 20px;
   box-sizing: border-box;
 `;
 const Item = styled.div`
-  margin-top: 12px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.fc14};
   display: flex;
   align-items: flex-start;
+  margin-top: 12px;
   &:first-child {
     margin-top: 0;
   }
   & span {
     width: 80px;
-    margin-right: 20px;
     color: ${({ theme }) => theme.fc09};
+    margin-right: 20px;
   }
 `;

@@ -1,8 +1,8 @@
 import React from "react";
-import Product from "./Product";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
 import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+import Product from "./Product";
 
 const OrderListDetail = () => {
   const isMobile = useMobileMediaQuery();
@@ -50,15 +50,15 @@ const OrderListDetail = () => {
 };
 
 const Table = styled.table`
-  display: table;
   width: 100%;
-  font-size: 15px;
+  font-size: ${({ theme }) => theme.fs15};
+  display: table;
   border-collapse: collapse;
   margin-bottom: 40px;
   & th,
   tr,
   td {
-    border: 1px solid rgba(100, 100, 100, 0.1);
+    border: 1px solid ${({ theme }) => theme.rgba06};
   }
   @media (max-width: 990px) {
     & tr td {
@@ -96,13 +96,13 @@ const TBody = styled.tbody`
   }
   & .buttonBox {
     height: 100%;
-    display: revert;
-    color: #646464;
+    color: #${({ theme }) => theme.fc09};
     font-weight: 600;
+    display: revert;
     @media (max-width: 990px) {
       margin: 10px 0 0 100px;
-      box-sizing: border-box;
       padding: 0;
+      box-sizing: border-box;
     }
   }
 `;

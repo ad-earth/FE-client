@@ -20,17 +20,17 @@ export default MyPage;
 const Wrap = styled.div`
   max-width: 1200px;
   margin: 80px auto 100px;
-  padding: 0 20px;
   position: relative;
   display: flex;
+  padding: 0 20px;
   @media (max-width: 990px) {
     padding: 0;
   }
 `;
 const Section = styled.div`
   width: 84%;
-  padding: 0 15px;
   box-sizing: border-box;
+  padding: 0 15px;
   @media (max-width: 990px) {
     width: 100%;
   }

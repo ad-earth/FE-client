@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { MainButton } from "../../../elements/Buttons";
 import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+import { MainButton } from "../../../elements/Buttons";
+
 
 const CancelAmount = () => {
   const isMobile = useMobileMediaQuery();
   return (
     <CancelAmountBox>
       <Title>환불 예정금액 </Title>
-
       <CancelList>
         <Content>
           <Item>
@@ -52,7 +52,7 @@ const CancelAmount = () => {
 export default CancelAmount;
 
 const CancelAmountBox = styled.div`
-  border: 1px solid rgba(100, 100, 100, 0.1);
+  border: 1px solid  ${({ theme }) => theme.rgba06};
   padding: 20px 20px 80px;
   margin: 30px 0;
   @media (max-width: 990px) {
@@ -60,56 +60,55 @@ const CancelAmountBox = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 21px;
+  font-size:  ${({ theme }) => theme.fs21};
   font-weight: 600;
-  margin-bottom: 24px;
   display: flex;
+  margin-bottom: 24px;
 `;
 const CancelList = styled.div`
   display: flex;
   flex-direction: column;
   & p {
-    padding-top: 10px;
     font-size: 14px;
-    color: red;
+    color:  ${({ theme }) => theme.fc19};;
+    padding-top: 10px;
   }
 `;
 const Content = styled.div`
-  padding: 20px 0;
   position: relative;
+  padding: 20px 0;
   &.border {
-    border-top: 1px solid ${({ theme }) => theme.colors.gray3};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
+    border-top: 1px solid ${({ theme }) => theme.ls03};
+    border-bottom: 1px solid ${({ theme }) => theme.ls03};
     :before {
       content: "";
       width: 30px;
       height: 30px;
       position: absolute;
-      left: 50%;
       top: -15px;
-      background: #fff;
-      border-radius: 50%;
-      border: 1px solid ${({ theme }) => theme.colors.gray3};
+      left: 50%;
       transform: translateX(-50%);
+      border: 1px solid ${({ theme }) => theme.ls03};
+      border-radius: 50%;
+      background:  ${({ theme }) => theme.bg01};;
     }
     :after {
       content: "";
       width: 16px;
       height: 4px;
       position: absolute;
-      left: 50%;
       top: 0;
-      margin-left: -8px;
+      left: 50%;
       background: ${({ theme }) => theme.bg09};
+      margin-left: -8px;
     }
   }
 `;
 const Item = styled.div`
   width: 100%;
-  /* background: aquamarine; */
+  font-size:  ${({ theme }) => theme.fs15};
   display: flex;
   justify-content: space-between;
-  font-size: 15px;
   & span {
     line-height: 30px;
   }
@@ -118,16 +117,14 @@ const Item = styled.div`
     color: ${({ theme }) => theme.fc15};
   }
 `;
-
 const SubText = styled.span`
-  font-size: 14px;
+  font-size:  ${({ theme }) => theme.fs14};
   color: ${({ theme }) => theme.fc09};
 `;
 const TitleText = styled.span`
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.fc14};
 `;
-
 const ButtomBox = styled.div`
   margin-top: 40px;
 `;

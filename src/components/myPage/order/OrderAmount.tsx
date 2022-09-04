@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+
 const OrderAmount = () => {
   const isMobile = useMobileMediaQuery();
   return (
@@ -60,20 +61,18 @@ const OrderAmountBox = styled.div`
   margin-bottom: 40px;
 `;
 const Title = styled.div`
-  font-size: 18px;
-  color: #212121;
-  margin-bottom: 16px;
+  font-size: ${({ theme }) => theme.fs18};
   font-weight: bold;
+  color: ${({ theme }) => theme.fc14};
+  margin-bottom: 16px;
   @media (max-width: 990px) {
     padding: 0px 15px;
   }
-
-  //
 `;
 const Contents = styled.div`
+  border: 1px solid ${({ theme }) => theme.rgba06};
   display: flex;
   justify-content: space-between;
-  border: 1px solid rgba(100, 100, 100, 0.1);
   @media (max-width: 990px) {
     flex-direction: column;
   }
@@ -83,32 +82,17 @@ const Box = styled.div`
   justify-content: space-between;
   align-items: center;
   & span {
-    /* line-height: 24px; */
     @media (max-width: 990px) {
     margin-top:9px;
   }
   & strong {
     color: #212121;
   }
-  & i {
-    :before {
-      content: "";
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      left: 50%;
-      top: -15px;
-      background: #fff;
-      border-radius: 50%;
-      border: 1px solid ${({ theme }) => theme.colors.gray3};
-      transform: translateX(-50%);
-    }
-  }
 `;
 
 const ItemBox = styled.div`
-  padding: 16px 20px;
   height: 80px;
+  padding: 16px 20px;
   @media (max-width: 990px) {
     padding: 0;
     &.webItemBox {
@@ -118,49 +102,49 @@ const ItemBox = styled.div`
 `;
 
 const Section = styled.div`
-  position: relative;
-  font-size: 15px;
   width: 100%;
+  font-size: ${({ theme }) => theme.fs15};;
+  position: relative;
   @media (max-width: 990px) {
-      padding :12px 15px;
-      box-sizing: border-box;
-      border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+    border-bottom: 1px solid ${({ theme }) => theme.rgba06};
+    padding :12px 15px;
+    box-sizing: border-box;
   }
   ${Box} {
-    font-size:14px;
-    color: gray;
+    font-size: ${({ theme }) => theme.fs14};
+    color: ${({ theme }) => theme.fc05};
   }
   & .topText {
-    color: #212121;
+    color: ${({ theme }) => theme.fc14};;
     font-weight: bold;
+    border-bottom: 1px solid ${({ theme }) => theme.rgba06};
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
     @media (max-width: 990px) {
+      font-size:${({ theme }) => theme.fs15};
       font-weight: normal;
-      font-size:15px;
       border-bottom:none;
       padding:0 ;
   }
   }
   & .bigText {
-    font-size: 22px;
+    font-size: ${({ theme }) => theme.fs22};
     @media (max-width: 990px) {
-      font-size: 15px;
+      font-size: ${({ theme }) => theme.fs15};
     }
   }
   & .green {
-    color: ${({ theme }) => theme.colors.green2};
+    color: ${({ theme }) => theme.fc15};
     @media (max-width: 990px) {
-      font-size: 18px;
+      font-size: ${({ theme }) => theme.fs18};;
       font-weight:bold;
     }
   }
   & {Section}:first-child ${ItemBox} {
-  border-right: 1px solid rgba(100, 100, 100, 0.1);
+  border-right: 1px solid ${({ theme }) => theme.rgba06};
   @media (max-width: 990px) {border:none;}
   }
   & {Section}:last-child ${ItemBox} {
-  border-left: 1px solid rgba(100, 100, 100, 0.1);
+  border-left: 1px solid ${({ theme }) => theme.rgba06};
   @media (max-width: 990px) {border:none;}
   }
 `;
@@ -168,28 +152,16 @@ const IconBox = styled.div`
   width: 20px;
   height: 20px;
   line-height: 20px;
-  border-radius: 100%;
   text-align: center;
-  background-color: gray;
-  color: #fff;
-  font-size: 20px;
-`;
-const Icon = styled.strong``;
-const Price = styled.p`
-  font-size: 22px;
-  color: #212121;
-  font-weight: bold;
-  &.green {
-    color: ${({ theme }) => theme.fc15};
-  }
-`;
-const TableBody = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-weight: nomal;
-  & section:nth-child(2) {
-    border-left: 1px solid rgba(100, 100, 100, 0.1);
-    border-right: 1px solid rgba(100, 100, 100, 0.1);
+  font-size: ${({ theme }) => theme.fs20};
+  color: ${({ theme }) => theme.fc01};
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.bg09};
+  position: absolute;
+  &.left {
+    font-weight: 900;
+    top: 22px;
+    left: -10px;
   }
   &.right {
     top: 22px;

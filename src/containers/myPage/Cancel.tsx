@@ -27,7 +27,7 @@ export default Cancel;
 const Section = styled.div``;
 const OrderListBox = styled.div``;
 const Title = styled.div`
-  font-size: 21px;
+  font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
 `;
 const List = styled.div`
@@ -35,9 +35,9 @@ const List = styled.div`
 `;
 const DataNull = styled.div`
   width: 100%;
+  font-size: ${({ theme }) => theme.fs15};
   text-align: center;
+  color: ${({ theme }) => theme.fc05};
   padding: 70px;
   box-sizing: border-box;
-  color: #999999;
-  size: 15px;
 `;

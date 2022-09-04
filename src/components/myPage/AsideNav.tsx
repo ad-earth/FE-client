@@ -74,16 +74,12 @@ const data = [
 ];
 
 const NavListBox = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
   & li {
-    margin-bottom: 12px;
     width: 100%;
+    margin-bottom: 12px;
   }
   & li a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.fc14};
   }
 `;
 const Text = styled.span``;

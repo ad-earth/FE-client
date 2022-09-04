@@ -38,36 +38,36 @@ const Section = styled.div`
   }
 `;
 const Title = styled.div`
-  font-size: 21px;
+  font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
-  margin-bottom: 24px;
   display: flex;
   align-items: center;
+  margin-bottom: 24px;
   & span {
     width: 30px;
-    position: relative;
     height: 30px;
     display: inline-block;
+    position: relative;
     margin-right: 12px;
     overflow: hidden;
     cursor: pointer;
     :before {
       content: "";
+      width: 14px;
+      height: 14px;
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 14px;
-      height: 14px;
       transform: translate(-50%, -50%) rotate(-45deg);
       margin-top: 2px;
-      border-top: 1px solid #333;
-      border-left: 1px solid #333;
+      border-top: 1px solid ${({ theme }) => theme.ls13};
+      border-left: 1px solid #${({ theme }) => theme.ls13};
     }
   }
   @media (max-width: 990px) {
-    font-size: 18px;
+    font-size: ${({ theme }) => theme.fs18};
+    border-bottom: 1px solid ${({ theme }) => theme.rgba02};
     padding: 0 15px 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     & span {
       width: 18px;
       height: 18px;
@@ -80,8 +80,8 @@ const Title = styled.div`
   }
 `;
 const OrderNumber = styled.div`
-  padding-left: 10px;
   color: ${({ theme }) => theme.fc21};
+  padding-left: 10px;
 `;
 const Contents = styled.div`
   width: 100%;
@@ -92,15 +92,13 @@ const Contents = styled.div`
 `;
 const ContentsBox = styled.div`
   width: 50%;
-  width: 100%;
   margin-right: 30px;
   &:last-child {
     margin-right: 0;
   }
   @media (max-width: 990px) {
-    /* border: none; */
-    margin: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    border-bottom: 1px solid ${({ theme }) => theme.rgba02};
     flex-direction: column;
+    margin: 0;
   }
 `;

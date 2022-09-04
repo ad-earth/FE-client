@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { MainButton } from "../../../elements/Buttons";
+import { theme } from "../../../style/theme";
+import { useNavigate } from "react-router-dom";
+
 import ReviewModal from "../../modal/reviewModal/ReviewModal";
 import Product from "./Product";
-import { useNavigate } from "react-router-dom";
+import { MainButton } from "../../../elements/Buttons";
 
 const OderList = () => {
   let navigate = useNavigate();
@@ -24,11 +26,11 @@ const OderList = () => {
             <MainButton
               bgColor="transparent"
               radius="30px"
-              border="1px solid rgba(100,100,100,0.2)"
-              hBorder="1px solid #646464"
+              border={`1px solid ${theme.rgba08}`}
+              hBorder={`1px solid ${theme.ls11}`}
               hBgColor="transparent"
-              color="#212121"
-              fontSize="12px"
+              color={`${theme.fc14}`}
+              fontSize={`${theme.fc12}`}
               fontWeight="500"
               padding="10px 16px"
               onClick={() => {
@@ -42,7 +44,7 @@ const OderList = () => {
               radius="30px"
               border="1px solid transparent"
               hBorder="1px solid transparent"
-              fontSize="12px"
+              fontSize={`${theme.fs12}`}
               fontWeight="500"
               padding="10px 16px"
               onClick={() => {
@@ -57,22 +59,21 @@ const OderList = () => {
     </>
   );
 };
-
 export default OderList;
 
 const OderListBox = styled.div`
-  border: 1px solid #ededed;
-  padding: 20px 24px 20px;
-  box-sizing: border-box;
+  border: 1px solid ${theme.ls05};
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: -1px;
+  padding: 20px 24px 20px;
+  box-sizing: border-box;
   @media (max-width: 990px) {
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-    padding: 20px 15px;
+    border-bottom: 1px solid ${theme.rgba02};
     flex-direction: column;
+    padding: 20px 15px;
   }
 `;
 const ProductBox = styled.div`
@@ -81,14 +82,13 @@ const ProductBox = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
 const Status = styled.p`
   width: 100px;
   text-align: center;
+  color: ${theme.fc09};
+  font-weight: 600;
   margin-right: 144px;
   cursor: pointer;
-  color: #646464;
-  font-weight: 600;
   @media (max-width: 990px) {
     display: none;
   }

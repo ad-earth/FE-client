@@ -15,7 +15,6 @@ const OrderNumber = (props: MobileType) => {
           ) : (
             <span>20228344848</span>
           )}
-
           <ArrowIcon />
         </Link>
       </OrderNumberInfo>
@@ -29,11 +28,11 @@ const OrderNumber = (props: MobileType) => {
 
 export default OrderNumber;
 const OrderNumberBox = styled.div`
+  line-height: 15px;
+  font-size: ${({ theme }) => theme.fs15};
   display: flex;
   justify-content: space-between;
   padding: 12px 0;
-  font-size: 15px;
-  line-height: 15px;
   @media (max-width: 990px) {
     flex-direction: row-reverse;
     padding: 12px 15px;
@@ -41,14 +40,14 @@ const OrderNumberBox = styled.div`
 `;
 
 const OrderNumberInfo = styled.div`
-  color: #333;
+  color: ${({ theme }) => theme.fc12};
   display: flex;
   & span {
     color: ${({ theme }) => theme.fc21};
     padding-left: 8px;
-    cursor: pointer;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   & .link {
     display: flex;
@@ -62,32 +61,32 @@ const Label = styled.p`
 const ArrowIcon = styled.button`
   width: 15px;
   height: 15px;
-  border-radius: 50%;
   border: 1px solid ${({ theme }) => theme.ls15};
+  border-radius: 50%;
+  background: none;
   position: relative;
   left: 4px;
-  background: none;
 
   :after {
     content: "";
     width: 5px;
     height: 5px;
     position: absolute;
-    left: 43%;
     top: 4px;
+    left: 43%;
     border-left: 1px solid ${({ theme }) => theme.ls15};
     border-top: 1px solid ${({ theme }) => theme.ls15};
     transform: translateX(-50%) rotate(130deg);
   }
 `;
 const OrderDate = styled.div`
-  color: #757575;
+  color: ${({ theme }) => theme.fc08};
   display: flex;
   & span {
     padding-left: 4px;
     @media (max-width: 990px) {
       font-weight: 700;
-      color: #333;
+      color: ${({ theme }) => theme.fc12};
     }
   }
 `;
