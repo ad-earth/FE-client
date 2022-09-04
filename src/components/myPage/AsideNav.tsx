@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
+import { NavLink } from "react-router-dom";
+//style
 import styled from "styled-components";
 import { theme } from "../../style/theme";
 
+import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 interface LinkType {
   id: number;
   name: string;
@@ -12,21 +13,9 @@ interface LinkType {
 }
 
 const AsideNav = () => {
-  const location = useLocation();
-
   // modal
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
-  //click-Link style
-  const [isActive, setIsActive] = useState<string>(
-    location.pathname.split("/")[1]
-  );
-
-  // useEffect(() => {
-  //   let pathName = location.pathname.split("/")[1];
-  // }, []);
-
   const navClickEvent = (data: LinkType) => {
-    setIsActive(data.path);
     data.name === "회원탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
   };
 
@@ -54,7 +43,6 @@ const AsideNav = () => {
                   onClick={() => {
                     navClickEvent(data);
                   }}
-                  className={data.path === isActive ? "action" : ""}
                 >
                   {data.name}
                 </Text>
