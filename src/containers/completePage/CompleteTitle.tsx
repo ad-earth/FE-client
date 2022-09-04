@@ -18,8 +18,8 @@ const Div = styled.div`
   flex-direction: column;
 `
 const H1tag = styled.h1`
-  font-size: 26px;
-  color: #20252b;
+  font-size: ${({ theme }) => theme.fs26};
+  color: ${({ theme }) => theme.fc13};
   text-align: center;
   margin: 10px 0 0px;
   padding-top: 50px;
@@ -27,7 +27,7 @@ const H1tag = styled.h1`
 `
 const H6tag = styled.h6`
   font-size: 20px;
-  color: #757575;
+  color: ${({ theme }) => theme.fc08};
   text-align: center;
   margin: 10px 0 10px;
   font-weight: bold;

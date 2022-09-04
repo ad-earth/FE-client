@@ -50,22 +50,22 @@ const DivArea = styled.div`
 `
 const TbtnDiv = styled.div`
   width: 100%;
-  border-bottom: 1px solid #e5e7ebbb;
+  border-bottom: 1px solid ${({ theme }) => theme.fc03};
   display: flex;
 `
 const Tbtn = styled.div<RadiobtnType>`
   width: 25%;
   background-color: ${(props) => (props.bgColor ? props.bgColor : '#fff')}
-  color: #20252b;
-  font-size: 14px;
+  color: ${({ theme }) => theme.fc13};
+  font-size: ${({ theme }) => theme.fs14};
   display: flex;
   justify-content: center;
   padding: 9px 5px;
   box-sizing: border-box;
   cursor: pointer;
-  border: 1px solid #e5e7ebbb;
+  border: 1px solid  ${({ theme }) => theme.fc02};
   &.right {
-    border-left: 1px solid #e5e7ebbb;
+    border-left: 1px solid  ${({ theme }) => theme.fc03};
   }
 `
 const ContentsDiv = styled.div`
@@ -77,5 +77,5 @@ const Div = styled.div`
   flex-direction: row;
   margin: 10px 0 40px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #e5e7ebbb;
+  border-bottom: 1px solid ${({ theme }) => theme.fc02};
 `

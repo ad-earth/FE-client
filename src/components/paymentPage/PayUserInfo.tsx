@@ -49,13 +49,13 @@ const NameDiv = styled.div`
   margin: 0 0 4 px;
   & span {
     width: 80px;
-    font-size: 15px;
-    color: #20252b;
+    font-size: ${({ theme }) => theme.fs15};
+    color: ${({ theme }) => theme.fc13};
   }
 `
 const PayText = styled.span`
-  font-size: 14px;
-  color: #757575;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc08};
 `
 const ButtonBox = styled.div`
   width: 10%;
