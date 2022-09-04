@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { theme } from '../../style/theme'
+
 
 const PdtInfo = () => {
   return (
@@ -52,7 +54,7 @@ const ProductInfo = styled.div`
   }
 `
 const ProductName = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${theme.fc14};
   margin: 0 0 4px;
   font-size: 14px;
 `
