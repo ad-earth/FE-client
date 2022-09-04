@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+
 import PayTitle from '../components/paymentPage/PayTitle'
 import OrderPay from '../containers/paymentPage/OrderPay'
 import OrderPList from '../containers/paymentPage/OrderPList'
+import { theme } from '../style/theme'
 
 const PaymentPage = () => {
   return (
@@ -18,10 +20,16 @@ const PaymentPage = () => {
 }
 export default PaymentPage
 const Area = styled.div`
-  background-color: #f3f3f3;
+  background-color: ${theme.bg03};
   display: grid;
   justify-content: center;
   width: 100%;
+    @media (max-width: 930px) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    width: 100%;
+  }
 `
 
 const PayArea = styled.div`

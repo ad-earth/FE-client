@@ -1,11 +1,15 @@
 import styled from 'styled-components'
+import { useState } from 'react'
+//pages//
 import { FreeShipping } from '../../components/paymentPage/OrderPdtInfo'
 import PdtInfo from '../../components/paymentPage/PdtInfo'
 import PayMethod from '../../components/paymentPage/PayMethod'
 import PayUserInfo from '../../components/paymentPage/PayUserInfo'
 import PayUserInput from '../../components/paymentPage/PayUserInput'
 import PayMethodInput from '../../components/paymentPage/PayMethodInput'
-import { useState } from 'react'
+import { theme } from '../../style/theme'
+
+
 
 const OrderPList = () => {
   const titles = ['주문 상품 정보', '주문자 정보', '배송 정보']
@@ -56,17 +60,22 @@ const PListArea = styled.div`
   float: left;
   display: flex;
   flex-direction: column;
+     @media (max-width: 930px) {
+    display: flex;
+    width: 88%;
+   align-items: flex-start;
+  }
 `
 const TipOff = styled.div`
   width: 100%;
   display: flex;
   padding: 24px;
   margin-bottom: 16px;
-  background-color: #fff;
+  background-color:${theme.bg01};
   flex-direction: column;
 `
 export const OrderInfoDiv = styled.div`
-  font-size: 19px;
+  font-size: ${theme.fs19};
   font-weight: bold;
   padding-bottom: 20px;
 }
