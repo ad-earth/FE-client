@@ -72,39 +72,42 @@ const BtnDiv = styled.div`
   padding: 20px;
   position: relative;
   @media (max-width: 990px) {
-    width: 620px;
+    width: 500px;
+    padding: 10px;
+  }
+  @media (min-width: 1101px) {
+    width: 1150px;
     padding: 10px;
   }
 `
 const ProdInfoContainer = styled.div`
-  width: 1200px;
-  margin: 0 auto;
+  width: 1150px;
+  margin: 30px auto;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   @media (max-width: 990px) {
-    width: 100%;
+    width: 80%;
     padding: 0px;
     flex-direction: column;
     align-items: center;
   }
 `
 const InfoWrapper = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   padding: 0px 15px;
   box-sizing: border-box;
   @media (max-width: 990px) {
     padding: 0px;
-    width: 98%;
+    width: 100%;
     margin-top: 20px;
   }
-  @media (min-width: 1200px) {
+  @media (min-width: 991px) {
     width: 600px;
-    padding: 0px;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 20px;
+    font-size: 12px;
   }
 `
 const CaroDiv = styled.div`
@@ -115,6 +118,6 @@ const CaroDiv = styled.div`
 const Max = styled.div`
   max-width: 80vw;
   @media (max-width: 990px) {
-    max-width: 60vw;
+    max-width: 30vw;
   }
 `
