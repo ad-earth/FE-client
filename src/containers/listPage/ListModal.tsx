@@ -1,8 +1,8 @@
-import CloseIcon from '@mui/icons-material/Close'
+import styled from 'styled-components'
 
+import CloseIcon from '@mui/icons-material/Close'
 import Modal from '../../components/modal/Modal'
 import ProdInfo from '../ProdInfo'
-import styled from 'styled-components'
 interface ModalType {
   isOpen: boolean
   handleClose: () => void

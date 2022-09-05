@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { theme } from '../../style/theme'
 
 const CateDrop = () => {
   return (
@@ -24,12 +25,12 @@ width: 100%
 const DropBtn = styled.select`
   text-align: right;
   cursor: pointer;
-  color: #646464;
+  color: ${theme.fc09};
   padding: 0 25px;
   margin: 30px 20px 15px;
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
-  outline-color: #fff;
+  outline-color: ${theme.ls01};
 `
 export default CateDrop

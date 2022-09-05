@@ -74,13 +74,13 @@ const NameDiv = styled.div`
   margin: 0 0 4 px;
   & span {
     width: 80px;
-    font-size: 15px;
-    color: #20252b;
+    font-size: ${({ theme }) => theme.fs15};
+    color: ${({ theme }) => theme.fc13};
   }
 `
 const PayText = styled.span`
-  font-size: 14px;
-  color: #757575;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc08};
 `
 const ShipDiv = styled.div`
   margin-top: 22px;
@@ -99,12 +99,12 @@ const BtnArea = styled.div`
 `
 export const DropBtn = styled.select`
   width: 100%;
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fs14};
   position: relative;
   cursor: pointer;
-  color: #646464;
+  color: ${({ theme }) => theme.fc09};
   padding: 0.5em 0.75em;
   box-sizing: border-box;
   border: 1px solid rgba(33, 33, 33, 0.15);
-  outline-color: #fff;
+  outline-color: ${({ theme }) => theme.ls01};
 `

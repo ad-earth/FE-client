@@ -9,12 +9,12 @@ export const FreeShipping = () => {
 }
 
 const ShippingFee = styled.div`
-  background: rgba(33, 33, 33, 0.03);
+  background: ${({ theme }) => theme.rgba01};
   text-align: center;
   margin-bottom: 10px;
   padding: 10px 14px;
-  border: 1px solid rgba(33, 33, 33, 0.15);
+  border: 1px solid ${({ theme }) => theme.rgba04};
   border-top: none;
-  font-size: 13px;
+  font-size: ${({ theme }) => theme.fs13};
   line-height: 1.4;
 `

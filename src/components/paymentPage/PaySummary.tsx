@@ -34,7 +34,7 @@ const DivArea = styled.div`
   flex-direction: row;
   border-width: 0 0 1px;
   border-style: solid;
-  border-color: rgba(33, 33, 33, 0.15);
+  border-color: ${({ theme }) => theme.rgba04};
   padding-bottom: 10px;
 `
 const Div = styled.div`
@@ -43,8 +43,8 @@ const Div = styled.div`
   flex-direction: column;
 `
 const PayText = styled.span`
-  font-size: 14px;
-  color: #757575;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc08};
   margin-bottom: 8px;
 `
 const CountDiv = styled.div`
@@ -55,8 +55,8 @@ const CountDiv = styled.div`
   border-width: 1px 0 0 0;
 `
 const CountText = styled.span`
-  font-size: 14px;
-  color: #646464;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc09};
   margin-bottom: 8px;
 `
 const ButtonBox = styled.div`

@@ -164,20 +164,20 @@ export const RadioButton = styled.input`
   `}
 `
 const Text = styled.span`
-  font-size: 14px;
-  color: #20252b;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc13};
 `
 const PayText = styled.div`
-  font-size: 13px;
-  color: #757575;
+  font-size: ${({ theme }) => theme.fs13};
+  color: ${({ theme }) => theme.fc08};
   margin-top: 8px;
 `
 const CheckBtn = styled.input`
   width: 20px;
   height: 20px;
-  accent-color: #00913a;
+  accent-color: ${({ theme }) => theme.bg16};
   margin: 0px 8px 0 0px;
-  border: 1px solid #cfd6d9;
+  border: 1px solid ${({ theme }) => theme.ls10};
 `
 const LineDiv = styled.div`
   width: 100%;
