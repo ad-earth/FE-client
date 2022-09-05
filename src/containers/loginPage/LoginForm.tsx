@@ -1,9 +1,9 @@
 import * as t from "./LoginForm.style";
 import { useState } from "react";
-
-import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
+import { theme } from "../../style/theme";
 import { Input } from "../../elements/Input";
 import { MainButton } from "../../elements/Buttons";
+import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
 const LoginForm = () => {
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
@@ -14,14 +14,14 @@ const LoginForm = () => {
         handleClose={() => setSearchIsOpen(false)}
       />
       <t.LogInWrapper>
-        <Input holderName={"아이디"} />
-        <Input holderName={"비밀번호"} />
+        <Input holderName="아이디" />
+        <Input holderName="비밀번호" />
         <t.CheckWrapper>
           <t.LogInCheckbox type="checkbox" />
           <t.CheckLabel>로그인 상태유지</t.CheckLabel>
         </t.CheckWrapper>
-        <MainButton radius={"30px"} fontSize={"14px"}>
-          {"로그인"}
+        <MainButton radius="30px" fontSize={theme.fs14}>
+          로그인
         </MainButton>
         <t.AddWrapper>
           <t.AddInfo>회원가입</t.AddInfo>
