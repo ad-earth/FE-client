@@ -4,7 +4,7 @@ import { useState } from "react";
 import OderList from "../../components/myPage/order/OderList";
 import OrderNumber from "../../components/myPage/order/OrderNumber";
 
-import useMobileMediaQuery from "../../hook/useMobileMediaQuery";
+import useMobileMediaQuery from "../../hooks/useMobileMediaQuery";
 
 const Order = () => {
   const [state, setState] = useState(null);
