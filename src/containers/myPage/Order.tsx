@@ -8,10 +8,7 @@ import useMobileMediaQuery from "../../hook/useMobileMediaQuery";
 
 const Order = () => {
   const [state, setState] = useState(null);
-
   const isMobile = useMobileMediaQuery();
-
-  // console.log(isMobile);
   return (
     <Section>
       <OrderListBox>
@@ -41,19 +38,15 @@ const Title = styled.div`
 `;
 const List = styled.div`
   margin-bottom: 20px;
-  /* background: red; */
-  /* margin: 0 -15px; */
   @media (max-width: 990px) {
-    /* padding: 0 15px; */
     margin: 0 -15px;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.07); */
   }
 `;
 const DataNull = styled.div`
   width: 100%;
+  font-size: ${({ theme }) => theme.fs15};
   text-align: center;
+  color: ${({ theme }) => theme.fc05};
   padding: 70px;
   box-sizing: border-box;
-  color: #999999;
-  size: 15px;
-`;
+  `;

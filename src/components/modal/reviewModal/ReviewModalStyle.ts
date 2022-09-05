@@ -2,43 +2,48 @@ import styled from "styled-components";
 
 export const Base = styled.div`
   width: 462px;
-  color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.fc14};
+  @media (max-width: 990px) {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
 `;
 export const Header = styled.div`
-  padding: 0 24px;
   height: 50px;
   line-height: 50px;
-  border-bottom: 1px solid #e5e5e5;
-  position: relative;
+  padding: 0 24px;
   text-align: center;
+  position: relative;
+  border-bottom: 1px solid ${({ theme }) => theme.ls02};
 `;
 export const Title = styled.span`
   font-size: ${({ theme }) => theme.fs16};
 `;
 export const CloseBtn = styled.div`
-  position: absolute;
-  right: 24px;
-  top: 50%;
   width: 24px;
   height: 24px;
+  position: absolute;
+  top: 50%;
+  right: 24px;
   transform: translateY(-50%);
-  color: ${({ theme }) => theme.colors.gray3};
+  color: ${({ theme }) => theme.fc02};
   cursor: pointer;
   ::before {
-    position: absolute;
     content: "";
-    height: 24px;
     width: 1px;
-    background-color: #333;
+    height: 24px;
+    position: absolute;
     transform: rotate(45deg);
+    background-color: ${({ theme }) => theme.bg13};
   }
   ::after {
-    position: absolute;
     content: "";
-    height: 24px;
     width: 1px;
-    background-color: #333;
+    height: 24px;
+    position: absolute;
     transform: rotate(-45deg);
+    background-color: ${({ theme }) => theme.bg13};
   }
 `;
 export const BodyFormContainer = styled.form`
@@ -47,58 +52,57 @@ export const BodyFormContainer = styled.form`
 export const ProductInfo = styled.div`
   width: 100%;
   height: 70px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid ${({ theme }) => theme.ls02};
   display: flex;
 `;
 export const InfoImg = styled.img`
   width: 70px;
   height: 70px;
-  background: red;
+  background: ${({ theme }) => theme.bg17};
   margin-right: 16px;
 `;
 export const InfoText = styled.p`
   width: calc(100% - 86px);
   height: 70px;
-  margin: 0;
-  font-size: 15px;
   line-height: 24px;
+  font-size: ${({ theme }) => theme.fs15};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   & span {
+    color: ${({ theme }) => theme.fc08};
+    font-size: ${({ theme }) => theme.fs13};
     display: block;
-    color: #757575;
-    font-size: 13px;
   }
 `;
 export const StarRating = styled.div`
-  padding: 40px;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  padding: 40px;
   & strong {
+    font-weight: 600;
+    font-size: ${({ theme }) => theme.fs18};
     display: inline-block;
     margin-bottom: 16px;
-    font-weight: 600;
-    font-size: 18px;
   }
 `;
 export const TextReview = styled.div`
-  margin-bottom: 25px;
-  position: relative;
   width: 100%;
   height: 240px;
+  position: relative;
+  margin-bottom: 25px;
 `;
 export const Textarea = styled.textarea`
   width: 100%;
   height: 100%;
   resize: none;
-  padding: 12px 12px 24px;
   box-sizing: border-box;
+  border: thin solid ${({ theme }) => theme.ls02};
   border-radius: 4px;
-  border: thin solid #e5e5e5;
-  background: ${({ theme }) => theme.colors.gray4};
+  background: ${({ theme }) => theme.bg04};
+  padding: 12px 12px 24px;
   :focus {
     outline: 1px solid ${({ theme }) => theme.ls16};
   }
@@ -108,15 +112,21 @@ export const TextareaCount = styled.span`
   right: 3px;
   bottom: 1px;
   padding: 5px;
-  background: #fff;
+  font-size: ${({ theme }) => theme.fs13};
+  background: ${({ theme }) => theme.bg01};
   border-radius: 5px;
-  font-size: 13px;
 `;
 export const GuideText = styled.p`
-  padding: 16px;
-  border: 1px solid #e9e9ea;
-  background: rgb(252, 252, 252);
-  font-size: 12px;
+  font-size: ${({ theme }) => theme.fs12};
+  border: 1px solid ${({ theme }) => theme.ls04};
+  background: ${({ theme }) => theme.bg};
   display: flex;
-  margin: 0;
+  padding: 16px;
+`;
+export const BottonBox = styled.div`
+  @media (max-width: 990px) {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 `;

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
 
@@ -23,21 +22,29 @@ const CancelInfo = () => {
 export default CancelInfo;
 
 const Description = styled.div`
-  border: 1px solid rgba(100, 100, 100, 0.1);
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fs14};
   line-height: 20px;
+  color: ${({ theme }) => theme.bg09};
+  border: 1px solid ${({ theme }) => theme.rgba06};
   padding: 20px;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.bg09};
+  margin-bottom: 40px;
   & p {
     padding-bottom: 10px;
   }
   & span {
     padding-top: 5px;
-    color: red;
+    color: ${({ theme }) => theme.fc19};
+  }
+  @media (max-width: 990px) {
+    border: none;
+    margin: 0;
   }
 `;
 const ButtomBox = styled.div`
   width: 100px;
-  margin: 40px auto;
+  margin: 0 auto;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;

@@ -90,5 +90,9 @@ const StarContent = () => {
   );
 };
 const Footer = () => {
-  return <MainButton padding="15px 30px">등록</MainButton>;
+  return (
+    <t.BottonBox>
+      <MainButton padding="15px 30px">등록</MainButton>
+    </t.BottonBox>
+  );
 };

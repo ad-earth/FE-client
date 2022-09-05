@@ -3,6 +3,7 @@ import Modal from "../Modal";
 
 // style
 import * as stc from "./WithdrawalModalStyle";
+import { theme } from "../../../style/theme";
 interface ModalType {
   isOpen: boolean;
   handleClose: () => void;
@@ -26,9 +27,9 @@ function WithdrawalModal(props: ModalType) {
             </stc.Description>
             <stc.ButtonBox>
               <MainButton
-                bgColor="#fff"
-                hBgColor="#f7f7f7"
-                color="#646464"
+                bgColor={`${theme.bg01}`}
+                hBgColor={`${theme.bg05}`}
+                color={`${theme.fc09}`}
                 radius="30px"
                 width="initial"
                 padding="10px 25px"
