@@ -33,6 +33,10 @@ export const LeftDiv = styled.div`
     font-size: ${theme.fs16};
     color: ${theme.fc15};
     margin-left: 10px;
+    :hover {
+      color: ${theme.fc05};
+      cursor: pointer;
+    }
   }
   @media (max-width: 798px) {
     img {
