@@ -1,4 +1,4 @@
-import * as t from "./FooterStyle";
+import * as t from "./Footer.style";
 
 import footLogo from "./../../assets/logo/footLogo.png";
 
