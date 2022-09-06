@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 //pages//
-import Card from '../../components/Card'
+import Card from '../../components/card/Card'
 import CardBadge from '../../components/listPage/cardBadge/CardBadge'
 import CardIcon from '../../components/listPage/cardIcon/CardIcon'
 import CateDrop from '../../components/listPage/catDrop/CateDrop'

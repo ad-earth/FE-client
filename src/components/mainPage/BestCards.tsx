@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import Card from "../Card";
+import Card from '../card/Card'
 
 const BestCards = () => {
   return (
@@ -8,62 +8,62 @@ const BestCards = () => {
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
       <CardWrapper>
         <Card
           p_Thumbnail={
-            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+            'https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg'
           }
-          p_Brand={"지구샵"}
-          p_Name={"키친클로스(체크)"}
+          p_Brand={'지구샵'}
+          p_Name={'키친클로스(체크)'}
         />
       </CardWrapper>
     </MainContainer>
-  );
-};
+  )
+}
 
-export default BestCards;
+export default BestCards
 
 const MainContainer = styled.div`
   width: 55%;
@@ -75,7 +75,7 @@ const MainContainer = styled.div`
     margin: 30px auto;
     grid-template-columns: repeat(2, 50%);
   }
-`;
+`
 const CardWrapper = styled.div`
   width: 100%;
-`;
+`

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 
-import Card from '../../components/Card'
+import Card from '../../components/card/Card'
 import CardIcon from '../../components/listPage/cardIcon/CardIcon'
 import { DataType } from '../listPage/CardList'
 import SearchCateDrop from '../../components/searchPage/searchCateDrop/SearchCateDrop'
