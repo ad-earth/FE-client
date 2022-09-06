@@ -1,11 +1,25 @@
-import styled from "styled-components";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import Card from "../Card";
+import * as t from "./newCarousel.style";
+import "../../../style/carousel.css";
+import Card from "../../Card";
 
-const BestCards = () => {
+const NewCarousel = () => {
+  // carousel option
+  const setting = {
+    autoplaySpeed: 3000,
+    autoplay: true,
+    dotsClass: "slick-dots",
+    dots: true,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+  };
+
   return (
-    <MainContainer>
-      <CardWrapper>
+    <t.MainContainer>
+      <Slider {...setting}>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -13,8 +27,6 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-      <CardWrapper>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -22,8 +34,6 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-      <CardWrapper>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -31,8 +41,6 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-      <CardWrapper>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -40,8 +48,6 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-      <CardWrapper>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -49,8 +55,6 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-      <CardWrapper>
         <Card
           p_Thumbnail={
             "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
@@ -58,24 +62,30 @@ const BestCards = () => {
           p_Brand={"지구샵"}
           p_Name={"키친클로스(체크)"}
         />
-      </CardWrapper>
-    </MainContainer>
+        <Card
+          p_Thumbnail={
+            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+          }
+          p_Brand={"지구샵"}
+          p_Name={"키친클로스(체크)"}
+        />
+        <Card
+          p_Thumbnail={
+            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+          }
+          p_Brand={"지구샵"}
+          p_Name={"키친클로스(체크)"}
+        />
+        <Card
+          p_Thumbnail={
+            "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
+          }
+          p_Brand={"지구샵"}
+          p_Name={"키친클로스(체크)"}
+        />
+      </Slider>
+    </t.MainContainer>
   );
 };
 
-export default BestCards;
-
-const MainContainer = styled.div`
-  width: 55%;
-  display: grid;
-  grid-template-columns: repeat(3, 33%);
-  row-gap: 30px;
-  @media (max-width: 990px) {
-    width: 100%;
-    margin: 30px auto;
-    grid-template-columns: repeat(2, 50%);
-  }
-`;
-const CardWrapper = styled.div`
-  width: 100%;
-`;
+export default NewCarousel;
