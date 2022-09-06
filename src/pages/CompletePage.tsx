@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import CompleteBody from '../containers/completePage/CompleteBody'
-import CompleteTitle from '../containers/completePage/CompleteTitle'
+import CompleteBody from '../containers/completePage/completeBody/CompleteBody'
+import CompleteTitle from '../containers/completePage/completeTitle/CompleteTitle'
 
 const CompletePage: React.FC = () => {
   return (

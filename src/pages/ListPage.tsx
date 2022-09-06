@@ -1,7 +1,7 @@
 import { Pagination } from '@mui/material'
 import styled from 'styled-components'
-import { CateButton } from '../components/listPage/CateButton'
-import CardList from '../containers/listPage/CardList'
+import CateButton from '../components/listPage/cateButton/CateButton'
+import CardList from '../containers/listPage/cardList/CardList'
 
 export const ListPage = () => {
   return (

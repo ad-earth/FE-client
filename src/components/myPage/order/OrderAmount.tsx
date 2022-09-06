@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+import styled from 'styled-components'
+import useMobileMediaQuery from '../../../hooks/useMobileMediaQuery'
 
 const OrderAmount = () => {
-  const isMobile = useMobileMediaQuery();
+  const isMobile = useMobileMediaQuery()
   return (
     <OrderAmountBox>
       <Title>주문 금액 상세</Title>
@@ -52,14 +52,14 @@ const OrderAmount = () => {
         </Section>
       </Contents>
     </OrderAmountBox>
-  );
-};
+  )
+}
 
-export default OrderAmount;
+export default OrderAmount
 
 const OrderAmountBox = styled.div`
   margin-bottom: 40px;
-`;
+`
 const Title = styled.div`
   font-size: ${({ theme }) => theme.fs18};
   font-weight: bold;
@@ -68,7 +68,7 @@ const Title = styled.div`
   @media (max-width: 990px) {
     padding: 0px 15px;
   }
-`;
+`
 const Contents = styled.div`
   border: 1px solid ${({ theme }) => theme.rgba06};
   display: flex;
@@ -76,7 +76,7 @@ const Contents = styled.div`
   @media (max-width: 990px) {
     flex-direction: column;
   }
-`;
+`
 const Box = styled.div`
   display: flex;
   justify-content: space-between;
@@ -88,7 +88,7 @@ const Box = styled.div`
   & strong {
     color: #212121;
   }
-`;
+`
 
 const ItemBox = styled.div`
   height: 80px;
@@ -99,7 +99,7 @@ const ItemBox = styled.div`
       display: none;
     }
   }
-`;
+`
 
 const Section = styled.div`
   width: 100%;
@@ -147,7 +147,7 @@ const Section = styled.div`
   border-left: 1px solid ${({ theme }) => theme.rgba06};
   @media (max-width: 990px) {border:none;}
   }
-`;
+`
 const IconBox = styled.div`
   width: 20px;
   height: 20px;
@@ -170,4 +170,4 @@ const IconBox = styled.div`
   @media (max-width: 990px) {
     display: none;
   }
-`;
+`
