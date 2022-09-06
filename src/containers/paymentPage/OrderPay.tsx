@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import PayRadioBtn from '../../components/paymentPage/PayRadioBtn'
 import PaySummary from '../../components/paymentPage/PaySummary'
-import PayAgree from '../../components/paymentPage/PayAgree'
+import PayAgree from '../../components/paymentPage/payAgree/PayAgree'
 import { OrderInfoDiv } from './OrderPList'
 import { MainButton } from '../../elements/Buttons'
 import { theme } from '../../style/theme'
@@ -19,16 +19,12 @@ const OrderPay = () => {
         <OrderInfoDiv>{titles[1]}</OrderInfoDiv>
         <PayRadioBtn></PayRadioBtn>
       </TipOff>
-      <TipOff style={{display: 'rleative'}}>
+      <TipOff style={{ display: 'rleative' }}>
         <PayAgree />
         <BtnDiv>
-        <MainButton
-        width='100%'
-        >결제하기</MainButton>
+          <MainButton width="100%">결제하기</MainButton>
         </BtnDiv>
-       
       </TipOff>
-
     </PayArea>
   )
 }
@@ -44,7 +40,7 @@ const PayArea = styled.div`
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   align-items: flex-end;
-   @media (max-width: 930px) {
+  @media (max-width: 930px) {
     display: flex;
     width: 120%;
     margin: 10 auto;
@@ -56,9 +52,9 @@ const TipOff = styled.div`
   display: flex;
   padding: 24px;
   margin-bottom: 16px;
-  background-color:${theme.bg01};
+  background-color: ${theme.bg01};
   flex-direction: column;
 `
 const BtnDiv = styled.div`
-margin-top: 22px;
+  margin-top: 22px;
 `

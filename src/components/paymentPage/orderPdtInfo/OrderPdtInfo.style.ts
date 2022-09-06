@@ -1,14 +1,6 @@
 import styled from 'styled-components'
 
-export const FreeShipping = () => {
-  return (
-    <>
-      <ShippingFee>배송비 0원</ShippingFee>
-    </>
-  )
-}
-
-const ShippingFee = styled.div`
+export const ShippingFee = styled.div`
   background: ${({ theme }) => theme.rgba01};
   text-align: center;
   margin-bottom: 10px;

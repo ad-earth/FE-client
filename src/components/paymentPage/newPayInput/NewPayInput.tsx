@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import { MainButton } from '../../elements/Buttons'
-import { Input } from '../../elements/Input'
-import { PayMethodSelect } from './PayMethod'
+import * as t from './NewPayInput.style'
+import { MainButton } from '../../../elements/Buttons'
+import { Input } from '../../../elements/Input'
+import { PayMethodSelect } from '../payMethod/PayMethod'
 
 export const NewPayInput = () => {
   return (
-    <DivArea>
-      <InputDivArea style={{ margin: '20px 0 20px 0' }}>
+    <t.DivArea>
+      <t.InputDivArea style={{ margin: '20px 0 20px 0' }}>
         <Input
           color="#20252b"
           fontSize="14px"
@@ -19,8 +19,8 @@ export const NewPayInput = () => {
           width="49%"
           holderName="연락처"
         />
-      </InputDivArea>
-      <InputDivArea style={{ width: '50%' }}>
+      </t.InputDivArea>
+      <t.InputDivArea style={{ width: '50%' }}>
         <Input
           color="#20252b"
           fontSize="14px"
@@ -36,33 +36,19 @@ export const NewPayInput = () => {
         >
           주소찾기
         </MainButton>
-      </InputDivArea>
-      <InputDivArea>
+      </t.InputDivArea>
+      <t.InputDivArea>
         <Input color="#20252b" fontSize="14px" width="100%" holderName="주소" />
-      </InputDivArea>
-      <InputDivArea style={{ marginBottom: '10px' }}>
+      </t.InputDivArea>
+      <t.InputDivArea style={{ marginBottom: '10px' }}>
         <Input
           color="#20252b"
           fontSize="14px"
           width="100%"
           holderName="상세주소"
         />
-      </InputDivArea>
+      </t.InputDivArea>
       <PayMethodSelect />
-    </DivArea>
+    </t.DivArea>
   )
 }
-
-const DivArea = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`
-
-const InputDivArea = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 10px;
-`

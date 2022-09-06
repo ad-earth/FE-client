@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Input } from '../../elements/Input'
-import { DropBtn } from './PayMethod'
+import { DropBtn } from './payMethod/PayMethod.style'
 export interface RadiobtnType {
   value?: string
   checked?: boolean

@@ -1,15 +1,13 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 //pages//
-import { FreeShipping } from '../../components/paymentPage/OrderPdtInfo'
+import { FreeShipping } from '../../components/paymentPage/orderPdtInfo/OrderPdtInfo'
 import PdtInfo from '../../components/paymentPage/PdtInfo'
-import PayMethod from '../../components/paymentPage/PayMethod'
+import PayMethod from '../../components/paymentPage/payMethod/PayMethod'
 import PayUserInfo from '../../components/paymentPage/PayUserInfo'
 import PayUserInput from '../../components/paymentPage/PayUserInput'
-import PayMethodInput from '../../components/paymentPage/PayMethodInput'
+import PayMethodInput from '../../components/paymentPage/payMethodInput/PayMethodInput'
 import { theme } from '../../style/theme'
-
-
 
 const OrderPList = () => {
   const titles = ['주문 상품 정보', '주문자 정보', '배송 정보']
@@ -60,11 +58,11 @@ const PListArea = styled.div`
   float: left;
   display: flex;
   flex-direction: column;
-     @media (max-width: 930px) {
+  @media (max-width: 930px) {
     display: flex;
     width: 95%;
     margin: 0 20px;
-   align-items: center;
+    align-items: center;
   }
 `
 const TipOff = styled.div`
@@ -72,7 +70,7 @@ const TipOff = styled.div`
   display: flex;
   padding: 24px;
   margin-bottom: 16px;
-  background-color:${theme.bg01};
+  background-color: ${theme.bg01};
   flex-direction: column;
 `
 export const OrderInfoDiv = styled.div`
