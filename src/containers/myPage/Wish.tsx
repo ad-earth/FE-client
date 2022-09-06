@@ -28,24 +28,24 @@ export default Wish;
 const Section = styled.div``;
 const OrderListBox = styled.div``;
 const Title = styled.div`
-  font-size: 21px;
+  font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
   display: flex;
   align-items: center;
   margin: 10px 0;
   & span {
-    background-color: #646464;
-    border-color: #646464;
-    padding: 0;
     width: 20px;
     height: 20px;
-    display: inline-block;
     text-align: center;
-    color: #fff;
-    border-radius: 100%;
-    font-size: 11px;
+    font-size: ${({ theme }) => theme.fc11};
     line-height: 20px;
+    color: ${({ theme }) => theme.fc01};
+    background-color: #${({ theme }) => theme.bg11};
+    border-radius: 100%;
+    border-color: ${({ theme }) => theme.ls11};
+    display: inline-block;
     margin-left: 10px;
+    padding: 0;
   }
 `;
 const CardContent = styled.div`
@@ -62,9 +62,9 @@ const List = styled.div`
 `;
 const DataNull = styled.div`
   width: 100%;
+  font-size: ${({ theme }) => theme.fs15};
   text-align: center;
+  color: ${({ theme }) => theme.fc05};
   padding: 70px;
   box-sizing: border-box;
-  color: #999999;
-  size: 15px;
 `;

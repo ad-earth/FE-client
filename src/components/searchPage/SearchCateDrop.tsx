@@ -28,15 +28,15 @@ const BtnArea = styled.div`
 const DropBtn = styled.select`
   width: 80px;
   margin-left: 20px;
-  font-size: 15px;
+  font-size: ${({ theme }) => theme.fs15};
   cursor: pointer;
-  color: #646464;
+  color: ${({ theme }) => theme.fc09};
   border: none;
   transition: box-shadow 0.4s ease;
-  outline-color: #fff;
+  outline-color: ${({ theme }) => theme.ls01};
 `
 const Text = styled.div`
   font-size: 15px;
-  color: #7a7a7a;
+  color: ${({ theme }) => theme.fc07};
   margin-left: 20px;
 `

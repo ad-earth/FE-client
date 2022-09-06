@@ -21,5 +21,4 @@ const AreaPage = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 50px;
-  color: #cdcfd0c4;
 `

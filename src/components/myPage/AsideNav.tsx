@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
+import { NavLink } from "react-router-dom";
+//style
 import styled from "styled-components";
+import { theme } from "../../style/theme";
 
+import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
 interface LinkType {
   id: number;
   name: string;
@@ -11,21 +13,9 @@ interface LinkType {
 }
 
 const AsideNav = () => {
-  const location = useLocation();
-
   // modal
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
-  //click-Link style
-  const [isActive, setIsActive] = useState<string>(
-    location.pathname.split("/")[1]
-  );
-
-  // useEffect(() => {
-  //   let pathName = location.pathname.split("/")[1];
-  // }, []);
-
   const navClickEvent = (data: LinkType) => {
-    setIsActive(data.path);
     data.name === "회원탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
   };
 
@@ -43,14 +33,16 @@ const AsideNav = () => {
                 to={data.path}
                 onClick={(e) => data.path === "modal" && e.preventDefault()}
                 style={({ isActive }) => ({
-                  color: isActive ? "red" : "#888",
+                  borderBottom: `2px solid ${
+                    isActive ? `${theme.fc15}` : `${theme.fc01}`
+                  }`,
                 })}
+                end
               >
                 <Text
                   onClick={() => {
                     navClickEvent(data);
                   }}
-                  className={data.path === isActive ? "action" : ""}
                 >
                   {data.name}
                 </Text>
@@ -66,7 +58,7 @@ const AsideNav = () => {
 export default AsideNav;
 
 const data = [
-  { id: 1, name: "주문 조회", path: "order" },
+  { id: 1, name: "주문 조회", path: "" },
   { id: 2, name: "위시 리스트", path: "wish" },
   { id: 3, name: "취소 조회", path: "cancel" },
   { id: 4, name: "정보 수정", path: "modal" },
@@ -74,16 +66,15 @@ const data = [
 ];
 
 const NavListBox = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
   & li {
-    margin-bottom: 12px;
     width: 100%;
+    margin-bottom: 12px;
   }
   & li a {
-    text-decoration: none;
-    color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.fc14};
+  }
+  @media (max-width: 990px) {
+    display: none;
   }
 `;
 const Text = styled.span``;

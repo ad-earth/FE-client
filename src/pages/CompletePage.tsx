@@ -15,7 +15,7 @@ const CompletePage: React.FC = () => {
 
 export default CompletePage
 const Area = styled.div`
-  background-color: #f3f3f3;
+  background-color: ${({ theme }) => theme.bg03};
   width: 100%;
   display: flex;
   flex-direction: column;

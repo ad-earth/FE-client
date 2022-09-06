@@ -36,10 +36,9 @@ function App() {
           <Route path="/" element={<MainPage />}></Route>
           <Route path="/mypage" element={<Mypage />}>
             <Route index element={<Order />} />
-            <Route path="order" element={<Order />} />
-            <Route path="order/:id" element={<OrderDetail />} />
+            <Route path=":id" element={<OrderDetail />} />
             <Route path="wish" element={<Wish />} />
-            <Route path="cancel-call" element={<CancelDetail />} />
+            <Route path="cancel-call/:id" element={<CancelDetail />} />
             <Route path="cancel">
               <Route index element={<Cancel />} />
               <Route path=":id" element={<OrderDetail />} />

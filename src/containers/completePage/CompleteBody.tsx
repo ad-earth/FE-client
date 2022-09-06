@@ -46,42 +46,42 @@ export default CompleteBody
 const BodyDiv = styled.div`
   display: grid;
   flex-direction: column;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bg01};
   width: 420px;
   grid-template-columns: 33% 67%;
   grid-template-rows: repeat(5, minmax(50px, auto));
   margin-top: 30px;
 `
 const CellL = styled.div`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fs14};
   vertical-align: top;
   padding: 16px 0 12px 24px;
   font-weight: normal;
-  color: #7a7a7a;
+  color: ${({ theme }) => theme.fc07};
   border-width: 0 0 1px;
   border-style: solid;
-  border-color: rgba(33, 33, 33, 0.15);
+  border-color: ${({ theme }) => theme.rgba04};
 `
 
 const CellR = styled.div`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fs14};
   vertical-align: top;
   padding: 16px 24px 14px 12px;
   font-weight: normal;
-  color: #212121;
+  color: ${({ theme }) => theme.fc14};
   align-self: start;
   white-space: pre-wrap;
   border-width: 0 0 1px;
   border-style: solid;
-  border-color: rgba(33, 33, 33, 0.15);
+  border-color: ${({ theme }) => theme.fs14};
 `
 const Text = styled.div`
-  font-size: 14px;
-  color: #20252b;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc13};
   padding: 1px 0 1px;
 `
 const BtnDiv = styled.div`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.bg01};
   width: 420px;
   margin-bottom: 140px;
 `

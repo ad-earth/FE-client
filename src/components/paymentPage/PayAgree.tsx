@@ -20,9 +20,9 @@ export default PayAgree
 const CheckBtn = styled.input`
   width: 20px;
   height: 20px;
-  accent-color: #00913a;
+  accent-color: ${({ theme }) => theme.bg16};
   margin: 0px 8px 0 0px;
-  border: 1px solid #cfd6d9;
+  border: 1px solid ${({ theme }) => theme.ls10};
 `
 const Item = styled.div`
   display: flex;
@@ -31,6 +31,6 @@ const Item = styled.div`
   position: relative;
 `
 const Text = styled.span`
-  font-size: 14px;
-  color: #20252b;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc13};
 `

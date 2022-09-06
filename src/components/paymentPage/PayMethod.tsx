@@ -1,18 +1,15 @@
 import { MainButton } from '../../elements/Buttons'
 import styled from 'styled-components'
 
-const PayMethod = () => {
+interface PropsType {
+  BtnonClick: () => void
+}
+
+export const PayMethod = (props: PropsType) => {
   return (
     <>
       <DivArea>
-        <Div>
-          <NameDiv>
-            <span>이효리</span>
-          </NameDiv>
-          <PayText>01040774628</PayText>
-          <PayText>서울 ㅇㅇ구 ㅇㅇ길 ㅇㅇㅇㅇ</PayText>
-          <PayText>(09876)</PayText>
-        </Div>
+        <PayMethodInfo />
         <ButtonBox>
           <MainButton
             color="#fff"
@@ -22,23 +19,43 @@ const PayMethod = () => {
             padding="6px 12px"
             radius="2px"
             width="50px"
+            onClick={() => props.BtnonClick()}
           >
             변경
           </MainButton>
         </ButtonBox>
       </DivArea>
-      <ShipDiv>
-        <PayText>베송메모</PayText>
-        <BtnArea style={{ marginTop: '10px' }}>
-          <DropBtn name="ship" id="-select" defaultValue={'first'}>
-            <option value="first">배송메모를 선택해주세요.</option>
-            <option value="second">배송 전에 미리 연락 바랍니다.</option>
-            <option value="third">부재시 경비실에 맡겨주세요.</option>
-            <option value="fourth">부재시 전화나 문자를 남겨주세요.</option>
-          </DropBtn>
-        </BtnArea>
-      </ShipDiv>
+      <PayMethodSelect />
     </>
+  )
+}
+
+export const PayMethodInfo = () => {
+  return (
+    <Div>
+      <NameDiv>
+        <span>이효리</span>
+      </NameDiv>
+      <PayText>01040774628</PayText>
+      <PayText>서울 ㅇㅇ구 ㅇㅇ길 ㅇㅇㅇㅇ</PayText>
+      <PayText>(09876)</PayText>
+    </Div>
+  )
+}
+
+export const PayMethodSelect = () => {
+  return (
+    <ShipDiv>
+      <PayText>배송메모</PayText>
+      <BtnArea style={{ marginTop: '10px' }}>
+        <DropBtn name="ship" id="-select" defaultValue={'first'}>
+          <option value="first">배송메모를 선택해주세요.</option>
+          <option value="second">배송 전에 미리 연락 바랍니다.</option>
+          <option value="third">부재시 경비실에 맡겨주세요.</option>
+          <option value="fourth">부재시 전화나 문자를 남겨주세요.</option>
+        </DropBtn>
+      </BtnArea>
+    </ShipDiv>
   )
 }
 
@@ -48,27 +65,25 @@ const DivArea = styled.div`
   display: flex;
   flex-direction: row;
 `
-
 const Div = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
 `
-
 const NameDiv = styled.div`
   margin: 0 0 4 px;
   & span {
     width: 80px;
-    font-size: 15px;
-    color: #20252b;
+    font-size: ${({ theme }) => theme.fs15};
+    color: ${({ theme }) => theme.fc13};
   }
 `
 const PayText = styled.span`
-  font-size: 14px;
-  color: #757575;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc08};
 `
 const ShipDiv = styled.div`
-  margin-top: 18px;
+  margin-top: 22px;
 `
 const ButtonBox = styled.div`
   width: 10%;
@@ -84,12 +99,12 @@ const BtnArea = styled.div`
 `
 export const DropBtn = styled.select`
   width: 100%;
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fs14};
   position: relative;
   cursor: pointer;
-  color: #646464;
+  color: ${({ theme }) => theme.fc09};
   padding: 0.5em 0.75em;
   box-sizing: border-box;
   border: 1px solid rgba(33, 33, 33, 0.15);
-  outline-color: #fff;
+  outline-color: ${({ theme }) => theme.ls01};
 `

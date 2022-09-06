@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
 export const Base = styled.div`
-  padding: 32px 24px 24px;
   max-width: 600px;
+  padding: 32px 24px 24px;
   box-sizing: border-box;
 `;
 export const Title = styled.h2`
-  text-align: center;
-  font-size: 24px;
-  margin: 0 0 24px;
+  font-size: ${({ theme }) => theme.fs24};
   font-weight: bold;
+  text-align: center;
+  margin: 0 0 24px;
 `;
 export const Description = styled.p`
+  font-size: ${({ theme }) => theme.fs15};
+  color: ${({ theme }) => theme.fc14};
   margin-bottom: 24px;
-  font-size: 15px;
-  color: ${({ theme }) => theme.colors.black};
 `;
 export const ButtonBox = styled.div`
-  margin-bottom: 10px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 `;

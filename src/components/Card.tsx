@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-import { ColorIcon } from "../elements/ColorIcons";
-import { theme } from "../style/theme";
-import { DataType } from "../containers/listPage/CardList";
-import { Badge } from "../elements/Badge";
+import { ColorIcon } from '../elements/ColorIcons'
+import { theme } from '../style/theme'
+import { DataType } from '../containers/listPage/CardList'
+import { Badge } from '../elements/Badge'
 
-import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded'
 
 const Card = (props: DataType) => {
   // console.log(props.p_Ad);
@@ -13,12 +13,12 @@ const Card = (props: DataType) => {
   return (
     <>
       <CardCp>
-        {props.type === "wish" ? (
+        {props.type === 'wish' ? (
           <WishCard>
             <CardImg src={props.p_Thumbnail} />
             <span>
               <HighlightOffRoundedIcon
-                style={{ fill: "#fff", width: "25px" }}
+                style={{ fill: '#fff', width: '25px' }}
               />
             </span>
           </WishCard>
@@ -27,7 +27,7 @@ const Card = (props: DataType) => {
             {props.p_Ad ? (
               <AdCardArea>
                 <AdCard src={props.p_Thumbnail} />
-                <Badge type={"ad"}>AD</Badge>
+                <Badge type={'ad'}>AD</Badge>
               </AdCardArea>
             ) : (
               <CardImg src={props.p_Thumbnail} />
@@ -48,10 +48,10 @@ const Card = (props: DataType) => {
         </Div>
       </CardCp>
     </>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card
 
 const CardCp = styled.div`
   width: 100%;
@@ -59,7 +59,7 @@ const CardCp = styled.div`
   padding: 0 10px;
   box-sizing: border-box;
   font-size: inherit;
-`;
+`
 const CardImg = styled.img`
   width: 100%;
   margin: 0 auto;
@@ -68,35 +68,35 @@ const CardImg = styled.img`
   background-size: cover;
   & hover {
   }
-`;
+`
 const Div = styled.div`
   width: 100%;
   height: auto;
   margin-bottom: 0.3rem;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
-`;
+`
 const CardTitle = styled.div`
   text-transform: capitalize;
   margin-bottom: 0.3rem;
-  font-size: 0.9rem;
-  color: #666666;
-`;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc11};
+`
 const Cardprice = styled.div`
   font-size: ${theme.fs13};
   color: ${theme.fc15};
-`;
+`
 
 const AdCard = styled.img`
   width: 100%;
   margin: 0 auto;
   cursor: pointer;
-  border: 1px solid #666666;
-  background-color: grey;
+  border: 1px solid ${({ theme }) => theme.fc11};
+  background-color: ${({ theme }) => theme.bg12};
   background-size: cover;
   & hover {
   }
-`;
+`
 const AdCardArea = styled.div`
   position: relative;
   div {
@@ -104,7 +104,7 @@ const AdCardArea = styled.div`
     top: 0;
     left: 0;
   }
-`;
+`
 
 //위시리스트
 const WishCard = styled.div`
@@ -127,4 +127,4 @@ const WishCard = styled.div`
     opacity: 0;
     cursor: pointer;
   }
-`;
+`

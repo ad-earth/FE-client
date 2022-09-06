@@ -1,13 +1,16 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import useMobileMediaQuery from "../../hook/useMobileMediaQuery";
+
 import OrderNumerDetail from "../../components/myPage/order/OrderNumerDetail";
 import OrderListDetail from "../../components/myPage/order/OrderListDetail";
 import OrderUserInfo from "../../components/myPage/order/OrderUserInfo";
 import OrderAddress from "../../components/myPage/order/OrderAddress";
 import OrderAmount from "../../components/myPage/order/OrderAmount";
-
-import { useNavigate } from "react-router-dom";
+import OrderPaymentMethod from "../../components/myPage/order/OrderPaymentMethod";
 
 const OrderDetail = () => {
+  const isMobile = useMobileMediaQuery();
   const navigate = useNavigate();
   return (
     <Section>
@@ -24,37 +27,48 @@ const OrderDetail = () => {
       <OrderUserInfo />
       <OrderAddress />
       <OrderAmount />
+      {isMobile && <OrderPaymentMethod />}
     </Section>
   );
 };
 
 export default OrderDetail;
 
-const Section = styled.div``;
+const Section = styled.div`
+  @media (max-width: 990px) {
+    margin: 0 -15px;
+  }
+`;
 const Title = styled.div`
-  font-size: 21px;
+  font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
-  margin-bottom: 24px;
   display: flex;
+  margin-bottom: 24px;
+  @media (max-width: 990px) {
+    width: 100%;
+    border-bottom: 1px solid ${({ theme }) => theme.rgba02};
+    margin: 0;
+    padding: 0 20px 20px;
+  }
   & span {
     width: 30px;
-    position: relative;
     height: 30px;
     display: inline-block;
+    position: relative;
     margin-right: 12px;
     overflow: hidden;
     cursor: pointer;
     :before {
       content: "";
+      width: 14px;
+      height: 14px;
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 14px;
-      height: 14px;
       transform: translate(-50%, -50%) rotate(-45deg);
       margin-top: 2px;
-      border-top: 1px solid #333;
-      border-left: 1px solid #333;
+      border-top: 1px solid ${({ theme }) => theme.ls13};
+      border-left: 1px solid ${({ theme }) => theme.ls13};
     }
   }
 `;

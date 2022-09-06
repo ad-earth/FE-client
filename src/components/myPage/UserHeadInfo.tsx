@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 import Avatar from "@mui/material/Avatar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -28,16 +29,16 @@ const UserBox = styled.div`
   align-items: center;
 `;
 const UserImg = styled.div`
-  padding-right: 20px;
-  display: flex;
   align-items: center;
+  display: flex;
+  padding-right: 20px;
 `;
 const UserName = styled.p`
-  color: ${({ theme }) => theme.colors.black};
-  font-size: 22px;
+  font-size: ${({ theme }) => theme.fs22};
   text-align: left;
+  color: ${({ theme }) => theme.fc14};
   margin: 0;
   @media (max-width: 990px) {
-    font-size: 18px;
+    font-size: ${({ theme }) => theme.fs18};
   }
 `;
