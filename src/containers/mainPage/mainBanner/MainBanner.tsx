@@ -34,15 +34,33 @@ const MainBanner = () => {
     <>
       {viewport <= 990 ? (
         <Slider {...setting}>
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220628/552560bec2d12.png" />
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220419/38794519de685.jpg" />
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220519/64b556a81026a.jpg" />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220628/552560bec2d12.png"
+            alt="배너 이미지"
+          />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220419/38794519de685.jpg"
+            alt="배너 이미지"
+          />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220519/64b556a81026a.jpg"
+            alt="배너 이미지"
+          />
         </Slider>
       ) : (
         <Slider {...setting}>
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220628/7695bbcc55fef.png" />
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220419/4dfd08847b8ab.jpg" />
-          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220519/45c2ed84d3f88.jpg" />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220628/7695bbcc55fef.png"
+            alt="배너 이미지"
+          />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220419/4dfd08847b8ab.jpg"
+            alt="배너 이미지"
+          />
+          <t.BannerImg
+            src="https://cdn.imweb.me/thumbnail/20220519/45c2ed84d3f88.jpg"
+            alt="배너 이미지"
+          />
         </Slider>
       )}
     </>

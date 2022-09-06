@@ -16,7 +16,10 @@ const BestProd = () => {
           </p>
         </t.Title>
         <t.Image>
-          <img src="https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg" />
+          <img
+            src="https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg"
+            alt="베스트 상품 이미지"
+          />
         </t.Image>
       </t.TitleWrapper>
       <BestCards />
