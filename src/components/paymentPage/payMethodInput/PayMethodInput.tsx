@@ -1,10 +1,10 @@
+import * as t from './PayMethodInput.style'
 import { useState } from 'react'
+
 import { NewPayInput } from '../newPayInput/NewPayInput'
 import { PayMethodInfo, PayMethodSelect } from '../payMethod/PayMethod'
-import { RadioBtn } from '../PayRadioBtn'
-import { RadiobtnType } from '../PayRadioBtn'
-
-import * as t from './PayMethodInput.style'
+import { RadioBtn } from '../payRadioBtn/PayRadioBtn'
+import { RadiobtnType } from '../payRadioBtn/PayRadioBtn'
 
 const PayMethodInput = (props: RadiobtnType) => {
   const [tab, setTab] = useState(false)

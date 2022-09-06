@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import { useState } from 'react'
 //pages//
 import { FreeShipping } from '../../components/paymentPage/orderPdtInfo/OrderPdtInfo'
-import PdtInfo from '../../components/paymentPage/PdtInfo'
+import PdtInfo from '../../components/paymentPage/pdtInfo/PdtInfo'
 import PayMethod from '../../components/paymentPage/payMethod/PayMethod'
-import PayUserInfo from '../../components/paymentPage/PayUserInfo'
-import PayUserInput from '../../components/paymentPage/PayUserInput'
+import PayUserInfo from '../../components/paymentPage/payUserInfo/PayUserInfo'
+import PayUserInput from '../../components/paymentPage/payUserInput/PayUserInput'
 import PayMethodInput from '../../components/paymentPage/payMethodInput/PayMethodInput'
 import { theme } from '../../style/theme'
 
