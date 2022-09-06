@@ -5,7 +5,7 @@ import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 import Product from "./Product";
 
 const OrderListDetail = () => {
-  const isMobile = useMobileMediaQuery();
+  const isMobile = useMobileMediaQuery()
   return (
     <Table>
       <Thead>
@@ -17,7 +17,7 @@ const OrderListDetail = () => {
       </Thead>
 
       <TBody>
-        {["1ddd", "2dddd", "3ddd"].map((data, i: number) => (
+        {['1ddd', '2dddd', '3ddd'].map((data, i: number) => (
           <tr key={i}>
             <td>
               <Product />
@@ -27,7 +27,7 @@ const OrderListDetail = () => {
                 무료
               </td>
             ) : (
-              <td style={{ display: "none" }}></td>
+              <td style={{ display: 'none' }}></td>
             )}
             <td className="buttonBox">
               <span>배송왼료</span>
@@ -46,8 +46,8 @@ const OrderListDetail = () => {
         )}
       </TBody>
     </Table>
-  );
-};
+  )
+}
 
 const Table = styled.table`
   width: 100%;
@@ -66,7 +66,7 @@ const Table = styled.table`
       padding: 0;
     }
   }
-`;
+`
 const Thead = styled.thead`
   width: 100%;
   & th {
@@ -76,7 +76,7 @@ const Thead = styled.thead`
   @media (max-width: 990px) {
     display: none;
   }
-`;
+`
 const TBody = styled.tbody`
   & tr {
     @media (max-width: 990px) {
@@ -105,7 +105,7 @@ const TBody = styled.tbody`
       box-sizing: border-box;
     }
   }
-`;
+`
 const ButtonBox = styled.div`
   width: 130px;
   float: right;
@@ -114,9 +114,9 @@ const ButtonBox = styled.div`
     float: none;
     margin-top: 14px;
   }
-`;
+`
 const IsMobile = styled.tr`
   text-align: center;
-`;
+`
 
-export default OrderListDetail;
+export default OrderListDetail

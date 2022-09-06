@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-import PayTitle from '../components/paymentPage/PayTitle'
-import OrderPay from '../containers/paymentPage/OrderPay'
-import OrderPList from '../containers/paymentPage/OrderPList'
+import PayTitle from '../components/paymentPage/payTitle/PayTitle'
+import OrderPay from '../containers/paymentPage/orderPay/OrderPay'
+import OrderPList from '../containers/paymentPage/orderPList/OrderPList'
 import { theme } from '../style/theme'
 
 const PaymentPage = () => {
@@ -24,10 +24,10 @@ const Area = styled.div`
   display: grid;
   justify-content: center;
   width: 100%;
-    @media (max-width: 930px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  @media (max-width: 930px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
   }
 `

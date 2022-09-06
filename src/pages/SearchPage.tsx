@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Pagination } from '@mui/material'
-import SearchBody from '../containers/searchPage/SearchBody'
+import SearchBody from '../containers/searchPage/searchBody/SearchBody'
 import SqSearchBar from '../elements/SqSearchBar'
 
 const SearchPage: React.FC = () => {

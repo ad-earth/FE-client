@@ -1,15 +1,15 @@
-import MainBanner from "../containers/mainPage/MainBanner";
-import BestProdList from "../containers/mainPage/BestProdList";
-import SocialLinkList from "../containers/mainPage/SocialLinkList";
-import NewProdList from "../containers/mainPage/NewProdList";
-import Mission from "../containers/mainPage/Mission";
-import Jisok from "../containers/mainPage/Jisok";
+import MainBanner from "../containers/mainPage/mainBanner/MainBanner";
+import BestProd from "../containers/mainPage/bestProd/BestProd";
+import SocialLinkList from "../containers/mainPage/socialLinkList/SocialLinkList";
+import NewProdList from "../containers/mainPage/newProdList/NewProdList";
+import Mission from "../containers/mainPage/mission/Mission";
+import Jisok from "../containers/mainPage/jisok/Jisok";
 
 const MainPage = () => {
   return (
     <>
       <MainBanner />
-      <BestProdList />
+      <BestProd />
       <SocialLinkList />
       <NewProdList />
       <Mission />
