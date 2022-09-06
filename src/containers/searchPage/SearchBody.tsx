@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Card from '../../components/Card'
 import CardIcon from '../../components/listPage/cardIcon/CardIcon'
 import { DataType } from '../listPage/CardList'
-import SearchCateDrop from '../../components/searchPage/SearchCateDrop'
-import SearchNav from '../../components/searchPage/SearchNav'
+import SearchCateDrop from '../../components/searchPage/searchCateDrop/SearchCateDrop'
+import SearchNav from '../../components/searchPage/searchNav/SearchNav'
 import CardBadge from '../../components/listPage/cardBadge/CardBadge'
 
 const SearchBody = () => {
