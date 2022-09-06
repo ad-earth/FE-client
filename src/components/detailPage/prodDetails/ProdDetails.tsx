@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import DeliveryInfo from "./DeliveryInfo";
+import DeliveryInfo from "../deliveryInfo/DeliveryInfo";
 
 const ProdDetails = () => {
   return (

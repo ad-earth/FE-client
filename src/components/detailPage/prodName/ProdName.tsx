@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { Badge } from "../../elements/Badge";
-import { theme } from "../../style/theme";
+import { Badge } from "../../../elements/Badge";
+import { theme } from "../../../style/theme";
 
 const ProdName = () => {
   return (

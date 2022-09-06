@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { theme } from "../../style/theme";
+import { theme } from "../../../style/theme";
 
 const History = () => {
   return (

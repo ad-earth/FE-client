@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import CommentList from "./CommentList";
+import CommentList from "../commentList/CommentList";
 
 const ProdComments = () => {
   return (

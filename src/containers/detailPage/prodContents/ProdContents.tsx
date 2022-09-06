@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import ProdComments from "../../components/detailPage/ProdComments";
-import ProdDetails from "../../components/detailPage/ProdDetails";
-import { theme } from "../../style/theme";
+import ProdComments from "../../../components/detailPage/prodComments/ProdComments";
+import ProdDetails from "../../../components/detailPage/prodDetails/ProdDetails";
+import { theme } from "../../../style/theme";
 
 const ProdContents = () => {
   //상세정보 & 구매평 스위치

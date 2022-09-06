@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import Pagination from "@mui/material/Pagination";
 
-import Comment from "./Comment";
-import { MainButton } from "../../elements/Buttons";
-import ReviewModal from "../modal/reviewModal/ReviewModal";
+import Comment from "../comment/Comment";
+import { MainButton } from "../../../elements/Buttons";
+import ReviewModal from "../../modal/reviewModal/ReviewModal";
 import { useState } from "react";
-import { theme } from "../../style/theme";
+import { theme } from "../../../style/theme";
 
 const CommentList = () => {
   const [modalOpen, setModalOpen] = useState(false);

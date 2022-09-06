@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { theme } from "../../style/theme";
+import { theme } from "../../../style/theme";
 
 const ProdCarousel = () => {
   // carousel option

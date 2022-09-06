@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import ProdCarousel from "../components/detailPage/ProdCarousel";
-import ProdImg from "../components/detailPage/ProdImg";
-import ProdName from "../components/detailPage/ProdName";
-import ProdDesc from "../components/detailPage/ProdDesc";
-import ProdOpt from "../components/detailPage/ProdOpt";
+import ProdCarousel from "../../../components/detailPage/prodCarousel/ProdCarousel";
+import ProdImg from "../../../components/detailPage/prodImg/ProdImg";
+import ProdName from "../../../components/detailPage/prodName/ProdName";
+import ProdDesc from "../../../components/detailPage/prodDesc/ProdDesc";
+import ProdOpt from "../../../components/detailPage/prodOpt/ProdOpt";
 
 const ProdInfo = () => {
   //뷰포트 사이즈에 따라 상품 썸네일 carousel로 변경

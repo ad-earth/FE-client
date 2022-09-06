@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 
-import { theme } from "../../style/theme";
+import { theme } from "../../../style/theme";
 
 const Comment = () => {
   // 구매평 작성자 아이디 마스킹 처리(뒤 4자리)

@@ -4,9 +4,9 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
-import { ReactComponent as Heart } from "../../assets/icons/heart.svg";
-import { CountButton, MainButton } from "../../elements/Buttons";
-import { theme } from "../../style/theme";
+import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+import { CountButton, MainButton } from "../../../elements/Buttons";
+import { theme } from "../../../style/theme";
 
 interface PropsType {
   drop: boolean;
