@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import CancelInfo from "../../components/myPage/cancel/CancelInfo";
-import CancelListDetail from "../../components/myPage/cancel/CancelListDetail";
-import CancelAmount from "../../components/myPage/cancel/CancelAmount";
+import CancelInfo from "../../components/myPage/cancel/cancelInfo/CancelInfo";
+import CancelListDetail from "../../components/myPage/cancel/cancelListDetail/CancelListDetail";
+import CancelAmount from "../../components/myPage/cancel/cancelAmount/CancelAmount";
 
 const CancelDetail = () => {
   const navigate = useNavigate();

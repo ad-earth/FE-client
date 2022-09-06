@@ -3,7 +3,7 @@ import { useState } from "react";
 import Modal from "../Modal";
 import { MainButton } from "../../../elements/Buttons";
 // style
-import * as t from "./ReviewModalStyle";
+import * as t from "./reviewModal.style";
 // Icons
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import Rating from "@mui/material/Rating";
