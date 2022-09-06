@@ -1,38 +1,7 @@
 import styled from 'styled-components'
-import { theme } from '../../style/theme'
+import { theme } from '../../../style/theme'
 
-export const CateButton = () => {
-  const categoryList: string[] = [
-    '전체',
-    '욕실',
-    '주방',
-    '음료용품',
-    '생활',
-    '식품',
-    '화장품',
-    '문구',
-  ]
-
-  return (
-    <>
-      <BtnArea>
-        <BtnWrap className="desktop">
-          {categoryList.map((val, i) => {
-            return <CBtn key={i}>{val}</CBtn>
-          })}
-        </BtnWrap>
-      </BtnArea>
-      <BtnWrap className="mobile">
-        {categoryList.map((val, i) => {
-          return <SmallCBtn key={i}>{val}</SmallCBtn>
-        })}
-        <LineArea />
-      </BtnWrap>
-    </>
-  )
-}
-
-const BtnArea = styled.div`
+export const BtnArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,7 +11,7 @@ const BtnArea = styled.div`
   padding: 0 20px 0 20px;
   margin: 1.5rem auto;
 `
-const BtnWrap = styled.div`
+export const BtnWrap = styled.div`
   min-width: 550px;
   grid-template-columns: repeat(auto-fill, minmax(20%, auto));
   gap: 0.5rem;
@@ -51,7 +20,7 @@ const BtnWrap = styled.div`
   box-sizing: border-box;
   padding: 0 10px;
 `
-const CBtn = styled.button`
+export const CBtn = styled.button`
   width: 25%;
   padding: 0.4rem 0;
   border: 0.3px solid ${theme.ls07};
@@ -73,7 +42,7 @@ const CBtn = styled.button`
     display: none;
   }
 `
-const SmallCBtn = styled.button`
+export const SmallCBtn = styled.button`
   width: 59px;
   padding: 0 3px;
   border: 0.3px solid ${theme.bg01};
@@ -96,7 +65,7 @@ const SmallCBtn = styled.button`
     display: none;
   }
 `
-const LineArea = styled.div`
+export const LineArea = styled.div`
   width: 97%;
   display: flex;
   flex-flow: row wrap;

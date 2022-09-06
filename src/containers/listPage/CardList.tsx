@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Card from '../../components/Card'
 import CardBadge from '../../components/listPage/cardBadge/CardBadge'
 import CardIcon from '../../components/listPage/cardIcon/CardIcon'
-import CateDrop from '../../components/listPage/CateDrop'
+import CateDrop from '../../components/listPage/catDrop/CateDrop'
 import { theme } from '../../style/theme'
 
 export interface DataType {
