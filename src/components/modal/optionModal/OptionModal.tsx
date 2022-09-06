@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as t from "./OptionModalStyle";
+import * as t from "./OptionModal.style";
 
 import { CountButton, MainButton } from "../../../elements/Buttons";
 import Modal from "../Modal";
