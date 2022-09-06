@@ -1,34 +1,7 @@
 import styled from "styled-components";
-
 import { theme } from "../../../style/theme";
-import BestCards from "../../../components/mainPage/bestCards/BestCards";
 
-const BestProdList = () => {
-  return (
-    <MainContainer>
-      <TitleWrapper>
-        <Title>
-          <span>#BEST</span>
-          <p>
-            제로 웨이스트 입문자도
-            <br />
-            어려움 없이 사용할 수 있는
-            <br />
-            베스트 제품!
-          </p>
-        </Title>
-        <Image>
-          <img src="https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg" />
-        </Image>
-      </TitleWrapper>
-      <BestCards />
-    </MainContainer>
-  );
-};
-
-export default BestProdList;
-
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
@@ -42,7 +15,7 @@ const MainContainer = styled.div`
     flex-direction: column;
   }
 `;
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   width: 32%;
   margin-left: 2%;
   font-size: ${theme.fs16};
@@ -55,7 +28,7 @@ const TitleWrapper = styled.div`
     font-size: ${theme.fs14};
   }
 `;
-const Title = styled.div`
+export const Title = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -69,7 +42,7 @@ const Title = styled.div`
     }
   }
 `;
-const Image = styled.div`
+export const Image = styled.div`
   display: flex;
   width: 100%;
   border-radius: 500px;

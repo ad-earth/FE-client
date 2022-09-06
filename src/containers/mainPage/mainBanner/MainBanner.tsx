@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import "../../style/carousel.css";
+import * as t from "./mainBanner.style";
+import "../../../style/carousel.css";
 
 const MainBanner = () => {
   // carousel option
@@ -16,9 +16,9 @@ const MainBanner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots: React.ReactNode) => (
-      <DotsWrapper>
+      <t.DotsWrapper>
         <ul>{dots}</ul>
-      </DotsWrapper>
+      </t.DotsWrapper>
     ),
   };
   //뷰포트 사이즈에 따라 배너 이미지 변경
@@ -34,15 +34,15 @@ const MainBanner = () => {
     <>
       {viewport <= 990 ? (
         <Slider {...setting}>
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220628/552560bec2d12.png" />
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220419/38794519de685.jpg" />
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220519/64b556a81026a.jpg" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220628/552560bec2d12.png" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220419/38794519de685.jpg" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220519/64b556a81026a.jpg" />
         </Slider>
       ) : (
         <Slider {...setting}>
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220628/7695bbcc55fef.png" />
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220419/4dfd08847b8ab.jpg" />
-          <BannerImg src="https://cdn.imweb.me/thumbnail/20220519/45c2ed84d3f88.jpg" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220628/7695bbcc55fef.png" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220419/4dfd08847b8ab.jpg" />
+          <t.BannerImg src="https://cdn.imweb.me/thumbnail/20220519/45c2ed84d3f88.jpg" />
         </Slider>
       )}
     </>
@@ -50,16 +50,3 @@ const MainBanner = () => {
 };
 
 export default MainBanner;
-
-const BannerImg = styled.img`
-  width: 100%;
-  cursor: pointer;
-`;
-const DotsWrapper = styled.div`
-  width: 100%;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  bottom: 10px;
-`;

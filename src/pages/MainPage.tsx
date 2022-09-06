@@ -1,5 +1,5 @@
 import MainBanner from "../containers/mainPage/mainBanner/MainBanner";
-import BestProdList from "../containers/mainPage/bestProdList/BestProdList";
+import BestProd from "../containers/mainPage/bestProd/BestProd";
 import SocialLinkList from "../containers/mainPage/socialLinkList/SocialLinkList";
 import NewProdList from "../containers/mainPage/newProdList/NewProdList";
 import Mission from "../containers/mainPage/mission/Mission";
@@ -9,7 +9,7 @@ const MainPage = () => {
   return (
     <>
       <MainBanner />
-      <BestProdList />
+      <BestProd />
       <SocialLinkList />
       <NewProdList />
       <Mission />
