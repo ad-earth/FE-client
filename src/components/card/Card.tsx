@@ -42,7 +42,7 @@ const Card = (props: DataType) => {
           <t.CardTitle>
             [{props.p_Brand}] {props.p_Name}
           </t.CardTitle>
-          <t.Cardprice>{props.p_Cost}</t.Cardprice>
+          <t.Cardprice>{props.p_Price}</t.Cardprice>
         </t.Div>
       </t.CardCp>
     </>

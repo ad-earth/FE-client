@@ -7,7 +7,7 @@ import { theme } from "../../style/theme";
 import Card from "../card/Card";
 
 interface DataType {
-  p_Cost?: number;
+  p_Price?: number;
   p_Color?: string;
   p_Review?: number;
   p_Like?: number;
