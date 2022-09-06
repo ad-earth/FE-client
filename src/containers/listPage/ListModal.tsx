@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react'
 
 import CloseIcon from '@mui/icons-material/Close'
 import Modal from '../../components/modal/Modal'
-import ProdCarousel from '../../components/detailPage/ProdCarousel'
-import ProdImg from '../../components/detailPage/ProdImg'
-import ProdName from '../../components/detailPage/ProdName'
-import ProdDesc from '../../components/detailPage/ProdDesc'
-import ProdOpt from '../../components/detailPage/ProdOpt'
+
+import ProdImg from '../../components/detailPage/prodImg/ProdImg'
+import ProdName from '../../components/detailPage/prodName/ProdName'
+import ProdDesc from '../../components/detailPage/prodDesc/ProdDesc'
 import { theme } from '../../style/theme'
+import ProdOpt from '../../components/detailPage/prodOpt/ProdOpt'
+import ProdCarousel from '../../components/detailPage/prodCarousel/ProdCarousel'
 interface ModalType {
   isOpen: boolean
   handleClose: () => void
