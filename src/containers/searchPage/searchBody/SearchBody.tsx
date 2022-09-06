@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import * as t from './SearchBody.style'
 import { useState } from 'react'
 
-import Card from '../../components/card/Card'
-import CardIcon from '../../components/listPage/cardIcon/CardIcon'
-import { DataType } from '../listPage/cardList/CardList'
-import SearchCateDrop from '../../components/searchPage/searchCateDrop/SearchCateDrop'
-import SearchNav from '../../components/searchPage/searchNav/SearchNav'
-import CardBadge from '../../components/listPage/cardBadge/CardBadge'
+import Card from '../../../components/card/Card'
+import CardIcon from '../../../components/listPage/cardIcon/CardIcon'
+import SearchCateDrop from '../../../components/searchPage/searchCateDrop/SearchCateDrop'
+import SearchNav from '../../../components/searchPage/searchNav/SearchNav'
+import CardBadge from '../../../components/listPage/cardBadge/CardBadge'
+import { DataType } from '../../listPage/cardList/CardList'
 
 const SearchBody = () => {
   const [dummy, setDummy] = useState<DataType[]>([
@@ -49,14 +49,14 @@ const SearchBody = () => {
   ])
   return (
     <>
-      <CardArea>
+      <t.CardArea>
         <SearchNav />
         <SearchCateDrop />
-        <CardWrap>
+        <t.CardWrap>
           {dummy.map((v, i) => {
             return (
               <>
-                <CardCp>
+                <t.CardCp>
                   <Card
                     key={i}
                     p_Thumbnail={v.p_Thumbnail}
@@ -70,46 +70,14 @@ const SearchBody = () => {
                   <div>
                     <CardIcon p_Review={v.p_Review} p_Like={v.p_Like} />
                   </div>
-                </CardCp>
+                </t.CardCp>
               </>
             )
           })}
-        </CardWrap>
-      </CardArea>
+        </t.CardWrap>
+      </t.CardArea>
     </>
   )
 }
 
 export default SearchBody
-
-const CardArea = styled.div`
-  max-width: 1220px;
-  height: auto;
-  padding: 0 12px 0 12px;
-  margin: 0.1rem auto;
-  & h3 {
-    font-size: ${({ theme }) => theme.fs24};
-    text-transform: capitalize;
-    margin-bottom: 1rem;
-  }
-`
-const CardWrap = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(21%, auto));
-  margin-left: 6px;
-  gap: 0 0.1px;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  @media (max-width: 790px) {
-    width: 100%;
-    margin: 30px auto;
-    grid-template-columns: repeat(2, 50%);
-  }
-`
-const CardCp = styled.div`
-  width: 100%;
-  margin: 0 -6px 10px -6px;
-  box-sizing: border-box;
-  font-size: inherit;
-`
