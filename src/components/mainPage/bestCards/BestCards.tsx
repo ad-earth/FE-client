@@ -8,7 +8,7 @@ import { getMain } from "../../../shared/apis/api";
 
 interface ResponseType {
   a_Brand: string;
-  p_Price: number;
+  p_Cost: number;
   p_Discount: number;
   p_Name: string;
   p_No: number;
@@ -43,7 +43,7 @@ const BestCards = () => {
                 p_Thumbnail={x.p_Thumbnail[1]}
                 p_Brand={x.a_Brand}
                 p_Name={x.p_Name}
-                p_Price={x.p_Price}
+                p_Price={x.p_Cost}
                 p_Discount={x.p_Discount}
                 p_Soldout={x.p_Soldout}
                 p_Best={x.p_Best}
@@ -55,7 +55,7 @@ const BestCards = () => {
                 p_Thumbnail={x.p_Thumbnail[0]}
                 p_Brand={x.a_Brand}
                 p_Name={x.p_Name}
-                p_Price={x.p_Price}
+                p_Price={x.p_Cost}
                 p_Discount={x.p_Discount}
                 p_Soldout={x.p_Soldout}
                 p_Best={x.p_Best}
