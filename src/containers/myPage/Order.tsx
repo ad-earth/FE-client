@@ -49,4 +49,4 @@ const DataNull = styled.div`
   color: ${({ theme }) => theme.fc05};
   padding: 70px;
   box-sizing: border-box;
-  `;
+`;

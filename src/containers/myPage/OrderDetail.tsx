@@ -1,23 +1,23 @@
-import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import useMobileMediaQuery from '../../hooks/useMobileMediaQuery'
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import useMobileMediaQuery from "../../hooks/useMobileMediaQuery";
 
-import OrderNumerDetail from '../../components/myPage/order/OrderNumerDetail'
-import OrderListDetail from '../../components/myPage/order/OrderListDetail'
-import OrderUserInfo from '../../components/myPage/order/OrderUserInfo'
-import OrderAddress from '../../components/myPage/order/OrderAddress'
-import OrderAmount from '../../components/myPage/order/OrderAmount'
-import OrderPaymentMethod from '../../components/myPage/order/OrderPaymentMethod'
+import OrderNumerDetail from "../../components/myPage/order/OrderNumerDetail";
+import OrderListDetail from "../../components/myPage/order/OrderListDetail";
+import OrderUserInfo from "../../components/myPage/order/OrderUserInfo";
+import OrderAddress from "../../components/myPage/order/OrderAddress";
+import OrderAmount from "../../components/myPage/order/OrderAmount";
+import OrderPaymentMethod from "../../components/myPage/order/OrderPaymentMethod";
 
 const OrderDetail = () => {
-  const isMobile = useMobileMediaQuery()
-  const navigate = useNavigate()
+  const isMobile = useMobileMediaQuery();
+  const navigate = useNavigate();
   return (
     <Section>
       <Title>
         <span
           onClick={() => {
-            navigate(-1)
+            navigate(-1);
           }}
         ></span>
         주문 상세 내역
@@ -29,16 +29,16 @@ const OrderDetail = () => {
       <OrderAmount />
       {isMobile && <OrderPaymentMethod />}
     </Section>
-  )
-}
+  );
+};
 
-export default OrderDetail
+export default OrderDetail;
 
 const Section = styled.div`
   @media (max-width: 990px) {
     margin: 0 -15px;
   }
-`
+`;
 const Title = styled.div`
   font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
@@ -59,7 +59,7 @@ const Title = styled.div`
     overflow: hidden;
     cursor: pointer;
     :before {
-      content: '';
+      content: "";
       width: 14px;
       height: 14px;
       position: absolute;
@@ -71,4 +71,4 @@ const Title = styled.div`
       border-left: 1px solid ${({ theme }) => theme.ls13};
     }
   }
-`
+`;

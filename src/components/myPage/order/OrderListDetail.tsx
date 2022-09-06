@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { MainButton } from '../../../elements/Buttons'
-import useMobileMediaQuery from '../../../hooks/useMobileMediaQuery'
-import Product from './Product'
+import React from "react";
+import styled from "styled-components";
+import { MainButton } from "../../../elements/Buttons";
+import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
+import Product from "./Product";
 
 const OrderListDetail = () => {
   const isMobile = useMobileMediaQuery()

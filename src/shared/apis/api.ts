@@ -1,4 +1,17 @@
-import React from "react";
+import axiosInstance from "./instance";
 
-// 폴더 구성용 파일
-// 폴더 내 api 파일 작성 후 본 파일은 파기해주세요!
+//마이페이지
+export const getOrders = (page: string, maxpost: string) =>
+  axiosInstance.get(`/orders?page=${page}&maxpost=10`);
+export const getOrderDetail = (o_No: string) =>
+  axiosInstance.get(`/orders/${o_No}`);
+export const putCancel = (o_No: string) =>
+  axiosInstance.put(`/orders/cancel?o_No=${o_No}`);
+export const getCancelDetail = (page: string, maxpost: string) =>
+  axiosInstance.get(`/orders/cancel?page=${page}&maxpost=${maxpost}`);
+export const getWishList = (page: string, maxpost: string) =>
+  axiosInstance.get(`/wish-list?page=${page}&maxpost=${maxpost}`);
+export const putUserInfoChange = (u_Idx: string) =>
+  axiosInstance.put(`/users/${u_Idx}`);
+export const getUserWithdrawal = (u_Idx: string) =>
+  axiosInstance.get(`/users/${u_Idx}`);

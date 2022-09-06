@@ -1,6 +1,7 @@
-import styled from 'styled-components'
-import useMobileMediaQuery from '../../../hooks/useMobileMediaQuery'
-import { MainButton } from '../../../elements/Buttons'
+import styled from "styled-components";
+import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
+import { MainButton } from "../../../elements/Buttons";
+
 
 const CancelAmount = () => {
   const isMobile = useMobileMediaQuery()
