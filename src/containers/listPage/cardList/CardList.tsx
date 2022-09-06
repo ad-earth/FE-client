@@ -11,7 +11,7 @@ export interface DataType {
   p_Brand?: string;
   p_Name?: string;
   p_Cost?: number;
-  p_Discout?: number;
+  p_Discount?: number;
   p_Color?: string;
   p_Review?: number;
   p_Like?: number;
