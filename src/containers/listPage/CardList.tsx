@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 //pages//
 import Card from '../../components/Card'
-import CardBadge from '../../components/listPage/CardBadge'
+import CardBadge from '../../components/listPage/cardBadge/CardBadge'
 import CardIcon from '../../components/listPage/CardIcon'
 import CateDrop from '../../components/listPage/CateDrop'
 import { theme } from '../../style/theme'

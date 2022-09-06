@@ -6,7 +6,7 @@ import CardIcon from '../../components/listPage/CardIcon'
 import { DataType } from '../listPage/CardList'
 import SearchCateDrop from '../../components/searchPage/SearchCateDrop'
 import SearchNav from '../../components/searchPage/SearchNav'
-import CardBadge from '../../components/listPage/CardBadge'
+import CardBadge from '../../components/listPage/cardBadge/CardBadge'
 
 const SearchBody = () => {
   const [dummy, setDummy] = useState<DataType[]>([
