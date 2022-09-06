@@ -4,7 +4,10 @@ const DeliveryInfo = () => {
   return (
     <t.MainContainer>
       <t.Title>배송정보</t.Title>
-      <img src="https://cdn.imweb.me/upload/S202001038f7af028ec26d/28bb2a4647f30.jpg" />
+      <img
+        src="https://cdn.imweb.me/upload/S202001038f7af028ec26d/28bb2a4647f30.jpg"
+        alt="배송정보"
+      />
       <p>
         - 모든 제품의 배송은 Plastic Free 원칙으로 종이재질로 발송됩니다.
         (종이박스, 종이완충재, 종이테이프)

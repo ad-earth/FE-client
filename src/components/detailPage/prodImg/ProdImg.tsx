@@ -18,6 +18,7 @@ const ProdImg = () => {
         {img.map((item, index) => {
           return (
             <t.SubImg
+              alt="상품 이미지"
               key={index}
               src={item}
               onMouseEnter={() => {
