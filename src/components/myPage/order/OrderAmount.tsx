@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 
 const OrderAmount = () => {
   const isMobile = useMobileMediaQuery();

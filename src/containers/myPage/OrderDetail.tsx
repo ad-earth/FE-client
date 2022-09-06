@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import useMobileMediaQuery from "../../hook/useMobileMediaQuery";
+import useMobileMediaQuery from "../../hooks/useMobileMediaQuery";
 
 import OrderNumerDetail from "../../components/myPage/order/OrderNumerDetail";
 import OrderListDetail from "../../components/myPage/order/OrderListDetail";

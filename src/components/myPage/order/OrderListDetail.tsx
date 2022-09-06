@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { MainButton } from "../../../elements/Buttons";
-import useMobileMediaQuery from "../../../hook/useMobileMediaQuery";
+import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 import Product from "./Product";
 
 const OrderListDetail = () => {
