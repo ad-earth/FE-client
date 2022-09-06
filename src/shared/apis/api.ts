@@ -15,3 +15,6 @@ export const putUserInfoChange = (u_Idx: string) =>
   axiosInstance.put(`/users/${u_Idx}`);
 export const getUserWithdrawal = (u_Idx: string) =>
   axiosInstance.get(`/users/${u_Idx}`);
+
+//메인페이지
+export const getMain = () => axiosInstance.get(`/main`);
