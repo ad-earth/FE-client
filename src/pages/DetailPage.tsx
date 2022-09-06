@@ -1,6 +1,6 @@
-import History from "../components/detailPage/History";
-import ProdContents from "../containers/detailPage/ProdContents";
-import ProdInfo from "../containers/ProdInfo";
+import History from "../components/detailPage/history/History";
+import ProdContents from "../containers/detailPage/prodContents/ProdContents";
+import ProdInfo from "../containers/detailPage/prodInfo/ProdInfo";
 
 const DetailPage = () => {
   return (
