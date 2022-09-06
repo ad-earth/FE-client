@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { useState } from 'react'
 
 import Card from '../../components/Card'
-import CardIcon from '../../components/listPage/CardIcon'
+import CardIcon from '../../components/listPage/cardIcon/CardIcon'
 import { DataType } from '../listPage/CardList'
 import SearchCateDrop from '../../components/searchPage/SearchCateDrop'
 import SearchNav from '../../components/searchPage/SearchNav'
