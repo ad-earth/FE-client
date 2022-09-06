@@ -1,6 +1,6 @@
 import * as t from './Card.style'
 
-import { DataType } from '../../containers/listPage/CardList'
+import { DataType } from '../../containers/listPage/cardList/CardList'
 import { ColorIcon } from '../../elements/ColorIcons'
 import { Badge } from '../../elements/Badge'
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded'

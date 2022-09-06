@@ -1,11 +1,10 @@
 import { useState } from 'react'
-import styled from 'styled-components'
+import * as t from './CardList.style'
 //pages//
-import Card from '../../components/card/Card'
-import CardBadge from '../../components/listPage/cardBadge/CardBadge'
-import CardIcon from '../../components/listPage/cardIcon/CardIcon'
-import CateDrop from '../../components/listPage/catDrop/CateDrop'
-import { theme } from '../../style/theme'
+import Card from '../../../components/card/Card'
+import CardBadge from '../../../components/listPage/cardBadge/CardBadge'
+import CardIcon from '../../../components/listPage/cardIcon/CardIcon'
+import CateDrop from '../../../components/listPage/catDrop/CateDrop'
 
 export interface DataType {
   p_Thumbnail?: string
@@ -77,13 +76,13 @@ const ListPage = () => {
   ])
 
   return (
-    <CardArea>
+    <t.CardArea>
       <CateDrop />
-      <CardWrap>
+      <t.CardWrap>
         {data.map((val, i) => {
           return (
             <>
-              <CardCp>
+              <t.CardCp>
                 <Card
                   key={i}
                   p_Thumbnail={val.p_Thumbnail}
@@ -94,45 +93,13 @@ const ListPage = () => {
                 />
                 <CardBadge />
                 <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
-              </CardCp>
+              </t.CardCp>
             </>
           )
         })}
-      </CardWrap>
-    </CardArea>
+      </t.CardWrap>
+    </t.CardArea>
   )
 }
 
 export default ListPage
-
-const CardArea = styled.div`
-  max-width: 1220px;
-  height: auto;
-  padding: 0 12px 0 12px;
-  margin: 0.1rem auto;
-  & h3 {
-    font-size: ${theme.fs24};
-    text-transform: capitalize;
-    margin-bottom: 1rem;
-  }
-`
-const CardWrap = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(21%, auto));
-  margin-left: 0px;
-  gap: 0 0.1px;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  @media (max-width: 790px) {
-    width: 100%;
-    margin: 30px auto;
-    grid-template-columns: repeat(2, 50%);
-  }
-`
-const CardCp = styled.div`
-  width: 100%;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  font-size: inherit;
-`

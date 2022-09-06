@@ -1,4 +1,4 @@
-import { DataType } from '../../../containers/listPage/CardList'
+import { DataType } from '../../../containers/listPage/cardList/CardList'
 import { Badge } from '../../../elements/Badge'
 import * as t from './CardBaged.style'
 

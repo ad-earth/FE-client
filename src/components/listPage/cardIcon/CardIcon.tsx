@@ -5,8 +5,8 @@ import { ReactComponent as Message } from '../../../assets/icons/message-circle.
 import { ReactComponent as Cart } from '../../../assets/icons/shopping-cart.svg'
 
 import { theme } from '../../../style/theme'
-import { DataType } from '../../../containers/listPage/CardList'
-import ListModal from '../../../containers/listPage/ListModal'
+import { DataType } from '../../../containers/listPage/cardList/CardList'
+import ListModal from '../../../containers/listPage/listModa/ListModal'
 import * as t from './Cardicon.style'
 
 const CardIcon = (props: DataType) => {
