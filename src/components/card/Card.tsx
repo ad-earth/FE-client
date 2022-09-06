@@ -1,9 +1,9 @@
-import * as t from './Card.style'
+import * as t from "./Card.style";
 
-import { DataType } from '../../containers/listPage/cardList/CardList'
-import { ColorIcon } from '../../elements/ColorIcons'
-import { Badge } from '../../elements/Badge'
-import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded'
+import { DataType } from "../../containers/listPage/cardList/CardList";
+import { ColorIcon } from "../../elements/ColorIcons";
+import { Badge } from "../../elements/Badge";
+import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
 const Card = (props: DataType) => {
   // console.log(props.p_Ad);
@@ -11,12 +11,12 @@ const Card = (props: DataType) => {
   return (
     <>
       <t.CardCp>
-        {props.type === 'wish' ? (
+        {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg src={props.p_Thumbnail} />
             <span>
               <HighlightOffRoundedIcon
-                style={{ fill: '#fff', width: '25px' }}
+                style={{ fill: "#fff", width: "25px" }}
               />
             </span>
           </t.WishCard>
@@ -25,7 +25,7 @@ const Card = (props: DataType) => {
             {props.p_Ad ? (
               <t.AdCardArea>
                 <t.AdCard src={props.p_Thumbnail} />
-                <Badge type={'ad'}>AD</Badge>
+                <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
               <t.CardImg src={props.p_Thumbnail} />
@@ -42,11 +42,11 @@ const Card = (props: DataType) => {
           <t.CardTitle>
             [{props.p_Brand}] {props.p_Name}
           </t.CardTitle>
-          <t.Cardprice>1,900원</t.Cardprice>
+          <t.Cardprice>{props.p_Cost}</t.Cardprice>
         </t.Div>
       </t.CardCp>
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
