@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { theme } from '../../../style/theme'
 
 export const Div = styled.div`
   display: flex;
