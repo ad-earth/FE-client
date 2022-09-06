@@ -26,6 +26,7 @@ export const theme = {
   fs26: "26px",
   fs28: "28px",
   fs30: "30px",
+  fs40: "40px",
 
   // font-color
   fc01: "#ffffff",

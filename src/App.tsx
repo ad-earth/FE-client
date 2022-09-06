@@ -11,7 +11,7 @@ import SearchPage from "./pages/SearchPage";
 import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
-import Footer from "./containers/Footer";
+import Footer from "./containers/footer/Footer";
 
 //mypage
 import Mypage from "./pages/MyPage";

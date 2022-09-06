@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { theme } from "../../../../style/theme";
+
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import { theme } from "../../../style/theme";
 
 interface Type {
   isChecked?: boolean;
@@ -21,10 +22,14 @@ export const IdHeader = styled.div`
   color: ${theme.fc14};
 `;
 export const Close = styled(CloseRoundedIcon)({
-  color: `${theme.fc02}`,
-  position: "absolute",
-  top: 15,
-  right: 15,
+  "&.MuiSvgIcon-root": {
+    fontSize: `${theme.fs24}`,
+    color: `${theme.fc02}`,
+    position: "absolute",
+    top: 15,
+    right: 15,
+    cursor: "pointer",
+  },
 });
 export const SearchBody = styled.div`
   box-sizing: border-box;
@@ -53,16 +58,4 @@ export const CheckedBtn = styled.button<Type>`
   background-color: ${(props) =>
     props.isChecked ? `${theme.bg01}` : `${theme.bg03}`};
   color: ${(props) => (props.isChecked ? `${theme.fc15}` : `${theme.fc08}`)};
-`;
-export const InfoTxt = styled.div`
-  width: 100%;
-  color: ${theme.fc14};
-  font-size: ${theme.fs14};
-  text-align: center;
-`;
-export const InputDiv = styled.div`
-  margin: 30px 0;
-`;
-export const InputWrapper = styled.div`
-  margin: 15px 0;
 `;

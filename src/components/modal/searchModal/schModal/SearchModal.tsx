@@ -1,9 +1,8 @@
-import * as t from "./SearchModalStyle";
+import * as t from "./SearchModal.style";
 import { useState } from "react";
 
-import Modal from "../Modal";
-import IdSearch from "./IdSearch";
-import PassSearch from "./PassSearch";
+import Modal from "../../Modal";
+import { IdSearch, PassSearch } from "../schForm/SearchForm";
 
 interface ModalType {
   isOpen?: boolean;
@@ -20,11 +19,8 @@ const SearchModal = (props: ModalType) => {
         <Modal handleClose={() => props.handleClose()} isOpen={props.isOpen}>
           <t.IdContainer>
             <t.IdHeader>
-              아이디 찾기
-              <t.Close
-                sx={{ fontSize: 24, cursor: "pointer" }}
-                onClick={() => props.handleClose()}
-              />
+              {isChecked ? "아이디 찾기" : "비밀번호 찾기"}
+              <t.Close onClick={() => props.handleClose()} />
             </t.IdHeader>
             <t.SearchBody>
               <t.SearchNav>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-
 import { theme } from "../style/theme";
+
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 export const SearchBar = () => {
   return (
@@ -13,18 +13,21 @@ export const SearchBar = () => {
 };
 
 const InputDiv = styled.div`
+  width: 40%;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 240px;
-  height: 34px;
   padding: 0 20px;
-  margin: 25px 30px 10px 30px;
+  margin: 4px 20px 0 0;
   border: 1px solid ${theme.ls03};
   border-radius: 30px;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;
 const SearchInput = styled.input`
-  width: 180px;
+  width: 80%;
   padding: 0 10px 0 0;
   border: none;
   :focus {
