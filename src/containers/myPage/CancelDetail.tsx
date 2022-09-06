@@ -97,6 +97,7 @@ const ContentsBox = styled.div`
     margin-right: 0;
   }
   @media (max-width: 990px) {
+    width: 100%;
     border-bottom: 1px solid ${({ theme }) => theme.rgba02};
     flex-direction: column;
     margin: 0;
