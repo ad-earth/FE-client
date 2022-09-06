@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { theme } from "../../style/theme";
-import BestCards from "../../components/mainPage/BestCards";
+import { theme } from "../../../style/theme";
+import BestCards from "../../../components/mainPage/bestCards/BestCards";
 
 const BestProdList = () => {
   return (

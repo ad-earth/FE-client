@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { theme } from "../../style/theme";
-import NewCarousel from "../../components/mainPage/NewCarousel";
+import { theme } from "../../../style/theme";
+import NewCarousel from "../../../components/mainPage/newCarousel/NewCarousel";
 
 const NewProdList = () => {
   return (

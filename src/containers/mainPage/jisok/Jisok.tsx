@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { MainButton } from "../../elements/Buttons";
-import { theme } from "../../style/theme";
+import { MainButton } from "../../../elements/Buttons";
+import { theme } from "../../../style/theme";
 
 const Jisok = () => {
   return (

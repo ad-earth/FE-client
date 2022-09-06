@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { theme } from "../../style/theme";
-import MissionBox from "../../components/mainPage/MissionBox";
+import { theme } from "../../../style/theme";
+import MissionBox from "../../../components/mainPage/missionBox/MissionBox";
 
 const Mission = () => {
   return (

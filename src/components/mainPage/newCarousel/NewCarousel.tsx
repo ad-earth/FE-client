@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "../../style/carousel.css";
-import Card from "../Card";
+import Card from "../../Card";
 
 const NewCarousel = () => {
   // carousel option
