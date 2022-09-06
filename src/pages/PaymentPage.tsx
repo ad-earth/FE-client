@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 import PayTitle from '../components/paymentPage/payTitle/PayTitle'
-import OrderPay from '../containers/paymentPage/OrderPay'
-import OrderPList from '../containers/paymentPage/OrderPList'
+import OrderPay from '../containers/paymentPage/orderPay/OrderPay'
+import OrderPList from '../containers/paymentPage/orderPList/OrderPList'
 import { theme } from '../style/theme'
 
 const PaymentPage = () => {
