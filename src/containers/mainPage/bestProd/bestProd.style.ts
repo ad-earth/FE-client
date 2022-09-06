@@ -1,29 +1,7 @@
 import styled from "styled-components";
+import { theme } from "../../../style/theme";
 
-import { theme } from "../../style/theme";
-import NewCarousel from "../../components/mainPage/NewCarousel";
-
-const NewProdList = () => {
-  return (
-    <MainContainer>
-      <TitleWrapper>
-        <Title>
-          <span>#NEW</span>
-          <p>
-            지구샵만의 꼼꼼한 기준으로 입고된
-            <br />
-            새로운 제로웨이스트 제품을 만나보세요!
-          </p>
-        </Title>
-      </TitleWrapper>
-      <NewCarousel />
-    </MainContainer>
-  );
-};
-
-export default NewProdList;
-
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   margin: 50px auto;
   display: flex;
   justify-content: space-between;
@@ -37,7 +15,7 @@ const MainContainer = styled.div`
     flex-direction: column;
   }
 `;
-const TitleWrapper = styled.div`
+export const TitleWrapper = styled.div`
   width: 32%;
   margin-left: 2%;
   font-size: ${theme.fs16};
@@ -50,7 +28,7 @@ const TitleWrapper = styled.div`
     font-size: ${theme.fs14};
   }
 `;
-const Title = styled.div`
+export const Title = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -62,5 +40,18 @@ const Title = styled.div`
     span {
       font-size: ${theme.fs15};
     }
+  }
+`;
+export const Image = styled.div`
+  display: flex;
+  width: 100%;
+  border-radius: 500px;
+  margin-top: 30px;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  @media (max-width: 990px) {
+    width: 50%;
   }
 `;

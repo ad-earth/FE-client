@@ -1,10 +1,10 @@
-import styled from 'styled-components'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import '../../style/carousel.css'
-import Card from '../card/Card'
+import * as t from './newCarousel.style'
+import '../../../style/carousel.css'
+import Card from '../../card/Card'
 
 const NewCarousel = () => {
   // carousel option
@@ -18,7 +18,7 @@ const NewCarousel = () => {
   }
 
   return (
-    <MainContainer>
+    <t.MainContainer>
       <Slider {...setting}>
         <Card
           p_Thumbnail={
@@ -84,16 +84,8 @@ const NewCarousel = () => {
           p_Name={'키친클로스(체크)'}
         />
       </Slider>
-    </MainContainer>
+    </t.MainContainer>
   )
 }
 
 export default NewCarousel
-
-const MainContainer = styled.div`
-  width: 55%;
-  @media (max-width: 990px) {
-    width: 100%;
-    margin: 0 auto;
-  }
-`

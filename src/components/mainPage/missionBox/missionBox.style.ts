@@ -1,24 +1,7 @@
 import styled from "styled-components";
+import { theme } from "../../../style/theme";
 
-import { theme } from "../../style/theme";
-
-interface PropsType {
-  category: string;
-  amount: string;
-}
-
-const MissionBox = (props: PropsType) => {
-  return (
-    <MainContainer>
-      <Category>{props.category}</Category>
-      <Amount>{props.amount}</Amount>
-    </MainContainer>
-  );
-};
-
-export default MissionBox;
-
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   width: 22%;
   display: flex;
   flex-direction: column;
@@ -35,7 +18,7 @@ const MainContainer = styled.div`
     gap: 0px;
   }
 `;
-const Category = styled.div`
+export const Category = styled.div`
   font-size: ${theme.fs18};
   font-weight: 600;
   @media (max-width: 990px) {
@@ -43,7 +26,7 @@ const Category = styled.div`
     font-weight: 400;
   }
 `;
-const Amount = styled.div`
+export const Amount = styled.div`
   font-size: ${theme.fs30};
   font-weight: 600;
   @media (max-width: 990px) {
