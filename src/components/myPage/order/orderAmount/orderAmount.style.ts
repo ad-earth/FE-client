@@ -1,66 +1,9 @@
 import styled from "styled-components";
-import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 
-const OrderAmount = () => {
-  const isMobile = useMobileMediaQuery()
-  return (
-    <OrderAmountBox>
-      <Title>주문 금액 상세</Title>
-      <Contents>
-        <Section>
-          <Box className="topText">
-            <span>주문금액</span>
-            <span className="bigText">1000원</span>
-          </Box>
-          <ItemBox>
-            <Box>
-              {isMobile ? <span>ㄴ 상품 금액</span> : <span>상품 금액</span>}
-              <span>1000원</span>
-            </Box>
-            <Box>
-              <span>
-                {isMobile ? <span>ㄴ 배송비</span> : <span>배송비</span>}
-              </span>
-              <span>1000원</span>
-            </Box>
-          </ItemBox>
-        </Section>
-        <Section>
-          <IconBox className="left">&#00;-&#08;</IconBox>
-          <Box className="topText">
-            <span>할인금액</span>
-            <span className="bigText">0원</span>
-            <IconBox className="right"> &#61;</IconBox>
-          </Box>
-        </Section>
-        <Section>
-          <Box className="topText">
-            <span>총 주문금액</span>
-            <span className="bigText green">6000원</span>
-          </Box>
-          <ItemBox className="webItemBox">
-            <Box>
-              <span>
-                <strong>무통장입금</strong>
-                <br />
-                지구은행 0123456789
-                <br />
-                예금주 광고지구
-              </span>
-            </Box>
-          </ItemBox>
-        </Section>
-      </Contents>
-    </OrderAmountBox>
-  )
-}
-
-export default OrderAmount
-
-const OrderAmountBox = styled.div`
+export const OrderAmountBox = styled.div`
   margin-bottom: 40px;
-`
-const Title = styled.div`
+`;
+export const Title = styled.div`
   font-size: ${({ theme }) => theme.fs18};
   font-weight: bold;
   color: ${({ theme }) => theme.fc14};
@@ -68,16 +11,16 @@ const Title = styled.div`
   @media (max-width: 990px) {
     padding: 0px 15px;
   }
-`
-const Contents = styled.div`
+`;
+export const Contents = styled.div`
   border: 1px solid ${({ theme }) => theme.rgba06};
   display: flex;
   justify-content: space-between;
   @media (max-width: 990px) {
     flex-direction: column;
   }
-`
-const Box = styled.div`
+`;
+export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -88,9 +31,8 @@ const Box = styled.div`
   & strong {
     color: #212121;
   }
-`
-
-const ItemBox = styled.div`
+`;
+export const ItemBox = styled.div`
   height: 80px;
   padding: 16px 20px;
   @media (max-width: 990px) {
@@ -99,9 +41,9 @@ const ItemBox = styled.div`
       display: none;
     }
   }
-`
+`;
 
-const Section = styled.div`
+export const Section = styled.div`
   width: 100%;
   font-size: ${({ theme }) => theme.fs15};;
   position: relative;
@@ -147,8 +89,8 @@ const Section = styled.div`
   border-left: 1px solid ${({ theme }) => theme.rgba06};
   @media (max-width: 990px) {border:none;}
   }
-`
-const IconBox = styled.div`
+`;
+export const IconBox = styled.div`
   width: 20px;
   height: 20px;
   line-height: 20px;
@@ -170,4 +112,4 @@ const IconBox = styled.div`
   @media (max-width: 990px) {
     display: none;
   }
-`
+`;

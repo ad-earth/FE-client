@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-//style
-import styled from "styled-components";
-import { theme } from "../../style/theme";
+import { theme } from "../../../style/theme";
+import * as t from "./asideNav.style";
 
-import WithdrawalModal from "../modal/withdrawalModal/WithdrawalModal";
+import WithdrawalModal from "../../modal/withdrawalModal/WithdrawalModal";
 interface LinkType {
   id: number;
   name: string;
@@ -25,7 +24,7 @@ const AsideNav = () => {
         isOpen={withdrawaIsOpen}
         handleClose={() => setWithdrawaIsOpen(false)}
       />
-      <NavListBox>
+      <t.NavListBox>
         {data.map((data, i: number) => (
           <ul key={i}>
             <li>
@@ -39,24 +38,21 @@ const AsideNav = () => {
                 })}
                 end
               >
-                <Text
+                <t.Text
                   onClick={() => {
                     navClickEvent(data);
                   }}
                 >
                   {data.name}
-                </Text>
+                </t.Text>
               </NavLink>
             </li>
           </ul>
         ))}
-      </NavListBox>
+      </t.NavListBox>
     </>
   );
 };
-
-export default AsideNav;
-
 const data = [
   { id: 1, name: "주문 조회", path: "" },
   { id: 2, name: "위시 리스트", path: "wish" },
@@ -65,16 +61,4 @@ const data = [
   { id: 5, name: "회원탈퇴", path: "modal" },
 ];
 
-const NavListBox = styled.ul`
-  & li {
-    width: 100%;
-    margin-bottom: 12px;
-  }
-  & li a {
-    color: ${({ theme }) => theme.fc14};
-  }
-  @media (max-width: 990px) {
-    display: none;
-  }
-`;
-const Text = styled.span``;
+export default AsideNav;

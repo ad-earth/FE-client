@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import useMobileMediaQuery from "../../hooks/useMobileMediaQuery";
 
-import OrderNumerDetail from "../../components/myPage/order/OrderNumerDetail";
-import OrderListDetail from "../../components/myPage/order/OrderListDetail";
-import OrderUserInfo from "../../components/myPage/order/OrderUserInfo";
-import OrderAddress from "../../components/myPage/order/OrderAddress";
-import OrderAmount from "../../components/myPage/order/OrderAmount";
-import OrderPaymentMethod from "../../components/myPage/order/OrderPaymentMethod";
+import OrderNumerDetail from "../../components/myPage/order/orderNumerDetail/OrderNumerDetail";
+import OrderListDetail from "../../components/myPage/order/orderListDetail/OrderListDetail";
+import OrderUserInfo from "../../components/myPage/order/orderUserInfo/OrderUserInfo";
+import OrderAddress from "../../components/myPage/order/orderAddress/OrderAddress";
+import OrderAmount from "../../components/myPage/order/orderAmount/OrderAmount";
+import OrderPaymentMethod from "../../components/myPage/order/orderPaymentMethod/OrderPaymentMethod";
 
 const OrderDetail = () => {
   const isMobile = useMobileMediaQuery();

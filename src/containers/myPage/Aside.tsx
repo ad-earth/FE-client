@@ -1,4 +1,4 @@
-import AsideNav from "../../components/myPage/AsideNav";
+import AsideNav from "../../components/myPage/asideNav/AsideNav";
 import styled from "styled-components";
 
 const Aside = () => {

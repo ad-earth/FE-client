@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 // components
-import OderList from "../../components/myPage/order/OderList";
-import OrderNumber from "../../components/myPage/order/OrderNumber";
+import OderList from "../../components/myPage/order/orderList/OrderList";
+import OrderNumber from "../../components/myPage/order/orderNumber/OrderNumber";
 
 const Cancel = () => {
   const [state, setState] = useState(null);

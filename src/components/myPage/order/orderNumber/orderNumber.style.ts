@@ -1,33 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-interface MobileType {
-  isMobile?: boolean;
-}
-const OrderNumber = (props: MobileType) => {
-  return (
-    <OrderNumberBox>
-      <OrderNumberInfo>
-        <Label>주문번호</Label>
-        <Link to={`${"1?detail=true"}`} className="link">
-          {props.isMobile ? (
-            <span>주문상세보기</span>
-          ) : (
-            <span>20228344848</span>
-          )}
-          <ArrowIcon />
-        </Link>
-      </OrderNumberInfo>
-      <OrderDate>
-        <Label> 주문일자 </Label>
-        <span> 2022-08-29</span>
-      </OrderDate>
-    </OrderNumberBox>
-  );
-};
 
-export default OrderNumber;
-const OrderNumberBox = styled.div`
+export const OrderNumberBox = styled.div`
   line-height: 15px;
   font-size: ${({ theme }) => theme.fs15};
   display: flex;
@@ -39,7 +12,7 @@ const OrderNumberBox = styled.div`
   }
 `;
 
-const OrderNumberInfo = styled.div`
+export const OrderNumberInfo = styled.div`
   color: ${({ theme }) => theme.fc12};
   display: flex;
   & span {
@@ -53,12 +26,12 @@ const OrderNumberInfo = styled.div`
     display: flex;
   }
 `;
-const Label = styled.p`
+export const Label = styled.p`
   @media (max-width: 990px) {
     display: none;
   }
 `;
-const ArrowIcon = styled.button`
+export const ArrowIcon = styled.button`
   width: 15px;
   height: 15px;
   border: 1px solid ${({ theme }) => theme.ls15};
@@ -79,7 +52,7 @@ const ArrowIcon = styled.button`
     transform: translateX(-50%) rotate(130deg);
   }
 `;
-const OrderDate = styled.div`
+export const OrderDate = styled.div`
   color: ${({ theme }) => theme.fc08};
   display: flex;
   & span {
