@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import WishCard from "../../components/myPage/WishCard";
+import WishCard from "../../components/myPage/wishCard/WishCard";
 import styled from "styled-components";
 
 const Wish = () => {

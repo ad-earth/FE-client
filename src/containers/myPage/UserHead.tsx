@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import UserHeadInfo from "../../components/myPage/UserHeadInfo";
+import UserHeadInfo from "../../components/myPage/userHeadInfo/UserHeadInfo";
 
 const UserHead = () => {
   return (
