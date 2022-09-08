@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { theme } from "../../../style/theme";
 
 export const NavListBox = styled.ul`
   & li {
@@ -13,4 +12,3 @@ export const NavListBox = styled.ul`
     display: none;
   }
 `;
-export const Text = styled.span``;
