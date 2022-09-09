@@ -3,10 +3,7 @@ import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownR
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import { theme } from "../../../style/theme";
-
-interface PropsType {
-  drop: boolean;
-}
+import { PropsType } from "./prodOpt.type";
 
 export const MainContainer = styled.div`
   width: 100%;
