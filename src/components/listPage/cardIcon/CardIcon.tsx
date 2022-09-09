@@ -1,3 +1,4 @@
+import * as t from './cardicon.style'
 import { useState } from 'react'
 
 import { ReactComponent as Heart } from '../../../assets/icons/heart.svg'
@@ -5,11 +6,10 @@ import { ReactComponent as Message } from '../../../assets/icons/message-circle.
 import { ReactComponent as Cart } from '../../../assets/icons/shopping-cart.svg'
 
 import { theme } from '../../../style/theme'
-import { DataType } from '../../../containers/listPage/cardList/CardList'
+import { CardIconType } from './cardIcon.type'
 import ListModal from '../../../containers/listPage/listModa/ListModal'
-import * as t from './Cardicon.style'
 
-const CardIcon = (props: DataType) => {
+const CardIcon = (props: CardIconType) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false)
   return (
     <>
