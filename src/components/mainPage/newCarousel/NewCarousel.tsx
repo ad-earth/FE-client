@@ -12,7 +12,6 @@ import { useNewCarousel } from "./useNewCarousel";
 const NewCarousel = () => {
   const navigate = useNavigate();
   const newProducts = useNewCarousel();
-  console.log(newProducts);
   const [changePic, setChangePic] = useState(10);
 
   // carousel option
