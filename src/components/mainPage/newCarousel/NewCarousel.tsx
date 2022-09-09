@@ -7,11 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import * as t from "./newCarousel.style";
 import "../../../style/carousel.css";
 import Card from "../../card/Card";
-import { useNewCarousel } from "./ useNewCarousel";
+import { useNewCarousel } from "./useNewCarousel";
 
 const NewCarousel = () => {
   const navigate = useNavigate();
   const newProducts = useNewCarousel();
+  console.log(newProducts);
   const [changePic, setChangePic] = useState(10);
 
   // carousel option
