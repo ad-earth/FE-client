@@ -27,6 +27,7 @@ import CancelDetail from "./containers/myPage/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
+import Loading from "./elements/Loading";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ function App() {
         <GlobalStyle />
         <div className="App">
           <Header />
+          <Loading />
           <Routes>
             <Route path="/login" element={<LogInPage />}></Route>
             <Route path="/signup" element={<SignUpPage />}></Route>
