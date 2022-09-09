@@ -32,7 +32,7 @@ const NewCarousel = () => {
           return (
             <div
               key={x.p_No}
-              onClick={() => navigate(`/detail/${x.p_No}`)}
+              onClick={() => navigate(`/detail/main/${x.p_No}`)}
               onMouseEnter={() => setChangePic(idx)}
               onMouseLeave={() => setChangePic(10)}
             >
