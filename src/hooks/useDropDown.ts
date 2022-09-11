@@ -11,7 +11,7 @@ const useDropDown = () => {
   useEffect(() => {
     function handleDrop(event: React.BaseSyntheticEvent | MouseEvent) {
       if (dropRef.current && !dropRef.current.contains(event.target)) {
-        setDropIsOpen(!dropIsOpen);
+        setDropIsOpen(dropIsOpen);
       }
     }
 
