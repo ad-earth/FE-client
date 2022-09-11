@@ -24,7 +24,9 @@ export const LeftDiv = styled.div`
   align-items: center;
   box-sizing: border-box;
   margin: 22px 0;
+  position: relative;
   img {
+    top: 100px;
     width: 25%;
     object-fit: contain;
     margin-left: 10px;
@@ -41,6 +43,11 @@ export const LeftDiv = styled.div`
   @media (max-width: 798px) {
     img {
       width: 100px;
+    }
+  }
+  @media (max-width: 990px) {
+    p {
+      display: none;
     }
   }
 `;
