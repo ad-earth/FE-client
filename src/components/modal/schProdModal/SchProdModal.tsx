@@ -1,5 +1,4 @@
 import * as t from "./SchProdModal.style";
-import { theme } from "../../../style/theme";
 import Modal from "../Modal";
 interface ModalType {
   isOpen?: boolean;
