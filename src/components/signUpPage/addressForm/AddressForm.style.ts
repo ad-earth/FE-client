@@ -6,6 +6,6 @@ export const AdrDiv = styled.div`
   flex-direction: row;
 `;
 export const BtnDiv = styled.div`
-  width: 10%;
+  width: 20%;
   margin-left: 10px;
 `;
