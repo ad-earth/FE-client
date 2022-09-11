@@ -7,7 +7,7 @@ const AddressForm = () => {
   return (
     <>
       <t.AdrDiv>
-        <Input holderName="우편번호" width="20%" />
+        <Input holderName="우편번호" width="30%" />
         <t.BtnDiv>
           <MainButton
             fontSize={theme.fs13}
