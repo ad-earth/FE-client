@@ -6,7 +6,8 @@ import { MainButton } from "../../elements/Buttons";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
 const LoginForm = () => {
-  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
+  const [searchIsOpen, setSearchIsOpen] = useState(false);
+
   return (
     <>
       <SearchModal
