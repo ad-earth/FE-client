@@ -66,7 +66,4 @@ const MenuContainer = styled.div<PropsType>`
     margin: 0;
     text-decoration: none;
   }
-  @media (max-width: 990px) {
-    display: none;
-  }
 `;
