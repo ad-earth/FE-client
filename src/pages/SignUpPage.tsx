@@ -1,18 +1,26 @@
-
 import styled from "styled-components";
 import { theme } from "../style/theme";
 import { MainButton } from "../elements/Buttons";
 import Profile from "../components/signUpPage/profile/Profile";
 import SignUpForm from "../components/signUpPage/signUpForm/SignUpForm";
 import AddressForm from "../components/signUpPage/addressForm/AddressForm";
-
+import { useState } from "react";
 
 const SignUpPage = () => {
+  const [profileImg, setProfileImg] = useState("");
+  const uploadProfileImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files === null || e.target.files?.length === 0) return;
+    const file = e.target.files[0];
+    const prevImg = URL.createObjectURL(file);
+    setProfileImg(prevImg);
+  };
+
   return (
     <SignUpContainer>
-      <Profile />
+      <Profile
+      // uploadProfileImg={() => uploadProfileImg}
+      />
       <FormWrapper>
-
         <SignUpForm />
         <AddressForm />
         <SubmitDiv>
@@ -22,9 +30,9 @@ const SignUpPage = () => {
         </SubmitDiv>
       </FormWrapper>
     </SignUpContainer>
-  )
-}
-export default SignUpPage
+  );
+};
+export default SignUpPage;
 
 const SignUpContainer = styled.div`
   width: 1200px;
@@ -48,4 +56,4 @@ const FormWrapper = styled.div`
 const SubmitDiv = styled.div`
   width: 100%;
   margin-top: 30px;
-`
+`;
