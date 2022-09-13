@@ -1,14 +1,14 @@
 import { useQuery } from "react-query";
 
 import { getMain } from "../../../shared/apis/api";
-import { NewType } from "./newCarousel.type";
+import { CardType } from "../../../shared/types/types";
 
-async function getNewCarousel(): Promise<NewType[]> {
+async function getNewCarousel(): Promise<CardType[]> {
   const { data } = await getMain();
-  return data.Best;
+  return data.New;
 }
 
-export function useNewCarousel(): NewType[] {
+export function useNewCarousel(): CardType[] {
   const fallback: [] = [];
   const { data = fallback } = useQuery("new", getNewCarousel);
   return data;

@@ -16,7 +16,7 @@ const BestCards = () => {
         return (
           <t.CardWrapper
             key={x.p_No}
-            onClick={() => navigate(`/detail/${x.p_No}`)}
+            onClick={() => navigate(`/detail/main/${x.p_No}`)}
             onMouseEnter={() => setChangePic(idx)}
             onMouseLeave={() => setChangePic(7)}
           >
