@@ -1,14 +1,14 @@
 import { useQuery } from 'react-query'
 
 import { getList } from '../../../shared/apis/api'
-import { CardProducts } from '../../../shared/types/types'
+import { CardType } from '../../../shared/types/types'
 
-async function getCards(): Promise<CardProducts[]> {
+async function getCards(): Promise< CardType[]> {
   const { data } = await getList()
   return data
 }
 
-export function useCardList(): CardProducts[] {
+export function useCardList(): CardType[] {
   const fallback: [] = []
   const { data = fallback } = useQuery('all', getCards)
   return data
