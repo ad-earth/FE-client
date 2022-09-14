@@ -1,5 +1,5 @@
 import * as t from "./cancelListDetail.style";
-import Product from "../../order/Product";
+import Product from "../../order/product/Product";
 
 const CancelListDetail = () => {
   return (
