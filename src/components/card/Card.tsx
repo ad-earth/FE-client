@@ -55,7 +55,7 @@ const Card = (props: CardType) => {
           <t.CardTitle>
             [{props.a_Brand}] {props.p_Name}
           </t.CardTitle>
-          <t.Cardprice>{props.p_Cost}</t.Cardprice>
+          <t.Cardprice>{props.p_Cost.toLocaleString("ko-KR")}원</t.Cardprice>
         </t.Div>
       </t.CardCp>
     </>
