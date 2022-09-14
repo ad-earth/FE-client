@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { theme } from "../../../../style/theme";
 import { useNavigate } from "react-router-dom";
 import ReviewModal from "../../../modal/reviewModal/ReviewModal";
-import Product from "../Product";
+import Product from "../product/Product";
 import { MainButton } from "../../../../elements/Buttons";
 
 import * as t from "./orderList.style";
