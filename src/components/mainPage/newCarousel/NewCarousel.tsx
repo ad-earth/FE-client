@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,29 +7,12 @@ import "slick-carousel/slick/slick-theme.css";
 import * as t from "./newCarousel.style";
 import "../../../style/carousel.css";
 import Card from "../../card/Card";
-import { getMain } from "../../../shared/apis/api";
-
-interface ResponseType {
-  a_Brand: string;
-  p_Cost: number;
-  p_Discount: number;
-  p_Name: string;
-  p_No: number;
-  p_Best: boolean;
-  p_New: boolean;
-  p_Sale: boolean;
-  p_Soldout: boolean;
-  p_Thumbnail: string[];
-}
+import { useNewCarousel } from "./useNewCarousel";
 
 const NewCarousel = () => {
   const navigate = useNavigate();
-  const [newProducts, setNewProducts] = useState<ResponseType[]>([]);
+  const newProducts = useNewCarousel();
   const [changePic, setChangePic] = useState(10);
-
-  useEffect(() => {
-    getMain().then((response) => setNewProducts(response.data.New));
-  }, []);
 
   // carousel option
   const setting = {
@@ -48,7 +31,7 @@ const NewCarousel = () => {
           return (
             <div
               key={x.p_No}
-              onClick={() => navigate(`/detail/${x.p_No}`)}
+              onClick={() => navigate(`/detail/main/${x.p_No}`)}
               onMouseEnter={() => setChangePic(idx)}
               onMouseLeave={() => setChangePic(10)}
             >

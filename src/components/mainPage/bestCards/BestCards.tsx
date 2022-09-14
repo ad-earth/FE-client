@@ -1,32 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 import * as t from "./bestCards.style";
 import Card from "../../card/Card";
-import { getMain } from "../../../shared/apis/api";
-
-interface ResponseType {
-  a_Brand: string;
-  p_Cost: number;
-  p_Discount: number;
-  p_Name: string;
-  p_No: number;
-  p_Best: boolean;
-  p_New: boolean;
-  p_Sale: boolean;
-  p_Soldout: boolean;
-  p_Thumbnail: string[];
-}
+import { useBestCards } from "./useBestCards";
 
 const BestCards = () => {
   const navigate = useNavigate();
-  const [bestProducts, setBestProducts] = useState<ResponseType[]>([]);
+  const bestProducts = useBestCards();
   const [changePic, setChangePic] = useState(7);
-
-  useEffect(() => {
-    getMain().then((response) => setBestProducts(response.data.Best));
-  }, []);
 
   return (
     <t.MainContainer>
@@ -34,7 +16,7 @@ const BestCards = () => {
         return (
           <t.CardWrapper
             key={x.p_No}
-            onClick={() => navigate(`/detail/${x.p_No}`)}
+            onClick={() => navigate(`/detail/main/${x.p_No}`)}
             onMouseEnter={() => setChangePic(idx)}
             onMouseLeave={() => setChangePic(7)}
           >
