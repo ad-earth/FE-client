@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import * as t from "./newCarousel.style";
 import "../../../style/carousel.css";
 import Card from "../../card/Card";
-import { useNewCarousel } from "./ useNewCarousel";
+import { useNewCarousel } from "./useNewCarousel";
 
 const NewCarousel = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const NewCarousel = () => {
           return (
             <div
               key={x.p_No}
-              onClick={() => navigate(`/detail/${x.p_No}`)}
+              onClick={() => navigate(`/detail/main/${x.p_No}`)}
               onMouseEnter={() => setChangePic(idx)}
               onMouseLeave={() => setChangePic(10)}
             >
