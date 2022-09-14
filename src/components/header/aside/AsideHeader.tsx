@@ -50,8 +50,8 @@ const AsideHeader = (props: AsideType) => {
       {props.isOpen && (
         <>
           <t.AsideContainer>
-            <t.ContentBox ref={dropRef}>
-              <t.ContentTop>
+            <t.ContentBox>
+              <t.ContentTop ref={dropRef}>
                 <div
                   onClick={() => {
                     setInfoIsOpen(true);

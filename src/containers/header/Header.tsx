@@ -48,11 +48,13 @@ const Header = () => {
         isOpen={infoIsOpen}
         handleClose={() => setInfoIsOpen(false)}
       />
-      <t.HeaderContainer ref={dropRef}>
+      <t.HeaderContainer>
         <t.HeaderWrapper>
           <t.LeftDiv>
             <img src={headLogo} />
-            <p onClick={handleRemove}>장보기</p>
+            <p onClick={handleRemove} ref={dropRef}>
+              장보기
+            </p>
             <MenuDrop isDropped={isDropped} data={data} />
           </t.LeftDiv>
           <t.RightDiv>

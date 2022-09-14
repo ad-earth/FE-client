@@ -1,19 +1,20 @@
 import styled from "styled-components";
 import { theme } from "../style/theme";
+import { useState } from "react";
+import axios from "axios";
 import { MainButton } from "../elements/Buttons";
 import Profile from "../components/signUpPage/profile/Profile";
 import SignUpForm from "../components/signUpPage/signUpForm/SignUpForm";
 import AddressForm from "../components/signUpPage/addressForm/AddressForm";
-import { useState } from "react";
 
 const SignUpPage = () => {
-  const [profileImg, setProfileImg] = useState("");
-  const uploadProfileImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files === null || e.target.files?.length === 0) return;
-    const file = e.target.files[0];
-    const prevImg = URL.createObjectURL(file);
-    setProfileImg(prevImg);
-  };
+  // const [profileImg, setProfileImg] = useState("");
+  // const uploadProfileImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files === null || e.target.files?.length === 0) return;
+  //   const file = e.target.files[0];
+  //   const prevImg = URL.createObjectURL(file);
+  //   setProfileImg(prevImg);
+  // };
 
   return (
     <SignUpContainer>

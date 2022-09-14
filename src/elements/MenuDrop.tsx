@@ -17,7 +17,6 @@ interface PropsType {
 }
 
 const MenuDrop = (props: PropsType) => {
-  console.log(props.isDropped);
   return (
     <MenuContainer {...props}>
       <ul>

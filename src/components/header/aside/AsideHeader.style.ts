@@ -23,7 +23,7 @@ export const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 10000;
-  overflow: scroll;
+  overflow: hidden;
   box-sizing: border-box;
   background-color: ${theme.bg01};
 `;
