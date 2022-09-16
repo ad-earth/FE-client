@@ -1,19 +1,24 @@
-import * as t from "./Card.style";
+import * as t from "./card.style";
 
-import { DataType } from "../../containers/listPage/cardList/CardList";
 import { ColorIcon } from "../../elements/ColorIcons";
 import { Badge } from "../../elements/Badge";
+import { CardType } from "./card.type";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import { useState } from "react";
 
-const Card = (props: DataType) => {
-  // console.log(props.p_Ad);
+const Card = (props: CardType) => {
+  const [imgHover, setImgHover] = useState<Boolean>(false);
 
   return (
     <>
       <t.CardCp>
         {props.type === "wish" ? (
           <t.WishCard>
-            <t.CardImg src={props.p_Thumbnail} />
+            <t.CardImg
+              onMouseEnter={() => setImgHover(true)}
+              onMouseLeave={() => setImgHover(false)}
+              src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+            />
             <span>
               <HighlightOffRoundedIcon
                 style={{ fill: "#fff", width: "25px" }}
@@ -22,27 +27,35 @@ const Card = (props: DataType) => {
           </t.WishCard>
         ) : (
           <>
-            {props.p_Ad ? (
+            {props.type === "ad" ? (
               <t.AdCardArea>
-                <t.AdCard src={props.p_Thumbnail} />
+                <t.AdCard
+                  onMouseEnter={() => setImgHover(true)}
+                  onMouseLeave={() => setImgHover(false)}
+                  src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+                />
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
-              <t.CardImg src={props.p_Thumbnail} />
+              <t.CardImg
+                onMouseEnter={() => setImgHover(true)}
+                onMouseLeave={() => setImgHover(false)}
+                src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+              />
             )}
           </>
         )}
 
         <t.Div>
-          {props.p_Color ? (
+          {props.p_Option ? (
             <t.Div>
-              <ColorIcon colorCode={props.p_Color} />
+              <ColorIcon colorCode={props.p_Option} />
             </t.Div>
           ) : null}
           <t.CardTitle>
-            [{props.p_Brand}] {props.p_Name}
+            [{props.a_Brand}] {props.p_Name}
           </t.CardTitle>
-          <t.Cardprice>{props.p_Price}</t.Cardprice>
+          <t.Cardprice>{props.p_Cost.toLocaleString("ko-KR")}원</t.Cardprice>
         </t.Div>
       </t.CardCp>
     </>
