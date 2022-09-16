@@ -1,70 +1,27 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI-CD
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  pull_request: 
-    branches: [ dev ]
-    
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-
-jobs:
-
+name: CI-CD             
+on:                                  
+  pull_request:
+    branches:
+      - dev                        
+jobs:                                
   build:
-
     runs-on: ubuntu-latest
-    strategy:
-            matrix:
-                node-version: [14.x, 16.x, 18.x]
-
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source code.   
+        uses: actions/checkout@v2
+      
+      - name: Check Node v            
+        run: node -v
 
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Install Dependencies    
+        run: yarn install --frozen-lockfile
 
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          
-      - name: Generate Environment Variables File for Production
-        run: |
-          echo "REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL" >> .env.production
-          echo "REACT_APP_BUCKET_NAME=$REACT_APP_BUCKET_NAME" >> .env.production
-          echo "REACT_APP_REGION=$REACT_APP_REGION" >> .env.production
-          echo "REACT_APP_ACCESS=$REACT_APP_ACCESS" >> .env.production
-          echo "REACT_APP_SECRET=$REACT_APP_SECRET" >> .env.production
-        env:
-          REACT_APP_SERVER_URL: '${{ secrets.REACT_APP_SERVER_URL }}'
-          REACT_APP_BUCKET_NAME: '${{ secrets.REACT_APP_BUCKET_NAME }}'
-          REACT_APP_REGION: '${{ secrets.REACT_APP_REGION }}'
-          REACT_APP_ACCESS: '${{ secrets.REACT_APP_ACCESS }}'
-          REACT_APP_SECRET: '${{ secrets.REACT_APP_SECRET }}'  
-          
-      - name: Install Dependencies
-        run: yarn   
-        
-      - name: Build
+      - name: Build                   
         run: yarn build
-        
-      - name: Deploy
+      
+      - name: Deploy                  
         env:
-          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          aws s3 cp \
-          --recursive \
-          --region ap-northeast-2 \
-          build '${{ secrets.S3_BUCKET_NAME }}'
-          
-      - name: Invalidate Cloudfront Cache
-        env:
-          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
-          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
-        run: aws cloudfront create-invalidation --distribution-id '${{ secrets.DISTRIBUTION_ID }}' --paths "/*"
+          aws s3 sync ./build s3://${{secrets.S3_BUCKET_NAME}}/ --acl bucket-owner-full-control
