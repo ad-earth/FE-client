@@ -18,3 +18,9 @@ export const getUserWithdrawal = (u_Idx: string) =>
 
 //메인페이지
 export const getMain = () => axiosInstance.get(`/main`);
+
+//장보기페이지
+export const getList = () => axiosInstance.get(`/list`);
+
+//검색페이지
+export const getSearch = () => axiosInstance.get(`/search`);
