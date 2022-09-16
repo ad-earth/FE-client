@@ -1,0 +1,71 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-CD
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  pull_request: 
+    branches: [ test ]
+    types: [ auto_merge_enabled ]
+    
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+            matrix:
+                node-version: [14.x, 16.x, 18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+          
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL" >> .env.production
+          echo "REACT_APP_BUCKET_NAME=$REACT_APP_BUCKET_NAME" >> .env.production
+          echo "REACT_APP_REGION=$REACT_APP_REGION" >> .env.production
+          echo "REACT_APP_ACCESS=$REACT_APP_ACCESS" >> .env.production
+          echo "REACT_APP_SECRET=$REACT_APP_SECRET" >> .env.production
+        env:
+          REACT_APP_SERVER_URL: '${{ secrets.REACT_APP_SERVER_URL }}'
+          REACT_APP_BUCKET_NAME: '${{ secrets.REACT_APP_BUCKET_NAME }}'
+          REACT_APP_REGION: '${{ secrets.REACT_APP_REGION }}'
+          REACT_APP_ACCESS: '${{ secrets.REACT_APP_ACCESS }}'
+          REACT_APP_SECRET: '${{ secrets.REACT_APP_SECRET }}'  
+          
+      - name: Install Dependencies
+        run: yarn   
+        
+      - name: Build
+        run: yarn build
+        
+      - name: Deploy
+        env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+        run: |
+          aws s3 cp \
+          --recursive \
+          --region ap-northeast-2 \
+          build '${{ secrets.S3_BUCKET_NAME }}'
+          
+      - name: Invalidate Cloudfront Cache
+        env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
+        run: aws cloudfront create-invalidation --distribution-id '${{ secrets.DISTRIBUTION_ID }}' --paths "/*"
