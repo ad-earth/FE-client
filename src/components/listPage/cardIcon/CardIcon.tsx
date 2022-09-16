@@ -1,4 +1,4 @@
-import * as t from "./cardicon.style";
+import * as t from "./cardIcon.style";
 import { useState } from "react";
 
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
