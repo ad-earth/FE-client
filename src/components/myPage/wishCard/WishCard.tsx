@@ -13,14 +13,6 @@ interface DataType {
 const WishCard = (props: DataType) => {
   return (
     <t.WishCardBox>
-      <Card
-        p_Thumbnail={
-          "https://cdn.imweb.me/thumbnail/20220428/8a3716a1e9c28.jpg"
-        }
-        p_Brand={"지구샵"}
-        p_Name={"키친클로스(체크)"}
-        type={"wish"}
-      />
       <t.Icons>
         <t.IconSpan>
           <Message
