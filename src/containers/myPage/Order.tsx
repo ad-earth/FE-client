@@ -5,10 +5,14 @@ import OderList from "../../components/myPage/order/orderList/OrderList";
 import OrderNumber from "../../components/myPage/order/orderNumber/OrderNumber";
 
 import useMobileMediaQuery from "../../hooks/useMobileMediaQuery";
+import useOder from "./useOrder";
 
 const Order = () => {
   const [state, setState] = useState(null);
   const isMobile = useMobileMediaQuery();
+  const { data } = useOder("1");
+  console.log(data);
+
   return (
     <Section>
       <OrderListBox>
