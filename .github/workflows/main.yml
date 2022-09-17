@@ -1,0 +1,27 @@
+name: CI-CD             
+on:                                  
+  pull_request:
+    branches:
+      - test                        
+jobs:                                
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.   
+        uses: actions/checkout@v2
+      
+      - name: Check Node v            
+        run: node -v
+
+      - name: Install Dependencies    
+        run: yarn install --frozen-lockfile
+
+      - name: Build                   
+        run: CI='' yarn build
+      
+      - name: Deploy                  
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          aws s3 cp --recursive --region ap-northeast-2 build s3://${{secrets.S3_BUCKET_NAME}}

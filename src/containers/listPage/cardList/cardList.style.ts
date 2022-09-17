@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { theme } from '../../../style/theme'
+import styled from "styled-components";
+import { theme } from "../../../style/theme";
 
 export const CardArea = styled.div`
   max-width: 1220px;
@@ -11,7 +11,7 @@ export const CardArea = styled.div`
     text-transform: capitalize;
     margin-bottom: 1rem;
   }
-`
+`;
 export const CardWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(21%, auto));
@@ -25,10 +25,10 @@ export const CardWrap = styled.div`
     margin: 30px auto;
     grid-template-columns: repeat(2, 50%);
   }
-`
+`;
 export const CardCp = styled.div`
   width: 100%;
   margin-bottom: 10px;
   box-sizing: border-box;
   font-size: inherit;
-`
+`;
