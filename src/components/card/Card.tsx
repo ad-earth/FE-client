@@ -2,11 +2,11 @@ import * as t from "./card.style";
 
 import { ColorIcon } from "../../elements/ColorIcons";
 import { Badge } from "../../elements/Badge";
-import { CardType } from "./card.type";
+import { CardCompoType } from "./card.type";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 import { useState } from "react";
 
-const Card = (props: CardType) => {
+const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
 
   return (

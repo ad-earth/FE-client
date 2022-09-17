@@ -1,5 +1,6 @@
 import * as t from "./cardicon.style";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import { ReactComponent as Message } from "../../../assets/icons/message-circle.svg";
@@ -11,6 +12,7 @@ import ListModal from "../../../containers/listPage/listModa/ListModal";
 
 const CardIcon = (props: CardIconType) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const navigate = useNavigate();
   return (
     <>
       <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
@@ -18,6 +20,7 @@ const CardIcon = (props: CardIconType) => {
         <t.IconDiv>
           <t.IconSpan>
             <Message
+              onClick={() => navigate(`/detail/main/${props.p_No}`)}
               style={{
                 color: `${theme.bg09}`,
               }}
