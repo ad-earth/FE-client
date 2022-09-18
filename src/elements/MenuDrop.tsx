@@ -44,6 +44,7 @@ const MenuContainer = styled.div<PropsType>`
   border: 0px solid ${theme.ls03};
   opacity: ${(props) => (props.isDropped ? "1" : "0")};
   visibility: ${(props) => (props.isDropped ? "visible" : "hidden")};
+  z-index: 9999;
   transform: translateY(-20px);
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
   ul {
