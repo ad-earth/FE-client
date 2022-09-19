@@ -21,6 +21,8 @@
     "axios": "^0.27.2",
     "mobx": "^6.6.1",
     "react": "^18.2.0",
+    "react-aws-s3-typescript": "^1.1.4",
+    "react-daum-postcode": "^3.1.1",
     "react-dom": "^18.2.0",
     "react-query": "^3",
     "react-responsive": "^9.0.0-beta.10",
