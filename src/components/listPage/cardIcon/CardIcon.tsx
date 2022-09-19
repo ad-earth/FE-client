@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import * as t from "./cardIcon.style";
+import { useState } from "react";
 
-import { ReactComponent as Heart } from '../../../assets/icons/heart.svg'
-import { ReactComponent as Message } from '../../../assets/icons/message-circle.svg'
-import { ReactComponent as Cart } from '../../../assets/icons/shopping-cart.svg'
+import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+import { ReactComponent as Message } from "../../../assets/icons/message-circle.svg";
+import { ReactComponent as Cart } from "../../../assets/icons/shopping-cart.svg";
 
-import { theme } from '../../../style/theme'
-import { DataType } from '../../../containers/listPage/cardList/CardList'
-import ListModal from '../../../containers/listPage/listModa/ListModal'
-import * as t from './Cardicon.style'
+import { theme } from "../../../style/theme";
+import { CardIconType } from "./cardIcon.type";
+import ListModal from "../../../containers/listPage/listModa/ListModal";
 
-const CardIcon = (props: DataType) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false)
+const CardIcon = (props: CardIconType) => {
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   return (
     <>
       <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
@@ -28,24 +28,24 @@ const CardIcon = (props: DataType) => {
             <Heart
               style={{
                 color: `${theme.bg09}`,
-                width: '20px',
+                width: "20px",
               }}
             />
             <t.Count>{props.p_Like}</t.Count>
           </t.IconSpan>
           <Cart
             style={{
-              cursor: 'pointer',
+              cursor: "pointer",
               color: `${theme.bg09}`,
             }}
             onClick={() => {
-              setInfoIsOpen(true)
+              setInfoIsOpen(true);
             }}
           />
         </t.IconDiv>
       </t.CardCp>
     </>
-  )
-}
+  );
+};
 
-export default CardIcon
+export default CardIcon;
