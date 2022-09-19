@@ -19,7 +19,7 @@ import Footer from "./containers/footer/Footer";
 
 //mypage
 import Mypage from "./pages/MyPage";
-import Order from "./containers/myPage/Order";
+import Order from "./containers/myPage/order/Order";
 import Wish from "./containers/myPage/Wish";
 import Cancel from "./containers/myPage/Cancel";
 import OrderDetail from "./containers/myPage/OrderDetail";

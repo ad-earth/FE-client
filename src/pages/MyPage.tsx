@@ -8,17 +8,6 @@ import UserHead from "../containers/myPage/UserHead";
 import { getOrders } from "../shared/apis/api";
 
 const MyPage = () => {
-  // useEffect(() => {
-  //   const getPosts = async () => {
-  //     try {
-  //       const response = await getOrders("1",);
-  //       console.log(response);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   getPosts();
-  // }, []);
   return (
     <Wrap className="Wrap">
       <Aside />

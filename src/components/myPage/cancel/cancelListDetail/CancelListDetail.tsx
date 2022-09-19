@@ -10,7 +10,7 @@ const CancelListDetail = () => {
         <t.CancelList key={i}>
           <>
             <t.Checkbox type="checkbox" />
-            <Product />
+            {/* <Product /> */}
           </>
         </t.CancelList>
       ))}

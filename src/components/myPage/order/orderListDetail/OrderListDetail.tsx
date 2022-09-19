@@ -20,9 +20,7 @@ const OrderListDetail = () => {
       <t.TBody>
         {["1ddd", "2dddd", "3ddd"].map((data, i: number) => (
           <tr key={i}>
-            <td>
-              <Product />
-            </td>
+            <td>{/* <Product /> */}</td>
             {i === 0 ? (
               <td rowSpan={data.length} className="center">
                 무료

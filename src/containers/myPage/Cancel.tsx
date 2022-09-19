@@ -13,8 +13,8 @@ const Cancel = () => {
         {state === null && <DataNull>취소 내역이 없습니다.</DataNull>}
         {["1", "2"].map((data, i: number) => (
           <List key={i}>
-            <OrderNumber />
-            <OderList />
+            {/* <OrderNumber /> */}
+            {/* <OderList /> */}
           </List>
         ))}
       </OrderListBox>

@@ -1,7 +1,7 @@
 import axiosInstance from "./instance";
 
 //마이페이지
-export const getOrders = (page: string) =>
+export const getOrders = (page: number) =>
   axiosInstance.get(`/orders?page=${page}&maxpost=10`);
 export const getOrderDetail = (o_No: string) =>
   axiosInstance.get(`/orders/${o_No}`);
