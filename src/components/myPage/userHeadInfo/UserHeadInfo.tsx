@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as t from "./userHeadInfo.style";
 import Avatar from "@mui/material/Avatar";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const UserHeadInfo = () => {
   const isMobile = useMediaQuery("(max-width: 990px)");
+  useEffect(() => {
+    window.localStorage.setItem("u_Name", "최수인");
+  }, []);
   return (
     <t.UserBox>
       <t.UserImg>
