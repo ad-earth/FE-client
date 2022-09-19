@@ -10,4 +10,5 @@ export interface CardCompoType {
   p_New: boolean;
   p_Best: boolean;
   p_Soldout: boolean;
+  p_No?: number;
 }

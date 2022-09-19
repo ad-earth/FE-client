@@ -29,6 +29,7 @@ export const CardTitle = styled.div`
   margin-bottom: 0.3rem;
   font-size: ${({ theme }) => theme.fs14};
   color: ${({ theme }) => theme.fc11};
+  cursor: pointer;
 `;
 export const Cardprice = styled.div`
   font-size: ${theme.fs13};
