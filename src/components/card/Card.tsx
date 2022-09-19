@@ -59,7 +59,22 @@ const Card = (props: CardCompoType) => {
           <t.CardTitle onClick={() => navigate(`/detail/main/${props.p_No}`)}>
             [{props.a_Brand}] {props.p_Name}
           </t.CardTitle>
-          <t.Cardprice>{props.p_Cost.toLocaleString("ko-KR")}원</t.Cardprice>
+
+          {props.p_Sale === true ? (
+            <t.PriceDiv>
+              <t.CardPrice>
+                {Math.floor(
+                  (props.p_Cost / 100) * (100 - props.p_Discount)
+                ).toLocaleString("ko-KR")}
+                원
+              </t.CardPrice>
+              <t.OriginPrice>
+                {props.p_Cost.toLocaleString("ko-KR")}원
+              </t.OriginPrice>
+            </t.PriceDiv>
+          ) : (
+            <t.CardPrice>{props.p_Cost.toLocaleString("ko-KR")}원</t.CardPrice>
+          )}
         </t.Div>
       </t.CardCp>
     </>

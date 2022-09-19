@@ -31,9 +31,26 @@ export const CardTitle = styled.div`
   color: ${({ theme }) => theme.fc11};
   cursor: pointer;
 `;
-export const Cardprice = styled.div`
+
+export const PriceDiv = styled.div`
+  display: flex;
+  width: auto;
+  box-sizing: border-box;
+  font-size: inherit;
+`;
+
+export const CardPrice = styled.div`
   font-size: ${theme.fs13};
   color: ${theme.fc15};
+  display: flex;
+`;
+
+export const OriginPrice = styled.div`
+  font-size: ${theme.fs13};
+  color: ${theme.fc05};
+  display: flex;
+  text-decoration-line: line-through;
+  margin-left: 6px;
 `;
 
 export const AdCard = styled.img`

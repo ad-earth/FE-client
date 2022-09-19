@@ -21,6 +21,11 @@ const CardBadge = (props: CardBadgeType) => {
             <Badge type={"soldout"}>SOLDOUT</Badge>{" "}
           </t.Div>
         ) : null}
+        {props.p_Sale === true ? (
+          <t.Div>
+            <Badge type={"sale"}>SALE</Badge>{" "}
+          </t.Div>
+        ) : null}
       </t.Wrap>
     </>
   );
