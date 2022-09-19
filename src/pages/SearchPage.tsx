@@ -1,24 +1,14 @@
-import styled from 'styled-components'
-
-import { Pagination } from '@mui/material'
-import SearchBody from '../containers/searchPage/searchBody/SearchBody'
-import SqSearchBar from '../elements/SqSearchBar'
+import SearchBody from "../containers/searchPage/searchBody/SearchBody";
+import SqSearchBar from "../elements/SqSearchBar";
+import SPageBtn from "../components/searchPage/sPageBtn/SPageBtn";
 
 const SearchPage: React.FC = () => {
   return (
     <>
       <SqSearchBar />
       <SearchBody />
-      <AreaPage>
-        <Pagination count={5} />
-      </AreaPage>
+      <SPageBtn />
     </>
-  )
-}
-export default SearchPage
-
-const AreaPage = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-top: 50px;
-`
+  );
+};
+export default SearchPage;

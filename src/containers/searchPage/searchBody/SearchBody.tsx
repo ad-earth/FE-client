@@ -5,25 +5,21 @@ import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
 import SearchNav from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
-import { useAdList, useSearchList } from "./useSearchBody";
+import { useDataList, useAdData } from "./useSearchBody";
 import { useNavigate } from "react-router-dom";
-import { type } from "os";
 
 const SearchBody = () => {
-  const adData = useAdList();
-  console.log(adData.products);
-
-  const SearchListData = useSearchList();
-  console.log("SearchListData :", SearchListData);
-
   const navigate = useNavigate();
+  const SearchListData = useDataList();
+  const SearchAdData = useAdData();
+
   return (
     <>
       <t.CardArea>
         <SearchNav />
         <SearchCateDrop />
         <t.CardWrap>
-          {SearchListData.products.map((v, i) => {
+          {SearchAdData.map((v: any) => {
             return (
               <>
                 <t.CardCp
@@ -55,11 +51,11 @@ const SearchBody = () => {
               </>
             );
           })}
-          {SearchListData.map((v, i) => {
+          {SearchListData.map((v: any) => {
             return (
               <>
                 <t.CardCp
-                  key={v.p_No}
+                  key={v.p_Name}
                   onClick={() => navigate(`/detail/main/${v.p_No}`)}
                 >
                   <Card
