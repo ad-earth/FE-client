@@ -1,20 +1,20 @@
-import { getOrders } from "../../../shared/apis/api";
+import { getCancel } from "../../../shared/apis/api";
 import { useInfiniteQuery } from "react-query";
 
 const fetchPostList = async (pageParam: number) => {
-  const res = await getOrders(pageParam);
-  const { cnt, orderList } = res.data;
+  const res = await getCancel(pageParam);
+  const { cnt, cancelList } = res.data;
   return {
     cnt,
-    orderList,
+    cancelList,
     nextPage: pageParam + 1,
     pageParam,
   };
 };
 
-const useOrder = () => {
+const useCancel = () => {
   return useInfiniteQuery(
-    ["orderList"],
+    ["cancelList"],
     ({ pageParam = 1 }) => fetchPostList(pageParam),
     {
       getNextPageParam: (lastPage, pages) =>
@@ -27,4 +27,4 @@ const useOrder = () => {
   );
 };
 
-export default useOrder;
+export default useCancel;

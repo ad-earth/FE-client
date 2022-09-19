@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import * as t from "./orderNumber.style";
 interface PropsType {
-  isMobile: boolean;
+  isMobile?: boolean;
   orderNo: number;
   orderDate: string;
 }

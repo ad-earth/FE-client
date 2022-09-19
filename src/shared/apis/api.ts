@@ -7,8 +7,10 @@ export const getOrderDetail = (o_No: string) =>
   axiosInstance.get(`/orders/${o_No}`);
 export const putCancel = (o_No: string) =>
   axiosInstance.put(`/orders/cancel?o_No=${o_No}`);
-export const getCancelDetail = (page: string, maxpost: string) =>
-  axiosInstance.get(`/orders/cancel?page=${page}&maxpost=${maxpost}`);
+export const getCancel = (page: number) =>
+  axiosInstance.get(`/cancel?page=${page}&maxpost=10`);
+// export const getCancel = (page: number) =>
+//   axiosInstance.get(`/orders/cancel?page=${page}&maxpost=10`);
 export const getWishList = (page: string, maxpost: string) =>
   axiosInstance.get(`/wish-list?page=${page}&maxpost=${maxpost}`);
 export const putUserInfoChange = (u_Idx: string) =>

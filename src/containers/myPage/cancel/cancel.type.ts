@@ -14,14 +14,14 @@ interface ProductsType {
   p_Cnt: number;
   o_Status: string;
 }
-export interface OrderListType {
+export interface CancelListType {
   o_No: number;
   o_Date: string;
   o_Price: number;
   products: ProductsType[];
 }
 
-export interface OrderType {
+export interface CancelType {
   cnt: 30;
-  orderList: OrderListType[];
+  cancelList: CancelListType[];
 }

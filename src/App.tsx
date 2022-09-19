@@ -21,7 +21,7 @@ import Footer from "./containers/footer/Footer";
 import Mypage from "./pages/MyPage";
 import Order from "./containers/myPage/order/Order";
 import Wish from "./containers/myPage/Wish";
-import Cancel from "./containers/myPage/Cancel";
+import Cancel from "./containers/myPage/cancel/Cancel";
 import OrderDetail from "./containers/myPage/OrderDetail";
 import CancelDetail from "./containers/myPage/CancelDetail";
 //style
