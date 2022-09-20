@@ -5,7 +5,6 @@ import { theme } from "../../../style/theme";
 import { PropsType } from "./prodCnt.type";
 
 const ProdCnt = (props: PropsType) => {
-  console.log(props.option);
   return (
     <div>
       {props.haveOptions ? null : (
@@ -62,6 +61,7 @@ const ProdCnt = (props: PropsType) => {
             <Heart
               style={{
                 color: theme.fc15,
+                fill: theme.bg16,
                 paddingRight: "4px",
               }}
             />
