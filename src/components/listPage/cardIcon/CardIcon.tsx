@@ -13,6 +13,7 @@ import ListModal from "../../../containers/listPage/listModa/ListModal";
 const CardIcon = (props: CardIconType) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
+
   return (
     <>
       <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
@@ -20,21 +21,23 @@ const CardIcon = (props: CardIconType) => {
         <t.IconDiv>
           <t.IconSpan>
             <Message
-              onClick={() => navigate(`/detail/main/${props.p_No}`)}
+              onClick={() => navigate(`/detail/main/${props.pNo}`)}
               style={{
                 color: `${theme.bg09}`,
               }}
             />
-            <t.Count>{props.p_Review}</t.Count>
+            <t.Count>{props.pReview}</t.Count>
           </t.IconSpan>
           <t.IconSpan>
             <Heart
               style={{
-                color: `${theme.bg09}`,
+                color: `${theme.bg16}`,
                 width: "20px",
+                fill: `${theme.bg16}`,
               }}
             />
-            <t.Count>{props.p_Like}</t.Count>
+
+            <t.Count>{props.pLike}</t.Count>
           </t.IconSpan>
           <Cart
             style={{

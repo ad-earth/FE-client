@@ -15,25 +15,27 @@ const ListPage = () => {
       <t.CardWrap>
         {CardListData.map((val, i) => {
           return (
-            <t.CardCp key={val.p_No} onClick={() => `/detail/${val.p_No}`}>
+            <t.CardCp key={val.p_No}>
               <Card
-                p_Thumbnail={val.p_Thumbnail}
-                a_Brand={val.a_Brand}
-                p_Name={val.p_Name}
-                p_Cost={val.p_Cost}
-                p_Sale={val.p_Sale}
-                p_Discount={val.p_Discount}
-                p_Option={val.p_Option}
-                p_New={val.p_New}
-                p_Best={val.p_Best}
-                p_Soldout={val.p_Soldout}
+                pNo={val.p_No}
+                pThumbnail={val.p_Thumbnail}
+                aBrand={val.a_Brand}
+                pName={val.p_Name}
+                pCost={val.p_Cost}
+                pSale={val.p_Sale}
+                pDiscount={val.p_Discount}
+                pOption={val.p_Option}
+                pNew={val.p_New}
+                pBest={val.p_Best}
+                pSoldOut={val.p_Soldout}
               />
               <CardBadge
-                p_New={val.p_New}
-                p_Best={val.p_Best}
-                p_Soldout={val.p_Soldout}
+                pNew={val.p_New}
+                pBest={val.p_Best}
+                pSoldOut={val.p_Soldout}
+                pSale={val.p_Sale}
               />
-              <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
+              <CardIcon pReview={val.p_Review} pLike={val.p_Like} />
             </t.CardCp>
           );
         })}

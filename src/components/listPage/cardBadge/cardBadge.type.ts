@@ -1,6 +1,6 @@
 export interface CardBadgeType {
-  p_New: boolean;
-  p_Best: boolean;
-  p_Soldout: boolean;
-  p_Sale: boolean;
+  pNew: boolean;
+  pBest: boolean;
+  pSoldOut: boolean;
+  pSale: boolean;
 }

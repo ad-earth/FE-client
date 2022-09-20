@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../style/theme";
 
+import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+import { ReactComponent as Message } from "../../../assets/icons/message-circle.svg";
+import { ReactComponent as Cart } from "../../../assets/icons/shopping-cart.svg";
+
 export const CardCp = styled.div`
   width: 100%;
   margin-bottom: 10px;
@@ -94,3 +98,8 @@ export const WishCard = styled.div`
     cursor: pointer;
   }
 `;
+
+// export const IconHeart = styled(Heart)`
+//   color: ${({ theme }) => theme.bg09};
+//   width: "20px";
+// `;

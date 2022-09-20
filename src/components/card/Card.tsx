@@ -16,10 +16,10 @@ const Card = (props: CardCompoType) => {
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
-              onClick={() => navigate(`/detail/main/${props.p_No}`)}
+              onClick={() => navigate(`/detail/main/${props.pNo}`)}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
-              src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+              src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
             />
             <span>
               <HighlightOffRoundedIcon
@@ -32,48 +32,48 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
-                  onClick={() => navigate(`/detail/main/${props.p_No}`)}
+                  onClick={() => navigate(`/detail/main/${props.pNo}`)}
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
-                  src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+                  src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
                 />
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
               <t.CardImg
-                onClick={() => navigate(`/detail/main/${props.p_No}`)}
+                onClick={() => navigate(`/detail/main/${props.pNo}`)}
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
-                src={imgHover ? props.p_Thumbnail[1] : props.p_Thumbnail[0]}
+                src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
               />
             )}
           </>
         )}
 
         <t.Div>
-          {props.p_Option ? (
+          {props.pOption ? (
             <t.Div>
-              <ColorIcon colorCode={props.p_Option} />
+              <ColorIcon colorCode={props.pOption} />
             </t.Div>
           ) : null}
-          <t.CardTitle onClick={() => navigate(`/detail/main/${props.p_No}`)}>
-            [{props.a_Brand}] {props.p_Name}
+          <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
+            [{props.aBrand}] {props.pName}
           </t.CardTitle>
 
-          {props.p_Sale === true ? (
+          {props.pSale === true ? (
             <t.PriceDiv>
               <t.CardPrice>
                 {Math.floor(
-                  (props.p_Cost / 100) * (100 - props.p_Discount)
+                  (props.pCost / 100) * (100 - props.pDiscount)
                 ).toLocaleString("ko-KR")}
                 원
               </t.CardPrice>
               <t.OriginPrice>
-                {props.p_Cost.toLocaleString("ko-KR")}원
+                {props.pCost.toLocaleString("ko-KR")}원
               </t.OriginPrice>
             </t.PriceDiv>
           ) : (
-            <t.CardPrice>{props.p_Cost.toLocaleString("ko-KR")}원</t.CardPrice>
+            <t.CardPrice>{props.pCost.toLocaleString("ko-KR")}원</t.CardPrice>
           )}
         </t.Div>
       </t.CardCp>
