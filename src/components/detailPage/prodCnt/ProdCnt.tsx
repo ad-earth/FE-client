@@ -1,5 +1,3 @@
-import React from "react";
-
 import * as t from "./prodCnt.style";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import { CountButton, MainButton } from "../../../elements/Buttons";
