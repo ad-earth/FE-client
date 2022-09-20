@@ -80,7 +80,7 @@ const Plus = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-right: 1px solid ${theme.ls07};
+  border-left: 1px solid ${theme.ls07};
   color: ${theme.fc06};
 `;
 const Input = styled.input`
