@@ -14,7 +14,6 @@ const Order = () => {
   const isMobile = useMobileMediaQuery();
   const { ref, inView } = useInView();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useOrder();
-
   useEffect(() => {
     inView && hasNextPage && fetchNextPage();
   }, [inView]);

@@ -11,7 +11,7 @@ const OrderNumber = (props: PropsType) => {
     <t.OrderNumberBox>
       <t.OrderNumberInfo>
         <t.Label>주문번호</t.Label>
-        <Link to={`${"1?detail=true"}`} className="link">
+        <Link to={`${props.orderNo}`} className="link">
           {props.isMobile ? (
             <span>주문상세보기</span>
           ) : (

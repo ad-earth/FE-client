@@ -1,15 +1,18 @@
 import * as t from "./orderNumberDetail.style";
-
-const OrderNumerDetail = () => {
+interface PropsType {
+  no: number;
+  date: string;
+}
+const OrderNumerDetail = ({ no, date }: PropsType) => {
   return (
     <t.OrderNumberBox>
       <t.OrderDate>
         <span>주문일자 </span>
-        <strong>2022-08-29</strong>
+        <strong>{date}</strong>
       </t.OrderDate>
       <t.OrderNumberInfo>
         <span>주문번호</span>
-        <strong>20228344848</strong>
+        <strong>{no}</strong>
       </t.OrderNumberInfo>
     </t.OrderNumberBox>
   );

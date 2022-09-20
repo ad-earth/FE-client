@@ -1,6 +1,6 @@
 import * as t from "./product.style";
 interface PropsType {
-  p_Thumbnail: ["https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg"];
+  p_Thumbnail: string[];
   a_Brand: string;
   p_Name: string;
   p_Option: Array<

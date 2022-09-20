@@ -46,7 +46,7 @@ const OrderList = ({ products }: { products: PropsType[] }) => {
                 fontWeight="500"
                 padding="10px 16px"
                 onClick={() => {
-                  navigate(`/mypage/cancel-call/${"1?detail=true"}`, {
+                  navigate(`cancel-call`, {
                     replace: true,
                   });
                 }}

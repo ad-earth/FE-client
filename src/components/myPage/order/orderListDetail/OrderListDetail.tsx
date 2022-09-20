@@ -2,10 +2,18 @@ import React from "react";
 import { MainButton } from "../../../../elements/Buttons";
 import useMobileMediaQuery from "../../../../hooks/useMobileMediaQuery";
 import Product from "../product/Product";
-
 import * as t from "./orderListDetail.style";
 
-const OrderListDetail = () => {
+interface PropsType {
+  p_Thumbnail: string[];
+  a_Brand: string;
+  p_Name: string;
+  p_Option: Array<
+    [string | null, string | null, number | null, number | null, number | null]
+  >;
+  o_Status: string;
+}
+const OrderListDetail = ({ products }: { products: PropsType[] }) => {
   const isMobile = useMobileMediaQuery();
   return (
     <t.Table>
@@ -18,28 +26,39 @@ const OrderListDetail = () => {
       </t.Thead>
 
       <t.TBody>
-        {["1ddd", "2dddd", "3ddd"].map((data, i: number) => (
+        {products.map((item: PropsType, i: number) => (
           <tr key={i}>
-            <td>{/* <Product /> */}</td>
+            <td>
+              <Product product={item} />
+            </td>
             {i === 0 ? (
-              <td rowSpan={data.length} className="center">
+              <td rowSpan={products.length} className="center">
                 무료
               </td>
             ) : (
               <td style={{ display: "none" }}></td>
             )}
             <td className="buttonBox">
-              <span>배송왼료</span>
-              <t.ButtonBox>
-                <MainButton radius="50px">배송왼료</MainButton>
-              </t.ButtonBox>
+              <span>{item.o_Status}</span>
+              {item.o_Status === "배송완료" && (
+                <t.ButtonBox>
+                  <MainButton radius="50px">
+                    구매평 작성
+                    <div
+                      onClick={() => {
+                        // setInfoIsOpen(true);
+                      }}
+                    ></div>
+                  </MainButton>
+                </t.ButtonBox>
+              )}
             </td>
           </tr>
         ))}
         {isMobile && (
           <t.IsMobile>
             <td>
-              배송비 <strong>3000원</strong>
+              배송비 <strong>무료</strong>
             </td>
           </t.IsMobile>
         )}
