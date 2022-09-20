@@ -18,3 +18,7 @@ export const getUserWithdrawal = (u_Idx: string) =>
 
 //메인페이지
 export const getMain = () => axiosInstance.get(`/main`);
+
+//상세페이지
+export const getProdDetails = (p_No?: string, keyword?: string) =>
+  axiosInstance.get(`/products`);
