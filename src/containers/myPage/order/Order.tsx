@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import * as t from "./order.style";
 // components
@@ -36,7 +36,7 @@ const Order = () => {
                       orderNo={list.o_No}
                       orderDate={list.o_Date}
                     />
-                    <OderList products={list.products} />
+                    <OderList products={list.products} orderNo={list.o_No} />
                   </t.List>
                 )
               )}

@@ -23,7 +23,7 @@ import Order from "./containers/myPage/order/Order";
 import Wish from "./containers/myPage/Wish";
 import Cancel from "./containers/myPage/cancel/Cancel";
 import OrderDetail from "./containers/myPage/orderDetail/OrderDetail";
-import CancelDetail from "./containers/myPage/CancelDetail";
+import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";

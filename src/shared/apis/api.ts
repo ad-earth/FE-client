@@ -6,8 +6,10 @@ export const getOrders = (page: number) =>
 export const getOrderDetail = (id: string) => axiosInstance.get(`/o_No`);
 // export const getOrderDetail = (id: number) =>
 //   axiosInstance.get(`/orders/${id}`);
-export const putCancel = (o_No: string) =>
-  axiosInstance.put(`/orders/cancel?o_No=${o_No}`);
+export const putCancel = (id: string, body: number[]) =>
+  axiosInstance.get(`/putCancel/?${id}${body}`);
+// export const putCancel = (id: string, body: number[]) =>
+//   axiosInstance.put(`/orders/${id}/cancel`, { body });
 export const getCancel = (page: number) =>
   axiosInstance.get(`/cancel?page=${page}&maxpost=10`);
 // export const getCancel = (page: number) =>

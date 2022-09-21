@@ -1,6 +1,6 @@
 interface ProductsType {
   p_No: number;
-  p_Thumbnail: ["https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg"];
+  p_Thumbnail: string[];
   p_Category: string;
   a_Brand: string;
   p_Name: string;

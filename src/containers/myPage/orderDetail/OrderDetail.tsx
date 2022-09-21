@@ -18,7 +18,6 @@ const OrderDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [params, setParams] = useState<string>(id ? id : "");
   const orderDetail: OrderType = useOrderDetail(params);
-  console.log(orderDetail);
   const navigate = useNavigate();
   const isMobile = useMobileMediaQuery();
 
