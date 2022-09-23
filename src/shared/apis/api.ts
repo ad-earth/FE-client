@@ -14,8 +14,10 @@ export const getCancel = (page: number) =>
   axiosInstance.get(`/cancel?page=${page}&maxpost=10`);
 // export const getCancel = (page: number) =>
 //   axiosInstance.get(`/orders/cancel?page=${page}&maxpost=10`);
-export const getWishList = (page: string, maxpost: string) =>
-  axiosInstance.get(`/wish-list?page=${page}&maxpost=${maxpost}`);
+export const getWishList = (page: number) =>
+  axiosInstance.get(`/wish-list?page=${page}&maxpost=12`);
+// export const getWishList = (page: string, maxpost: string) =>
+//   axiosInstance.get(`/wish-list?page=${page}&maxpost=${maxpost}`);
 export const putUserInfoChange = () => axiosInstance.put(`/users`);
 export const deleteUserWithdrawal = () => axiosInstance.delete(`/users`);
 export const postReviews = (id: number, body: any) =>
