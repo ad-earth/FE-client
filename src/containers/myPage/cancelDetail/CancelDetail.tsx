@@ -49,17 +49,18 @@ const CancelDetail = () => {
   });
   // useMutation hook
   const { mutate, isSuccess } = useCancelDetail(putData);
-  //성공시 페이지 이동
-  if (isSuccess) {
-    alert("isSuccess");
-    navigate("/mypage");
-  }
+
   //주문취소 clickEvent
   const ClickEvent = () => {
-    mutate();
-    console.log(mutate());
+    putData.p_No.length === 0 ? alert("취소상품을 선택해 주세요") : mutate();
   };
-
+  //성공시 페이지 이동
+  useEffect(() => {
+    if (isSuccess) {
+      alert("isSuccess");
+      navigate("/mypage");
+    }
+  }, [isSuccess]);
   useEffect(() => {
     setCheckPrices(
       products
@@ -97,7 +98,6 @@ const CancelDetail = () => {
             checkedItems={checkedItems}
             setCheckedItems={setCheckedItems}
           />
-
           <CancelAmount checkPrice={checkPrice} />
           {isMobile && (
             <t.MobileButtomBox>

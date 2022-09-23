@@ -1,15 +1,12 @@
-import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 //components
 import Aside from "../containers/myPage/Aside";
 import UserHead from "../containers/myPage/UserHead";
 
-import { getOrders } from "../shared/apis/api";
-
 const MyPage = () => {
   return (
-    <Wrap className="Wrap">
+    <Wrap>
       <Aside />
       <Section>
         <UserHead />

@@ -9,6 +9,7 @@ import Product from "../product/Product";
 import { MainButton } from "../../../../elements/Buttons";
 
 interface PropsType {
+  p_No: number;
   p_Thumbnail: string[];
   a_Brand: string;
   p_Name: string;
@@ -27,12 +28,19 @@ const OrderList = ({
 }) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   let navigate = useNavigate();
+  const [product, setProduct] = useState<PropsType>();
 
+  const ClickEvent = (data: PropsType) => {
+    // console.log(data);
+    setProduct(data);
+    setInfoIsOpen(true);
+  };
   return (
     <>
       <ReviewModal
         isOpen={infoIsOpen}
         handleClose={() => setInfoIsOpen(false)}
+        product={product}
       />
       {products.map((product, idx: number) => (
         <t.OderListBox key={idx}>
@@ -69,13 +77,13 @@ const OrderList = ({
                 fontSize={`${theme.fs12}`}
                 fontWeight="500"
                 padding="10px 16px"
+                onClick={() => {
+                  ClickEvent(product);
+                  // setInfoIsOpen(true);
+                  // context({ type: "TOGGLE_MODAL", data: product });
+                }}
               >
                 구매평 작성
-                <div
-                  onClick={() => {
-                    setInfoIsOpen(true);
-                  }}
-                ></div>
               </MainButton>
             ) : (
               <></>
