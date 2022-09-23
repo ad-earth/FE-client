@@ -15,7 +15,13 @@ const SignUpPage = () => {
   //   const prevImg = URL.createObjectURL(file);
   //   setProfileImg(prevImg);
   // };
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [extraAddress, setExtraAddress] = useState("");
 
+  console.log(zipcode);
+  console.log(address);
+  console.log(extraAddress);
   return (
     <SignUpContainer>
       <Profile
@@ -23,7 +29,14 @@ const SignUpPage = () => {
       />
       <FormWrapper>
         <SignUpForm />
-        <AddressForm />
+        <AddressForm
+          zipcode={zipcode}
+          address={address}
+          extraAddress={extraAddress}
+          setZipcode={setZipcode}
+          setAddress={setAddress}
+          setExtraAddress={setExtraAddress}
+        />
         <SubmitDiv>
           <MainButton radius="30px" fontSize={theme.fs14}>
             가입하기
