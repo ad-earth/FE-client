@@ -4,25 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 import { CardIconType } from "./cardIcon.type";
 import ListModal from "../../../containers/listPage/listModa/ListModal";
-import { style } from "@mui/system";
-import { theme } from "../../../style/theme";
-import { fill } from "lodash";
 
 const CardIcon = (props: CardIconType) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
-  const [isWishAdd, setIsWishAdd] = useState<boolean>(false);
-  // const [wishCount, setWishCount] = useStaet(808);
-  // const wishAddHandler = () => {
-  //   setIsWishAdd(!isWishadd);
-  // };
-  // const UserLike = () => {
-  //   for (const i in {props.userLike}) {
-  //     console.log(i);
-  //   }
-  // };
-  // console.log(props.userLike);
-  console.log(props.pNo);
 
   return (
     <>
