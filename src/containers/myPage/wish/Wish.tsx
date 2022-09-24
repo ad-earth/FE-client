@@ -1,9 +1,18 @@
-import React, { useState } from "react";
-import WishCard from "../../components/myPage/wishCard/WishCard";
+import React, { useState, useEffect } from "react";
+import WishCard from "../../../components/myPage/wishCard/WishCard";
 import styled from "styled-components";
-
+import { useInView } from "react-intersection-observer";
+import useWish from "./useWish";
+import { WishType } from "./wish.type";
 const Wish = () => {
   const [state, setState] = useState(null);
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useWish();
+  const { ref, inView } = useInView();
+  useEffect(() => {
+    inView && hasNextPage && fetchNextPage();
+  }, [inView]);
+
   return (
     <Section>
       <OrderListBox>
@@ -12,12 +21,15 @@ const Wish = () => {
         </Title>
         <CardContent>
           {state === null && <DataNull>위시리스트가 없습니다.</DataNull>}
-          {["1", "2", "3", "4", "5"].map((data, i: number) => (
-            <List key={i}>
-              <WishCard />
-            </List>
-          ))}
+          {/* 
+          {data &&
+            data.pages.map((pageData: WishType, i: number) => (
+              <List key={i}>
+                <WishCard pageData={pageData.wishList} />
+              </List>
+            ))} */}
         </CardContent>
+        {isFetchingNextPage ? <div>...Loading</div> : <div ref={ref}></div>}
       </OrderListBox>
     </Section>
   );

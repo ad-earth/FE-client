@@ -4,36 +4,42 @@ import Card from "../../../components/card/Card";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CateDrop from "../../../components/listPage/catDrop/CateDrop";
-import { useCardList } from "./useCardList";
+import { CardListType } from "./cardList.type";
 
-const ListPage = () => {
-  const CardListData = useCardList();
-
+const ListPage = (props: CardListType) => {
   return (
     <t.CardArea>
       <CateDrop />
       <t.CardWrap>
-        {CardListData.map((val, i) => {
+        {props.products.map((val: any) => {
           return (
-            <t.CardCp key={val.p_No} onClick={() => `/detail/${val.p_No}`}>
+            <t.CardCp key={val.p_No}>
               <Card
-                p_Thumbnail={val.p_Thumbnail}
-                a_Brand={val.a_Brand}
-                p_Name={val.p_Name}
-                p_Cost={val.p_Cost}
-                p_Sale={val.p_Sale}
-                p_Discount={val.p_Discount}
-                p_Option={val.p_Option}
-                p_New={val.p_New}
-                p_Best={val.p_Best}
-                p_Soldout={val.p_Soldout}
+                pNo={val.p_No}
+                pThumbnail={val.p_Thumbnail}
+                aBrand={val.a_Brand}
+                pName={val.p_Name}
+                pCost={val.p_Cost}
+                pSale={val.p_Sale}
+                pDiscount={val.p_Discount}
+                pOption={val.p_Option}
+                pNew={val.p_New}
+                pBest={val.p_Best}
+                pSoldOut={val.p_Soldout}
               />
               <CardBadge
-                p_New={val.p_New}
-                p_Best={val.p_Best}
-                p_Soldout={val.p_Soldout}
+                pNew={val.p_New}
+                pBest={val.p_Best}
+                pSoldOut={val.p_Soldout}
+                pSale={val.p_Sale}
               />
-              <CardIcon p_Review={val.p_Review} p_Like={val.p_Like} />
+
+              <CardIcon
+                pNo={val.p_No}
+                userLike={props.userLike}
+                pReview={val.p_Review}
+                pLike={val.p_Like}
+              />
             </t.CardCp>
           );
         })}

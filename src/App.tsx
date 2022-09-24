@@ -19,11 +19,11 @@ import Footer from "./containers/footer/Footer";
 
 //mypage
 import Mypage from "./pages/MyPage";
-import Order from "./containers/myPage/Order";
-import Wish from "./containers/myPage/Wish";
-import Cancel from "./containers/myPage/Cancel";
-import OrderDetail from "./containers/myPage/OrderDetail";
-import CancelDetail from "./containers/myPage/CancelDetail";
+import Order from "./containers/myPage/order/Order";
+import Wish from "./containers/myPage/wish/Wish";
+import Cancel from "./containers/myPage/cancel/Cancel";
+import OrderDetail from "./containers/myPage/orderDetail/OrderDetail";
+import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
@@ -43,7 +43,7 @@ function App() {
             <Route path="/login" element={<LogInPage />}></Route>
             <Route path="/signup" element={<SignUpPage />}></Route>
             <Route path="/" element={<MainPage />}></Route>
-            <Route path="/mypage" element={<Mypage />}>
+            <Route path="/mypage/*" element={<Mypage />}>
               <Route index element={<Order />} />
               <Route path=":id" element={<OrderDetail />} />
               <Route path="wish" element={<Wish />} />

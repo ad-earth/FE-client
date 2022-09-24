@@ -1,36 +1,39 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { theme } from "../../../style/theme";
 import * as t from "./asideNav.style";
-
+import { NavLink } from "react-router-dom";
 import WithdrawalModal from "../../modal/withdrawalModal/WithdrawalModal";
-interface LinkType {
-  id: number;
+
+interface NavLinkType {
   name: string;
   path: string;
-  isActive?: string;
+  id: number;
 }
 
 const AsideNav = () => {
-  // modal
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
-  const navClickEvent = (data: LinkType) => {
+  const navClickEvent = (
+    data: NavLinkType,
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    data.path === "modal" && e.preventDefault();
     data.name === "회원탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
   };
 
   return (
     <>
+      {/* 회원탈퇴 모달 */}
       <WithdrawalModal
         isOpen={withdrawaIsOpen}
         handleClose={() => setWithdrawaIsOpen(false)}
       />
       <t.NavListBox>
-        {data.map((data, i: number) => (
-          <ul key={i}>
+        {list.map((data) => (
+          <ul key={data.id}>
             <li>
               <NavLink
                 to={data.path}
-                onClick={(e) => data.path === "modal" && e.preventDefault()}
+                onClick={(e) => navClickEvent(data, e)}
                 style={({ isActive }) => ({
                   borderBottom: `2px solid ${
                     isActive ? `${theme.fc15}` : `${theme.fc01}`
@@ -38,13 +41,7 @@ const AsideNav = () => {
                 })}
                 end
               >
-                <t.Text
-                  onClick={() => {
-                    navClickEvent(data);
-                  }}
-                >
-                  {data.name}
-                </t.Text>
+                {data.name}
               </NavLink>
             </li>
           </ul>
@@ -53,7 +50,7 @@ const AsideNav = () => {
     </>
   );
 };
-const data = [
+const list: NavLinkType[] = [
   { id: 1, name: "주문 조회", path: "" },
   { id: 2, name: "위시 리스트", path: "wish" },
   { id: 3, name: "취소 조회", path: "cancel" },
