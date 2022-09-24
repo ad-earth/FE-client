@@ -1,6 +1,8 @@
 export interface CardIconType {
   pReview?: number;
   pLike?: number;
-  pNo?: number;
-  userLike?: void;
+  pNo: number;
+  userLike: number[];
+  isLike?: boolean;
+  onClick?: () => void;
 }

@@ -10,6 +10,7 @@ import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const navigate = useNavigate();
+
   return (
     <>
       <t.CardCp>
@@ -19,7 +20,11 @@ const Card = (props: CardCompoType) => {
               onClick={() => navigate(`/detail/main/${props.pNo}`)}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
-              src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
+              src={
+                imgHover && props.pThumbnail.length > 1
+                  ? props.pThumbnail[1]
+                  : props.pThumbnail[0]
+              }
             />
             <span>
               <HighlightOffRoundedIcon
@@ -35,8 +40,13 @@ const Card = (props: CardCompoType) => {
                   onClick={() => navigate(`/detail/main/${props.pNo}`)}
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
-                  src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
+                  src={
+                    imgHover && props.pThumbnail.length > 1
+                      ? props.pThumbnail[1]
+                      : props.pThumbnail[0]
+                  }
                 />
+                {/* // props.pThumbnail.length > 1 ? true : false */}
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
@@ -44,7 +54,11 @@ const Card = (props: CardCompoType) => {
                 onClick={() => navigate(`/detail/main/${props.pNo}`)}
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
-                src={imgHover ? props.pThumbnail[1] : props.pThumbnail[0]}
+                src={
+                  imgHover && props.pThumbnail.length > 1
+                    ? props.pThumbnail[1]
+                    : props.pThumbnail[0]
+                }
               />
             )}
           </>

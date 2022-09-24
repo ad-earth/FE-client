@@ -1,31 +1,29 @@
 import * as t from "./SearchBody.style";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import Card from "../../../components/card/Card";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
 import SearchNav from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
-import { useSearchDataList } from "./useSearchBody";
+import { postLike } from "../../../shared/apis/api";
+import { SearchType } from "./searchPage.type";
 
-const SearchBody = () => {
-  const SearchListData = useSearchDataList();
-  console.log(SearchListData.userLike);
-  const UserLike = () => {
-    for (const i in SearchListData.userLike) {
-      console.log(i);
-    }
+const SearchBody = (props: SearchType) => {
+  const [isLike, setIsLike] = useState(false);
+
+  const toggleLike = async () => {
+    const res = await postLike;
+    setIsLike(!isLike);
   };
-  console.log(UserLike());
-
   return (
     <>
-      {SearchListData.products && (
+      {props.products && (
         <t.CardArea>
           <SearchNav />
-          <SearchCateDrop cnt={SearchListData.cnt} />
+          <SearchCateDrop cnt={props.cnt} />
           <t.CardWrap>
-            {SearchListData.adProducts.map((v: any) => {
+            {props.adProducts.map((v: any) => {
               return (
                 <>
                   <t.CardCp key={v.p_No}>
@@ -51,17 +49,19 @@ const SearchBody = () => {
                     />
                     <div>
                       <CardIcon
+                        onClick={toggleLike}
                         pNo={v.p_No}
+                        userLike={props.userLike}
                         pReview={v.p_Review}
                         pLike={v.p_Like}
-                        userLike={UserLike()}
+                        isLike={isLike}
                       />
                     </div>
                   </t.CardCp>
                 </>
               );
             })}
-            {SearchListData.products.map((v: any) => {
+            {props.products.map((v: any) => {
               return (
                 <>
                   <t.CardCp key={v.p_Name}>
@@ -85,7 +85,14 @@ const SearchBody = () => {
                       pSale={v.p_Sale}
                     />
                     <div>
-                      <CardIcon pReview={v.p_Review} pLike={v.p_Like} />
+                      <CardIcon
+                        onClick={toggleLike}
+                        pNo={v.p_No}
+                        userLike={props.userLike}
+                        pReview={v.p_Review}
+                        pLike={v.p_Like}
+                        isLike={isLike}
+                      />
                     </div>
                   </t.CardCp>
                 </>

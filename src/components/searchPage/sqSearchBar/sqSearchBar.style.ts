@@ -1,29 +1,13 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
-import HighlightOffIcon from '@mui/icons-material/HighlightOff'
-
-const SqSearchBar = () => {
-  return (
-    <>
-      <Div>
-        <InputDiv>
-          <SearchIcon />
-          <input placeholder="검색" />
-          <Officon />
-        </InputDiv>
-      </Div>
-    </>
-  )
-}
-export default SqSearchBar
-
-const Div = styled.div`
+export const Div = styled.div`
   max-width: 350px;
   margin: 55px auto;
   position: relative;
-`
-const InputDiv = styled.div`
+`;
+export const InputDiv = styled.div`
   background-color: ${({ theme }) => theme.rgba01};
   display: flex;
   align-items: center;
@@ -55,13 +39,13 @@ const InputDiv = styled.div`
     font-size: ${({ theme }) => theme.fs14};
   }}
 
-`
-const SearchIcon = styled(SearchRoundedIcon)({
-  color: '#999',
-  cursor: 'pointer',
-})
+`;
+export const SearchIcon = styled(SearchRoundedIcon)({
+  color: "#999",
+  cursor: "pointer",
+});
 
-const Officon = styled(HighlightOffIcon)({
-  color: '#999',
-  cursor: 'pointer',
-})
+export const Officon = styled(HighlightOffIcon)({
+  color: "#999",
+  cursor: "pointer",
+});

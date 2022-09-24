@@ -13,7 +13,7 @@ const ListPage = () => {
     <t.CardArea>
       <CateDrop />
       <t.CardWrap>
-        {CardListData.map((val, i) => {
+        {CardListData.map((val: any) => {
           return (
             <t.CardCp key={val.p_No}>
               <Card
@@ -35,7 +35,13 @@ const ListPage = () => {
                 pSoldOut={val.p_Soldout}
                 pSale={val.p_Sale}
               />
-              <CardIcon pReview={val.p_Review} pLike={val.p_Like} />
+
+              <CardIcon
+                pNo={val.p_No}
+                userLike={CardListData.userLike}
+                pReview={val.p_Review}
+                pLike={val.p_Like}
+              />
             </t.CardCp>
           );
         })}

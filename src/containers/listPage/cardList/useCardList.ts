@@ -1,15 +1,21 @@
-import { useQuery } from 'react-query'
+import { RepeatOneSharp } from "@mui/icons-material";
+import { url } from "inspector";
+import { useQuery } from "react-query";
+import { getList } from "../../../shared/apis/api";
 
-import { getList } from '../../../shared/apis/api'
-import { CardType } from '../../../shared/types/types'
-
-async function getCards(): Promise< CardType[]> {
-  const { data } = await getList()
-  return data
-}
-
-export function useCardList(): CardType[] {
-  const fallback: [] = []
-  const { data = fallback } = useQuery('all', getCards)
-  return data
-}
+const sort = {
+  id: "인기순",
+};
+const pageNo = {};
+const getData = async () => {
+  const { data } = await getList(`sort=${sort}`, `page=${pageNo}`);
+  return data;
+};
+export const useCardList = () => {
+  const fallback: [] = [];
+  const { data = fallback, status } = useQuery("card", getData);
+  if (status === "error") {
+    return "error";
+  }
+  return data;
+};

@@ -1,15 +1,12 @@
 import { useQuery } from "react-query";
 import { getSearch } from "../../../shared/apis/api";
-//products
-const getData = async () => {
-  const { data } = await getSearch();
-  return data;
+
+const useSearchDataList = (keyword: string, pageNo: string) => {
+  const queryFn = async () => await getSearch(keyword, pageNo);
+  const res = useQuery(["orderDetail", [keyword, pageNo]], queryFn, {
+    enabled: !![keyword, pageNo],
+  });
+  return res.data?.data;
 };
-export const useSearchDataList = () => {
-  const fallback: [] = [];
-  const { data = fallback, status } = useQuery("products", getData);
-  if (status === "error") {
-    return "error";
-  }
-  return data;
-};
+
+export default useSearchDataList;
