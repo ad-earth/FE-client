@@ -1,43 +1,11 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import CancelInfo from "../../components/myPage/cancel/cancelInfo/CancelInfo";
-import CancelListDetail from "../../components/myPage/cancel/cancelListDetail/CancelListDetail";
-import CancelAmount from "../../components/myPage/cancel/cancelAmount/CancelAmount";
 
-const CancelDetail = () => {
-  const navigate = useNavigate();
-
-  return (
-    <Section>
-      <Title>
-        <span
-          onClick={() => {
-            navigate("..");
-          }}
-        ></span>
-        주문 취소요청
-        <OrderNumber>202222020</OrderNumber>
-      </Title>
-      <Contents>
-        <ContentsBox>
-          <CancelInfo />
-        </ContentsBox>
-        <ContentsBox>
-          <CancelListDetail />
-          <CancelAmount />
-        </ContentsBox>
-      </Contents>
-    </Section>
-  );
-};
-export default CancelDetail;
-
-const Section = styled.div`
+export const Section = styled.div`
   @media (max-width: 990px) {
     margin: 0 -15px;
   }
 `;
-const Title = styled.div`
+export const Title = styled.div`
   font-size: ${({ theme }) => theme.fs21};
   font-weight: 600;
   display: flex;
@@ -79,18 +47,18 @@ const Title = styled.div`
     }
   }
 `;
-const OrderNumber = styled.div`
+export const OrderNumber = styled.div`
   color: ${({ theme }) => theme.fc21};
   padding-left: 10px;
 `;
-const Contents = styled.div`
+export const Contents = styled.div`
   width: 100%;
   display: flex;
   @media (max-width: 990px) {
     flex-direction: column;
   }
 `;
-const ContentsBox = styled.div`
+export const ContentsBox = styled.div`
   width: 50%;
   margin-right: 30px;
   &:last-child {
@@ -102,4 +70,14 @@ const ContentsBox = styled.div`
     flex-direction: column;
     margin: 0;
   }
+`;
+export const ButtomBox = styled.div`
+  width: 100px;
+  margin: 0 auto;
+  @media (max-width: 990px) {
+    display: none;
+  }
+`;
+export const MobileButtomBox = styled.div`
+  padding: 0 10px;
 `;

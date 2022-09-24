@@ -6,6 +6,7 @@ export const CancelAmountBox = styled.div`
   margin: 30px 0;
   @media (max-width: 990px) {
     border: none;
+    padding-bottom: 20px;
   }
 `;
 export const Title = styled.div`
@@ -73,7 +74,4 @@ export const SubText = styled.span`
 export const TitleText = styled.span`
   font-weight: bold;
   color: ${({ theme }) => theme.fc14};
-`;
-export const ButtomBox = styled.div`
-  margin-top: 40px;
 `;
