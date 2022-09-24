@@ -29,7 +29,20 @@ export const postReviews = (id: number, body: any) =>
 export const getMain = () => axiosInstance.get(`/main`);
 
 //장보기페이지
-export const getList = () => axiosInstance.get(`/list`);
+export const getList = (sort: string, pageNo: string) =>
+  axiosInstance.get(`/main/products?sort=${sort}&page=${pageNo}&maxpost=20`);
+
+//카테고리 조회
+export const getSort = (category: string, sort: string, pageNo: string) =>
+  axiosInstance.get(
+    `/main/products/:${category}?sort=${sort}&page=${pageNo}&maxpost=20`
+  );
 
 //검색페이지
-export const getSearch = () => axiosInstance.get(`/search`);
+export const getSearch = (keyword: string, pageNo: string) =>
+  axiosInstance.get(
+    `/main/search?keyword=${keyword}&page=${pageNo}&maxpost=20`
+  );
+
+//좋아요버튼
+export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
