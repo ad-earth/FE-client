@@ -4,16 +4,14 @@ import Card from "../../../components/card/Card";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CateDrop from "../../../components/listPage/catDrop/CateDrop";
-import { useCardList } from "./useCardList";
+import { CardListType } from "./cardList.type";
 
-const ListPage = () => {
-  const CardListData = useCardList();
-
+const ListPage = (props: CardListType) => {
   return (
     <t.CardArea>
       <CateDrop />
       <t.CardWrap>
-        {CardListData.map((val: any) => {
+        {props.products.map((val: any) => {
           return (
             <t.CardCp key={val.p_No}>
               <Card
@@ -38,7 +36,7 @@ const ListPage = () => {
 
               <CardIcon
                 pNo={val.p_No}
-                userLike={CardListData.userLike}
+                userLike={props.userLike}
                 pReview={val.p_Review}
                 pLike={val.p_Like}
               />
