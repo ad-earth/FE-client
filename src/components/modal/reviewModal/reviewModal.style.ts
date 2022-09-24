@@ -51,7 +51,7 @@ export const BodyFormContainer = styled.form`
 `;
 export const ProductInfo = styled.div`
   width: 100%;
-  height: 70px;
+  /* height: 70px; */
   border: 1px solid ${({ theme }) => theme.ls02};
   display: flex;
 `;
@@ -61,9 +61,9 @@ export const InfoImg = styled.img`
   background: ${({ theme }) => theme.bg17};
   margin-right: 16px;
 `;
-export const InfoText = styled.p`
+export const InfoText = styled.div`
   width: calc(100% - 86px);
-  height: 70px;
+  /* height: 70px; */
   line-height: 24px;
   font-size: ${({ theme }) => theme.fs15};
   display: flex;
@@ -73,7 +73,6 @@ export const InfoText = styled.p`
   & span {
     color: ${({ theme }) => theme.fc08};
     font-size: ${({ theme }) => theme.fs13};
-    display: block;
   }
 `;
 export const StarRating = styled.div`
@@ -129,4 +128,13 @@ export const BottonBox = styled.div`
     position: absolute;
     bottom: 0;
   }
+`;
+export const ProducOptionBox = styled.span`
+  font-size: 0.85rem;
+  float: left;
+
+  /* opacity: 0.7;   */
+`;
+export const ProducOption = styled.span`
+  margin-right: 12px;
 `;
