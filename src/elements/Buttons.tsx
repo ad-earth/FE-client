@@ -1,10 +1,9 @@
-import React from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import styled from "styled-components";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 import { theme } from "../style/theme";
-
 interface BtnType {
   width?: string;
   fontSize?: string;
@@ -20,19 +19,63 @@ interface BtnType {
   children?: React.ReactNode;
   onClick?: () => void;
 }
+interface PropsType {
+  id?: number;
+  changeOptionList?: (id: number, qty: number) => void;
+  qty?: number;
+  setQty?: Dispatch<SetStateAction<number>>;
+}
 
 export const MainButton = (props: BtnType) => {
   return <Btn {...props}>{props.children}</Btn>;
 };
 
-export const CountButton = () => {
+// 수량 수정 버튼
+export const CountButton = (props: PropsType) => {
+  let qty = props.qty;
+  function addQty() {
+    qty += 1;
+    props.setQty(qty);
+  }
+  function substractQty() {
+    if (qty !== 0) {
+      qty -= 1;
+      props.setQty(qty);
+    }
+  }
   return (
     <CountBtn>
-      <Minus>
+      <Minus onClick={() => substractQty()}>
         <RemoveRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Minus>
-      <Input type="text" />
-      <Plus>
+      <Input>{qty}</Input>
+      <Plus onClick={() => addQty()}>
+        <AddRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
+      </Plus>
+    </CountBtn>
+  );
+};
+
+// 수량 수정 버튼(상품 옵션이 있는 경우)
+export const OptionCountButton = (props: PropsType) => {
+  let qty = props.qty;
+  function addQty() {
+    qty += 1;
+    props.changeOptionList(props.id, qty);
+  }
+  function substractQty() {
+    if (qty !== 1) {
+      qty -= 1;
+      props.changeOptionList(props.id, qty);
+    }
+  }
+  return (
+    <CountBtn>
+      <Minus onClick={() => substractQty()}>
+        <RemoveRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
+      </Minus>
+      <Input>{qty}</Input>
+      <Plus onClick={() => addQty()}>
         <AddRoundedIcon sx={{ fontSize: 18, cursor: "pointer" }} />
       </Plus>
     </CountBtn>
@@ -66,29 +109,30 @@ const CountBtn = styled.div`
   border: 1px solid ${theme.ls07};
   background: ${theme.bg01};
   display: flex;
+  justify-content: space-between;
 `;
-const Minus = styled.a`
+const Minus = styled.button`
   width: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-right: 1px solid ${theme.ls07};
   color: ${theme.fc06};
 `;
-const Plus = styled.a`
+const Plus = styled.button`
   width: 26px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-left: 1px solid ${theme.ls07};
   color: ${theme.fc06};
 `;
-const Input = styled.input`
+const Input = styled.div`
   width: 46px;
-  border: none;
   font-size: small;
-  text-align: center;
-  :focus {
-    outline: none;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
