@@ -61,6 +61,7 @@ const CancelDetail = () => {
       navigate("/mypage");
     }
   }, [isSuccess]);
+  
   useEffect(() => {
     setCheckPrices(
       products

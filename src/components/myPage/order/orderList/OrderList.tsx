@@ -61,7 +61,7 @@ const OrderList = ({
                 fontWeight="500"
                 padding="10px 16px"
                 onClick={() => {
-                  navigate(`/mypage/cancel-call/${"1?detail=true"}`, {
+                  navigate(`/mypage/cancel-call/${orderNo}`, {
                     state: { products: products, orderNo: orderNo },
                     replace: true,
                   });

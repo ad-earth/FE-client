@@ -1,8 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios";
-const axiosInstance = axios.create({
+
+const axiosConfig: AxiosRequestConfig = {
   timeout: 3000,
   baseURL: process.env.REACT_APP_SERVER_URL,
-});
+};
+const axiosInstance = axios.create(axiosConfig);
 
 axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
