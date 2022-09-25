@@ -11,4 +11,5 @@ export interface CardCompoType {
   pBest: boolean;
   pSoldOut: boolean;
   pNo?: number;
+  heartClick?(): void;
 }

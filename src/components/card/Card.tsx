@@ -29,6 +29,7 @@ const Card = (props: CardCompoType) => {
             <span>
               <HighlightOffRoundedIcon
                 style={{ fill: "#fff", width: "25px" }}
+                onClick={props.heartClick}
               />
             </span>
           </t.WishCard>
