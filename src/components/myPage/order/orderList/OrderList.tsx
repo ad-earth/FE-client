@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 //style
 import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
@@ -44,8 +44,10 @@ const OrderList = ({
       {products.map((product, idx: number) => (
         <t.OderListBox key={idx}>
           <t.ProductBox>
-            <Product product={product} />
-            <t.Status>{product.o_Status}</t.Status>
+            <Link to={`${orderNo}`} className="link">
+              <Product product={product} />
+              <t.Status>{product.o_Status}</t.Status>
+            </Link>
           </t.ProductBox>
           <t.ButtonBox>
             {product.o_Status === "주문완료" ? (

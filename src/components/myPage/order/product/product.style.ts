@@ -24,6 +24,7 @@ export const ProducOption = styled.p`
   font-size: 0.85rem;
   opacity: 0.7;
   margin-right: 12px;
+  color: ${({ theme }) => theme.fc14};
 `;
 export const ProducPrice = styled.p`
   font-size: 0.85rem;
