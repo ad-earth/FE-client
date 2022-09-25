@@ -15,10 +15,20 @@ export const Name = styled.div`
   color: ${theme.fc10};
   font-size: ${theme.fs16};
 `;
+export const PriceWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+`;
+export const DiscountedPrice = styled.div`
+  color: ${theme.fc09};
+  font-size: ${theme.fs12};
+  text-decoration: line-through;
+  margin-left: 5px;
+`;
 export const Price = styled.div`
   color: ${theme.fc15};
   font-size: ${theme.fs16};
-  margin-top: 7px;
 `;
 export const Line = styled.div`
   width: 100%;
