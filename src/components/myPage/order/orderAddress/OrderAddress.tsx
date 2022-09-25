@@ -28,7 +28,6 @@ const OrderAddress = ({ address }: { address: PropsType }) => {
               <br />
               {address.d_Address2}
             </p>
-            address
           </t.Item>
           <t.Item>
             <span>베송메모</span>

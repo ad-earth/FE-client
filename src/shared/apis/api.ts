@@ -3,9 +3,8 @@ import axiosInstance from "./instance";
 //마이페이지
 export const getOrders = (page: number) =>
   axiosInstance.get(`/orders?page=${page}&maxpost=10`);
-export const getOrderDetail = (id: string) => axiosInstance.get(`/o_No`);
-// export const getOrderDetail = (id: number) =>
-//   axiosInstance.get(`/orders/${id}`);
+export const getOrderDetail = (id: string) =>
+  axiosInstance.get(`/orders/${id}`);
 export const putCancel = (id: string, body: number[]) =>
   axiosInstance.put(`/orders/${id}/cancel`, { body });
 export const getCancel = (page: number) =>
