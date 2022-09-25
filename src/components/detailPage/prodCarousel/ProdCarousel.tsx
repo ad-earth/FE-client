@@ -8,8 +8,6 @@ import { useState } from "react";
 
 const ProdCarousel = () => {
   const data = useProdInfo();
-  const [index, setIndex] = useState(1);
-  console.log(data);
   // carousel option
   const setting = {
     dots: false,
