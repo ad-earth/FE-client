@@ -10,7 +10,7 @@ const BestCards = () => {
 
   return (
     <t.MainContainer>
-      {bestProducts.map((x, idx) => {
+      {bestProducts.map((x) => {
         return (
           <t.CardWrapper
             key={x.p_No}
