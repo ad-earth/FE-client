@@ -31,7 +31,6 @@ const OrderList = ({
   const [product, setProduct] = useState<PropsType>();
 
   const ClickEvent = (data: PropsType) => {
-    // console.log(data);
     setProduct(data);
     setInfoIsOpen(true);
   };
@@ -79,8 +78,6 @@ const OrderList = ({
                 padding="10px 16px"
                 onClick={() => {
                   ClickEvent(product);
-                  // setInfoIsOpen(true);
-                  // context({ type: "TOGGLE_MODAL", data: product });
                 }}
               >
                 구매평 작성
