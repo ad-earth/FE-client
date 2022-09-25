@@ -1,7 +1,12 @@
 export type PropsType = {
-  option?: { id: number; color: string; size: string; price: number }[];
-  haveOptions: boolean;
-  price: number;
-  like: boolean;
-  likeCnt: number;
+  price?: number;
+  optionList?: {
+    id: number;
+    colorSize: string;
+    optionPrice: number;
+    price: number;
+    qty: number;
+  }[];
+  changeOptionList?: (id: number, qty: number) => void;
+  removeOption?: (id: number) => void;
 };

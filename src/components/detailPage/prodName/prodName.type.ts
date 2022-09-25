@@ -6,4 +6,5 @@ export interface PropsType {
   sale: boolean;
   soldout: boolean;
   price: number;
+  discount: number;
 }
