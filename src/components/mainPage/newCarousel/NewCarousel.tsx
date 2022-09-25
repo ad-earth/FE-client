@@ -26,11 +26,11 @@ const NewCarousel = () => {
   return (
     <t.MainContainer>
       <Slider {...setting}>
-        {newProducts.map((x, idx) => {
+        {newProducts.map((x) => {
           return (
             <div
               key={x.p_No}
-              onClick={() => navigate(`/detail/main/${x.p_No}`)}
+              onClick={() => navigate(`/detail/메인/${x.p_No}`)}
             >
               <Card
                 pThumbnail={x.p_Thumbnail}
