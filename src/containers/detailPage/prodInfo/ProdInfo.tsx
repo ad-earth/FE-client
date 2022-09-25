@@ -12,8 +12,6 @@ import { useProdInfo } from "./useProdInfo";
 const ProdInfo = () => {
   const { prodNo } = useParams();
   const data = useProdInfo();
-  console.log(data);
-
   //뷰포트 사이즈에 따라 상품 썸네일 carousel로 변경
   const [viewport, setViewport] = useState(visualViewport.width);
 
@@ -36,11 +34,13 @@ const ProdInfo = () => {
           sale={data.p_Sale}
           soldout={data.p_Soldout}
           price={data.p_Cost}
+          discount={data.p_Discount}
         />
         <ProdDesc desc={data.p_Desc} brand={data.a_Brand} />
         <ProdOpt
           option={data.p_Option}
           price={data.p_Cost}
+          discount={data.p_Discount}
           like={data.userLike}
           likeCnt={data.p_Like}
         />
