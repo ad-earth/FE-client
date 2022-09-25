@@ -1,8 +1,5 @@
 import styled from "styled-components";
-
-interface PropsType {
-  imgUrl: string;
-}
+import { PropsType } from "./prodImg.type";
 
 export const MainContainer = styled.div`
   width: 49%;
