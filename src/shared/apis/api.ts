@@ -6,14 +6,12 @@ export const getOrders = (page: number) =>
 export const getOrderDetail = (id: string) => axiosInstance.get(`/o_No`);
 // export const getOrderDetail = (id: number) =>
 //   axiosInstance.get(`/orders/${id}`);
-export const putCancel = (id: string, body: any) =>
+export const putCancel = (id: string, body: number[]) =>
   axiosInstance.put(`/orders/${id}/cancel`, { body });
 // export const putCancel = (id: string, body: number[]) =>
 //   axiosInstance.put(`/orders/${id}/cancel`, { body });
 export const getCancel = (page: number) =>
-  axiosInstance.get(`/cancel?page=${page}&maxpost=10`);
-// export const getCancel = (page: number) =>
-//   axiosInstance.get(`/orders/cancel?page=${page}&maxpost=10`);
+  axiosInstance.get(`/cancel-list?page=${page}&maxpost=10`);
 export const getWishList = (page: number) =>
   axiosInstance.get(`/wish-list?page=${page}&maxpost=12`);
 // export const getWishList = (page: string, maxpost: string) =>
