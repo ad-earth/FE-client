@@ -4,6 +4,8 @@ import { Badge } from "../../../elements/Badge";
 import { PropsType } from "./prodName.type";
 
 const ProdName = (props: PropsType) => {
+  // 상품 할인가 계산
+  let price = props.price * (1 - props.discount / 100);
   return (
     <t.MainContainer>
       <t.NameWrapper>
@@ -15,7 +17,16 @@ const ProdName = (props: PropsType) => {
         {props.sale && <Badge type={"sale"}>SALE</Badge>}
         {props.soldout && <Badge type={"soldout"}>SOLDOUT</Badge>}
       </t.NameWrapper>
-      {/* <t.Price>{props.price.toLocaleString("ko-KR")}원</t.Price> */}
+      {props.discount !== 0 ? (
+        <t.PriceWrapper>
+          <t.Price>{price && price.toLocaleString()}원</t.Price>
+          <t.DiscountedPrice>
+            {props.price && props.price.toLocaleString()}원
+          </t.DiscountedPrice>
+        </t.PriceWrapper>
+      ) : (
+        <t.Price>{props.price && props.price.toLocaleString()}원</t.Price>
+      )}
       <t.Line />
     </t.MainContainer>
   );
