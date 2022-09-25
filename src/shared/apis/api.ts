@@ -29,8 +29,8 @@ export const postReviews = (id: number, body: any) =>
 export const getMain = () => axiosInstance.get(`/main`);
 
 //상세페이지
-export const getProdDetails = (p_No?: string, keyword?: string) =>
-  axiosInstance.get(`/products/:${p_No}?keyword=${keyword}`);
+export const getProdDetails = (p_No: string) =>
+  axiosInstance.get(`/products/${p_No}`);
 
 //장보기페이지
 export const getList = (sort: string, pageNo: string) =>
