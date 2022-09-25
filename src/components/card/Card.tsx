@@ -1,19 +1,31 @@
-import * as t from "./Card.style";
+import * as t from "./card.style";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import { DataType } from "../../containers/listPage/cardList/CardList";
 import { ColorIcon } from "../../elements/ColorIcons";
 import { Badge } from "../../elements/Badge";
+import { CardCompoType } from "./card.type";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
-const Card = (props: DataType) => {
-  // console.log(props.p_Ad);
+const Card = (props: CardCompoType) => {
+  const [imgHover, setImgHover] = useState<Boolean>(false);
+  const navigate = useNavigate();
 
   return (
     <>
       <t.CardCp>
         {props.type === "wish" ? (
           <t.WishCard>
-            <t.CardImg src={props.p_Thumbnail} />
+            <t.CardImg
+              onClick={() => navigate(`/detail/main/${props.pNo}`)}
+              onMouseEnter={() => setImgHover(true)}
+              onMouseLeave={() => setImgHover(false)}
+              src={
+                imgHover && props.pThumbnail.length > 1
+                  ? props.pThumbnail[1]
+                  : props.pThumbnail[0]
+              }
+            />
             <span>
               <HighlightOffRoundedIcon
                 style={{ fill: "#fff", width: "25px" }}
@@ -22,27 +34,61 @@ const Card = (props: DataType) => {
           </t.WishCard>
         ) : (
           <>
-            {props.p_Ad ? (
+            {props.type === "ad" ? (
               <t.AdCardArea>
-                <t.AdCard src={props.p_Thumbnail} />
+                <t.AdCard
+                  onClick={() => navigate(`/detail/main/${props.pNo}`)}
+                  onMouseEnter={() => setImgHover(true)}
+                  onMouseLeave={() => setImgHover(false)}
+                  src={
+                    imgHover && props.pThumbnail.length > 1
+                      ? props.pThumbnail[1]
+                      : props.pThumbnail[0]
+                  }
+                />
+                {/* // props.pThumbnail.length > 1 ? true : false */}
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
-              <t.CardImg src={props.p_Thumbnail} />
+              <t.CardImg
+                onClick={() => navigate(`/detail/main/${props.pNo}`)}
+                onMouseEnter={() => setImgHover(true)}
+                onMouseLeave={() => setImgHover(false)}
+                src={
+                  imgHover && props.pThumbnail.length > 1
+                    ? props.pThumbnail[1]
+                    : props.pThumbnail[0]
+                }
+              />
             )}
           </>
         )}
 
         <t.Div>
-          {props.p_Color ? (
+          {props.pOption ? (
             <t.Div>
-              <ColorIcon colorCode={props.p_Color} />
+              <ColorIcon colorCode={props.pOption} />
             </t.Div>
           ) : null}
-          <t.CardTitle>
-            [{props.p_Brand}] {props.p_Name}
+          <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
+            [{props.aBrand}] {props.pName}
           </t.CardTitle>
-          <t.Cardprice>{props.p_Price}</t.Cardprice>
+
+          {props.pSale === true ? (
+            <t.PriceDiv>
+              <t.CardPrice>
+                {Math.floor(
+                  (props.pCost / 100) * (100 - props.pDiscount)
+                ).toLocaleString("ko-KR")}
+                원
+              </t.CardPrice>
+              <t.OriginPrice>
+                {props.pCost.toLocaleString("ko-KR")}원
+              </t.OriginPrice>
+            </t.PriceDiv>
+          ) : (
+            <t.CardPrice>{props.pCost.toLocaleString("ko-KR")}원</t.CardPrice>
+          )}
         </t.Div>
       </t.CardCp>
     </>

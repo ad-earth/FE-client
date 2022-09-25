@@ -1,15 +1,34 @@
-import { DataType } from '../../../containers/listPage/cardList/CardList'
-import { Badge } from '../../../elements/Badge'
-import * as t from './CardBaged.style'
+import { Badge } from "../../../elements/Badge";
+import * as t from "./CardBaged.style";
+import { CardBadgeType } from "./cardBadge.type";
 
-const CardBadge = (props: DataType) => {
+const CardBadge = (props: CardBadgeType) => {
   return (
     <>
-      <t.Div>
-        <Badge type={'best'}>BEST</Badge>
-      </t.Div>
+      <t.Wrap>
+        {props.pNew === true ? (
+          <t.Div>
+            <Badge type={"new"}>NEW</Badge>{" "}
+          </t.Div>
+        ) : null}
+        {props.pBest === true ? (
+          <t.Div>
+            <Badge type={"best"}>BEST</Badge>{" "}
+          </t.Div>
+        ) : null}
+        {props.pSoldOut === true ? (
+          <t.Div>
+            <Badge type={"soldout"}>SOLDOUT</Badge>{" "}
+          </t.Div>
+        ) : null}
+        {props.pSale === true ? (
+          <t.Div>
+            <Badge type={"sale"}>SALE</Badge>{" "}
+          </t.Div>
+        ) : null}
+      </t.Wrap>
     </>
-  )
-}
+  );
+};
 
-export default CardBadge
+export default CardBadge;

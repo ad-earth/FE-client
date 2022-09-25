@@ -20,7 +20,7 @@ const BestCards = () => {
             onMouseEnter={() => setChangePic(idx)}
             onMouseLeave={() => setChangePic(7)}
           >
-            {changePic === idx ? (
+            {/* {changePic === idx ? (
               <Card
                 p_Thumbnail={x.p_Thumbnail[1]}
                 p_Brand={x.a_Brand}
@@ -44,7 +44,7 @@ const BestCards = () => {
                 p_New={x.p_New}
                 p_Sale={x.p_Sale}
               />
-            )}
+            )} */}
           </t.CardWrapper>
         );
       })}
