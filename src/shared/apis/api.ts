@@ -44,5 +44,8 @@ export const getSearch = (keyword: string, pageNo: string) =>
     `/main/search?keyword=${keyword}&page=${pageNo}&maxpost=20`
   );
 
+//주문완료 페이지
+export const getComplete = () => axiosInstance.get(`/payment/complete`);
+
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);

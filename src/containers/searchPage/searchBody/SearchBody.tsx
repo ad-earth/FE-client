@@ -16,6 +16,7 @@ const SearchBody = (props: SearchType) => {
     const res = await postLike;
     setIsLike(!isLike);
   };
+
   return (
     <>
       {props.products && (
