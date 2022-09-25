@@ -61,3 +61,13 @@ export const DropMenu = styled.div`
     background: ${theme.bg04};
   }
 `;
+export const Price = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: ${theme.fs15};
+  color: ${theme.fc09};
+  margin-top: 25px;
+  span {
+    color: ${theme.fc15};
+  }
+`;

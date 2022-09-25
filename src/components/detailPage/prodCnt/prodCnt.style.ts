@@ -11,6 +11,16 @@ export const OptBox = styled.div`
   box-sizing: border-box;
   padding: 10px;
 `;
+export const Price = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: ${theme.fs15};
+  color: ${theme.fc09};
+  margin-top: 25px;
+  span {
+    color: ${theme.fc15};
+  }
+`;
 export const OptWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -27,21 +37,4 @@ export const CountWrapper = styled.div`
   justify-content: space-between;
   font-size: ${theme.fs15};
   color: ${theme.fc09};
-`;
-export const Price = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-size: ${theme.fs15};
-  color: ${theme.fc09};
-  margin-top: 25px;
-  span {
-    color: ${theme.fc15};
-  }
-`;
-export const BtnWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 25px;
 `;
