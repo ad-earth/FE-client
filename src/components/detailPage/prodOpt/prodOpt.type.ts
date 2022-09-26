@@ -6,4 +6,5 @@ export interface PropsType {
   like?: boolean;
   likeCnt?: number;
   colorCode?: string;
+  prodNo?: number;
 }

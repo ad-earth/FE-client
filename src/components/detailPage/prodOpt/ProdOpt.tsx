@@ -145,7 +145,11 @@ const ProdOpt = (props: PropsType) => {
       ) : (
         <ProdCnt price={price} />
       )}
-      <ProdBtns like={props.like} likeCnt={props.likeCnt} />
+      <ProdBtns
+        like={props.like}
+        likeCnt={props.likeCnt}
+        prodNo={props.prodNo}
+      />
     </t.MainContainer>
   );
 };
