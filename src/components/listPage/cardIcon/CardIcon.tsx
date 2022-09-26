@@ -4,29 +4,55 @@ import { useNavigate } from "react-router-dom";
 
 import { CardIconType } from "./cardIcon.type";
 import ListModal from "../../../containers/listPage/listModa/ListModal";
+import { useIcon } from "./useCardIcon";
+import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
 
-const CardIcon = (props: CardIconType) => {
+const CardIcon = ({
+  val,
+  userLike,
+}: {
+  val: ProductsType;
+  userLike: number[];
+}) => {
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [plus, setPlus] = useState<number>(val.p_Like);
+  const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
+
   const navigate = useNavigate();
+  const { mutate } = useIcon();
+
+  const heartClick = () => {
+    mutate(val.p_No, {
+      onSuccess: () => {
+        setInculde(!include);
+        setPlus(include ? plus - 1 : plus + 1);
+      },
+    });
+  };
 
   return (
     <>
-      <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
+      <ListModal
+        isOpen={infoIsOpen}
+        handleClose={() => setInfoIsOpen(false)}
+        userLike={userLike}
+        list={val}
+      />
       <t.CardCp>
         <t.IconDiv>
           <t.IconSpan>
             <t.MessageIcon
-              onClick={() => navigate(`/detail/main/${props.pNo}`)}
+              onClick={() => navigate(`/detail/main/${val.p_No}`)}
             />
-            <t.Count>{props.pReview}</t.Count>
+            <t.Count>{val.p_Review}</t.Count>
           </t.IconSpan>
           <t.IconSpan>
-            {props.userLike.includes(props.pNo) ? (
-              <t.HeartIcon />
+            {include ? (
+              <t.HeartIcon onClick={heartClick} />
             ) : (
-              <t.EmptyHeartIcon onClick={props.onClick} />
+              <t.EmptyHeartIcon onClick={heartClick} />
             )}
-            <t.Count>{props.pLike}</t.Count>
+            <t.Count>{plus}</t.Count>
           </t.IconSpan>
           <t.CartIcon
             onClick={() => {

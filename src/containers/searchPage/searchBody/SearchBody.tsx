@@ -7,7 +7,7 @@ import SearchCateDrop from "../../../components/searchPage/searchCateDrop/Search
 import SearchNav from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 import { postLike } from "../../../shared/apis/api";
-import { SearchType } from "./searchPage.type";
+import { SProductsType, SearchType } from "./searchPage.type";
 
 const SearchBody = (props: SearchType) => {
   const [isLike, setIsLike] = useState(false);
@@ -24,10 +24,10 @@ const SearchBody = (props: SearchType) => {
           <SearchNav />
           <SearchCateDrop cnt={props.cnt} />
           <t.CardWrap>
-            {props.adProducts.map((v: any) => {
+            {props.adProducts.map((v: SProductsType, i: number) => {
               return (
                 <>
-                  <t.CardCp key={v.p_No}>
+                  <t.CardCp key={i}>
                     <Card
                       pNo={v.p_No}
                       pThumbnail={v.p_Thumbnail}
@@ -49,20 +49,13 @@ const SearchBody = (props: SearchType) => {
                       pSale={v.p_Sale}
                     />
                     <div>
-                      <CardIcon
-                        onClick={toggleLike}
-                        pNo={v.p_No}
-                        userLike={props.userLike}
-                        pReview={v.p_Review}
-                        pLike={v.p_Like}
-                        isLike={isLike}
-                      />
+                      <CardIcon val={v} userLike={props.userLike} />
                     </div>
                   </t.CardCp>
                 </>
               );
             })}
-            {props.products.map((v: any) => {
+            {props.products.map((v: SProductsType) => {
               return (
                 <>
                   <t.CardCp key={v.p_Name}>
@@ -86,14 +79,7 @@ const SearchBody = (props: SearchType) => {
                       pSale={v.p_Sale}
                     />
                     <div>
-                      <CardIcon
-                        onClick={toggleLike}
-                        pNo={v.p_No}
-                        userLike={props.userLike}
-                        pReview={v.p_Review}
-                        pLike={v.p_Like}
-                        isLike={isLike}
-                      />
+                      <CardIcon val={v} userLike={props.userLike} />
                     </div>
                   </t.CardCp>
                 </>
