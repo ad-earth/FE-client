@@ -3,7 +3,7 @@ import WishCard from "../../../components/myPage/wishCard/WishCard";
 import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
 import useWish from "./useWish";
-import { WishType } from "./wish.type";
+import { WishListType } from "./wish.type";
 const Wish = () => {
   const [state, setState] = useState(null);
 
@@ -13,21 +13,22 @@ const Wish = () => {
     inView && hasNextPage && fetchNextPage();
   }, [inView]);
 
+  if (data?.pages[0]?.cnt === 0) {
+    return <DataNull>주문 내역이 없습니다.</DataNull>;
+  }
   return (
     <Section>
       <OrderListBox>
         <Title>
-          위시리스트 <span>5</span>
+          위시리스트 <span>{data?.pages[0]?.cnt}</span>
         </Title>
         <CardContent>
-          {state === null && <DataNull>위시리스트가 없습니다.</DataNull>}
-          {/* 
           {data &&
-            data.pages.map((pageData: WishType, i: number) => (
+            data.pages[0].wishList.map((list: WishListType, i: number) => (
               <List key={i}>
-                <WishCard pageData={pageData.wishList} />
+                <WishCard list={list} />
               </List>
-            ))} */}
+            ))}
         </CardContent>
         {isFetchingNextPage ? <div>...Loading</div> : <div ref={ref}></div>}
       </OrderListBox>
@@ -49,10 +50,10 @@ const Title = styled.div`
     width: 20px;
     height: 20px;
     text-align: center;
-    font-size: ${({ theme }) => theme.fc11};
+    font-size: ${({ theme }) => theme.fs11};
     line-height: 20px;
     color: ${({ theme }) => theme.fc01};
-    background-color: #${({ theme }) => theme.bg11};
+    background-color: ${({ theme }) => theme.bg11};
     border-radius: 100%;
     border-color: ${({ theme }) => theme.ls11};
     display: inline-block;
