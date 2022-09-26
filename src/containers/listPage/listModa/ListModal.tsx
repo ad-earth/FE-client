@@ -24,7 +24,7 @@ const ListModal = ({
     e.preventDefault();
     handleClose();
   }
-
+  const like = userLike.includes(list.p_No);
   const [viewport, setViewport] = useState(visualViewport.width);
   useEffect(() => {
     const resizeListener = () => {
@@ -66,6 +66,7 @@ const ListModal = ({
                   price={list.p_Cost}
                   discount={list.p_Discount}
                   likeCnt={list.p_Like}
+                  like={like}
                 />
               </t.InfoWrapper>
             </t.ProdInfoContainer>
