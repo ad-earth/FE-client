@@ -19,8 +19,9 @@ const Product = ({ product }: { product: PropsType }) => {
         {product.p_Option.map((option, i: number) => (
           <t.ProducOptionBox key={i}>
             <t.ProducOption>
-              {option[0]}
-              {`${option[1] && ` (${option[1]}`}) `}
+              {`${option[0] !== null ? option[0] : ""}  `}
+              {`${option[1] !== null && option[0] !== null ? "/" : ""}`}
+              {`${option[1] !== null ? option[1] : ""}  `}
             </t.ProducOption>
             <t.ProducPrice>
               {option[4]}원 / {option[2]}개

@@ -13,24 +13,36 @@ const History = () => {
           navigate(`/`);
         }}
       >
-        Home &nbsp; &gt;{" "}
+        Home &nbsp; &gt;
       </span>
       &nbsp;
-      <span
-        onClick={() => {
-          navigate(`/list`);
-        }}
-      >
-        장보기 &nbsp;&gt;
-      </span>
+      {category === "메인" ? (
+        <span
+          onClick={() => {
+            navigate(`/`);
+          }}
+        >
+          메인 &nbsp;
+        </span>
+      ) : (
+        <span
+          onClick={() => {
+            navigate(`/list`);
+          }}
+        >
+          장보기 &gt;
+        </span>
+      )}
       &nbsp;
-      <div
-        onClick={() => {
-          navigate(category === "전체" ? `/list` : `/list/${category}`);
-        }}
-      >
-        {category}
-      </div>
+      {category === "메인" ? null : (
+        <div
+          onClick={() => {
+            navigate(category === "전체" ? `/list` : `/list/${category}`);
+          }}
+        >
+          {category}
+        </div>
+      )}
     </t.HistoryNav>
   );
 };

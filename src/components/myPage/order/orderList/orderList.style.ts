@@ -21,6 +21,9 @@ export const ProductBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  & .link {
+    display: contents;
+  }
 `;
 export const Status = styled.p`
   width: 100px;

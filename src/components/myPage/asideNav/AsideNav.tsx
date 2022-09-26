@@ -39,7 +39,6 @@ const AsideNav = () => {
                     isActive ? `${theme.fc15}` : `${theme.fc01}`
                   }`,
                 })}
-                end
               >
                 {data.name}
               </NavLink>
@@ -51,7 +50,7 @@ const AsideNav = () => {
   );
 };
 const list: NavLinkType[] = [
-  { id: 1, name: "주문 조회", path: "" },
+  { id: 1, name: "주문 조회", path: "mypage" },
   { id: 2, name: "위시 리스트", path: "wish" },
   { id: 3, name: "취소 조회", path: "cancel" },
   { id: 4, name: "정보 수정", path: "modal" },
