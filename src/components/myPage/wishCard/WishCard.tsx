@@ -34,6 +34,7 @@ const WishCard = ({ list }: { list: DataType }) => {
   const heartClick = () => {
     mutate(list.p_No, {
       onSuccess: () => {
+        alert("isSuccess");
         navigate("/mypage/wish");
       },
     });

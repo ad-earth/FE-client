@@ -32,34 +32,18 @@ const NewCarousel = () => {
             <div
               key={x.p_No}
               onClick={() => navigate(`/detail/main/${x.p_No}`)}
-              onMouseEnter={() => setChangePic(idx)}
-              onMouseLeave={() => setChangePic(10)}
             >
-              {/* {changePic === idx ? (
-                <Card
-                  p_Thumbnail={x.p_Thumbnail[1]}
-                  p_Brand={x.a_Brand}
-                  p_Name={x.p_Name}
-                  p_Price={x.p_Cost}
-                  p_Discount={x.p_Discount}
-                  p_Soldout={x.p_Soldout}
-                  p_Best={x.p_Best}
-                  p_New={x.p_New}
-                  p_Sale={x.p_Sale}
-                />
-              ) : (
-                <Card
-                  p_Thumbnail={x.p_Thumbnail[0]}
-                  p_Brand={x.a_Brand}
-                  p_Name={x.p_Name}
-                  p_Price={x.p_Cost}
-                  p_Discount={x.p_Discount}
-                  p_Soldout={x.p_Soldout}
-                  p_Best={x.p_Best}
-                  p_New={x.p_New}
-                  p_Sale={x.p_Sale}
-                />
-              )} */}
+              <Card
+                pThumbnail={x.p_Thumbnail}
+                aBrand={x.a_Brand}
+                pName={x.p_Name}
+                pCost={x.p_Cost}
+                pDiscount={x.p_Discount}
+                pSoldOut={x.p_Soldout}
+                pBest={x.p_Best}
+                pNew={x.p_New}
+                pSale={x.p_Sale}
+              />
             </div>
           );
         })}

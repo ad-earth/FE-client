@@ -8,11 +8,7 @@ interface Data {
 }
 const PostReview = async (data: Data) => {
   console.log(data);
-  const body: any = {
-    r_Content: data.r_Content,
-    r_Score: data.r_Score,
-  };
-  const res = await postReviews(data.id, body);
+  const res = await postReviews(data.id, data.r_Content, data.r_Score);
   return res;
 };
 

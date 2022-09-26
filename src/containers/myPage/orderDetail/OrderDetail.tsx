@@ -51,9 +51,9 @@ const OrderDetail = () => {
           price={orderDetail.o_Price}
           products={orderDetail.products}
         />
-        {orderDetail.products.filter(
-          (item) => item.o_Status === "취소완료"
-        ) && (
+        {orderDetail.products.filter((data) =>
+          data.o_Status.includes("취소완료")
+        ).length > 0 && (
           <OrderAmount
             price={orderDetail.o_Price}
             products={orderDetail.products}

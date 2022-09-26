@@ -3,11 +3,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import * as t from "./prodCarousel.style";
-import { useProdInfo } from "../../../containers/detailPage/prodInfo/useProdInfo";
-import { useState } from "react";
+import { PropsType } from "./prodCarousel.type";
 
-const ProdCarousel = () => {
-  const data = useProdInfo();
+const ProdCarousel = (props: PropsType) => {
   // carousel option
   const setting = {
     dots: false,
@@ -17,8 +15,8 @@ const ProdCarousel = () => {
   return (
     <t.MainContainer>
       <Slider {...setting}>
-        {data.p_Thumbnail &&
-          data.p_Thumbnail.map((x: string, idx: number) => {
+        {props.img &&
+          props.img.map((x, idx) => {
             return (
               <>
                 <t.ProdImg key={idx} src={x} alt="상품 이미지" />

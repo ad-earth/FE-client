@@ -42,10 +42,10 @@ const ListModal = ({
             <t.ProdInfoContainer>
               {viewport <= 990 ? (
                 <t.Max>
-                  <ProdCarousel p_Thumbnail={list.p_Thumbnail} />
+                  <ProdCarousel img={list.p_Thumbnail} />
                 </t.Max>
               ) : (
-                <ProdImg p_Thumbnail={list.p_Thumbnail} />
+                <ProdImg img={list.p_Thumbnail} />
               )}
               <t.InfoWrapper>
                 <ProdName

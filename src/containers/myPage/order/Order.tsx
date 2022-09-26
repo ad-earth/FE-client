@@ -17,7 +17,6 @@ const Order = () => {
   useEffect(() => {
     inView && hasNextPage && fetchNextPage();
   }, [inView]);
-
   if (data?.pages[0]?.cnt === 0) {
     return <t.DataNull>주문 내역이 없습니다.</t.DataNull>;
   }

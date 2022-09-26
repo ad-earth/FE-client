@@ -1,3 +1,4 @@
 export interface PropsType {
-  imgUrl: string;
+  imgUrl?: string;
+  img?: string[];
 }
