@@ -7,8 +7,6 @@ import ProdDesc from "../../../components/detailPage/prodDesc/ProdDesc";
 import ProdOpt from "../../../components/detailPage/prodOpt/ProdOpt";
 import ProdCarousel from "../../../components/detailPage/prodCarousel/ProdCarousel";
 import ProdImg from "../../../components/detailPage/prodImg/ProdImg";
-import { ListMoType } from "../../../components/listPage/cardIcon/cardIcon.type";
-import { CardIconType } from "../../../components/listPage/cardIcon/cardIcon.type";
 import { ProductsType } from "../cardList/cardList.type";
 
 const ListModal = ({
@@ -34,7 +32,6 @@ const ListModal = ({
     };
     window.addEventListener("resize", resizeListener);
   });
-  // console.log(list.p_Thumbnail);
 
   return (
     <>
@@ -68,7 +65,6 @@ const ListModal = ({
                   option={list.p_Option}
                   price={list.p_Cost}
                   discount={list.p_Discount}
-                  // like={userLike}
                   likeCnt={list.p_Like}
                 />
               </t.InfoWrapper>

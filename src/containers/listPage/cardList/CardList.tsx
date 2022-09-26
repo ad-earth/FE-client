@@ -6,11 +6,8 @@ import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CateDrop from "../../../components/listPage/catDrop/CateDrop";
 import { CardListType } from "./cardList.type";
 import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
-import { useNavigate } from "react-router-dom";
 
 const ListPage = (props: CardListType) => {
-  let navigate = useNavigate();
-
   return (
     <t.CardArea>
       <CateDrop />

@@ -1,22 +1,13 @@
 import * as t from "./SearchBody.style";
-import { useState } from "react";
 
 import Card from "../../../components/card/Card";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
 import SearchNav from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
-import { postLike } from "../../../shared/apis/api";
 import { SProductsType, SearchType } from "./searchPage.type";
 
 const SearchBody = (props: SearchType) => {
-  const [isLike, setIsLike] = useState(false);
-
-  const toggleLike = async () => {
-    const res = await postLike;
-    setIsLike(!isLike);
-  };
-
   return (
     <>
       {props.products && (
