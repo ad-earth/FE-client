@@ -94,7 +94,7 @@ const ProdOpt = (props: PropsType) => {
               setDrop(!drop);
             }}
           >
-            옵션 (선택)
+            옵션 선택
             {drop ? <t.IcToggleUp /> : <t.IcToggleDown />}
           </t.OptDropDown>
           {drop ? (

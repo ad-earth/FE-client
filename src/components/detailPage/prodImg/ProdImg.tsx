@@ -1,25 +1,24 @@
 import { useState } from "react";
 
-import { useProdInfo } from "../../../containers/detailPage/prodInfo/useProdInfo";
 import * as t from "./prodImg.style";
+import { PropsType } from "./prodImg.type";
 
-const ProdImg = () => {
-  const data = useProdInfo();
+const ProdImg = (props: PropsType) => {
   const [url, setUrl] = useState("");
 
   return (
     <t.MainContainer>
-      <t.MainImg imgUrl={url ? url : data.p_Thumbnail && data.p_Thumbnail[0]} />
+      <t.MainImg imgUrl={url ? url : props.img && props.img[0]} />
       <t.SubImgWrapper>
-        {data.p_Thumbnail &&
-          data.p_Thumbnail.map((item: string, index: number) => {
+        {props.img &&
+          props.img.map((x, idx) => {
             return (
               <t.SubImg
                 alt="상품 이미지"
-                key={index}
-                src={item}
+                key={idx}
+                src={x}
                 onMouseEnter={() => {
-                  setUrl(data.p_Thumbnail[index]);
+                  setUrl(props.img[idx]);
                 }}
               />
             );

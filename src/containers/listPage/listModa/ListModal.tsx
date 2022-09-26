@@ -34,9 +34,7 @@ const ListModal = (props: ModalType) => {
             <t.Xbtn sx={{ fontSize: "36px" }} onClick={close} />
             <t.ProdInfoContainer>
               {viewport <= 990 ? (
-                <t.Max>
-                  <ProdCarousel />
-                </t.Max>
+                <t.Max>{/* <ProdCarousel /> */}</t.Max>
               ) : (
                 <ProdImg />
               )}
