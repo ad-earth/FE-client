@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as t from "./bestCards.style";
@@ -8,17 +7,14 @@ import { useBestCards } from "./useBestCards";
 const BestCards = () => {
   const navigate = useNavigate();
   const bestProducts = useBestCards();
-  // const [changePic, setChangePic] = useState(7);
 
   return (
     <t.MainContainer>
-      {bestProducts.map((x, idx) => {
+      {bestProducts.map((x) => {
         return (
           <t.CardWrapper
             key={x.p_No}
-            onClick={() => navigate(`/detail/main/${x.p_No}`)}
-            // onMouseEnter={() => setChangePic(idx)}
-            // onMouseLeave={() => setChangePic(7)}
+            onClick={() => navigate(`/detail/메인/${x.p_No}`)}
           >
             <Card
               pThumbnail={x.p_Thumbnail}
