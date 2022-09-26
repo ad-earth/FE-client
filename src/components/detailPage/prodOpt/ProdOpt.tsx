@@ -6,7 +6,6 @@ import ProdCnt, { ProdOptCnt } from "../prodCnt/ProdCnt";
 import ProdBtns from "../prodBtns/ProdBtns";
 
 const ProdOpt = (props: PropsType) => {
-  console.log(props.option);
   // 옵션 여부 체크
   const [haveOptions, setHaveOptions] = useState(false);
   useEffect(() => {
