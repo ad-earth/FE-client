@@ -22,7 +22,6 @@ const SearchPage = () => {
   };
 
   const SearchListData: SearchType = useSearchDataList(keyParams, pageParams);
-  console.log(submitHandler);
 
   const onClearInput = () => {
     keywordRef.current.value = "";
