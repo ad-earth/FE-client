@@ -5,4 +5,5 @@ export interface PropsType {
   discount?: number;
   like?: boolean;
   likeCnt?: number;
+  colorCode?: string;
 }

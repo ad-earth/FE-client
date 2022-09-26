@@ -6,10 +6,11 @@ import ProdCnt, { ProdOptCnt } from "../prodCnt/ProdCnt";
 import ProdBtns from "../prodBtns/ProdBtns";
 
 const ProdOpt = (props: PropsType) => {
+  console.log(props.option);
   // 옵션 여부 체크
   const [haveOptions, setHaveOptions] = useState(false);
   useEffect(() => {
-    if (props.option && props.option.length) {
+    if (props.option && props.option.length !== 0) {
       setHaveOptions(true);
     }
   }, [props]);
@@ -112,9 +113,17 @@ const ProdOpt = (props: PropsType) => {
                       setDrop(!drop);
                     }}
                   >
-                    {x[0] && x[0]} {x[2] && x[2]} {x[4] === 0 ? "(품절)" : null}
-                    <br />
-                    <span>{`+ ${x[3]}원`}</span>
+                    <t.ColorOptionWrapper>
+                      {x[1] === null ? null : (
+                        <t.ColorIcon colorCode={x[1] && x[1]} />
+                      )}
+                      <t.OptionWrapper>
+                        {x[0] && x[0]} {x[2] && x[2]}{" "}
+                        {x[4] === 0 ? "(품절)" : null}
+                        <br />
+                        <span>{`+ ${x[3]}원`}</span>
+                      </t.OptionWrapper>
+                    </t.ColorOptionWrapper>
                   </t.DropMenu>
                 );
               })}
