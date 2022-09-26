@@ -61,6 +61,25 @@ export const DropMenu = styled.div`
     background: ${theme.bg04};
   }
 `;
+export const ColorOptionWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const ColorIcon = styled.div`
+  width: 24px;
+  height: 24px;
+  background-color: ${(props: PropsType) => props.colorCode};
+  border: 1px solid ${theme.ls04};
+  border-radius: 50%;
+  text-align: center;
+  line-height: 46px;
+  cursor: pointer;
+`;
+export const OptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`;
 export const Price = styled.div`
   display: flex;
   justify-content: space-between;

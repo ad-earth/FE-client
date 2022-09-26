@@ -55,6 +55,7 @@ const ProdInfo = () => {
           discount={product && product.p_Discount}
           like={data.userLike}
           likeCnt={product && product.p_Like}
+          prodNo={product && product.p_No}
         />
       </t.InfoWrapper>
     </t.ProdInfoContainer>
