@@ -19,7 +19,6 @@ const CateButton = ({
     "화장품",
     "문구",
   ];
-  console.log({ cate });
 
   return (
     <>
