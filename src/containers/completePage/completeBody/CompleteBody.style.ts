@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const BodyDiv = styled.div`
   display: grid;
@@ -8,7 +8,7 @@ export const BodyDiv = styled.div`
   grid-template-columns: 33% 67%;
   grid-template-rows: repeat(5, minmax(50px, auto));
   margin-top: 30px;
-`
+`;
 export const CellL = styled.div`
   font-size: ${({ theme }) => theme.fs14};
   vertical-align: top;
@@ -18,7 +18,7 @@ export const CellL = styled.div`
   border-width: 0 0 1px;
   border-style: solid;
   border-color: ${({ theme }) => theme.rgba04};
-`
+`;
 
 export const CellR = styled.div`
   font-size: ${({ theme }) => theme.fs14};
@@ -30,15 +30,15 @@ export const CellR = styled.div`
   white-space: pre-wrap;
   border-width: 0 0 1px;
   border-style: solid;
-  border-color: ${({ theme }) => theme.fs14};
-`
+  border-color: ${({ theme }) => theme.rgba04};
+`;
 export const Text = styled.div`
   font-size: ${({ theme }) => theme.fs14};
   color: ${({ theme }) => theme.fc13};
   padding: 1px 0 1px;
-`
+`;
 export const BtnDiv = styled.div`
   background-color: ${({ theme }) => theme.bg01};
   width: 420px;
   margin-bottom: 140px;
-`
+`;

@@ -5,7 +5,6 @@ import { CompleteType } from "../completeBody/completeBody.type";
 
 const CompleteBody = () => {
   const CompleteData: CompleteType = useComplete();
-  console.log(CompleteData);
 
   return (
     <>
@@ -20,7 +19,7 @@ const CompleteBody = () => {
               <t.Text>12309812</t.Text>
               <t.Text>(주)광고지구</t.Text>
               <t.Text style={{ color: "#00913a", fontWeight: "bold" }}>
-                이거 뭐였지,,?
+                {CompleteData.o_Price.toLocaleString("ko-KR")}원
               </t.Text>
             </t.CellR>
 
