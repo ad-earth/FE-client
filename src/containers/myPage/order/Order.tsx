@@ -25,9 +25,9 @@ const Order = () => {
       <t.OrderListBox>
         <t.Title>주문조회</t.Title>
         {data &&
-          data.pages.map((_, idx: number) => (
+          data?.pages.map((_, idx: number) => (
             <div key={idx}>
-              {data.pages[idx].orderList.map(
+              {data?.pages[idx].orderList.map(
                 (list: OrderListType, idx: number) => (
                   <t.List key={idx}>
                     <OrderNumber
