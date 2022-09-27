@@ -20,14 +20,15 @@ const Order = () => {
   if (data?.pages[0]?.cnt === 0) {
     return <t.DataNull>주문 내역이 없습니다.</t.DataNull>;
   }
+  console.log(data);
   return (
     <t.Section>
       <t.OrderListBox>
         <t.Title>주문조회</t.Title>
         {data &&
-          data.pages.map((_, idx: number) => (
+          data?.pages.map((_, idx: number) => (
             <div key={idx}>
-              {data.pages[idx].orderList.map(
+              {data?.pages[idx].orderList.map(
                 (list: OrderListType, idx: number) => (
                   <t.List key={idx}>
                     <OrderNumber
