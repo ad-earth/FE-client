@@ -12,7 +12,7 @@ const ProdOpt = (props: PropsType) => {
     if (props.option && props.option.length !== 0) {
       setHaveOptions(true);
     }
-  }, [props]);
+  }, [props.option]);
   // 상품 가격 할인율 계산
   let price = props.price * (1 - props.discount / 100);
 
@@ -37,7 +37,10 @@ const ProdOpt = (props: PropsType) => {
     } else {
       const newOption = {
         id: optionId,
+        color: color,
+        size: size,
         colorSize: color + size,
+        optionPrice: optionPrice,
         price: price + optionPrice,
         qty: qty,
       };
@@ -51,6 +54,7 @@ const ProdOpt = (props: PropsType) => {
     let newOptionList = optionList.filter((option) => option.id !== targerId);
     setOptionList(newOptionList);
   }
+
   // 상품 옵션 수량 수정
   function changeOptionList(newOptionId: number, qty: number) {
     let index = optionList.findIndex((option) => option.id === newOptionId);
@@ -146,9 +150,10 @@ const ProdOpt = (props: PropsType) => {
         <ProdCnt price={price} />
       )}
       <ProdBtns
-        like={props.like}
-        likeCnt={props.likeCnt}
         prodNo={props.prodNo}
+        totalPrice={totalPrice}
+        totalQty={totalQty}
+        optionList={optionList}
       />
     </t.MainContainer>
   );
