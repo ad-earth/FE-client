@@ -13,7 +13,7 @@ const CateDrop = ({
         <t.DropBtn
           name="select"
           id="select"
-          defaultValue={"second"}
+          defaultValue="like"
           onChange={sortClick}
           value={sort}
         >

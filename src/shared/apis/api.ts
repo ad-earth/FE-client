@@ -43,7 +43,7 @@ export const getList = (sort: string, pageNo: string) =>
   axiosInstance.get(`/main/products?sort=${sort}&page=${pageNo}&maxpost=20`);
 
 //카테고리 조회
-export const getSort = (category: string, sort: string, pageNo: string) =>
+export const getCate = (category: string, sort: string, pageNo: string) =>
   axiosInstance.get(
     `/main/products/:${category}?sort=${sort}&page=${pageNo}&maxpost=20`
   );
