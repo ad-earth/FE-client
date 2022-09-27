@@ -8,9 +8,11 @@ import { CardListType } from "./cardList.type";
 import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
 
 const ListPage = (props: CardListType) => {
+  console.log(props.sort);
+
   return (
     <t.CardArea>
-      <CateDrop />
+      <CateDrop sort={props.sort} sortClick={props.sortClick} />
       <t.CardWrap>
         {props.products.map((val: SProductsType, i: number) => {
           return (
