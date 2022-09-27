@@ -5,6 +5,16 @@ import { CompleteType } from "../completeBody/completeBody.type";
 
 const CompleteBody = () => {
   const CompleteData: CompleteType = useComplete();
+  const date = new Date();
+
+  const year = date.getFullYear();
+  const month = ("0" + (date.getMonth() + 1)).slice(-2);
+  const day = ("0" + (date.getDate() + 1)).slice(-2);
+  const dateStr = year + "-" + month + "-" + day;
+
+  const hours = ("0" + date.getHours()).slice(-2);
+  const minutes = ("0" + date.getMinutes()).slice(-2);
+  const timeStr = hours + ":" + minutes;
 
   return (
     <>
@@ -27,7 +37,9 @@ const CompleteBody = () => {
               입금 기간
             </t.CellL>
             <t.CellR style={{ gridColumn: "2/2", gridRow: "2" }}>
-              2022-09-22 22:55까지
+              {dateStr}
+              &nbsp;
+              {timeStr}까지
             </t.CellR>
 
             <t.CellL style={{ gridColumn: "1/2", gridRow: "3" }}>
