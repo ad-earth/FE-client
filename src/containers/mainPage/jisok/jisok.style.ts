@@ -26,22 +26,6 @@ export const Contents = styled.div`
   @media (min-width: 991px) and (max-width: 1200px) {
     width: 90%;
   }
-  @media (max-width: 990px) {
-    width: 90%;
-    img {
-      width: 15%;
-    }
-    button {
-      color: ${theme.fc16};
-      font-size: ${theme.fs10};
-      font-weight: 600;
-      margin-left: 10px;
-      width: 15%;
-      border: none;
-      background: none;
-      cursor: pointer;
-    }
-  }
 `;
 export const Text = styled.div`
   font-size: ${theme.fs16};
