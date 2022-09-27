@@ -17,11 +17,10 @@ const useWish = () => {
     ["WishList"],
     ({ pageParam = 1 }) => fetchPostList(pageParam),
     {
-      getNextPageParam: (lastPage, pages) =>
+      getNextPageParam: (lastPage) =>
         Math.round(lastPage.cnt / 9) > lastPage.pageParam
           ? lastPage.nextPage
           : undefined,
-      staleTime: 10 * 1000,
       retry: 1,
     }
   );

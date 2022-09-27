@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
-export const WishCardBox = styled.div``;
+export const WishCardBox = styled.div`
+  margin-bottom: 35px;
+`;
 
 export const Count = styled.span`
   font-size: ${theme.fs13};
@@ -10,7 +12,7 @@ export const Count = styled.span`
 export const Icons = styled.div`
   display: inline-flex;
   gap: 10px;
-  /* align-items: flex-end; */
+  padding: 0 10px;
 `;
 export const IconSpan = styled.span`
   cursor: pointer;

@@ -12,6 +12,7 @@ import useCancelDetail from "./useCancelDetail";
 import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 
 interface ProductType {
+  o_Status: string;
   p_No: number;
   p_Thumbnail: string[];
   a_Brand: string;
@@ -61,6 +62,7 @@ const CancelDetail = () => {
       navigate("/mypage");
     }
   }, [isSuccess]);
+
   useEffect(() => {
     setCheckPrices(
       products
@@ -93,11 +95,13 @@ const CancelDetail = () => {
           </t.ButtomBox>
         </t.ContentsBox>
         <t.ContentsBox>
-          <CancelListDetail
-            products={products}
-            checkedItems={checkedItems}
-            setCheckedItems={setCheckedItems}
-          />
+          {products.filter((item) => item.o_Status === "주문완료") && (
+            <CancelListDetail
+              products={products}
+              checkedItems={checkedItems}
+              setCheckedItems={setCheckedItems}
+            />
+          )}
           <CancelAmount checkPrice={checkPrice} />
           {isMobile && (
             <t.MobileButtomBox>

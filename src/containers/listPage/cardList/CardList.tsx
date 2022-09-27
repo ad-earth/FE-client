@@ -5,15 +5,16 @@ import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CateDrop from "../../../components/listPage/catDrop/CateDrop";
 import { CardListType } from "./cardList.type";
+import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
 
 const ListPage = (props: CardListType) => {
   return (
     <t.CardArea>
       <CateDrop />
       <t.CardWrap>
-        {props.products.map((val: any) => {
+        {props.products.map((val: SProductsType, i: number) => {
           return (
-            <t.CardCp key={val.p_No}>
+            <t.CardCp key={i}>
               <Card
                 pNo={val.p_No}
                 pThumbnail={val.p_Thumbnail}
@@ -33,13 +34,7 @@ const ListPage = (props: CardListType) => {
                 pSoldOut={val.p_Soldout}
                 pSale={val.p_Sale}
               />
-
-              <CardIcon
-                pNo={val.p_No}
-                userLike={props.userLike}
-                pReview={val.p_Review}
-                pLike={val.p_Like}
-              />
+              <CardIcon val={val} userLike={props.userLike} />
             </t.CardCp>
           );
         })}

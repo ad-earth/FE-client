@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 //style
 import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
@@ -31,7 +31,6 @@ const OrderList = ({
   const [product, setProduct] = useState<PropsType>();
 
   const ClickEvent = (data: PropsType) => {
-    // console.log(data);
     setProduct(data);
     setInfoIsOpen(true);
   };
@@ -45,8 +44,10 @@ const OrderList = ({
       {products.map((product, idx: number) => (
         <t.OderListBox key={idx}>
           <t.ProductBox>
-            <Product product={product} />
-            <t.Status>{product.o_Status}</t.Status>
+            <Link to={`${orderNo}`} className="link">
+              <Product product={product} />
+              <t.Status>{product.o_Status}</t.Status>
+            </Link>
           </t.ProductBox>
           <t.ButtonBox>
             {product.o_Status === "주문완료" ? (
@@ -61,7 +62,7 @@ const OrderList = ({
                 fontWeight="500"
                 padding="10px 16px"
                 onClick={() => {
-                  navigate(`/mypage/cancel-call/${"1?detail=true"}`, {
+                  navigate(`cancel-call/${orderNo}`, {
                     state: { products: products, orderNo: orderNo },
                     replace: true,
                   });
@@ -79,8 +80,6 @@ const OrderList = ({
                 padding="10px 16px"
                 onClick={() => {
                   ClickEvent(product);
-                  // setInfoIsOpen(true);
-                  // context({ type: "TOGGLE_MODAL", data: product });
                 }}
               >
                 구매평 작성

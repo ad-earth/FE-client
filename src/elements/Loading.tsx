@@ -1,4 +1,4 @@
-import { useIsFetching } from "react-query";
+import { useIsFetching, useIsMutating } from "react-query";
 import { FadeLoader } from "react-spinners";
 import styled from "styled-components";
 import { theme } from "../style/theme";
@@ -8,7 +8,8 @@ interface PropsType {
 }
 const Loading = () => {
   const isFetching = useIsFetching();
-  const display = isFetching ? "inherit" : "none";
+  const isMutating = useIsMutating();
+  const display = isFetching || isMutating ? "inherit" : "none";
 
   return (
     <Display display={display}>
@@ -31,4 +32,5 @@ const Display = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 999;
 `;

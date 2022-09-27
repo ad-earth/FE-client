@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../style/theme";
-
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 export const SearchBar = () => {

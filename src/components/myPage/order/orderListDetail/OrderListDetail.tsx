@@ -26,10 +26,10 @@ const OrderListDetail = ({ products }: { products: PropsType[] }) => {
       </t.Thead>
 
       <t.TBody>
-        {products.map((item: PropsType, i: number) => (
+        {products.map((product: PropsType, i: number) => (
           <tr key={i}>
             <td>
-              <Product product={item} />
+              <Product product={product} />
             </td>
             {i === 0 ? (
               <td rowSpan={products.length} className="center">
@@ -39,8 +39,8 @@ const OrderListDetail = ({ products }: { products: PropsType[] }) => {
               <td style={{ display: "none" }}></td>
             )}
             <td className="buttonBox">
-              <span>{item.o_Status}</span>
-              {item.o_Status === "배송완료" && (
+              <span>{product.o_Status}</span>
+              {product.o_Status === "배송완료" && (
                 <t.ButtonBox>
                   <MainButton radius="50px">
                     구매평 작성
