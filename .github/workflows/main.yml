@@ -16,15 +16,6 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Setting .env
-        run: |
-          echo "REACT_APP_SERVER_URL=${{ secrets.REACT_APP_SERVER_URL }}" >> .env
-          echo "REACT_APP_TEST_TOKEN=${{ secrets.REACT_APP_TEST_TOKEN }}" >> .env
-          echo "REACT_APP_BUCKET_NAME=${{ secrets.REACT_APP_BUCKET_NAME }}" >> .env
-          echo "REACT_APP_REGION=${{ secrets.REACT_APP_REGION }}" >> .env
-          echo "REACT_APP_ACCESS=${{ secrets.REACT_APP_ACCESS }}" >> .env
-          echo "REACT_APP_SECRET=${{ secrets.REACT_APP_SECRET }}" >> .env
-
       - name: Build
         run: CI='' yarn build
 
@@ -34,3 +25,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp --recursive --region ap-northeast-2 build s3://${{secrets.S3_BUCKET_NAME}}
+
+      - name: Invalidate Cloudfront Cache
+        env:
+          AWS_ACCESS_KEY_ID: "${{ secrets.AWS_ACCESS_KEY_ID }}"
+          AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
+        run: aws cloudfront create-invalidation --distribution-id '${{ secrets.DISTRIBUTION_ID }}' --paths "/*"
