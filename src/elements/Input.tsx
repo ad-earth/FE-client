@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 import { theme } from "../style/theme";
@@ -14,11 +15,16 @@ interface InputType {
   fBorder?: string;
 }
 
-export const Input = (props: InputType) => {
+export const Input = forwardRef<HTMLInputElement, InputType>((props, ref) => {
   return (
-    <MyInput type="text" placeholder={props.holderName} {...props}></MyInput>
+    <MyInput
+      type="text"
+      placeholder={props.holderName}
+      ref={ref}
+      {...props}
+    ></MyInput>
   );
-};
+});
 
 const MyInput = styled.input<InputType>`
   outline: ${(props) => (props.outline ? props.outline : "none")};
