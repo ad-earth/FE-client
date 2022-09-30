@@ -62,7 +62,6 @@ const ProdOpt = (props: PropsType) => {
     newOptionList[index].qty = qty;
     setOptionList(newOptionList);
   }
-
   // 상품 총 가격 계산
   const [totalPrice, setTotalPrice] = useState(0);
   function getTotalPrice() {
@@ -147,7 +146,7 @@ const ProdOpt = (props: PropsType) => {
           </t.Price>
         </>
       ) : (
-        <ProdCnt price={price} />
+        <ProdCnt price={price} setTotalQty={setTotalQty} />
       )}
       <ProdBtns
         prodNo={props.prodNo}
