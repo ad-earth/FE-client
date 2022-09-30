@@ -30,7 +30,7 @@ export const ListPage = () => {
     pageParams
   );
   // console.log("CATE", CateListData);
-  console.log("CARD", CardListData);
+  // console.log("CARD", CardListData);
 
   const SortClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortParams(e.target.value);
@@ -53,10 +53,10 @@ export const ListPage = () => {
             <CardList
               sortClick={SortClick}
               sort={sortParams}
-              products={CardListData.products}
-              userLike={CardListData.userLike}
-              cnt={CardListData.cnt}
-              pageNo={CardListData.pageNo}
+              products={CateListData.products}
+              userLike={CateListData.userLike}
+              cnt={CateListData.cnt}
+              pageNo={CateListData.pageNo}
             />
           )}
           <PageBtn />

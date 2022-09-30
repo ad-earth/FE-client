@@ -12,7 +12,20 @@ import PaySummary from "../../../components/paymentPage/paySummary/PaySummary";
 import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay } from "./useOrderPList";
-
+interface DBType {
+  id: number;
+  keywordNo: string;
+  prodNo: number;
+  thumbnail: string;
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: [string | null, string | null, string | null, number, number][];
+  totalPrice: number;
+  totalCnt: number;
+}
 const OrderPList = () => {
   const titles = [
     "주문 상품 정보",

@@ -1,6 +1,30 @@
-import * as t from './PdtInfo.style'
-
+import * as t from "./PdtInfo.style";
+import { openDB } from "idb";
+interface DBType {
+  id: number;
+  keywordNo: string;
+  prodNo: number;
+  thumbnail: string;
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: [string | null, string | null, string | null, number, number][];
+  totalPrice: number;
+  totalCnt: number;
+}
 const PdtInfo = () => {
+  async function getCart() {
+    const db = await openDB("cart", 1, {});
+    let store = db.transaction("cart", "readonly").objectStore("cart");
+    let getReq = store.get(1);
+    const getData = () => {
+      getReq.then((data) => console.log(data));
+    };
+    getData();
+  }
+
   return (
     <>
       <t.ListArea>
@@ -16,7 +40,7 @@ const PdtInfo = () => {
         </t.PdArea>
       </t.ListArea>
     </>
-  )
-}
+  );
+};
 
-export default PdtInfo
+export default PdtInfo;
