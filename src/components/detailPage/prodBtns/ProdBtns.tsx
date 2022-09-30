@@ -13,8 +13,9 @@ const ProdBtns = (props: PropsType) => {
   const navigate = useNavigate();
   const updateProdLike = useProdLike();
   const { prodNo } = useParams();
-  const data = useGetLike(prodNo);
-  const prodData = useProdInfo(prodNo);
+  const productNumber = String(props.prodNo);
+  const data = useGetLike(prodNo ? prodNo : productNumber);
+  const prodData = useProdInfo(prodNo ? prodNo : productNumber);
 
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
