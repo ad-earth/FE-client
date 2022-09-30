@@ -1,24 +1,20 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import PayTitle from '../components/paymentPage/payTitle/PayTitle'
-import OrderPay from '../containers/paymentPage/orderPay/OrderPay'
-import OrderPList from '../containers/paymentPage/orderPList/OrderPList'
-import { theme } from '../style/theme'
+import PayTitle from "../components/paymentPage/payTitle/PayTitle";
+import OrderPList from "../containers/paymentPage/orderPList/OrderPList";
+import { theme } from "../style/theme";
 
 const PaymentPage = () => {
   return (
     <>
       <Area>
         <PayTitle />
-        <PayArea>
-          <OrderPList />
-          <OrderPay></OrderPay>
-        </PayArea>
+        <OrderPList />
       </Area>
     </>
-  )
-}
-export default PaymentPage
+  );
+};
+export default PaymentPage;
 const Area = styled.div`
   background-color: ${theme.bg03};
   display: grid;
@@ -30,9 +26,4 @@ const Area = styled.div`
     justify-content: center;
     width: 100%;
   }
-`
-
-const PayArea = styled.div`
-  margin: 0px auto;
-  margin-bottom: 100px;
-`
+`;
