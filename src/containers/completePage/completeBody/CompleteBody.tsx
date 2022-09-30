@@ -2,8 +2,10 @@ import * as t from "./CompleteBody.style";
 import { MainButton } from "../../../elements/Buttons";
 import { useComplete } from "./useCompleteBody";
 import { CompleteType } from "../completeBody/completeBody.type";
+import { useNavigate } from "react-router-dom";
 
 const CompleteBody = () => {
+  const navigate = useNavigate();
   const CompleteData: CompleteType = useComplete();
   const date = new Date();
 
@@ -70,7 +72,9 @@ const CompleteBody = () => {
             <t.CellR style={{ gridColumn: "2/2", gridRow: "5" }}>택배</t.CellR>
           </t.BodyDiv>
           <t.BtnDiv>
-            <MainButton padding="12px 0">홈으로</MainButton>
+            <MainButton padding="12px 0" onClick={() => navigate("/")}>
+              홈으로
+            </MainButton>
           </t.BtnDiv>
         </>
       )}
