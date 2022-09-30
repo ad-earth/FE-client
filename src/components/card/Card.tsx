@@ -1,5 +1,5 @@
 import * as t from "./card.style";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import { ColorIcon } from "../../elements/ColorIcons";
@@ -9,6 +9,7 @@ import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 
 const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
+  const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
 
   return (
@@ -17,7 +18,7 @@ const Card = (props: CardCompoType) => {
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
-              onClick={() => navigate(`/detail/main/${props.pNo}`)}
+              onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
               src={
@@ -38,7 +39,7 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
-                  onClick={() => navigate(`/detail/main/${props.pNo}`)}
+                  onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
                   src={
@@ -52,7 +53,7 @@ const Card = (props: CardCompoType) => {
               </t.AdCardArea>
             ) : (
               <t.CardImg
-                onClick={() => navigate(`/detail/main/${props.pNo}`)}
+                onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
                 src={
