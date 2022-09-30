@@ -1,15 +1,15 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as t from "./CateButton.style";
 
 const CateButton = ({
   // c,
   // param,
   cate,
-  cateClick,
 }: {
   // c: (e: any) => void;
   // param: string;
   cate: string;
-  cateClick: (e: any) => void;
 }) => {
   const categoryList: string[] = [
     "전체",
@@ -21,6 +21,14 @@ const CateButton = ({
     "화장품",
     "문구",
   ];
+  const navigate = useNavigate();
+  const [cateParams, setCateParams] = useState<string>();
+  const CateClick = (e: any) => {
+    setCateParams(e.target.value);
+    console.log(cateParams);
+    const category = e.target.value;
+    navigate(`/list/${category}`);
+  };
 
   return (
     <>
@@ -28,7 +36,7 @@ const CateButton = ({
         <t.BtnWrap className="desktop">
           {categoryList.map((val, i) => {
             return (
-              <t.CBtn key={i} value={val} onClick={cateClick}>
+              <t.CBtn key={i} value={val} onClick={CateClick}>
                 {val}
               </t.CBtn>
             );
@@ -38,7 +46,7 @@ const CateButton = ({
       <t.BtnWrap className="mobile">
         {categoryList.map((val, i) => {
           return (
-            <t.SmallCBtn key={i} value={val} onClick={cateClick}>
+            <t.SmallCBtn key={i} value={val} onClick={CateClick}>
               {val}
             </t.SmallCBtn>
           );

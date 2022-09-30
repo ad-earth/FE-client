@@ -62,11 +62,12 @@ const ListModal = ({
                   <ProdDesc desc={list.p_Desc} brand={list.a_Brand} />
                 </t.CaroDiv>
                 <ProdOpt
+                  prodNo={list.p_No}
                   option={list.p_Option}
                   price={list.p_Cost}
                   discount={list.p_Discount}
                   likeCnt={list.p_Like}
-                  like={like}
+                  // like={like}
                 />
               </t.InfoWrapper>
             </t.ProdInfoContainer>

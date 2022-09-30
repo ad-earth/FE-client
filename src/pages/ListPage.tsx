@@ -30,7 +30,7 @@ export const ListPage = () => {
     pageParams
   );
   // console.log("CATE", CateListData);
-  // console.log("CARD", CardListData);
+  console.log("CARD", CardListData);
 
   const SortClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortParams(e.target.value);
@@ -38,6 +38,9 @@ export const ListPage = () => {
     console.log(category);
   };
   const CateClick = (e: any) => {
+    setCateParams(e.target.value);
+    console.log(cateParams);
+    const category = e.target.value;
     navigate(`/list/${category}`);
   };
   return (
@@ -45,7 +48,7 @@ export const ListPage = () => {
       {CateListData && (
         <>
           <CateButton
-            cateClick={CateClick}
+            // cateClick={CateClick}
             cate={cateParams}
             // c={setCateParams}
           />
@@ -53,10 +56,10 @@ export const ListPage = () => {
             <CardList
               sortClick={SortClick}
               sort={sortParams}
-              products={CateListData.products}
-              userLike={CateListData.userLike}
-              cnt={CateListData.cnt}
-              pageNo={CateListData.pageNo}
+              products={CardListData.products}
+              userLike={CardListData.userLike}
+              cnt={CardListData.cnt}
+              pageNo={CardListData.pageNo}
             />
           )}
           <PageBtn />
