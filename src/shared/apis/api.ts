@@ -45,7 +45,7 @@ export const getList = (sort: string, pageNo: string) =>
 //카테고리 조회
 export const getCate = (category: string, sort: string, pageNo: string) =>
   axiosInstance.get(
-    `/main/products/:${category}?sort=${sort}&page=${pageNo}&maxpost=20`
+    `/main/products/${category}?sort=${sort}&page=${pageNo}&maxpost=20`
   );
 
 //검색페이지
@@ -56,6 +56,9 @@ export const getSearch = (keyword: string, pageNo: string) =>
 
 //주문완료 페이지
 export const getComplete = () => axiosInstance.get(`/payment/complete`);
+
+//결제페이지
+export const getPay = () => axiosInstance.get(`/payment`);
 
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
