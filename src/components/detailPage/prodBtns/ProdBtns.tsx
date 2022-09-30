@@ -32,8 +32,16 @@ const ProdBtns = (props: PropsType) => {
         cartOptionList.push(cartOption);
       }
     });
-    const db = await openDB("cart", 1, {});
-    let store = db.transaction("cart", "readwrite").objectStore("cart");
+    let store;
+    const db = await openDB("cart", 1, {
+      upgrade(db) {
+        store = db.createObjectStore("cart", {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+      },
+    });
+    store = db.transaction("cart", "readwrite").objectStore("cart");
     store.put({
       id: prodData.product.p_No,
       keywordNo: prodData.k_No,
