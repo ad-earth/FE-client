@@ -24,3 +24,27 @@ export const getList = () => axiosInstance.get(`/list`);
 
 //검색페이지
 export const getSearch = () => axiosInstance.get(`/search`);
+
+//회원가입페이지
+export const postSignup = (
+  u_Id: string,
+  u_Pw: string,
+  u_Name: string,
+  u_Address1: string,
+  u_Address2: string,
+  u_Address3: string,
+  u_Gender: string,
+  u_Phone: string,
+  u_Img: string
+) =>
+  axiosInstance.post(`/users/register`, {
+    u_Id,
+    u_Pw,
+    u_Name,
+    u_Address1,
+    u_Address2,
+    u_Address3,
+    u_Gender,
+    u_Phone,
+    u_Img,
+  });
