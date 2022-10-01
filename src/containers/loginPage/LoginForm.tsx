@@ -1,7 +1,7 @@
 import * as t from "./LoginForm.style";
 import { useState } from "react";
 import { theme } from "../../style/theme";
-import { Input } from "../../elements/Input";
+import Input from "../../elements/Input";
 import { MainButton } from "../../elements/Buttons";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
