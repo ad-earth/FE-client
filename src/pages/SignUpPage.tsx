@@ -1,48 +1,10 @@
 import styled from "styled-components";
-import { theme } from "../style/theme";
-import { useState } from "react";
-import axios from "axios";
-import { MainButton } from "../elements/Buttons";
-import Profile from "../components/signUpPage/profile/Profile";
-import SignUpForm from "../components/signUpPage/signUpForm/SignUpForm";
-import AddressForm from "../components/signUpPage/addressForm/AddressForm";
+import SignUpForm from "../containers/signupPage/SignUpForm";
 
 const SignUpPage = () => {
-  // const [profileImg, setProfileImg] = useState("");
-  // const uploadProfileImg = async (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (e.target.files === null || e.target.files?.length === 0) return;
-  //   const file = e.target.files[0];
-  //   const prevImg = URL.createObjectURL(file);
-  //   setProfileImg(prevImg);
-  // };
-  const [zipcode, setZipcode] = useState("");
-  const [address, setAddress] = useState("");
-  const [extraAddress, setExtraAddress] = useState("");
-
-  console.log(zipcode);
-  console.log(address);
-  console.log(extraAddress);
   return (
     <SignUpContainer>
-      <Profile
-      // uploadProfileImg={() => uploadProfileImg}
-      />
-      <FormWrapper>
-        <SignUpForm />
-        <AddressForm
-          zipcode={zipcode}
-          address={address}
-          extraAddress={extraAddress}
-          setZipcode={setZipcode}
-          setAddress={setAddress}
-          setExtraAddress={setExtraAddress}
-        />
-        <SubmitDiv>
-          <MainButton radius="30px" fontSize={theme.fs14}>
-            가입하기
-          </MainButton>
-        </SubmitDiv>
-      </FormWrapper>
+      <SignUpForm />
     </SignUpContainer>
   );
 };
@@ -60,14 +22,4 @@ const SignUpContainer = styled.div`
   @media (max-width: 990px) {
     width: 90%;
   }
-`;
-const FormWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 20px auto;
-`;
-const SubmitDiv = styled.div`
-  width: 100%;
-  margin-top: 30px;
 `;
