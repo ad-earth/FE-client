@@ -1,5 +1,5 @@
-import * as t from './PayUserInput.style'
-import { Input } from '../../../elements/Input'
+import * as t from "./PayUserInput.style";
+import Input from "../../../elements/Input";
 
 const PayUserInput = () => {
   return (
@@ -11,6 +11,6 @@ const PayUserInput = () => {
         <Input color="#20252b" fontSize="14px" holderName="연락처" />
       </t.Div>
     </t.DivArea>
-  )
-}
-export default PayUserInput
+  );
+};
+export default PayUserInput;

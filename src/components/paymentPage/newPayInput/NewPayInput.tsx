@@ -1,12 +1,12 @@
-import * as t from './NewPayInput.style'
-import { MainButton } from '../../../elements/Buttons'
-import { Input } from '../../../elements/Input'
-import { PayMethodSelect } from '../payMethod/PayMethod'
+import * as t from "./NewPayInput.style";
+import { MainButton } from "../../../elements/Buttons";
+import Input from "../../../elements/Input";
+import { PayMethodSelect } from "../payMethod/PayMethod";
 
 export const NewPayInput = () => {
   return (
     <t.DivArea>
-      <t.InputDivArea style={{ margin: '20px 0 20px 0' }}>
+      <t.InputDivArea style={{ margin: "20px 0 20px 0" }}>
         <Input
           color="#20252b"
           fontSize="14px"
@@ -20,7 +20,7 @@ export const NewPayInput = () => {
           holderName="연락처"
         />
       </t.InputDivArea>
-      <t.InputDivArea style={{ width: '50%' }}>
+      <t.InputDivArea style={{ width: "50%" }}>
         <Input
           color="#20252b"
           fontSize="14px"
@@ -40,7 +40,7 @@ export const NewPayInput = () => {
       <t.InputDivArea>
         <Input color="#20252b" fontSize="14px" width="100%" holderName="주소" />
       </t.InputDivArea>
-      <t.InputDivArea style={{ marginBottom: '10px' }}>
+      <t.InputDivArea style={{ marginBottom: "10px" }}>
         <Input
           color="#20252b"
           fontSize="14px"
@@ -50,5 +50,5 @@ export const NewPayInput = () => {
       </t.InputDivArea>
       <PayMethodSelect />
     </t.DivArea>
-  )
-}
+  );
+};

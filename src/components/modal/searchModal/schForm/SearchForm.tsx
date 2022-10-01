@@ -1,6 +1,6 @@
 import * as t from "./SearchForm.style";
 import { theme } from "../../../../style/theme";
-import { Input } from "../../../../elements/Input";
+import Input from "../../../../elements/Input";
 import { MainButton } from "../../../../elements/Buttons";
 
 export const IdSearch = () => {
