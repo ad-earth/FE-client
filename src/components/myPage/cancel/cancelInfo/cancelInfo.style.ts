@@ -20,10 +20,4 @@ export const Description = styled.div`
     margin: 0;
   }
 `;
-export const ButtomBox = styled.div`
-  width: 100px;
-  margin: 0 auto;
-  @media (max-width: 990px) {
-    display: none;
-  }
-`;
+

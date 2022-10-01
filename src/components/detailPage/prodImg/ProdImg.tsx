@@ -1,32 +1,28 @@
 import { useState } from "react";
 
 import * as t from "./prodImg.style";
+import { PropsType } from "./prodImg.type";
 
-const ProdImg = () => {
-  const [img, setImg] = useState([
-    "https://cdn.imweb.me/thumbnail/20220816/ed7c65d28916d.jpg",
-    "https://cdn.imweb.me/thumbnail/20220816/1ff8ce0d9cc08.jpg",
-    "https://cdn.imweb.me/thumbnail/20220331/6a2e9b4face67.jpg",
-  ]);
-  const [url, setUrl] = useState(
-    "https://cdn.imweb.me/thumbnail/20220816/ed7c65d28916d.jpg"
-  );
+const ProdImg = (props: PropsType) => {
+  const [url, setUrl] = useState("");
+
   return (
     <t.MainContainer>
-      <t.MainImg imgUrl={url} />
+      <t.MainImg imgUrl={url ? url : props.img && props.img[0]} />
       <t.SubImgWrapper>
-        {img.map((item, index) => {
-          return (
-            <t.SubImg
-              alt="상품 이미지"
-              key={index}
-              src={item}
-              onMouseEnter={() => {
-                setUrl(img[index]);
-              }}
-            />
-          );
-        })}
+        {props.img &&
+          props.img.map((x, idx) => {
+            return (
+              <t.SubImg
+                alt="상품 이미지"
+                key={idx}
+                src={x}
+                onMouseEnter={() => {
+                  setUrl(props.img[idx]);
+                }}
+              />
+            );
+          })}
       </t.SubImgWrapper>
     </t.MainContainer>
   );

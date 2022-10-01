@@ -3,8 +3,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import * as t from "./prodCarousel.style";
+import { PropsType } from "./prodCarousel.type";
 
-const ProdCarousel = () => {
+const ProdCarousel = (props: PropsType) => {
   // carousel option
   const setting = {
     dots: false,
@@ -14,20 +15,16 @@ const ProdCarousel = () => {
   return (
     <t.MainContainer>
       <Slider {...setting}>
-        <t.ProdImg
-          src="https://cdn.imweb.me/thumbnail/20220816/ed7c65d28916d.jpg"
-          alt="상품 1"
-        />
-        <t.ProdImg
-          src="https://cdn.imweb.me/thumbnail/20220816/1ff8ce0d9cc08.jpg"
-          alt="상품 2"
-        />
-        <t.ProdImg
-          src="https://cdn.imweb.me/thumbnail/20220331/6a2e9b4face67.jpg"
-          alt="상품 3"
-        />
+        {props.img &&
+          props.img.map((x, idx) => {
+            return (
+              <>
+                <t.ProdImg key={idx} src={x} alt="상품 이미지" />
+                <t.Page>{idx + 1}/ 3</t.Page>
+              </>
+            );
+          })}
       </Slider>
-      <t.Page>1 / 3</t.Page>
     </t.MainContainer>
   );
 };

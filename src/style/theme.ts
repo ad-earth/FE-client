@@ -1,13 +1,3 @@
-// screen size
-const deviceSize = {
-  mobile: "990px",
-  web: "1200px",
-};
-const device = {
-  mobile: `(max-width: ${deviceSize.mobile})`,
-  web: `(min-width: ${deviceSize.mobile}) and (max-width: ${deviceSize.web})`,
-};
-
 export const theme = {
   // font-size
   fs10: "10px",
@@ -104,7 +94,4 @@ export const theme = {
   rgba09: "rgba(100,100,100,0.4)",
   rgba10: "rgba(100,100,100,0.6)",
   rgba11: "rgba(0,94,38,1)",
-
-  // 반응형
-  device,
 };

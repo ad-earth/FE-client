@@ -32,10 +32,14 @@ export const Contents = styled.div`
       width: 15%;
     }
     button {
-      font-size: ${theme.fs12};
-      margin-left: 30px;
+      color: ${theme.fc16};
+      font-size: ${theme.fs10};
+      font-weight: 600;
+      margin-left: 10px;
       width: 15%;
-      height: 4%;
+      border: none;
+      background: none;
+      cursor: pointer;
     }
   }
 `;
@@ -44,8 +48,7 @@ export const Text = styled.div`
   color: ${theme.fc16};
   margin-left: 50px;
   @media (max-width: 1200px) {
-    font-size: ${theme.fs12};
-    white-space: nowrap;
+    display: none;
   }
 `;
 export const Background = styled.div`

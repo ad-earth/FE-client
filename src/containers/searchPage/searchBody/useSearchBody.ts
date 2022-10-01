@@ -1,17 +1,12 @@
 import { useQuery } from "react-query";
-
 import { getSearch } from "../../../shared/apis/api";
-import { CardType } from "../../../shared/types/types";
 
-async function getCards(): Promise<CardType[]> {
-  const { data } = await getSearch();
-  return data;
-}
+const useSearchDataList = (keyword: string, pageNo: string) => {
+  const queryFn = async () => await getSearch(keyword, pageNo);
+  const res = useQuery(["orderDetail", [keyword, pageNo]], queryFn, {
+    enabled: !![keyword, pageNo],
+  });
+  return res.data?.data;
+};
 
-export function useSearchList(): CardType[] {
-  console.log(useSearchList);
-
-  const fallback: [] = [];
-  const { data = fallback } = useQuery("all", getCards);
-  return data;
-}
+export default useSearchDataList;

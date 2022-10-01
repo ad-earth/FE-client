@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
+import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+import { ReactComponent as Message } from "../../../assets/icons/message-circle.svg";
+import { ReactComponent as Cart } from "../../../assets/icons/shopping-cart.svg";
+
 export const CardCp = styled.div`
   width: 100%;
   margin-bottom: 10px;
@@ -20,7 +24,6 @@ export const IconSpan = styled.span`
   justify-content: flex-end;
   margin: 0 !important;
   gap: 5px;
-  cursor: pointer;
 `;
 export const IconDiv = styled.div`
   display: inline-flex;
@@ -31,4 +34,25 @@ export const IconDiv = styled.div`
   gap: 10px;
   margin-top: 0.75em;
   text-align: center;
+`;
+export const EmptyHeartIcon = styled(Heart)`
+  color: ${(props) => props.theme.bg09};
+  width: 20px;
+  cursor: pointer;
+`;
+export const HeartIcon = styled(Heart)`
+  fill: ${(props) => props.theme.bg16};
+  color: ${(props) => props.theme.bg16};
+  width: 20px;
+  cursor: pointer;
+`;
+export const MessageIcon = styled(Message)`
+  color: ${(props) => props.theme.bg09};
+  width: 20px;
+  cursor: pointer;
+`;
+export const CartIcon = styled(Cart)`
+  color: ${(props) => props.theme.bg09};
+  width: 20px;
+  cursor: pointer;
 `;
