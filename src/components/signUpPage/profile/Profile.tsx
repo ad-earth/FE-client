@@ -1,22 +1,76 @@
+import React, {
+  useMemo,
+  useRef,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import * as t from "./Profile.style";
+import ReactS3Client from "react-aws-s3-typescript";
+import { s3Config } from "../../../shared/utils/s3Config";
+import { IConfig } from "../../../../node_modules/react-aws-s3-typescript/dist/types";
 
-interface DataType {
-  // uploadProfileImg: () => (
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ) => Promise<void>;
-  profileImg?: string;
+interface PropsType {
+  imgUrl: string;
+  setImgUrl: Dispatch<SetStateAction<string>>;
 }
 
-const Profile = (props: DataType) => {
+type UploadImg = {
+  file: File;
+  fileName: string;
+  thumbnail: string;
+  type: string;
+};
+
+const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [imgFile, setImgFile] = useState<UploadImg | null>(null);
+
+  const handleClickFileInput = () => {
+    fileInputRef.current?.click();
+  };
+
+  const uploadProfile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const s3 = new ReactS3Client(s3Config as IConfig);
+    const fileList = e.target.files;
+    const fileLength = fileList?.length;
+    if (fileLength && fileList[0]) {
+      const url = URL.createObjectURL(fileList[0]);
+      setImgFile({
+        file: fileList[0],
+        fileName: fileList[0].name,
+        thumbnail: url,
+        type: fileList[0].type.slice(0, 5),
+      });
+      try {
+        const res = await s3
+          .uploadFile(fileList[0], fileList[0].name)
+          .then((data) => {
+            setImgUrl(data.location);
+          });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  const showImage = useMemo(() => {
+    if (!imgFile && imgFile == null) {
+      return <t.UserImg src="" alt="empty profile" />;
+    }
+    return <t.UserImg src={imgFile.thumbnail} alt={imgFile.type} />;
+  }, [imgFile]);
+
   return (
     <t.ProfWrapper>
-      <t.UserImg src={props.profileImg} alt="userid" />
+      {showImage}
       <t.IconDiv>
-        <t.UploadIcon />
+        <t.UploadIcon onClick={() => handleClickFileInput()} />
         <input
           type="file"
           accept="image/png, image/jpg, image/jpeg"
-          // onChange={props.uploadProfileImg}
+          ref={fileInputRef}
+          onChange={uploadProfile}
           style={{ display: "none" }}
         />
       </t.IconDiv>
