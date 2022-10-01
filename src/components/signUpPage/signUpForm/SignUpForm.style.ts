@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
-export const DescTxt = styled.span`
+export const ErrorMsg = styled.p`
+  margin: 10px;
+  font-size: ${theme.fs14};
+  color: ${theme.fc19};
+`;
+export const DescTxt = styled.p`
   width: 100%;
   text-align: left;
   margin: 30px 0 10px 0;

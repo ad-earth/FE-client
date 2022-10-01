@@ -25,7 +25,7 @@ let data: {
 ];
 
 const Header = () => {
-  const [LoginState, setLoginState] = useState(false);
+  const [LoginState, setLoginState] = useState(true);
   const [viewport, setViewport] = useState(visualViewport.width);
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [infoIsOpen, setInfoIsOpen] = useState(false);

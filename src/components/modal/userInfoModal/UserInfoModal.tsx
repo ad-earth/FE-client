@@ -22,9 +22,9 @@ const UserInfoModal = (props: ModalType) => {
               <t.Close onClick={() => props.handleClose()} />
             </t.InfoHeader>
             <t.InfoBody>
-              <Profile />
-              <SignUpForm />
-              <AddressForm />
+              {/* <Profile /> */}
+              {/* <SignUpForm /> */}
+              {/* <AddressForm /> */}
               <t.SubmitDiv>
                 <MainButton fontSize={theme.fs14}>확인</MainButton>
               </t.SubmitDiv>
