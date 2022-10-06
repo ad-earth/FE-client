@@ -1,19 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import * as t from "./order.style";
 // components
 import OderList from "../../../components/myPage/order/orderList/OrderList";
 import OrderNumber from "../../../components/myPage/order/orderNumber/OrderNumber";
+import ReviewModal from "../../../components/modal/reviewModal/ReviewModal";
 //hook
 import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";
 import useOrder from "./useOrder";
 //type
 import { OrderListType } from "./order.type";
-
+interface PropsType {
+  p_No: number;
+  p_Thumbnail: string[];
+  a_Brand: string;
+  p_Name: string;
+  p_Option: Array<
+    [string | null, string | null, number | null, number | null, number | null]
+  >;
+  o_Status: string;
+}
 const Order = () => {
   const isMobile = useMobileMediaQuery();
   const { ref, inView } = useInView();
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useOrder();
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [product, setProduct] = useState<PropsType>();
+
   useEffect(() => {
     inView && hasNextPage && fetchNextPage();
   }, [inView]);
@@ -23,6 +36,11 @@ const Order = () => {
   console.log(data);
   return (
     <t.Section>
+      <ReviewModal
+        isOpen={infoIsOpen}
+        handleClose={() => setInfoIsOpen(false)}
+        product={product}
+      />
       <t.OrderListBox>
         <t.Title>주문조회</t.Title>
         {data &&
@@ -36,7 +54,13 @@ const Order = () => {
                       orderNo={list.o_No}
                       orderDate={list.o_Date}
                     />
-                    <OderList products={list.products} orderNo={list.o_No} />
+                    <OderList
+                      products={list.products}
+                      orderNo={list.o_No}
+                      setInfoIsOpen={setInfoIsOpen}
+                      infoIsOpen={infoIsOpen}
+                      setProduct={setProduct}
+                    />
                   </t.List>
                 )
               )}

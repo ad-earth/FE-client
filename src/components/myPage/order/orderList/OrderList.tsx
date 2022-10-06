@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, SetStateAction, Dispatch } from "react";
 import { useNavigate, Link } from "react-router-dom";
 //style
 import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
 //components
-import ReviewModal from "../../../modal/reviewModal/ReviewModal";
 import Product from "../product/Product";
 import { MainButton } from "../../../../elements/Buttons";
 
@@ -22,25 +21,26 @@ interface PropsType {
 const OrderList = ({
   products,
   orderNo,
+  // handleClose,
+  infoIsOpen,
+  setInfoIsOpen,
+  setProduct
 }: {
   products: PropsType[];
   orderNo?: number;
+  infoIsOpen?: boolean;
+  setInfoIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setProduct?: Dispatch<SetStateAction<PropsType>>;
 }) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   let navigate = useNavigate();
-  const [product, setProduct] = useState<PropsType>();
+  // const [product, setProduct] = useState<PropsType>();
 
   const ClickEvent = (data: PropsType) => {
     setProduct(data);
-    setInfoIsOpen(true);
+    setInfoIsOpen(!infoIsOpen);
   };
   return (
     <>
-      <ReviewModal
-        isOpen={infoIsOpen}
-        handleClose={() => setInfoIsOpen(false)}
-        product={product}
-      />
       {products.map((product, idx: number) => (
         <t.OderListBox key={idx}>
           <t.ProductBox>
