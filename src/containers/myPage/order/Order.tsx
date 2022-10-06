@@ -19,6 +19,7 @@ interface PropsType {
     [string | null, string | null, number | null, number | null, number | null]
   >;
   o_Status: string;
+  r_Status: boolean;
 }
 const Order = () => {
   const isMobile = useMobileMediaQuery();

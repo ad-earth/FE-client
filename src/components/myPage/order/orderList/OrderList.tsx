@@ -16,6 +16,7 @@ interface PropsType {
     [string | null, string | null, number | null, number | null, number | null]
   >;
   o_Status: string;
+  r_Status: boolean;
 }
 
 const OrderList = ({
@@ -24,7 +25,7 @@ const OrderList = ({
   // handleClose,
   infoIsOpen,
   setInfoIsOpen,
-  setProduct
+  setProduct,
 }: {
   products: PropsType[];
   orderNo?: number;
@@ -70,7 +71,7 @@ const OrderList = ({
               >
                 취소
               </MainButton>
-            ) : product.o_Status === "배송완료" ? (
+            ) : product.o_Status === "배송완료" && product.r_Status ? (
               <MainButton
                 radius="30px"
                 border="1px solid transparent"
