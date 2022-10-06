@@ -18,6 +18,22 @@ jobs:
 
       - name: Build
         run: CI='' yarn build
+        
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL" >> .env.production
+          echo "REACT_APP_BUCKET_NAME=$REACT_APP_BUCKET_NAME" >> .env.production
+          echo "REACT_APP_REGION=$REACT_APP_REGION" >> .env.production
+          echo "REACT_APP_ACCESS=$REACT_APP_ACCESS" >> .env.production
+          echo "REACT_APP_SECRET=$REACT_APP_SECRET" >> .env.production
+          echo "REACT_APP_BUCKET_URL=$REACT_APP_BUCKET_URL" >> .env.production
+        env:
+          REACT_APP_SERVER_URL: '${{ secrets.REACT_APP_SERVER_URL }}'
+          REACT_APP_BUCKET_NAME: '${{ secrets.REACT_APP_BUCKET_NAME }}'
+          REACT_APP_REGION: '${{ secrets.REACT_APP_REGION }}'
+          REACT_APP_ACCESS: '${{ secrets.REACT_APP_ACCESS }}'
+          REACT_APP_SECRET: '${{ secrets.REACT_APP_SECRET }}'
+          REACT_APP_BUCKET_URL: '${{ secrets.REACT_APP_BUCKET_URL }}'
 
       # aws user 연결
       - name: Configure AWS credentials 
