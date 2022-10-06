@@ -1,27 +1,33 @@
-name: CI-CD             
-on:                                  
+name: CI-CD
+on:
   pull_request:
     branches:
-      - test                        
-jobs:                                
+      - main
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code.   
+      - name: Checkout source code.
         uses: actions/checkout@v2
-      
-      - name: Check Node v            
+
+      - name: Check Node v
         run: node -v
 
-      - name: Install Dependencies    
+      - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build                   
+      - name: Build
         run: CI='' yarn build
-      
-      - name: Deploy                  
+
+      - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 cp --recursive --region ap-northeast-2 build s3://${{secrets.S3_BUCKET_NAME}}
+      - name: Invalidate CloudFront Cache
+        uses: chetan/invalidate-cloudfront-action@master
+        env:
+          AWS_DISTRIBUTION: ${{ secrets.DISTRIBUTION_ID }}
+          PATHS: "/index.html"
+        continue-on-error: true

@@ -1,5 +1,6 @@
 import * as t from "./bestProd.style";
 import BestCards from "../../../components/mainPage/bestCards/BestCards";
+import { bestProduct } from "../../../shared/utils/imgUrls";
 
 const BestProd = () => {
   return (
@@ -16,10 +17,7 @@ const BestProd = () => {
           </p>
         </t.Title>
         <t.Image>
-          <img
-            src="https://cdn.imweb.me/thumbnail/20220304/3ae1ed5a06cf4.jpg"
-            alt="베스트 상품 이미지"
-          />
+          <img src={bestProduct} alt="베스트 상품" />
         </t.Image>
       </t.TitleWrapper>
       <BestCards />
