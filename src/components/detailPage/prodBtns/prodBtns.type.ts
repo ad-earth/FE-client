@@ -1,6 +1,4 @@
 export interface PropsType {
-  // like: boolean;
-  // likeCnt: number;
   prodNo: number;
   totalPrice: number;
   totalQty: number;

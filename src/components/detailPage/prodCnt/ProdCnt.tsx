@@ -6,6 +6,7 @@ import { PropsType } from "./prodCnt.type";
 
 const ProdCnt = (props: PropsType) => {
   const [qty, setQty] = useState(0);
+  props.setTotalQty(qty);
   return (
     <div>
       <t.OptBox>

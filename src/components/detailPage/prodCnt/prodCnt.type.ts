@@ -9,4 +9,5 @@ export type PropsType = {
   }[];
   changeOptionList?: (id: number, qty: number) => void;
   removeOption?: (id: number) => void;
+  setTotalQty?: (qty: number) => void;
 };
