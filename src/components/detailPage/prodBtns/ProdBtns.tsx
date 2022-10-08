@@ -20,6 +20,7 @@ const ProdBtns = (props: PropsType) => {
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
     let cartOption: (string | number)[];
+
     props.optionList.map((option) => {
       if (!option.color && !option.size) {
         cartOptionList = [];
@@ -29,6 +30,7 @@ const ProdBtns = (props: PropsType) => {
           option.size,
           option.optionPrice,
           option.qty,
+          (option.optionPrice + option.price) * option.qty,
         ];
         cartOptionList.push(cartOption);
       }
@@ -66,7 +68,7 @@ const ProdBtns = (props: PropsType) => {
           radius={"30px"}
           onClick={() => {
             setCart();
-            navigate("/payment");
+            navigate(`/payment/${prodNo}`);
           }}
         >
           구매하기
