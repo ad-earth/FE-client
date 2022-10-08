@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { ChangeEvent, forwardRef } from "react";
 import styled from "styled-components";
 
 import { theme } from "../style/theme";
@@ -13,6 +13,9 @@ interface InputType {
   color?: string;
   bgColor?: string;
   fBorder?: string;
+  value?: string;
+
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputType>((props, ref) => {

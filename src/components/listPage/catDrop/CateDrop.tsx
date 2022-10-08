@@ -2,10 +2,10 @@ import * as t from "./CateDrop.style";
 
 const CateDrop = ({
   sort,
-  sortClick,
+  sortChange,
 }: {
   sort: string;
-  sortClick: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  sortChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }) => {
   return (
     <>
@@ -14,7 +14,7 @@ const CateDrop = ({
           name="select"
           id="select"
           defaultValue="like"
-          onChange={sortClick}
+          onChange={sortChange}
           value={sort}
         >
           <option value="recent">등록순</option>

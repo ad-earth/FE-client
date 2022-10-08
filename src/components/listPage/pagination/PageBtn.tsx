@@ -1,20 +1,24 @@
-import { Stack, Pagination, PaginationItem } from "@mui/material";
+import { Pagination, PaginationItem } from "@mui/material";
 import { AreaPage } from "./pageBtn.sytle";
-import useSearchDataList from "../../../containers/searchPage/searchBody/useSearchBody";
-import { useEffect, useState } from "react";
-import { getSearch } from "../../../shared/apis/api";
+import { Dispatch, SetStateAction, useState } from "react";
 
-const PageBtn = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const PageBtn = ({
+  cnt,
+  setPage,
+}: {
+  setPage: Dispatch<SetStateAction<number>>;
+  cnt: number;
+}) => {
+  const pageNum = Math.ceil(cnt / 20);
   const onPageChange = (e: React.ChangeEvent<unknown>, page: number) => {
-    setCurrentPage(page);
+    setPage(page);
   };
 
   return (
     <>
       <AreaPage>
         <Pagination
-          // count={pageNum}
+          count={pageNum}
           defaultPage={1}
           onChange={onPageChange}
           renderItem={(item) => <PaginationItem {...item} />}

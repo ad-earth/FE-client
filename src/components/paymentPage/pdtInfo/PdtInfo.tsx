@@ -1,5 +1,5 @@
 import * as t from "./PdtInfo.style";
-import { openDB } from "idb";
+// type dataType = data: DBType
 interface DBType {
   id: number;
   keywordNo: string;
@@ -14,17 +14,7 @@ interface DBType {
   totalPrice: number;
   totalCnt: number;
 }
-const PdtInfo = () => {
-  async function getCart() {
-    const db = await openDB("cart", 1, {});
-    let store = db.transaction("cart", "readonly").objectStore("cart");
-    let getReq = store.get(1);
-    const getData = () => {
-      getReq.then((data) => console.log(data));
-    };
-    getData();
-  }
-
+const PdtInfo = ({ data }: { data: Array }) => {
   return (
     <>
       <t.ListArea>
@@ -44,3 +34,6 @@ const PdtInfo = () => {
 };
 
 export default PdtInfo;
+function usestate(arg0: undefined[]): [any, any] {
+  throw new Error("Function not implemented.");
+}

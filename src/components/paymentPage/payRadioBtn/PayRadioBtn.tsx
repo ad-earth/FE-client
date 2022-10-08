@@ -6,12 +6,14 @@ import { DropBtn } from "../payMethod/PayMethod.style";
 import { useRef } from "react";
 
 export interface RadiobtnType {
-  value?: string;
+  value?: number | string;
   checked?: boolean;
   type?: string;
   select?: boolean;
   top?: string;
   bgColor?: string;
+  number?: number;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const PayRadioBtn = () => {
@@ -132,6 +134,7 @@ export const RadioBtn = (props: RadiobtnType) => {
           type={props.type}
           value={props.value}
           checked={props.checked}
+          onChange={props.onChange}
         />
         <t.RadioButtonLabel top={props.top} />
       </t.Item>

@@ -1,15 +1,32 @@
-import * as t from './PayMethod.style'
-import { MainButton } from '../../../elements/Buttons'
+import * as t from "./PayMethod.style";
+import { MainButton } from "../../../elements/Buttons";
+import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 
-interface PropsType {
-  BtnonClick: () => void
+export interface MemoType {
+  memo: string;
+  MemoChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  BtnonClick?: () => void;
 }
 
-export const PayMethod = (props: PropsType) => {
+interface GetPayUserType {
+  uAddress1: string;
+  uAddress2: string;
+  uAddress3: string;
+  uName: string;
+  uPhone: string;
+}
+export const PayMethod = (props: PayListType & MemoType) => {
+  // console.log(props.addressList);
   return (
     <>
       <t.DivArea>
-        <PayMethodInfo />
+        <PayMethodInfo
+          uAddress1={props.userInfo.u_Address1}
+          uAddress2={props.userInfo.u_Address2}
+          uAddress3={props.userInfo.u_Address3}
+          uName={props.userInfo.u_Name}
+          uPhone={props.userInfo.u_Phone}
+        />
         <t.ButtonBox>
           <MainButton
             color="#fff"
@@ -25,37 +42,55 @@ export const PayMethod = (props: PropsType) => {
           </MainButton>
         </t.ButtonBox>
       </t.DivArea>
-      <PayMethodSelect />
+      <PayMethodSelect memo={props.memo} MemoChange={props.MemoChange} />
     </>
-  )
-}
+  );
+};
 
-export const PayMethodInfo = () => {
+export const PayMethodInfo = (props: GetPayUserType) => {
+  // console.log(props.addressList);
+  // console.log(props.userInfo);
+
   return (
     <t.Div>
       <t.NameDiv>
-        <span>이효리</span>
+        <span>{props.uName}</span>
       </t.NameDiv>
-      <t.PayText>01040774628</t.PayText>
-      <t.PayText>서울 ㅇㅇ구 ㅇㅇ길 ㅇㅇㅇㅇ</t.PayText>
-      <t.PayText>(09876)</t.PayText>
+      <t.PayText>{props.uPhone}</t.PayText>
+      <t.PayText>
+        {props.uAddress2}
+        {props.uAddress3}
+      </t.PayText>
+      <t.PayText>({props.uAddress1})</t.PayText>
     </t.Div>
-  )
-}
+  );
+};
 
-export const PayMethodSelect = () => {
+export const PayMethodSelect = (props: MemoType) => {
   return (
     <t.ShipDiv>
       <t.PayText>배송메모</t.PayText>
-      <t.BtnArea style={{ marginTop: '10px' }}>
-        <t.DropBtn name="ship" id="-select" defaultValue={'first'}>
-          <option value="first">배송메모를 선택해주세요.</option>
-          <option value="second">배송 전에 미리 연락 바랍니다.</option>
-          <option value="third">부재시 경비실에 맡겨주세요.</option>
-          <option value="fourth">부재시 전화나 문자를 남겨주세요.</option>
+      <t.BtnArea style={{ marginTop: "10px" }}>
+        <t.DropBtn
+          name="ship"
+          id="ship"
+          defaultValue={"first"}
+          onChange={props.MemoChange}
+          value={props.memo}
+        >
+          <option value="null">배송메모를 선택해주세요.</option>
+          <option value="배송 전에 미리 연락 바랍니다.">
+            배송 전에 미리 연락 바랍니다.
+          </option>
+          <option value="부재시 경비실에 맡겨주세요.">
+            부재시 경비실에 맡겨주세요.
+          </option>
+          <option value="부재시 전화나 문자를 남겨주세요.">
+            부재시 전화나 문자를 남겨주세요.
+          </option>
         </t.DropBtn>
       </t.BtnArea>
     </t.ShipDiv>
-  )
-}
-export default PayMethod
+  );
+};
+export default PayMethod;
