@@ -1,30 +1,14 @@
-
 import styled from "styled-components";
-import { theme } from "../style/theme";
-import { MainButton } from "../elements/Buttons";
-import Profile from "../components/signUpPage/profile/Profile";
-import SignUpForm from "../components/signUpPage/signUpForm/SignUpForm";
-import AddressForm from "../components/signUpPage/addressForm/AddressForm";
-
+import SignUpForm from "../containers/signupPage/SignUpForm";
 
 const SignUpPage = () => {
   return (
     <SignUpContainer>
-      <Profile />
-      <FormWrapper>
-
-        <SignUpForm />
-        <AddressForm />
-        <SubmitDiv>
-          <MainButton radius="30px" fontSize={theme.fs14}>
-            가입하기
-          </MainButton>
-        </SubmitDiv>
-      </FormWrapper>
+      <SignUpForm />
     </SignUpContainer>
-  )
-}
-export default SignUpPage
+  );
+};
+export default SignUpPage;
 
 const SignUpContainer = styled.div`
   width: 1200px;
@@ -39,13 +23,3 @@ const SignUpContainer = styled.div`
     width: 90%;
   }
 `;
-const FormWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin: 20px auto;
-`;
-const SubmitDiv = styled.div`
-  width: 100%;
-  margin-top: 30px;
-`
