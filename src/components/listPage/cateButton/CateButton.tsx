@@ -1,4 +1,3 @@
-import { ClassNames } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import * as t from "./CateButton.style";
 
@@ -21,6 +20,7 @@ const CateButton = () => {
 
   return (
     <>
+      {}
       <t.BtnWrap className="desktop">
         {categoryList.map((val, i) => {
           return (
