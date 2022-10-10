@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -13,15 +13,38 @@ const NewCarousel = () => {
   const navigate = useNavigate();
   const newProducts = useNewCarousel();
 
+  //뷰포트 사이즈
+  const [viewport, setViewport] = useState(visualViewport.width);
+
+  useEffect(() => {
+    const resizeListener = () => {
+      setViewport(visualViewport.width);
+    };
+    window.addEventListener("resize", resizeListener);
+  });
+
   // carousel option
-  const setting = {
-    autoplaySpeed: 3000,
-    autoplay: true,
-    dotsClass: "slick-dots",
-    dots: true,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-  };
+  let setting;
+
+  if (viewport <= 990) {
+    setting = {
+      autoplaySpeed: 3000,
+      autoplay: true,
+      dotsClass: "slick-dots",
+      dots: true,
+      slidesToShow: 2,
+      slidesToScroll: 2,
+    };
+  } else {
+    setting = {
+      autoplaySpeed: 3000,
+      autoplay: true,
+      dotsClass: "slick-dots",
+      dots: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+    };
+  }
 
   return (
     <t.MainContainer>
