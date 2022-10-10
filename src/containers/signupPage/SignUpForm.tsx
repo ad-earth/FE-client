@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SignUpValidation } from "../../shared/utils/yup";
 import { useSignUpForm } from "./useSignUpForm";
-
 import Profile from "../../components/signUpPage/profile/Profile";
 import AddressForm from "../../components/signUpPage/addressForm/AddressForm";
 import Input from "../../elements/Input";
@@ -44,10 +43,19 @@ const SignUpForm = () => {
   } = useForm<FormValue>({
     mode: "onChange",
     resolver: yupResolver(SignUpValidation),
+    defaultValues: {
+      userId: "",
+      password: "",
+      password2: "",
+      userName: "",
+      gender: "",
+      contact: "",
+    },
   });
 
   const submitHandler = (data: FormValue) => {
     setFormValue(data);
+    mutate();
   };
 
   const signUpData = {
@@ -71,10 +79,6 @@ const SignUpForm = () => {
       navigate("/login");
     }
   }, [isSuccess]);
-
-  const SignUpClick = () => {
-    mutate();
-  };
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
@@ -140,7 +144,7 @@ const SignUpForm = () => {
             <MainButton
               radius="30px"
               fontSize={theme.fs14}
-              onClick={() => SignUpClick()}
+              // onClick={() => SignUpClick()}
             >
               가입하기
             </MainButton>

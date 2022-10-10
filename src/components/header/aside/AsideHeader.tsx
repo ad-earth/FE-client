@@ -15,14 +15,14 @@ let category: {
   cate: string;
   path: string;
 }[] = [
-  { id: 1, cate: "전체", path: "" },
-  { id: 2, cate: "욕실", path: "" },
-  { id: 3, cate: "주방", path: "" },
-  { id: 4, cate: "음료용품", path: "" },
-  { id: 5, cate: "생활", path: "" },
-  { id: 6, cate: "식품", path: "" },
-  { id: 7, cate: "화장품", path: "" },
-  { id: 8, cate: "문구", path: "" },
+  { id: 1, cate: "전체", path: "/list/전체" },
+  { id: 2, cate: "욕실", path: "/list/욕실" },
+  { id: 3, cate: "주방", path: "/list/주방" },
+  { id: 4, cate: "음료용품", path: "/list/음료용품" },
+  { id: 5, cate: "생활", path: "/list/생활" },
+  { id: 6, cate: "식품", path: "/list/식품" },
+  { id: 7, cate: "화장품", path: "/list/화장품" },
+  { id: 8, cate: "문구", path: "/list/문구" },
 ];
 
 let data: {
@@ -30,12 +30,15 @@ let data: {
   cate: string;
   path: string;
 }[] = [
-  { id: 1, cate: "마이페이지", path: "" },
-  { id: 2, cate: "장바구니", path: "" },
-  { id: 3, cate: "주문배송", path: "" },
-  { id: 4, cate: "위시리스트", path: "" },
-  { id: 5, cate: "로그아웃", path: "" },
+  { id: 1, cate: "마이페이지", path: "/mypage" },
+  { id: 2, cate: "장바구니", path: "/cart" },
+  { id: 3, cate: "주문배송", path: "/mypage" },
+  { id: 4, cate: "위시리스트", path: "/mypage" },
+  { id: 5, cate: "로그아웃", path: "/" },
 ];
+
+const userName = localStorage.getItem("u_Name");
+const userId = localStorage.getItem("u_Id");
 
 const AsideHeader = (props: AsideType) => {
   const { isDropped, dropRef, handleRemove } = useDropDown();
@@ -60,7 +63,7 @@ const AsideHeader = (props: AsideType) => {
                 >
                   <t.UserImg src="" />
                   <span>
-                    <strong>이담</strong> [ddam2lee]
+                    <strong>{userName}</strong> [{userId}]
                   </span>
                 </div>
                 <t.EtcIcon onClick={handleRemove} />
@@ -79,7 +82,7 @@ const AsideHeader = (props: AsideType) => {
                 <ul>
                   {category.map((val, i: number) => (
                     <a href={val.path}>
-                      <li key={val.id}>{val.cate}</li>
+                      <li key={i}>{val.cate}</li>
                     </a>
                   ))}
                 </ul>

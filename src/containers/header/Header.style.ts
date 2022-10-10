@@ -62,6 +62,10 @@ export const RightDiv = styled.div`
     font-size: ${theme.fs16};
     color: ${theme.fc15};
     margin-right: 10px;
+    :hover {
+      color: ${theme.fc05};
+      cursor: pointer;
+    }
   }
 `;
 export const CountBadge = styled(Badge)({
@@ -80,6 +84,7 @@ export const UserIcon = styled(PersonOutlineOutlinedIcon)({
   "&.MuiSvgIcon-root": {
     fontSize: `${theme.fs30}`,
     color: `${theme.fc15}`,
+    marginTop: "10px",
     marginRight: "10px",
     cursor: "pointer",
   },

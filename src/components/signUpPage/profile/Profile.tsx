@@ -4,6 +4,7 @@ import React, {
   useState,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 import * as t from "./Profile.style";
 import ReactS3Client from "react-aws-s3-typescript";
@@ -21,6 +22,8 @@ type UploadImg = {
   thumbnail: string;
   type: string;
 };
+
+const defaultImg = localStorage.getItem("u_Img");
 
 const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -55,11 +58,19 @@ const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   };
 
   const showImage = useMemo(() => {
-    if (!imgFile && imgFile == null) {
-      return <t.UserImg src="" alt="empty profile" />;
+    if (defaultImg || imgFile == null) {
+      return <t.UserImg src={defaultImg} alt="default profile" />;
     }
-    return <t.UserImg src={imgFile.thumbnail} alt={imgFile.type} />;
-  }, [imgFile]);
+    if (!defaultImg && imgFile) {
+      return <t.UserImg src={imgFile.thumbnail} alt={imgFile.type} />;
+    }
+  }, [imgFile, defaultImg]);
+
+  useEffect(() => {
+    if (defaultImg && !imgFile) {
+      setImgUrl(defaultImg);
+    }
+  }, [defaultImg]);
 
   return (
     <t.ProfWrapper>

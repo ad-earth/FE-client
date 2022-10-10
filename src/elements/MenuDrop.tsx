@@ -22,7 +22,7 @@ const MenuDrop = (props: PropsType) => {
       <ul>
         {props.data.map((data, i: number) => (
           <a href={data.path}>
-            <li key={data.id}>{data.cate}</li>
+            <li key={i}>{data.cate}</li>
           </a>
         ))}
       </ul>

@@ -15,6 +15,7 @@ interface InputType {
   value?: string;
   type?: string;
   ref?: any;
+  defaultValue?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -27,6 +28,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputType> = (
       type={props.type}
       placeholder={props.holderName}
       ref={ref}
+      defaultValue={props.defaultValue}
       {...props}
     ></MyInput>
   );

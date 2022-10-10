@@ -1,12 +1,16 @@
 import * as t from "./ScrollHeader.style";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useScrHeaderVisible } from "./useScrollHeader";
-
 import scrollLogo from "../../../assets/logo/scrollLogo.png";
 
 const ScrollHeader = () => {
   const [loginState, setLoginState] = useState(false);
   const { isHeaderVisible } = useScrHeaderVisible();
+
+  const handelLogOut = () => {
+    localStorage.clear();
+  };
 
   return (
     <>
@@ -18,18 +22,33 @@ const ScrollHeader = () => {
             <t.RightDiv>
               {loginState ? (
                 <>
-                  <span>로그인</span>
-                  <span>회원가입</span>
+                  <Link to={"/login"}>
+                    <span>로그인</span>
+                  </Link>
+                  <Link to={"/signup"}>
+                    <span>회원가입</span>
+                  </Link>
                   <t.ShopIcon />
                 </>
               ) : (
                 <>
-                  <span>로그아웃</span>
-                  <t.UserIcon />
+                  <span
+                    onClick={() => {
+                      handelLogOut();
+                      window.location.reload();
+                    }}
+                  >
+                    로그아웃
+                  </span>
+                  <Link to={"/mypage"}>
+                    <t.UserIcon />
+                  </Link>
                   <div>
-                    <t.CountBadge badgeContent={1}>
-                      <t.ShopIcon />
-                    </t.CountBadge>
+                    <Link to={"/cart"}>
+                      <t.CountBadge badgeContent={1}>
+                        <t.ShopIcon />
+                      </t.CountBadge>
+                    </Link>
                   </div>
                 </>
               )}

@@ -25,7 +25,7 @@ const PostSignup = async (data: Data) => {
     data.u_Phone,
     data.u_Img
   );
-  return res;
+  return res.data;
 };
 
 export const useSignUpForm = (data: Data) => {

@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import Input from "../../../elements/Input";
 import { MainButton } from "../../../elements/Buttons";
 import { useDaumPostcodePopup } from "react-daum-postcode";
+import { useEffect } from "react";
 
 interface PropsType {
   zipcode: string;
@@ -13,6 +14,10 @@ interface PropsType {
   setAddress: Dispatch<SetStateAction<string>>;
   setExtraAddress: Dispatch<SetStateAction<string>>;
 }
+
+const address1 = localStorage.getItem("u_Address1");
+const address2 = localStorage.getItem("u_Address2");
+const address3 = localStorage.getItem("u_Address3");
 
 const AddressForm = ({
   zipcode,
@@ -55,6 +60,14 @@ const AddressForm = ({
   const extraHandler = (value: string) => {
     setExtraAddress(value);
   };
+
+  useEffect(() => {
+    if (address1 && address2 && address3) {
+      setZipcode(address1);
+      setAddress(address2);
+      setExtraAddress(address3);
+    }
+  }, [address1, address2, address3]);
 
   return (
     <>

@@ -94,4 +94,5 @@ export const theme = {
   rgba09: "rgba(100,100,100,0.4)",
   rgba10: "rgba(100,100,100,0.6)",
   rgba11: "rgba(0,94,38,1)",
+  rgba12: "rgba(100, 100, 100, 0.03)",
 };
