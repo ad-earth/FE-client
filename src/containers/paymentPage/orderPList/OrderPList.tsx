@@ -15,6 +15,7 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
+import { DbDataType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
 
 const OrderPList = () => {
   const titles = [
@@ -36,7 +37,7 @@ const OrderPList = () => {
   const [memo, setMemo] = useState("");
   const [dNo, setDNo] = useState<string>(null);
 
-  const [Data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
   const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setMemo(e.target.value);
@@ -81,7 +82,6 @@ const OrderPList = () => {
       console.error(err);
     }
   }
-  console.log(Data);
 
   useEffect(() => {
     if (isSuccess) {
@@ -101,8 +101,7 @@ const OrderPList = () => {
           <t.LPListArea>
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={Data} />
-              <PdtInfo />
+              <PdtInfo data={data} />
               <FreeShipping />
             </t.LTipOff>
 
