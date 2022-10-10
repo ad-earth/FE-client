@@ -1,7 +1,7 @@
 import * as t from "./NewPayInput.style";
 import { Dispatch, SetStateAction } from "react";
 import { MainButton } from "../../../elements/Buttons";
-import { Input } from "../../../elements/Input";
+import Input from "../../../elements/Input";
 import { MemoType, PayMethodSelect } from "../payMethod/PayMethod";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 export interface AddressType {

@@ -4,7 +4,6 @@ import * as t from "./PdtInfo.style";
 
 const PdtInfo = (props: DbDataType) => {
   console.log(props.data);
-  // console.log(props.data.option);
 
   return (
     <>
@@ -13,25 +12,25 @@ const PdtInfo = (props: DbDataType) => {
           <>
             {val.option.map((v) => {
               return (
-                <>
-                  <t.ListArea key={val.id}>
-                    <t.PdArea>
-                      <t.PdInfoDiv>
-                        <t.ProductImg />
-                        <t.ProductInfo>
-                          <t.ProductName>
-                            [{val.brand}] {val.name}
-                          </t.ProductName>
-                          <t.ProducOption>
-                            {v[0]}
-                            {v[1]}
-                          </t.ProducOption>
-                          <t.ProducPrice>1,000원 / 3 개</t.ProducPrice>
-                        </t.ProductInfo>
-                      </t.PdInfoDiv>
-                    </t.PdArea>
-                  </t.ListArea>
-                </>
+                <t.ListArea key={val.id}>
+                  <t.PdArea>
+                    <t.PdInfoDiv>
+                      <t.ProductImg src={val.thumbnail} />
+                      <t.ProductInfo>
+                        <t.ProductName>
+                          [{val.brand}] {val.name}
+                        </t.ProductName>
+                        <t.ProducOption>
+                          {v[0]}
+                          {v[1]} - {v[3]}개
+                        </t.ProducOption>
+                        <t.ProducPrice>
+                          {v[4].toLocaleString("ko-KR")}원
+                        </t.ProducPrice>
+                      </t.ProductInfo>
+                    </t.PdInfoDiv>
+                  </t.PdArea>
+                </t.ListArea>
               );
             })}
           </>

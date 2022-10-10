@@ -1,7 +1,7 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
 import { openDB } from "idb";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 //pages//
 import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
 import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
@@ -15,7 +15,7 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
-import { DbDataType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
+import { DataType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
 
 const OrderPList = () => {
   const titles = [
@@ -41,7 +41,6 @@ const OrderPList = () => {
 
   const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setMemo(e.target.value);
-    console.log(memo);
   };
   const GetPaylist: PayListType = useGetPay();
 
@@ -56,7 +55,7 @@ const OrderPList = () => {
       d_Memo: memo,
     },
   };
-  // console.log(postPay);
+
   const { mutate, isSuccess } = usePostPay(postPay);
   const PayClick = () => {
     mutate();
@@ -89,16 +88,47 @@ const OrderPList = () => {
       navigate("/complete");
       getCart();
     } else {
-      alert("다시 시도해주세요.");
+      // alert("다시 시도해주세요.");
       getCart();
     }
   }, [isSuccess]);
+  ////////////////////////////////////////////////////
+  const { prodNo } = useParams<{ prodNo: string }>();
+  console.log(prodNo);
+  const prodId = data.map((v: DataType) => {
+    return v.id;
+  }, 0);
+  // console.log(prodId);
+  const [find, setFind] = useState<any>();
+  const prodFind = prodId.includes(Number(prodNo));
+  // console.log(prodFind);
+
+  // const ProdFind2 = () => {
+  //   const find =  data.filter((item: any) => item);
+  //   setFind(find);
+  // };
+  // console.log("ProdFind2", find);
+
+  // const filterItems = (prodNo: any) => {
+  //   return data.filter(
+  //     (el) => el.toLowerCase().indexOf(prodNo.toString().toLowerCase()) > -1
+  //   );
+  // };
+  // const a = setFind(filterItems);
+  // console.log(find);
 
   return (
     <>
-      {GetPaylist && (
+      {data && GetPaylist && (
         <t.PayArea>
           <t.LPListArea>
+            {/* {ProdFind2 && ProdFind2 ? (
+              <t.LTipOff>
+                <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
+                <PdtInfo data={data} />
+                <FreeShipping />
+              </t.LTipOff>
+            ) : null} */}
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
               <PdtInfo data={data} />
@@ -157,7 +187,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary />
+              <PaySummary data={data} />
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>

@@ -11,11 +11,6 @@ export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
   const [sortParams, setSortParams] = useState<string>("recent");
   const [pageParams, setPageParams] = useState<number>(1);
-  //카드리스트 api 호출
-  // const CardListData: CardListType = useCardList(
-  //   sortParams,
-  //   String(pageParams)
-  // );
 
   //카테고리 api 호출
   const CateListData: CardListType = useCateList(
