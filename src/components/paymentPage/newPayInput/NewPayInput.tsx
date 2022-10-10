@@ -76,7 +76,6 @@ export const NewPayInput = (props: AddressType & MemoType) => {
           }
         />
       </t.InputDivArea>
-
       <t.InputDivArea style={{ width: "50%" }}>
         <Input
           value={props.zipcode}

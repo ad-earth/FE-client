@@ -1,7 +1,7 @@
-import { ChangeEvent, forwardRef } from "react";
+import { ChangeEvent } from "react";
 import styled from "styled-components";
-
 import { theme } from "../style/theme";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 
 interface InputType {
   outline?: string;
@@ -14,20 +14,28 @@ interface InputType {
   bgColor?: string;
   fBorder?: string;
   value?: string;
-
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  ref?: any;
+  defaultValue?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputType>((props, ref) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, InputType> = (
+  { ...props },
+  ref
+) => {
   return (
     <MyInput
-      type="text"
+      type={props.type}
       placeholder={props.holderName}
       ref={ref}
+      defaultValue={props.defaultValue}
       {...props}
     ></MyInput>
   );
-});
+};
+
+export default forwardRef(Input);
 
 const MyInput = styled.input<InputType>`
   outline: ${(props) => (props.outline ? props.outline : "none")};

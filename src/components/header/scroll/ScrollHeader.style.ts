@@ -15,6 +15,9 @@ export const ScHeadContainer = styled.div`
   left: 0;
   z-index: 10;
   transition: top 0.2s ease-in-out;
+  @media (max-width: 990px) {
+    display: none;
+  }
 `;
 export const ScHeadWrapper = styled.div`
   width: 1200px;
@@ -68,6 +71,7 @@ export const UserIcon = styled(PersonOutlineOutlinedIcon)({
     fontSize: `${theme.fs30}`,
     color: `${theme.fc01}`,
     marginRight: "10px",
+    marginTop: "10px",
     cursor: "pointer",
     "&:hover": {
       color: `${theme.fc20}`,

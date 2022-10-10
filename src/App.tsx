@@ -28,6 +28,7 @@ import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
 import Loading from "./elements/Loading";
+import { UserProvider } from "./Context";
 
 const queryClient = new QueryClient();
 
@@ -37,41 +38,42 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <div className="App">
-          <Header />
-          <Loading />
-          <Routes>
-            <Route path="/login" element={<LogInPage />}></Route>
-            <Route path="/signup" element={<SignUpPage />}></Route>
-            <Route path="/" element={<MainPage />}></Route>
-            <Route element={<Mypage />}>
-              <Route path="/mypage">
-                <Route index element={<Order />} />
-                <Route path=":id" element={<OrderDetail />} />
-                <Route path="cancel-call/:id" element={<CancelDetail />} />
-              </Route>
-              <Route path="wish" element={<Wish />} />
+          <UserProvider>
+            <Header />
+            <Loading />
+            <Routes>
+              <Route path="/login" element={<LogInPage />}></Route>
+              <Route path="/signup" element={<SignUpPage />}></Route>
+              <Route path="/" element={<MainPage />}></Route>
+              <Route element={<Mypage />}>
+                <Route path="/mypage">
+                  <Route index element={<Order />} />
+                  <Route path=":id" element={<OrderDetail />} />
+                  <Route path="cancel-call/:id" element={<CancelDetail />} />
+                </Route>
+                <Route path="wish" element={<Wish />} />
 
-              <Route path="cancel">
-                <Route index element={<Cancel />} />
-                <Route path=":id" element={<OrderDetail />} />
+                <Route path="cancel">
+                  <Route index element={<Cancel />} />
+                  <Route path=":id" element={<OrderDetail />} />
+                </Route>
               </Route>
-            </Route>
-            <Route path="/cart" element={<CartPage />}></Route>
-            <Route path="/list" element={<ListPage />}>
-              <Route path=":category" element={<ListPage />}></Route>
-            </Route>
-            <Route path="/search" element={<SearchPage />}>
-              <Route path=":category" element={<SearchPage />} />
-            </Route>
-            <Route
-              path="/detail/:category/:prodNo"
-              element={<DetailPage />}
-            ></Route>
-            <Route path="/payment" element={<PaymentPage />}></Route>
-            <Route path="/complete" element={<CompletePage />}></Route>
-          </Routes>
-          <Footer />
-          <ReactQueryDevtools />
+              <Route path="/cart" element={<CartPage />}></Route>
+              <Route path="/list" element={<ListPage />}>
+                <Route path=":category" element={<ListPage />}></Route>
+              </Route>
+
+              <Route path="/search" element={<SearchPage />}></Route>
+              <Route
+                path="/detail/:category/:prodNo"
+                element={<DetailPage />}
+              ></Route>
+              <Route path="/payment" element={<PaymentPage />}></Route>
+              <Route path="/complete" element={<CompletePage />}></Route>
+            </Routes>
+            <Footer />
+            <ReactQueryDevtools />
+          </UserProvider>
         </div>
       </ThemeProvider>
     </QueryClientProvider>

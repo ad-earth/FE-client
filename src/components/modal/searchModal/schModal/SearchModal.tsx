@@ -2,7 +2,8 @@ import * as t from "./SearchModal.style";
 import { useState } from "react";
 
 import Modal from "../../Modal";
-import { IdSearch, PassSearch } from "../schForm/SearchForm";
+import SearchId from "../schForm/searchId/SearchId";
+import SearchPass from "../schForm/serchPass/SearchPass";
 
 interface ModalType {
   isOpen?: boolean;
@@ -41,7 +42,7 @@ const SearchModal = (props: ModalType) => {
                   비밀번호 찾기
                 </t.CheckedBtn>
               </t.SearchNav>
-              {isChecked ? <IdSearch /> : <PassSearch />}
+              {isChecked ? <SearchId /> : <SearchPass />}
             </t.SearchBody>
           </t.IdContainer>
         </Modal>
