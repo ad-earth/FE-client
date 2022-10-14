@@ -91,13 +91,9 @@ const OrderPList = () => {
       getCart();
     }
   }, [isSuccess]);
-  ////////////////////////////////////////////////////
+  //파라미터로 담아온 prodNo만 걸러서 데이터 추출
   const { prodNo } = useParams<{ prodNo: string }>();
-  console.log("prodNo", prodNo);
-
   const result = data.filter((v) => v.id === Number(prodNo));
-
-  console.log("FIND", result);
 
   return (
     <>
