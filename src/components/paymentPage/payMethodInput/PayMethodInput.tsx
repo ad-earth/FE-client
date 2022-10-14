@@ -22,6 +22,7 @@ const PayMethodInput = (
   const [tab, setTab] = useState(false);
   const [select, setSelect] = useState<string>("");
   const [param, setParam] = useState<string>("");
+
   //라디오 버튼 선택
   const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

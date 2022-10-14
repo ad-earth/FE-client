@@ -48,9 +48,6 @@ export const PayMethod = (props: PayListType & MemoType) => {
 };
 
 export const PayMethodInfo = (props: GetPayUserType) => {
-  // console.log(props.addressList);
-  // console.log(props.userInfo);
-
   return (
     <t.Div>
       <t.NameDiv>

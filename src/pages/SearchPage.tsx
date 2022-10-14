@@ -50,7 +50,11 @@ const SearchPage = () => {
             cnt={SearchListData.cnt}
             pageNo={SearchListData.pageNo}
           />
-          <PageBtn setPage={setPageParams} cnt={SearchListData.cnt} />
+          <PageBtn
+            page={pageParams}
+            setPage={setPageParams}
+            cnt={SearchListData.cnt}
+          />
         </>
       )}
     </>

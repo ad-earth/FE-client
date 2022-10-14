@@ -38,7 +38,11 @@ export const ListPage = () => {
               pageNo={CateListData.pageNo}
             />
           )}
-          <PageBtn setPage={setPageParams} cnt={CateListData.cnt} />
+          <PageBtn
+            setPage={setPageParams}
+            cnt={CateListData.cnt}
+            page={pageParams}
+          />
         </>
       )}
     </>
