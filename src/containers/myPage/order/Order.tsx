@@ -34,7 +34,7 @@ const Order = () => {
   if (data?.pages[0]?.cnt === 0) {
     return <t.DataNull>주문 내역이 없습니다.</t.DataNull>;
   }
-  console.log(data);
+
   return (
     <t.Section>
       <ReviewModal
