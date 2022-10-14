@@ -15,14 +15,16 @@ export const putUserInfoChange = (
   u_Name: string,
   u_Address1: string,
   u_Address2: string,
+  u_Address3: string,
   u_Gender: string,
   u_Phone: string,
-  u_Img: string | null
+  u_Img: string
 ) =>
   axiosInstance.put(`/users`, {
     u_Name,
     u_Address1,
     u_Address2,
+    u_Address3,
     u_Gender,
     u_Phone,
     u_Img,
@@ -54,8 +56,83 @@ export const getSearch = (keyword: string, pageNo: string) =>
     `/main/search?keyword=${keyword}&page=${pageNo}&maxpost=20`
   );
 
+//회원가입페이지
+export const postSignup = (
+  u_Id: string,
+  u_Pw: string,
+  u_Name: string,
+  u_Address1: string,
+  u_Address2: string,
+  u_Address3: string,
+  u_Gender: string,
+  u_Phone: string,
+  u_Img: string
+) =>
+  axiosInstance.post(`/users/register`, {
+    u_Id,
+    u_Pw,
+    u_Name,
+    u_Address1,
+    u_Address2,
+    u_Address3,
+    u_Gender,
+    u_Phone,
+    u_Img,
+  });
+
 //주문완료 페이지
 export const getComplete = () => axiosInstance.get(`/payment/complete`);
 
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
+
+//로그인페이지
+export const postLogin = (u_Id: string, u_Pw: string) =>
+  axiosInstance.post(`/users/login`, { u_Id, u_Pw });
+
+//아이디 찾기
+export const getId = (u_Name: string, u_Phone: string) =>
+  axiosInstance.get(`/users/find-id`, {
+    params: { u_Name, u_Phone },
+  });
+
+//비밀번호 찾기 1차
+export const getPw = (u_Id: string, u_Name: string, u_Phone: string) =>
+  axiosInstance.get(`/users/find-password`, {
+    params: { u_Id, u_Name, u_Phone },
+  });
+
+//비밀번호 찾기 2차
+export const putNewPw = (u_Idx: number, u_Pw: string) => {
+  axiosInstance.put(`/users/reset-password`, { u_Idx, u_Pw });
+};
+
+//로그아웃시 서버 데이터 전달
+export const postCartData = (
+  k_No: number,
+  p_No: number,
+  p_Thumbnail: string[],
+  p_Category: string,
+  a_Brand: string,
+  p_Name: string,
+  p_Cost: number,
+  p_Sale: boolean,
+  p_Discount: number,
+  p_Option: Array<string | number | null>[],
+  p_Price: number,
+  p_Cnt: number
+) =>
+  axiosInstance.post(`/carts`, {
+    k_No,
+    p_No,
+    p_Thumbnail,
+    p_Category,
+    a_Brand,
+    p_Name,
+    p_Cost,
+    p_Sale,
+    p_Discount,
+    p_Option,
+    p_Price,
+    p_Cnt,
+  });

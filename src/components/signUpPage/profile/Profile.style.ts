@@ -8,7 +8,7 @@ export const ProfWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin: 20px auto;
+  margin: 20px auto 40px;
 `;
 export const IconDiv = styled.div`
   width: 30px;

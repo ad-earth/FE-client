@@ -12,23 +12,9 @@ export const LogInWrapper = styled.div`
     width: 90%;
   }
 `;
-export const CheckWrapper = styled.div`
+export const BtnDiv = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   margin: 20px 0;
-`;
-export const CheckLabel = styled.span`
-  font-size: ${theme.fs15};
-  color: ${theme.fc09};
-  margin-left: 4px;
-`;
-export const LogInCheckbox = styled.input`
-  width: 16px;
-  height: 16px;
-  accent-color: ${theme.bg16};
-  border: 1px solid ${theme.ls10};
 `;
 export const AddWrapper = styled.div`
   width: 100%;

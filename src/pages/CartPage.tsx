@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import CartList from "../containers/cartPage/CartList";
-import CartReceipt from "../containers/cartPage/CartReceipt";
+import CartList from "../containers/cartPage/cartList/CartList";
+import CartReceipt from "../containers/cartPage/cartReceipt/CartReceipt";
 
 const CartPage = () => {
   return (
@@ -17,4 +17,10 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  @media (min-width: 991px) and (max-width: 1200px) {
+    width: 95%;
+  }
+  @media (max-width: 990px) {
+    width: 100%;
+  }
 `;
