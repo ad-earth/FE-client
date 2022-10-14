@@ -24,27 +24,21 @@ interface StateType {
   r_Content: string;
   r_Score: number | null;
 }
-// interface ModalType {
-//   isOpen?: boolean;
-//   handleClose: () => void;
-//   product?: ProductType;
-// }
-
-export default function ReviewModal({
-  handleClose,
-  isOpen,
-  product,
-}: {
+interface PropsType {
   handleClose: () => void;
   isOpen: boolean;
   product?: ProductType;
-}) {
+}
+export default function ReviewModal(props: PropsType) {
+  const { handleClose, isOpen, product } = props;
+
   const [state, setState] = useState<StateType>({
     id: 0,
     r_Content: "",
     r_Score: 5,
   });
   const [data, setData] = useState<ProductType | undefined>(product);
+
   useEffect(() => {
     if (product) {
       setData(product);
@@ -72,9 +66,10 @@ export default function ReviewModal({
   const ReviewClick = () => {
     mutate();
   };
+
   return (
     <>
-      {(isOpen || data) && (
+      {props.isOpen && (
         <Modal handleClose={() => handleClose()} isOpen={isOpen}>
           <t.Base>
             <Header handleClose={() => handleClose()} />
@@ -88,16 +83,27 @@ export default function ReviewModal({
                       <>
                         <t.ProducOptionBox>
                           <t.ProducOption>
-                            [옵션]
-                            {`${data.p_Option[0][1]}` &&
-                              ` 사이즈 : ${data.p_Option[0][1]}
-                              ${
-                                data.p_Option[0][0] &&
-                                ` / 색상 : ${data.p_Option[0][0]}`
-                              } / ${data.p_Option[0][3]}개`}
+                            {` ${
+                              data.p_Option[0][0] !== null ||
+                              data.p_Option[0][1] !== null
+                                ? "[옵션]"
+                                : ""
+                            }`}
+
+                            {`${
+                              data.p_Option[0][0] === null
+                                ? ""
+                                : ` 색상 : ${data.p_Option[0][0]}`
+                            }`}
+                            {`${
+                              data.p_Option[0][1] === null
+                                ? ""
+                                : ` 선택 : ${data.p_Option[0][1]}`
+                            }`}
+                            {` ${data.p_Option[0][3]} 개`}
                           </t.ProducOption>
                           {data.p_Option.length > 1 &&
-                            `외 ${data.p_Option.length - 1} 개 `}
+                            `  외 ${data.p_Option.length - 1} 개 `}
                         </t.ProducOptionBox>
                       </>
                     </t.InfoText>
