@@ -24,7 +24,7 @@ const Product = ({ product }: { product: PropsType }) => {
               {`${option[1] !== null ? option[1] : ""}  `}
             </t.ProducOption>
             <t.ProducPrice>
-              {option[4]}원 / {option[2]}개
+              {option[4]}원 / {option[3]}개
             </t.ProducPrice>
           </t.ProducOptionBox>
         ))}
