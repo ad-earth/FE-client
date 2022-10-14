@@ -14,7 +14,7 @@ const Wish = () => {
   }, [inView]);
 
   if (data?.pages[0]?.cnt === 0) {
-    return <DataNull>주문 내역이 없습니다.</DataNull>;
+    return <DataNull>위시리스트가 없습니다.</DataNull>;
   }
   return (
     <Section>
