@@ -10,7 +10,7 @@ import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
 const ListPage = (props: CardListType) => {
   return (
     <t.CardArea>
-      <CateDrop />
+      <CateDrop sort={props.sort} sortChange={props.sortChange} />
       <t.CardWrap>
         {props.products.map((val: SProductsType, i: number) => {
           return (

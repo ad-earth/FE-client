@@ -2,27 +2,30 @@ import { useRef, useState } from "react";
 import * as t from "../components/searchPage/sqSearchBar/sqSearchBar.style";
 
 import SearchBody from "../containers/searchPage/searchBody/SearchBody";
-import SPageBtn from "../components/searchPage/sPageBtn/SPageBtn";
 import useSearchDataList from "../containers/searchPage/searchBody/useSearchBody";
+import PageBtn from "../components/listPage/pagination/PageBtn";
 import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
-  const { keyword } = useParams<{ keyword: string }>();
+  const navigate = useNavigate();
   const [keyParams, setKeyParams] = useState<string>("");
-
-  const { pageNo } = useParams<{ pageNo: string }>();
-  const [pageParams, setPageParams] = useState<string>(pageNo ? pageNo : `1`);
+  const [pageParams, setPageParams] = useState<number>(1);
 
   const keywordRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const submitHandler = (event: React.FormEvent) => {
     const keyParams = keywordRef.current!.value;
+    navigate(`/search/${keyParams}`);
     event.preventDefault();
     setKeyParams(keyParams);
   };
 
-  const SearchListData: SearchType = useSearchDataList(keyParams, pageParams);
+  const SearchListData: SearchType = useSearchDataList(
+    keyParams,
+    String(pageParams)
+  );
 
+  console.log(SearchListData);
   const onClearInput = () => {
     keywordRef.current.value = "";
   };
@@ -47,7 +50,11 @@ const SearchPage = () => {
             cnt={SearchListData.cnt}
             pageNo={SearchListData.pageNo}
           />
-          <SPageBtn cnt={SearchListData.cnt} />
+          <PageBtn
+            page={pageParams}
+            setPage={setPageParams}
+            cnt={SearchListData.cnt}
+          />
         </>
       )}
     </>

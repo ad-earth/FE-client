@@ -45,9 +45,9 @@ export const getList = (sort: string, pageNo: string) =>
   axiosInstance.get(`/main/products?sort=${sort}&page=${pageNo}&maxpost=20`);
 
 //카테고리 조회
-export const getSort = (category: string, sort: string, pageNo: string) =>
+export const getCate = (category: string, sort: string, pageNo: string) =>
   axiosInstance.get(
-    `/main/products/:${category}?sort=${sort}&page=${pageNo}&maxpost=20`
+    `/main/products/${category}?sort=${sort}&page=${pageNo}&maxpost=20`
   );
 
 //검색페이지
@@ -83,6 +83,30 @@ export const postSignup = (
 //주문완료 페이지
 export const getComplete = () => axiosInstance.get(`/payment/complete`);
 
+//결제페이지
+export const getPay = () => axiosInstance.get(`/payment`);
+export const postPay = (
+  d_No: number, // 신규 배송지면 0
+  d_Name: string,
+  d_Phone: string,
+  d_Address1: string,
+  d_Address2: string,
+  d_Address3: string,
+  d_Memo: string
+) =>
+  axiosInstance.post(`/payment/complete`, {
+    address: {
+      d_No,
+      d_Name,
+      d_Phone,
+      d_Address1,
+      d_Address2,
+      d_Address3,
+      d_Memo,
+    },
+  });
+export const deletePay = (dNo: number) =>
+  axiosInstance.delete(`/shipping-list/${dNo}`);
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
 

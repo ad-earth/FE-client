@@ -1,37 +1,48 @@
-import * as t from './PayUserInfo.style'
-import { MainButton } from '../../../elements/Buttons'
+import * as t from "./PayUserInfo.style";
+import { MainButton } from "../../../elements/Buttons";
+import { PayUserInfoType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 
 interface PropsType {
-  BtnonClick: () => void
+  BtnonClick: () => void;
+  uName: string;
+  uPhone: string;
 }
 
-const PayUserInfo = (props: PropsType) => {
+const PayUserInfo = ({
+  userInfo,
+  BtnonClick,
+}: {
+  userInfo: PayUserInfoType;
+  BtnonClick: () => void;
+}) => {
   return (
     <>
-      <t.DivArea>
-        <t.Div>
-          <t.NameDiv>
-            <span>이효리</span>
-          </t.NameDiv>
-          <t.PayText>01040774628</t.PayText>
-        </t.Div>
-        <t.ButtonBox>
-          <MainButton
-            color="#fff"
-            hBgColor="#00913a"
-            fontSize="13px"
-            fontWeight="500"
-            padding="6px 12px"
-            radius="2px"
-            width="50px"
-            onClick={() => props.BtnonClick()}
-          >
-            수정
-          </MainButton>
-        </t.ButtonBox>
-      </t.DivArea>
+      {userInfo && (
+        <t.DivArea>
+          <t.Div>
+            <t.NameDiv>
+              <span>{userInfo.u_Name}</span>
+            </t.NameDiv>
+            <t.PayText>{userInfo.u_Phone}</t.PayText>
+          </t.Div>
+          <t.ButtonBox>
+            <MainButton
+              color="#fff"
+              hBgColor="#00913a"
+              fontSize="13px"
+              fontWeight="500"
+              padding="6px 12px"
+              radius="2px"
+              width="50px"
+              onClick={() => BtnonClick()}
+            >
+              수정
+            </MainButton>
+          </t.ButtonBox>
+        </t.DivArea>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default PayUserInfo
+export default PayUserInfo;
