@@ -1,16 +1,16 @@
-import styled from 'styled-components'
-import { RadiobtnType } from '../payRadioBtn/PayRadioBtn'
+import styled from "styled-components";
+import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
 
 export const DivArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
+`;
 export const TbtnDiv = styled.div`
   width: 100%;
   display: flex;
   border-bottom: 1px solid ${({ theme }) => theme.fc03};
-`
+`;
 export const Tbtn = styled.div<RadiobtnType>`
   width: 25%;
   display: flex;
@@ -19,21 +19,30 @@ export const Tbtn = styled.div<RadiobtnType>`
   box-sizing: border-box;
   font-size: ${({ theme }) => theme.fs14};
   color: ${({ theme }) => theme.fc13};
-  background-color: ${(props) => (props.bgColor ? props.bgColor : '#fff')}
+  background-color: ${(props) => (props.bgColor ? props.bgColor : "#fff")}
   border: 1px solid  ${({ theme }) => theme.fc02};
   cursor: pointer;
   &.right {
     border-left: 1px solid  ${({ theme }) => theme.fc03};
   }
-`
+`;
 export const ContentsDiv = styled.div`
   width: 100%;
   margin: 0 auto;
-`
+`;
 export const Div = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 10px 0 40px;
+  margin: 10px 0 30px;
   padding-bottom: 40px;
   border-bottom: 1px solid ${({ theme }) => theme.fc02};
-`
+`;
+export const Btn = styled.button`
+  width: 40px;
+  height: 20px;
+  font-size: ${({ theme }) => theme.fs14};
+  color: ${({ theme }) => theme.fc06};
+  background-color: ${({ theme }) => theme.bg01};
+  border: none;
+  cursor: pointer;
+`;

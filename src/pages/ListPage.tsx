@@ -1,33 +1,48 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import CateButton from "../components/listPage/cateButton/CateButton";
 import PageBtn from "../components/listPage/pagination/PageBtn";
 import CardList from "../containers/listPage/cardList/CardList";
-import { useCardList } from "../containers/listPage/cardList/useCardList";
+import { useCateList } from "../containers/listPage/cardList/useCardList";
 import { CardListType } from "../containers/listPage/cardList/cardList.type";
 
 export const ListPage = () => {
-  const { sort } = useParams<{ sort: string }>();
-  const [sortParams, setSortParams] = useState<string>("");
+  const { category } = useParams<{ category: string }>();
+  const [sortParams, setSortParams] = useState<string>("recent");
+  const [pageParams, setPageParams] = useState<number>(1);
 
-  const { pageNo } = useParams<{ pageNo: string }>();
-  const [pageParams, setPageParams] = useState<string>(pageNo ? pageNo : `1`);
+  //카테고리 api 호출
+  const CateListData: CardListType = useCateList(
+    category,
+    sortParams,
+    String(pageParams)
+  );
+  console.log(CateListData);
 
-  const CardListData: CardListType = useCardList(sortParams, pageParams);
-
+  const sortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortParams(e.target.value);
+  };
   return (
     <>
-      {CardListData && (
+      {CateListData && (
         <>
           <CateButton />
-          <CardList
-            products={CardListData.products}
-            userLike={CardListData.userLike}
-            cnt={CardListData.cnt}
-            pageNo={CardListData.pageNo}
+          {CateListData && CateListData.cnt === 0 ? null : (
+            <CardList
+              sortChange={sortChange}
+              sort={sortParams}
+              products={CateListData && CateListData.products}
+              userLike={CateListData.userLike}
+              cnt={CateListData.cnt}
+              pageNo={CateListData.pageNo}
+            />
+          )}
+          <PageBtn
+            setPage={setPageParams}
+            cnt={CateListData.cnt}
+            page={pageParams}
           />
-          <PageBtn />
         </>
       )}
     </>

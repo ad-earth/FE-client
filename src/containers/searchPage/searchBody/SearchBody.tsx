@@ -49,7 +49,7 @@ const SearchBody = (props: SearchType) => {
             {props.products.map((v: SProductsType) => {
               return (
                 <>
-                  <t.CardCp key={v.p_Name}>
+                  <t.CardCp key={v.p_No}>
                     <Card
                       pNo={v.p_No}
                       pThumbnail={v.p_Thumbnail}
