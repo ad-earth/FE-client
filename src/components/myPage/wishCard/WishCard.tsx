@@ -35,7 +35,7 @@ const WishCard = ({ list }: { list: DataType }) => {
     mutate(list.p_No, {
       onSuccess: () => {
         alert("isSuccess");
-        navigate("/mypage/wish");
+        navigate("/wish");
       },
     });
   };
