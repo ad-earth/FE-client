@@ -1,7 +1,7 @@
 # 광고지구 🌎 CPC 키워드 광고를 적용한 이커머스 플랫폼
 ![adearth](https://user-images.githubusercontent.com/105091138/195831143-6d111bdf-cb33-4919-a0c8-d813124c89d7.png)
 ## 📌 바로가기
-[구매자 지구샵 클론 코딩](https://adearth.shop) / [판매자 광고지구](https://adearth-admin.shop)<br />
+### [구매자 지구샵 클론 코딩](https://adearth.shop) / [판매자 광고지구](https://adearth-admin.shop)<br />
 [구매자 FE GitHub Repository](https://github.com/ad-earth/FE-client) / [판매자 FE GitHub Repository](https://github.com/ad-earth/FE-admin)<br />
 [BE GitHub Repository](https://github.com/ad-earth/BE-server)<br />
 
