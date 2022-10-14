@@ -3,8 +3,6 @@ import * as t from "./PdtInfo.style";
 // type dataType = data: DBType
 
 const PdtInfo = (props: DbDataType) => {
-  console.log(props.data);
-
   return (
     <>
       {props.data.map((val: DataType) => {

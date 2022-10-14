@@ -15,7 +15,6 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
-import { DataType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
 
 const OrderPList = () => {
   const titles = [
@@ -94,44 +93,20 @@ const OrderPList = () => {
   }, [isSuccess]);
   ////////////////////////////////////////////////////
   const { prodNo } = useParams<{ prodNo: string }>();
-  console.log(prodNo);
-  const prodId = data.map((v: DataType) => {
-    return v.id;
-  }, 0);
-  // console.log(prodId);
-  const [find, setFind] = useState<any>();
-  const prodFind = prodId.includes(Number(prodNo));
-  // console.log(prodFind);
+  console.log("prodNo", prodNo);
 
-  // const ProdFind2 = () => {
-  //   const find =  data.filter((item: any) => item);
-  //   setFind(find);
-  // };
-  // console.log("ProdFind2", find);
+  const result = data.filter((v) => v.id === Number(prodNo));
 
-  // const filterItems = (prodNo: any) => {
-  //   return data.filter(
-  //     (el) => el.toLowerCase().indexOf(prodNo.toString().toLowerCase()) > -1
-  //   );
-  // };
-  // const a = setFind(filterItems);
-  // console.log(find);
+  console.log("FIND", result);
 
   return (
     <>
       {data && GetPaylist && (
         <t.PayArea>
           <t.LPListArea>
-            {/* {ProdFind2 && ProdFind2 ? (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-                <PdtInfo data={data} />
-                <FreeShipping />
-              </t.LTipOff>
-            ) : null} */}
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={data} />
+              <PdtInfo data={result} />
               <FreeShipping />
             </t.LTipOff>
 
@@ -187,7 +162,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary data={data} />
+              <PaySummary data={result} />
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>

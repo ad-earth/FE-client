@@ -1,8 +1,8 @@
-import { DataType, DbDataType } from "../pdtInfo/pdInfo.type";
+import { DbDataType } from "../pdtInfo/pdInfo.type";
 import * as t from "./PaySummary.style";
 
 const PaySummary = (props: DbDataType) => {
-  const totalP = props.data.reduce((a: number, currentObject: DataType) => {
+  const totalP = props.data.reduce((a, currentObject) => {
     return a + currentObject.totalPrice;
   }, 0);
 
