@@ -32,7 +32,7 @@ const Cancel = () => {
                 (list: CancelListType, idx: number) => (
                   <t.List key={idx}>
                     <OrderNumber orderNo={list.o_No} orderDate={list.o_Date} />
-                    <OderList products={list.products} />
+                    <OderList products={list.products} orderNo={list.o_No} />
                   </t.List>
                 )
               )}

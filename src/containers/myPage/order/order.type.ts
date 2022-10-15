@@ -13,6 +13,7 @@ interface ProductsType {
   p_Price: number;
   p_Cnt: number;
   o_Status: string;
+  r_Status: boolean;
 }
 export interface OrderListType {
   o_No: number;

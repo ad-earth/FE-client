@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, SetStateAction, Dispatch } from "react";
 import { useNavigate, Link } from "react-router-dom";
 //style
 import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
 //components
-import ReviewModal from "../../../modal/reviewModal/ReviewModal";
 import Product from "../product/Product";
 import { MainButton } from "../../../../elements/Buttons";
 
@@ -17,30 +16,31 @@ interface PropsType {
     [string | null, string | null, number | null, number | null, number | null]
   >;
   o_Status: string;
+  r_Status: boolean;
 }
 
 const OrderList = ({
   products,
   orderNo,
+  // handleClose,
+  infoIsOpen,
+  setInfoIsOpen,
+  setProduct,
 }: {
   products: PropsType[];
   orderNo?: number;
+  infoIsOpen?: boolean;
+  setInfoIsOpen?: Dispatch<SetStateAction<boolean>>;
+  setProduct?: Dispatch<SetStateAction<PropsType>>;
 }) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   let navigate = useNavigate();
-  const [product, setProduct] = useState<PropsType>();
 
   const ClickEvent = (data: PropsType) => {
     setProduct(data);
-    setInfoIsOpen(true);
+    setInfoIsOpen(!infoIsOpen);
   };
   return (
     <>
-      <ReviewModal
-        isOpen={infoIsOpen}
-        handleClose={() => setInfoIsOpen(false)}
-        product={product}
-      />
       {products.map((product, idx: number) => (
         <t.OderListBox key={idx}>
           <t.ProductBox>
@@ -70,7 +70,7 @@ const OrderList = ({
               >
                 취소
               </MainButton>
-            ) : product.o_Status === "배송완료" ? (
+            ) : product.o_Status === "배송완료" && product.r_Status ? (
               <MainButton
                 radius="30px"
                 border="1px solid transparent"
