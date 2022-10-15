@@ -19,7 +19,7 @@ const AsideNav = () => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     data.path === "modal" && e.preventDefault();
-    data.name === "회원 탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
+    data.name === "회원탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
     data.name === "정보 수정" && setUserInfoIsOpen(!userInfoIsOpen);
   };
 
