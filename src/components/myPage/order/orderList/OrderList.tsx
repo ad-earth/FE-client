@@ -34,7 +34,6 @@ const OrderList = ({
   setProduct?: Dispatch<SetStateAction<PropsType>>;
 }) => {
   let navigate = useNavigate();
-  // const [product, setProduct] = useState<PropsType>();
 
   const ClickEvent = (data: PropsType) => {
     setProduct(data);
