@@ -74,6 +74,10 @@ const CancelDetail = () => {
     });
   }, [checkedItems]);
 
+  //주문완료건만 filter
+  const successOrderList = products.filter(
+    (item) => item.o_Status === "주문완료"
+  );
   return (
     <t.Section>
       <t.Title>
@@ -95,13 +99,11 @@ const CancelDetail = () => {
           </t.ButtomBox>
         </t.ContentsBox>
         <t.ContentsBox>
-          {products.filter((item) => item.o_Status === "주문완료") && (
-            <CancelListDetail
-              products={products}
-              checkedItems={checkedItems}
-              setCheckedItems={setCheckedItems}
-            />
-          )}
+          <CancelListDetail
+            products={successOrderList}
+            checkedItems={checkedItems}
+            setCheckedItems={setCheckedItems}
+          />
           <CancelAmount checkPrice={checkPrice} />
           {isMobile && (
             <t.MobileButtomBox>
