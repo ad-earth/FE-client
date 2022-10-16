@@ -1,4 +1,4 @@
-import * as t from "./PayMethod.style";
+import * as t from "./payMethod.style";
 import { MainButton } from "../../../elements/Buttons";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 
