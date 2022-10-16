@@ -14,6 +14,16 @@ export const BtnArea = styled.div`
     display: none;
   }
 `;
+export const SBtnArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 1220px;
+  min-width: 900px;
+  height: auto;
+  margin: 0.5rem auto;
+`;
 export const BtnWrap = styled.div`
   justify-content: center;
   width: 100%;
@@ -45,7 +55,7 @@ export const CBtn = styled.button<{ active: boolean }>`
     display: none;
   }
 `;
-export const SmallCBtn = styled.button`
+export const SmallCBtn = styled.button<{ active: boolean }>`
   width: 59px;
   padding: 0 3px;
   border: 0.3px solid ${theme.bg01};
@@ -56,8 +66,8 @@ export const SmallCBtn = styled.button`
   line-height: 25.6px;
   font-size: ${theme.fs13};
   font-family: "Noto Sans KR", "sans-serif";
-  background-color: ${theme.bg01};
-  color: ${theme.fc15};
+  background-color: ${(props) => (props.active ? theme.bg16 : theme.bg01)};
+  color: ${(props) => (props.active ? theme.fc01 : theme.fc15)};
   :hover {
     background-color: ${theme.bg16};
     color: ${theme.fc01};

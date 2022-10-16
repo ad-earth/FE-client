@@ -37,7 +37,7 @@ const CateButton = ({
 
   return (
     <>
-      <t.BtnArea className="desktop">
+      <t.BtnArea>
         <t.BtnWrap>
           {categoryList.map((val, i) => {
             return (
@@ -52,18 +52,24 @@ const CateButton = ({
             );
           })}
         </t.BtnWrap>
-
-        <t.BtnWrap className="mobile">
+      </t.BtnArea>
+      <t.SBtnArea>
+        <t.BtnWrap>
           {categoryList.map((val, i) => {
             return (
-              <t.SmallCBtn key={i} value={val} onClick={CateClick}>
+              <t.SmallCBtn
+                key={i}
+                value={val}
+                onClick={CateClick}
+                active={val === active ? true : false}
+              >
                 {val}
               </t.SmallCBtn>
             );
           })}
           <t.LineArea />
         </t.BtnWrap>
-      </t.BtnArea>
+      </t.SBtnArea>
     </>
   );
 };
