@@ -1,5 +1,5 @@
 import { Badge } from "../../../elements/Badge";
-import * as t from "./CardBaged.style";
+import * as t from "./cardBadge.style";
 import { CardBadgeType } from "./cardBadge.type";
 
 const CardBadge = (props: CardBadgeType) => {
