@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const LineDiv = styled.div`
   width: 97%;
@@ -12,4 +12,4 @@ export const LineDiv = styled.div`
     font-size: ${({ theme }) => theme.fs15};
     color: ${({ theme }) => theme.fc09};
   }
-`
+`;

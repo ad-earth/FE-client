@@ -1,4 +1,4 @@
-import * as t from './SearchNav.style'
+import * as t from "./searchNav.style";
 
 const SearchNav = () => {
   return (
@@ -7,6 +7,6 @@ const SearchNav = () => {
         <span>검색결과</span>
       </t.LineDiv>
     </>
-  )
-}
-export default SearchNav
+  );
+};
+export default SearchNav;

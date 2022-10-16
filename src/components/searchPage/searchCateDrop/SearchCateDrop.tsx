@@ -1,4 +1,4 @@
-import * as t from "./SearchCateDrop.style";
+import * as t from "./searchCateDrop.style";
 
 const SearchCateDrop = (props: { cnt: number }) => {
   return (
