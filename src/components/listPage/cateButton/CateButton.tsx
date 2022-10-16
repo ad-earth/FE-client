@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import * as t from "./CateButton.style";
+import * as t from "./cateButton.style";
 
 const CateButton = ({
   setPage,
