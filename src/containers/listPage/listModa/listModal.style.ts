@@ -1,17 +1,17 @@
-import styled from 'styled-components'
-import CloseIcon from '@mui/icons-material/Close'
-import { theme } from '../../../style/theme'
+import styled from "styled-components";
+import CloseIcon from "@mui/icons-material/Close";
+import { theme } from "../../../style/theme";
 
 export const Xbtn = styled(CloseIcon)({
-  '&.MuiSvgIcon-root': {
-    position: 'absolute',
+  "&.MuiSvgIcon-root": {
+    position: "absolute",
     color: `${theme.fc05}`,
     fontSize: `${theme.fs26}`,
     top: 15,
     right: 15,
-    cursor: 'pointer',
+    cursor: "pointer",
   },
-})
+});
 export const BtnDiv = styled.div`
   padding: 20px;
   position: relative;
@@ -23,7 +23,7 @@ export const BtnDiv = styled.div`
     width: 1150px;
     padding: 10px;
   }
-`
+`;
 export const ProdInfoContainer = styled.div`
   width: 1150px;
   margin: 30px auto;
@@ -36,7 +36,7 @@ export const ProdInfoContainer = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 export const InfoWrapper = styled.div`
   width: 80%;
   display: flex;
@@ -53,15 +53,15 @@ export const InfoWrapper = styled.div`
     margin-top: 20px;
     font-size: 12px;
   }
-`
+`;
 export const CaroDiv = styled.div`
   @media (max-width: 990px) {
     display: none;
   }
-`
+`;
 export const Max = styled.div`
   max-width: 80vw;
   @media (max-width: 990px) {
     max-width: 30vw;
   }
-`
+`;

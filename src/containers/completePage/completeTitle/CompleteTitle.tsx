@@ -1,7 +1,7 @@
-import * as t from './CompleteTitle.style'
+import * as t from "./completeTitle.style";
 
 const CompleteTitle = () => {
-  const completeText = '아래 계좌정보로 입금해 주시면\n 결제 완료처리가 됩니다'
+  const completeText = "아래 계좌정보로 입금해 주시면\n 결제 완료처리가 됩니다";
   return (
     <>
       <t.Div>
@@ -9,7 +9,7 @@ const CompleteTitle = () => {
         <t.H6tag>{completeText}</t.H6tag>
       </t.Div>
     </>
-  )
-}
+  );
+};
 
-export default CompleteTitle
+export default CompleteTitle;

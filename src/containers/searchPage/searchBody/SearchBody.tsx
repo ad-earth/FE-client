@@ -1,4 +1,4 @@
-import * as t from "./SearchBody.style";
+import * as t from "./searchBody.style";
 
 import Card from "../../../components/card/Card";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";

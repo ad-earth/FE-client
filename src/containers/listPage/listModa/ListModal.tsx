@@ -1,4 +1,4 @@
-import * as t from "./ListModal.style";
+import * as t from "./listModal.style";
 import { useEffect, useState } from "react";
 
 import Modal from "../../../components/modal/Modal";
