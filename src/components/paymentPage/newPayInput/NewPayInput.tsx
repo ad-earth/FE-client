@@ -1,4 +1,4 @@
-import * as t from "./NewPayInput.style";
+import * as t from "./newPayInput.style";
 import { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { MainButton } from "../../../elements/Buttons";
 import Input from "../../../elements/Input";
