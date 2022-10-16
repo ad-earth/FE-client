@@ -1,4 +1,4 @@
-import * as t from "./CateDrop.style";
+import * as t from "./cateDrop.style";
 
 const CateDrop = ({
   sort,
