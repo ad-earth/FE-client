@@ -74,9 +74,9 @@ const PayMethodInput = (
         ) : (
           <>
             <t.DivArea style={{ marginTop: "10px" }}>
-              {props.addressList.map((val: PayAddressListType, i: number) => {
+              {props.addressList.map((val: PayAddressListType) => {
                 return (
-                  <t.Div>
+                  <t.Div key={val.d_No}>
                     <RadioBtn
                       type="radio"
                       value={val.d_No + ""}

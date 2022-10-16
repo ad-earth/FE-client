@@ -71,7 +71,6 @@ export const PayMethodSelect = (props: MemoType) => {
         <t.DropBtn
           name="ship"
           id="ship"
-          defaultValue={"first"}
           onChange={props.MemoChange}
           value={props.memo}
         >

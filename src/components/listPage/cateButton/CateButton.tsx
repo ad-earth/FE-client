@@ -21,25 +21,21 @@ const CateButton = ({
     "문구",
   ];
   const navigate = useNavigate();
-  const [active, setActive] = useState();
+  const [active, setActive] = useState<string>("");
 
-  const CateClick = (e: any) => {
-    const category = e.target.value;
+  const CateClick = (e: React.FormEvent<HTMLButtonElement>) => {
+    const category = e.currentTarget.value;
     navigate(`/list/${category}`);
     setPage(1);
     setSort(`like`);
-    setActive(() => {
-      return e.target.value;
-    });
-    console.log(category);
+    setActive(e.currentTarget.value);
   };
-  console.log(active);
 
   return (
     <>
       <t.BtnArea>
         <t.BtnWrap>
-          {categoryList.map((val, i) => {
+          {categoryList.map((val: string, i: number) => {
             return (
               <t.CBtn
                 key={i}
@@ -55,7 +51,7 @@ const CateButton = ({
       </t.BtnArea>
       <t.SBtnArea>
         <t.BtnWrap>
-          {categoryList.map((val, i) => {
+          {categoryList.map((val: string, i: number) => {
             return (
               <t.SmallCBtn
                 key={i}

@@ -10,13 +10,7 @@ const CateDrop = ({
   return (
     <>
       <t.BtnArea>
-        <t.DropBtn
-          name="select"
-          id="select"
-          defaultValue="like"
-          onChange={sortChange}
-          value={sort}
-        >
+        <t.DropBtn name="select" id="select" onChange={sortChange} value={sort}>
           <option value="recent">등록순</option>
           <option value="like">인기순</option>
           <option value="minprice">낮은가격순</option>

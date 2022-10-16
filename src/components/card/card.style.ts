@@ -94,8 +94,3 @@ export const WishCard = styled.div`
     cursor: pointer;
   }
 `;
-
-// export const IconHeart = styled(Heart)`
-//   color: ${({ theme }) => theme.bg09};
-//   width: "20px";
-// `;
