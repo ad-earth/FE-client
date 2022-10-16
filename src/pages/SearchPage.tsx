@@ -25,7 +25,6 @@ const SearchPage = () => {
     String(pageParams)
   );
 
-  console.log(SearchListData);
   const onClearInput = () => {
     keywordRef.current.value = "";
   };

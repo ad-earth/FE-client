@@ -21,13 +21,16 @@ const CateButton = ({
     "문구",
   ];
   const navigate = useNavigate();
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
 
   const CateClick = (e: any) => {
     const category = e.target.value;
     navigate(`/list/${category}`);
     setPage(1);
     setSort(`like`);
+    setActive(() => {
+      return e.target.value;
+    });
     console.log(category);
   };
   console.log(active);
@@ -38,7 +41,12 @@ const CateButton = ({
         <t.BtnWrap>
           {categoryList.map((val, i) => {
             return (
-              <t.CBtn key={i} value={val} onClick={CateClick}>
+              <t.CBtn
+                key={i}
+                value={val}
+                onClick={CateClick}
+                active={val === active ? true : false}
+              >
                 {val}
               </t.CBtn>
             );

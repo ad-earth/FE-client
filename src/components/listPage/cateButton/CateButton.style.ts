@@ -25,7 +25,7 @@ export const BtnWrap = styled.div`
   gap: 0.5rem;
   box-sizing: border-box;
 `;
-export const CBtn = styled.button`
+export const CBtn = styled.button<{ active: boolean }>`
   width: 25%;
   padding: 0.4rem 0;
   border: 0.3px solid ${theme.ls07};
@@ -33,15 +33,11 @@ export const CBtn = styled.button`
   line-height: 25.6px;
   font-size: ${theme.fs16};
   font-family: "Noto Sans KR", "sans-serif";
-  background-color: ${theme.bg01};
-  color: ${theme.fc09};
-  :focus {
-    background-color: ${theme.bg16};
-    color: ${theme.fc01};
-  }
+  background-color: ${(props) => (props.active ? theme.bg16 : theme.bg01)};
+  color: ${(props) => (props.active ? theme.fc01 : theme.fc09)};
   &:hover {
     background-color: ${theme.bg20};
-    color: ${(props) => props.color};
+    color: ${theme.fc15};
     transition: 0.3s;
     cursor: pointer;
   }

@@ -18,7 +18,6 @@ export const ListPage = () => {
     sortParams,
     String(pageParams)
   );
-  console.log(CateListData);
 
   const sortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortParams(e.target.value);
