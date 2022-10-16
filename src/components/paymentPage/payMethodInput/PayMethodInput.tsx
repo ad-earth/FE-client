@@ -1,4 +1,4 @@
-import * as t from "./PayMethodInput.style";
+import * as t from "./payMethodInput.style";
 import React, { useState } from "react";
 
 import {
