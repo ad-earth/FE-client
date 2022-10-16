@@ -1,5 +1,5 @@
 import { DataType, DbDataType } from "./pdInfo.type";
-import * as t from "./PdtInfo.style";
+import * as t from "./pdtInfo.style";
 // type dataType = data: DBType
 
 const PdtInfo = (props: DbDataType) => {

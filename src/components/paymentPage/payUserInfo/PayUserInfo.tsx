@@ -1,4 +1,4 @@
-import * as t from "./PayUserInfo.style";
+import * as t from "./payUserInfo.style";
 import { MainButton } from "../../../elements/Buttons";
 import { PayUserInfoType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 

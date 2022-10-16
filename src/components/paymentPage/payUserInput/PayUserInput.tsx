@@ -1,4 +1,4 @@
-import * as t from "./PayUserInput.style";
+import * as t from "./payUserInput.style";
 import Input from "../../../elements/Input";
 import { useCallback, useState } from "react";
 
