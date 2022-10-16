@@ -1,9 +1,9 @@
 import { DataType, DbDataType } from "./pdInfo.type";
 import * as t from "./pdtInfo.style";
+
 // type dataType = data: DBType
 
 const PdtInfo = (props: DbDataType) => {
-  console.log(props.data);
   return (
     <>
       {props.data.map((val: DataType, i: number) => {
