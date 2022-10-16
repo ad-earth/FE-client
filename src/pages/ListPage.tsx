@@ -25,9 +25,9 @@ export const ListPage = () => {
   };
   return (
     <>
+      <CateButton setPage={setPageParams} setSort={setSortParams} />
       {CateListData && (
         <>
-          <CateButton setPage={setPageParams} setSort={setSortParams} />
           {CateListData && CateListData.cnt === 0 ? null : (
             <CardList
               sortChange={sortChange}
