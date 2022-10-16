@@ -9,7 +9,7 @@ import { CardListType } from "../containers/listPage/cardList/cardList.type";
 
 export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
-  const [sortParams, setSortParams] = useState<string>("recent");
+  const [sortParams, setSortParams] = useState<string>("like");
   const [pageParams, setPageParams] = useState<number>(1);
 
   //카테고리 api 호출
@@ -22,12 +22,13 @@ export const ListPage = () => {
 
   const sortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortParams(e.target.value);
+    setPageParams(1);
   };
   return (
     <>
       {CateListData && (
         <>
-          <CateButton />
+          <CateButton setPage={setPageParams} setSort={setSortParams} />
           {CateListData && CateListData.cnt === 0 ? null : (
             <CardList
               sortChange={sortChange}
