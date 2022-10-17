@@ -1,6 +1,11 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
 import { openDB } from "idb";
+import {
+  RootState,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../redux/store";
 import { useNavigate, useParams } from "react-router-dom";
 //pages//
 import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
@@ -24,23 +29,14 @@ const OrderPList = () => {
     "주문 요약",
     "결제수단",
   ];
+  const { name, dNo, pNumber, zipcode, address1, address2, memo } =
+    useAppSelector((state: RootState) => state.paymentReducer);
   const navigate = useNavigate();
   const [btnopen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
 
-  const [name, setName] = useState("");
-  const [pNumber, setPNumber] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [memo, setMemo] = useState("");
-  const [dNo, setDNo] = useState<string>(null);
-
   const [data, setData] = useState([]);
 
-  const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMemo(e.target.value);
-  };
   const GetPaylist: PayListType = useGetPay();
 
   const postPay = {
@@ -124,20 +120,6 @@ const OrderPList = () => {
               <t.LTipOff>
                 <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
                 <PayMethodInput
-                  dNo={dNo}
-                  setDNo={setDNo}
-                  name={name}
-                  setName={setName}
-                  pNumber={pNumber}
-                  setPNumber={setPNumber}
-                  zipcode={zipcode}
-                  setZipcode={setZipcode}
-                  address1={address1}
-                  setAddress1={setAddress1}
-                  address2={address2}
-                  setAddress2={setAddress2}
-                  memo={memo}
-                  MemoChange={MemoChange}
                   addressList={GetPaylist.addressList}
                   userInfo={GetPaylist.userInfo}
                 />
@@ -146,8 +128,6 @@ const OrderPList = () => {
               <t.LTipOff>
                 <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
                 <PayMethod
-                  memo={memo}
-                  MemoChange={MemoChange}
                   BtnonClick={() => setBtnchange(true)}
                   addressList={GetPaylist.addressList}
                   userInfo={GetPaylist.userInfo}

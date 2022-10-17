@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const ShippingFee = styled.div`
   background: ${({ theme }) => theme.rgba01};
@@ -9,4 +9,4 @@ export const ShippingFee = styled.div`
   border-top: none;
   font-size: ${({ theme }) => theme.fs13};
   line-height: 1.4;
-`
+`;

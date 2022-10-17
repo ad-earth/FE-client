@@ -1,10 +1,14 @@
-import * as t from "./PayMethod.style";
+import * as t from "./payMethod.style";
 import { MainButton } from "../../../elements/Buttons";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
+import {
+  RootState,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../redux/store";
+import { editMemo } from "../../../redux/reducer/paymentSlice";
 
 export interface MemoType {
-  memo: string;
-  MemoChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   BtnonClick?: () => void;
 }
 
@@ -42,7 +46,7 @@ export const PayMethod = (props: PayListType & MemoType) => {
           </MainButton>
         </t.ButtonBox>
       </t.DivArea>
-      <PayMethodSelect memo={props.memo} MemoChange={props.MemoChange} />
+      <PayMethodSelect />
     </>
   );
 };
@@ -64,17 +68,17 @@ export const PayMethodInfo = (props: GetPayUserType) => {
 };
 
 export const PayMethodSelect = (props: MemoType) => {
+  const { memo } = useAppSelector((state: RootState) => state.paymentReducer);
+  const dispatch = useAppDispatch();
+
+  const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(editMemo(e.target.value));
+  };
   return (
     <t.ShipDiv>
       <t.PayText>배송메모</t.PayText>
       <t.BtnArea style={{ marginTop: "10px" }}>
-        <t.DropBtn
-          name="ship"
-          id="ship"
-          defaultValue={"first"}
-          onChange={props.MemoChange}
-          value={props.memo}
-        >
+        <t.DropBtn name="ship" id="ship" onChange={MemoChange} value={memo}>
           <option value="null">배송메모를 선택해주세요.</option>
           <option value="배송 전에 미리 연락 바랍니다.">
             배송 전에 미리 연락 바랍니다.

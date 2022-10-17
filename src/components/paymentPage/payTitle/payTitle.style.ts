@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const H1tag = styled.h1`
   font-size: ${({ theme }) => theme.fs28};
@@ -6,4 +6,4 @@ export const H1tag = styled.h1`
   text-align: center;
   margin: 60px 0;
   font-weight: bold;
-`
+`;

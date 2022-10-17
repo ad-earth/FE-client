@@ -1,30 +1,29 @@
-import * as t from "./NewPayInput.style";
-import { Dispatch, SetStateAction, useCallback, useState } from "react";
+import * as t from "./newPayInput.style";
+import { useCallback, useState } from "react";
+import { useDaumPostcodePopup } from "react-daum-postcode";
 import { MainButton } from "../../../elements/Buttons";
 import Input from "../../../elements/Input";
-import { MemoType, PayMethodSelect } from "../payMethod/PayMethod";
-import { useDaumPostcodePopup } from "react-daum-postcode";
-export interface AddressType {
-  dNo?: string;
-  name: string;
-  pNumber: string;
-  zipcode: string;
-  address1: string;
-  address2: string;
-  setDNo: Dispatch<SetStateAction<string>>;
-  setName: Dispatch<SetStateAction<string>>;
-  setPNumber: Dispatch<SetStateAction<string>>;
-  setZipcode: Dispatch<SetStateAction<string>>;
-  setAddress1: Dispatch<SetStateAction<string>>;
-  setAddress2: Dispatch<SetStateAction<string>>;
-}
+import { PayMethodSelect } from "../payMethod/PayMethod";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { RootState } from "../../../redux/store";
+import {
+  editDNo,
+  editName,
+  editPNumber,
+  editZipcode,
+  editAddress1,
+  editAddress2,
+} from "../../../redux/reducer/paymentSlice";
 
-export const NewPayInput = (props: AddressType & MemoType) => {
+export const NewPayInput = () => {
+  const { name, pNumber, zipcode, address1, address2 } = useAppSelector(
+    (state: RootState) => state.paymentReducer
+  );
+  const dispatch = useAppDispatch();
+
   const open = useDaumPostcodePopup();
-  const [name, setName] = useState<string>("");
   const [nameMessage, setNameMessage] = useState<string>("");
   const [isName, setIsName] = useState<boolean>(false);
-  const [phone, setPhone] = useState<string>("");
   const [phoneMessage, setPhoneMessage] = useState<string>("");
   const [isPhone, setIsPhone] = useState<boolean>(false);
 
@@ -43,24 +42,22 @@ export const NewPayInput = (props: AddressType & MemoType) => {
       }
       fullAddress += address2 !== "" ? ` (${address2})` : "";
     }
-
-    props.setZipcode(code);
-    props.setAddress1(fullAddress);
+    dispatch(editZipcode(code));
+    dispatch(editAddress1(fullAddress));
   };
 
   const handleClick = () => {
     open({ onComplete: handleComplete });
-    props.setDNo("0");
+    dispatch(editDNo("0"));
   };
 
   const changeHandler = (value: string) => {
-    props.setZipcode(value);
-    props.setAddress1(value);
-    console.log(props.setAddress1);
+    dispatch(editZipcode(value));
+    dispatch(editAddress1(value));
   };
   // 이름
   const onChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
+    dispatch(editName(e.target.value));
     if (e.target.value.length < 2 || e.target.value.length > 5) {
       setNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
       setIsName(false);
@@ -74,7 +71,7 @@ export const NewPayInput = (props: AddressType & MemoType) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const regExp = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
       const emailCurrent = e.target.value;
-      setPhone(emailCurrent);
+      dispatch(editPNumber(emailCurrent));
       if (!regExp.test(emailCurrent)) {
         setPhoneMessage("올바른 전화번호를 입력하세요.");
         setIsPhone(false);
@@ -106,14 +103,14 @@ export const NewPayInput = (props: AddressType & MemoType) => {
         </t.CheckDiv>
         <t.CheckDiv>
           <Input
-            value={phone}
+            value={pNumber}
             color="#20252b"
             fontSize="14px"
             width="100%"
             holderName="연락처"
             onChange={onChangePhone}
           />
-          {phone.length > 0 && (
+          {pNumber.length > 0 && (
             <span className={`message ${isPhone ? "success" : "error"}`}>
               {phoneMessage}
             </span>
@@ -123,7 +120,7 @@ export const NewPayInput = (props: AddressType & MemoType) => {
       <t.InputDivArea style={{ width: "50%" }}>
         <t.CheckDiv style={{ marginTop: "2.5px" }}>
           <Input
-            value={props.zipcode}
+            value={zipcode}
             color="#20252b"
             fontSize="14px"
             width="100%"
@@ -148,7 +145,7 @@ export const NewPayInput = (props: AddressType & MemoType) => {
       </t.InputDivArea>
       <t.InputDivArea>
         <Input
-          value={props.address1}
+          value={address1}
           color="#20252b"
           fontSize="14px"
           width="100%"
@@ -160,17 +157,17 @@ export const NewPayInput = (props: AddressType & MemoType) => {
       </t.InputDivArea>
       <t.InputDivArea style={{ marginBottom: "10px" }}>
         <Input
-          value={props.address2}
+          value={address2}
           color="#20252b"
           fontSize="14px"
           width="100%"
           holderName="상세주소"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            props.setAddress2(e.target.value)
+            dispatch(editAddress2(e.target.value))
           }
         />
       </t.InputDivArea>
-      <PayMethodSelect memo={props.memo} MemoChange={props.MemoChange} />
+      <PayMethodSelect />
     </t.DivArea>
   );
 };

@@ -1,8 +1,8 @@
-import * as t from "./PayRadioBtn.style";
+import * as t from "./payRadioBtn.style";
 import React, { useState } from "react";
 
 import Input from "../../../elements/Input";
-import { DropBtn } from "../payMethod/PayMethod.style";
+import { DropBtn } from "../payMethod/payMethod.style";
 import { useRef } from "react";
 
 export interface RadiobtnType {

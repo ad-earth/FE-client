@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const CardArea = styled.div`
   max-width: 1220px;
@@ -10,7 +10,7 @@ export const CardArea = styled.div`
     text-transform: capitalize;
     margin-bottom: 1rem;
   }
-`
+`;
 export const CardWrap = styled.div`
   width: 100%;
   height: auto;
@@ -24,10 +24,10 @@ export const CardWrap = styled.div`
     margin: 30px auto;
     grid-template-columns: repeat(2, 50%);
   }
-`
+`;
 export const CardCp = styled.div`
   width: 100%;
   margin: 0 -6px 10px -6px;
   box-sizing: border-box;
   font-size: inherit;
-`
+`;

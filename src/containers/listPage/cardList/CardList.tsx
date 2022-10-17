@@ -14,7 +14,7 @@ const ListPage = (props: CardListType) => {
       <t.CardWrap>
         {props.products.map((val: SProductsType, i: number) => {
           return (
-            <t.CardCp key={i}>
+            <t.CardCp key={val.p_No}>
               <Card
                 pNo={val.p_No}
                 pThumbnail={val.p_Thumbnail}

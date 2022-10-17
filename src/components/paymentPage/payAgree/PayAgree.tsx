@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as t from "./PayAgree.style";
+import * as t from "./payAgree.style";
 
 const PayAgree = () => {
   const [state, setState] = useState(false);
