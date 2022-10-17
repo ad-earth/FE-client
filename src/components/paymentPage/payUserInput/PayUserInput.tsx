@@ -11,10 +11,8 @@ const PayUserInput = () => {
   );
   const dispatch = useAppDispatch();
 
-  // const [name, setName] = useState<string>("");
   const [nameMessage, setNameMessage] = useState<string>("");
   const [isName, setIsName] = useState<boolean>(false);
-  const [phone, setPhone] = useState<string>("");
   const [phoneMessage, setPhoneMessage] = useState<string>("");
   const [isPhone, setIsPhone] = useState<boolean>(false);
   // 이름
@@ -70,7 +68,7 @@ const PayUserInput = () => {
           holderName="연락처"
           onChange={onChangePhone}
         />
-        {phone.length > 0 && (
+        {pNumber.length > 0 && (
           <span className={`message ${isPhone ? "success" : "error"}`}>
             {phoneMessage}
           </span>

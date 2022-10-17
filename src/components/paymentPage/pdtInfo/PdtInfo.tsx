@@ -1,9 +1,24 @@
+import { editproducts } from "../../../redux/reducer/paymentSlice";
+import {
+  RootState,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../redux/store";
 import { DataType, DbDataType } from "./pdInfo.type";
 import * as t from "./pdtInfo.style";
 
-// type dataType = data: DBType
-
 const PdtInfo = (props: DbDataType) => {
+  console.log(props.data);
+  const { products } = useAppSelector(
+    (state: RootState) => state.paymentReducer
+  );
+  const data = () => {
+    dispatch(editproducts(props.data));
+  };
+
+  console.log(products);
+
+  const dispatch = useAppDispatch();
   return (
     <>
       {props.data.map((val: DataType, i: number) => {

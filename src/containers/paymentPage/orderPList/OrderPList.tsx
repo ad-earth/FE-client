@@ -31,7 +31,6 @@ const OrderPList = () => {
   ];
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.paymentReducer);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [btnopen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
