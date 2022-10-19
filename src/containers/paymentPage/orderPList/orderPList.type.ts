@@ -1,38 +1,36 @@
+import { PayUserInfoType } from "../../../components/paymentPage/payUserInfo/payUserInfo.type";
+
 export interface PayListType {
   userInfo?: PayUserInfoType;
-  addressList: PayAddressListType;
+  addressList: PayAddressData[];
 }
 
-export interface PayUserInfoType {
-  u_Address1: string;
-  u_Address2: string;
-  u_Address3: string;
-  u_Name: string;
-  u_Phone: string;
+export interface PayDataType {
+  address: PayAddressData;
+  products: PayProductsData;
+  oPrice: number;
 }
 
-export interface PayAddressListType {
-  map(
-    arg0: (val: PayAddressListType, i: number) => JSX.Element
-  ): import("react").ReactNode;
+export interface PayAddressData {
   d_Address1: string;
   d_Address2: string;
   d_Address3: string;
   d_Name: string;
-  d_No: number;
+  d_No?: number;
   d_Phone: string;
-  u_Idx: number;
-  d_Memo: string;
+  d_Memo?: string;
 }
-
-export interface PayAddressData {
-  address: {
-    d_Address1: string;
-    d_Address2: string;
-    d_Address3: string;
-    d_Name: string;
-    d_No: number;
-    d_Phone: string;
-    d_Memo: string;
-  };
+export interface PayProductsData {
+  kNo: number;
+  pNo: number;
+  pThumbnail: string;
+  pCategory: string;
+  aBrand: string;
+  pName: string;
+  pCost: number;
+  pDiscount: number;
+  pSale: boolean;
+  pOption: [string | null, string | null, string | null, number, number][];
+  pPrice: number;
+  pCnt: number;
 }

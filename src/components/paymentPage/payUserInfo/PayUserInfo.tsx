@@ -1,6 +1,6 @@
 import * as t from "./payUserInfo.style";
 import { MainButton } from "../../../elements/Buttons";
-import { PayUserInfoType } from "../../../containers/paymentPage/orderPList/orderPList.type";
+import { PayUserInfoType } from "./payUserInfo.type";
 
 const PayUserInfo = ({
   userInfo,

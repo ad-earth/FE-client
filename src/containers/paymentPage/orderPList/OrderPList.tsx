@@ -1,13 +1,9 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
 import { openDB } from "idb";
-import {
-  RootState,
-  useAppDispatch,
-  useAppSelector,
-} from "../../../redux/store";
 import { useNavigate, useParams } from "react-router-dom";
 //pages//
+import { RootState, useAppSelector } from "../../../redux/store";
 import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
 import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
 import PayMethod from "../../../components/paymentPage/payMethod/PayMethod";
@@ -29,8 +25,29 @@ const OrderPList = () => {
     "주문 요약",
     "결제수단",
   ];
-  const { name, dNo, pNumber, zipcode, address1, address2, memo } =
-    useAppSelector((state: RootState) => state.paymentReducer);
+  //reducer에서 products data 받아오기
+  const {
+    name,
+    dNo,
+    pNumber,
+    zipcode,
+    address1,
+    address2,
+    memo,
+    products,
+    kNo,
+    pNo,
+    pThumbnail,
+    pCategory,
+    pName,
+    pCost,
+    pDiscount,
+    pSale,
+    pOption,
+    pPrice,
+    pCnt,
+    oPrice,
+  } = useAppSelector((state: RootState) => state.paymentReducer);
   const navigate = useNavigate();
   const [btnopen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
@@ -38,6 +55,8 @@ const OrderPList = () => {
   const [data, setData] = useState([]);
 
   const GetPaylist: PayListType = useGetPay();
+  console.log("PRODUCTS", products);
+  const { aBrand } = useAppSelector((state: RootState) => state.paymentReducer);
 
   const postPay = {
     address: {
@@ -49,6 +68,21 @@ const OrderPList = () => {
       d_Address3: address2,
       d_Memo: memo,
     },
+    products: {
+      kNo: kNo,
+      pNo: pNo,
+      pThumbnail: pThumbnail,
+      pCategory: pCategory,
+      aBrand: aBrand,
+      pName: pName,
+      pCost: pCost,
+      pDiscount: pDiscount,
+      pSale: pSale,
+      pOption: pOption,
+      pPrice: pPrice,
+      pCnt: pCnt,
+    },
+    oPrice: oPrice,
   };
 
   const { mutate, isSuccess } = usePostPay(postPay);

@@ -1,4 +1,19 @@
-import { editproducts } from "../../../redux/reducer/paymentSlice";
+import { useEffect } from "react";
+import {
+  editABrand,
+  editOPrice,
+  editPCategory,
+  editPCnt,
+  editPCost,
+  editPDiscount,
+  editPSale,
+  editPName,
+  editPNo,
+  editPOption,
+  editPPrice,
+  editPThumbnail,
+  editKNo,
+} from "../../../redux/reducer/paymentSlice";
 import {
   RootState,
   useAppDispatch,
@@ -9,14 +24,25 @@ import * as t from "./pdtInfo.style";
 
 const PdtInfo = (props: DbDataType) => {
   console.log(props.data);
-  const { products } = useAppSelector(
-    (state: RootState) => state.paymentReducer
-  );
-  const data = () => {
-    dispatch(editproducts(props.data));
-  };
+  const { aBrand } = useAppSelector((state: RootState) => state.paymentReducer);
 
-  console.log(products);
+  useEffect(() => {
+    dispatch(editKNo(Number(props.data[0].keywordNo)));
+    dispatch(editPNo(props.data[0].id));
+    dispatch(editPThumbnail(props.data[0].thumbnail));
+    dispatch(editPCategory(props.data[0].category));
+    dispatch(editABrand(props.data[0].brand));
+    dispatch(editPName(props.data[0].name));
+    dispatch(editPCost(props.data[0].price));
+    dispatch(editPDiscount(props.data[0].discount));
+    dispatch(editPSale(props.data[0].discount === 0 ? false : true));
+    dispatch(editPOption(props.data[0].option));
+    dispatch(editPPrice(props.data[0].totalPrice));
+    dispatch(editPCnt(props.data[0].totalCnt));
+    dispatch(editOPrice(props.data[0].totalPrice));
+  }, []);
+
+  console.log(aBrand);
 
   const dispatch = useAppDispatch();
   return (
@@ -36,9 +62,9 @@ const PdtInfo = (props: DbDataType) => {
                 idx: number
               ) => {
                 return (
-                  <t.ListArea>
+                  <t.ListArea key={String(v[0])}>
                     <t.PdArea>
-                      <t.PdInfoDiv key={!v[0] ? i : v[0]}>
+                      <t.PdInfoDiv>
                         <t.ProductImg src={val.thumbnail} />
                         <t.ProductInfo>
                           <t.ProductName>
