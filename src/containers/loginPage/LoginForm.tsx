@@ -59,7 +59,7 @@ const LoginForm = () => {
     if (isSuccess) {
       console.log("Success");
       navigate("/");
-      // window.location.href = "/";
+      window.location.href = "/";
       setCart();
     }
   }, [isSuccess]);
