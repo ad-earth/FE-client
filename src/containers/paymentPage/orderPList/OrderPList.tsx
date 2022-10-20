@@ -16,6 +16,7 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
+import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 
 const OrderPList = () => {
   const titles = [
@@ -25,7 +26,13 @@ const OrderPList = () => {
     "주문 요약",
     "결제수단",
   ];
-  //reducer에서 products data 받아오기
+  const [btnopen, setBtnopen] = useState<boolean>(false);
+  const [btnchange, setBtnchange] = useState<boolean>(false);
+  const [data, setData] = useState([]);
+  const { prodNo } = useParams<{ prodNo: string }>();
+  //get요청으로 data 받아오기
+  const GetPaylist: PayListType = useGetPay();
+  //paymentReducer data 받아오기
   const {
     name,
     dNo,
@@ -34,7 +41,7 @@ const OrderPList = () => {
     address1,
     address2,
     memo,
-    products,
+    aBrand,
     kNo,
     pNo,
     pThumbnail,
@@ -49,15 +56,7 @@ const OrderPList = () => {
     oPrice,
   } = useAppSelector((state: RootState) => state.paymentReducer);
   const navigate = useNavigate();
-  const [btnopen, setBtnopen] = useState<boolean>(false);
-  const [btnchange, setBtnchange] = useState<boolean>(false);
-
-  const [data, setData] = useState([]);
-
-  const GetPaylist: PayListType = useGetPay();
-  console.log("PRODUCTS", products);
-  const { aBrand } = useAppSelector((state: RootState) => state.paymentReducer);
-
+  //post 요청할 데이터들
   const postPay = {
     address: {
       d_No: Number(dNo),
@@ -86,8 +85,12 @@ const OrderPList = () => {
   };
 
   const { mutate, isSuccess } = usePostPay(postPay);
+  //결제하기 버튼
   const PayClick = () => {
     mutate();
+    if (btnchange && name === "") {
+      alert("이름을 입력해주세요");
+    }
   };
   //indexedDB
   async function getCart() {
@@ -122,7 +125,7 @@ const OrderPList = () => {
     }
   }, [isSuccess]);
   //파라미터로 담아온 prodNo만 걸러서 데이터 추출
-  const { prodNo } = useParams<{ prodNo: string }>();
+
   const result = data.filter((v) => v.id === Number(prodNo));
 
   return (
