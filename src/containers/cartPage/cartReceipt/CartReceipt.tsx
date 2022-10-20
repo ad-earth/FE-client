@@ -1,12 +1,10 @@
 import * as t from "./CartReceipt.style";
 import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/Buttons";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../Context";
+import { useEffect, useState } from "react";
 
 const CartReceipt = () => {
   const [viewport, setViewport] = useState(visualViewport.width);
-  const { cartData } = useContext(UserContext);
 
   useEffect(() => {
     const resizeListener = () => {

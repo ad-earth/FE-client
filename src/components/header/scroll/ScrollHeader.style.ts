@@ -39,6 +39,7 @@ export const LeftDiv = styled.div`
   font-weight: 600;
   :hover {
     color: ${theme.fc20};
+    cursor: pointer;
   }
 `;
 export const RightDiv = styled.div`
@@ -52,6 +53,7 @@ export const RightDiv = styled.div`
     margin-right: 20px;
     :hover {
       color: ${theme.fc20};
+      cursor: pointer;
     }
   }
 `;

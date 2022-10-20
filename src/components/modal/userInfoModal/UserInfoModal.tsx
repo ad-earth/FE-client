@@ -10,6 +10,7 @@ import Profile from "../../signUpPage/profile/Profile";
 import AddressForm from "../../signUpPage/addressForm/AddressForm";
 import Input from "../../../elements/Input";
 import { MainButton } from "../../../elements/Buttons";
+import { useAppSelector } from "../../../redux/store";
 
 interface ModalType {
   isOpen?: boolean;
@@ -22,11 +23,10 @@ type FormValue = {
   contact: string;
 };
 
-const uName = localStorage.getItem("u_Name");
-const uGender = localStorage.getItem("u_Gender");
-const uContact = localStorage.getItem("u_Phone");
-
 const UserInfoModal = (props: ModalType) => {
+  const uName = useAppSelector((state) => state.userSlice.userData.u_Name);
+  const uGender = useAppSelector((state) => state.userSlice.userData.u_Gender);
+  const uContact = useAppSelector((state) => state.userSlice.userData.u_Phone);
   const [imgUrl, setImgUrl] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");

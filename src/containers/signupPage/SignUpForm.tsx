@@ -141,11 +141,7 @@ const SignUpForm = () => {
           address.length &&
           extraAddress.length > 0 &&
           formValue ? (
-            <MainButton
-              radius="30px"
-              fontSize={theme.fs14}
-              // onClick={() => SignUpClick()}
-            >
+            <MainButton radius="30px" fontSize={theme.fs14}>
               가입하기
             </MainButton>
           ) : (

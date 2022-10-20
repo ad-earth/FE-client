@@ -5,6 +5,7 @@ import Input from "../../../elements/Input";
 import { MainButton } from "../../../elements/Buttons";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect } from "react";
+import { useAppSelector } from "../../../redux/store";
 
 interface PropsType {
   zipcode: string;
@@ -15,10 +16,6 @@ interface PropsType {
   setExtraAddress: Dispatch<SetStateAction<string>>;
 }
 
-const address1 = localStorage.getItem("u_Address1");
-const address2 = localStorage.getItem("u_Address2");
-const address3 = localStorage.getItem("u_Address3");
-
 const AddressForm = ({
   zipcode,
   address,
@@ -28,6 +25,16 @@ const AddressForm = ({
   setExtraAddress,
 }: PropsType) => {
   const open = useDaumPostcodePopup();
+
+  const address1 = useAppSelector(
+    (state) => state.userSlice.userData.u_Address1
+  );
+  const address2 = useAppSelector(
+    (state) => state.userSlice.userData.u_Address2
+  );
+  const address3 = useAppSelector(
+    (state) => state.userSlice.userData.u_Address3
+  );
 
   const handleComplete = (data: any) => {
     let fullAddress = data.address;

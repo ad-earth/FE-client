@@ -1,15 +1,11 @@
 import * as t from "./CartList.style";
 import { theme } from "../../../style/theme";
-import { useEffect, useState, useMemo, useContext } from "react";
-import { openDB } from "idb";
 import { MainButton } from "../../../elements/Buttons";
 import ItemList from "../../../components/cartPage/ItemList";
-import { UserContext } from "../../../Context";
-
-const token = localStorage.getItem("token");
+import { useAppSelector } from "../../../redux/store";
 
 const CartList = () => {
-  const { cartData } = useContext(UserContext);
+  const cartData = useAppSelector((state) => state.cartSlice.cartData);
 
   return (
     <t.CartContainer>

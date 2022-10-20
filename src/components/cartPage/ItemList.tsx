@@ -1,17 +1,17 @@
 import * as t from "./itemList.style";
 import { theme } from "../../style/theme";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../Context";
+import { useEffect, useState } from "react";
 import { SquareBadge } from "../../elements/Badge";
 import { MainButton } from "../../elements/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
+import { useAppSelector } from "../../redux/store";
 
 const ItemList = () => {
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
   const [option, setOption] = useState([] || null);
   const [viewport, setViewport] = useState(visualViewport.width);
-  const { cartData } = useContext(UserContext);
+  const cartData = useAppSelector((state) => state.cartSlice.cartData);
 
   useEffect(() => {
     const resizeListener = () => {
