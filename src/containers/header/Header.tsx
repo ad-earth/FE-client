@@ -1,6 +1,9 @@
 import * as t from "./Header.style";
-import { useContext, useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { openDB } from "idb";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { setCartData } from "../../redux/reducer/cartSlice";
 import { SearchBar } from "./../../elements/SearchBar";
 import headLogo from "./../../assets/logo/headLogo.png";
 import SchProdModal from "../../components/modal/schProdModal/SchProdModal";
@@ -8,8 +11,6 @@ import ScrollHeader from "../../components/header/scroll/ScrollHeader";
 import MenuDrop from "../../elements/MenuDrop";
 import useDropDown from "../../hooks/useDropDown";
 import AsideHeader from "../../components/header/aside/AsideHeader";
-import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../Context";
 
 let data: {
   id: number;
@@ -33,8 +34,8 @@ const Header = () => {
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [infoIsOpen, setInfoIsOpen] = useState(false);
   const { isDropped, dropRef, handleRemove } = useDropDown();
-  const { cartData } = useContext(UserContext);
-
+  const dispatch = useAppDispatch();
+  const cartData = useAppSelector((state) => state.cartSlice.cartData);
   const handelLogOut = () => {
     localStorage.clear();
   };
@@ -50,12 +51,33 @@ const Header = () => {
     window.addEventListener("resize", resizeListener);
   });
 
-  useEffect(() => {
-    // const token = localStorage.getItem("token");
-    if (token) {
-      console.log("로그인");
+  // 장바구니 정보 가져오기
+  const getCart = async () => {
+    let store;
+    const db = await openDB("cart", 1, {
+      upgrade(db) {
+        store = db.createObjectStore("cart", {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+      },
+    });
+    store = db.transaction("cart", "readonly").objectStore("cart");
+    const request = store.getAll();
+    try {
+      request.then((response) => {
+        dispatch(setCartData(response));
+      });
+    } catch (err) {
+      console.error(err);
     }
-  }, [token]);
+  };
+
+  useEffect(() => {
+    if (token) {
+      getCart();
+    }
+  }, []);
 
   return (
     <>
@@ -88,11 +110,16 @@ const Header = () => {
                     <Link to={"/signup"}>
                       <span>회원가입</span>
                     </Link>
-                    <t.ShopIcon />
+
+                    <t.ShopIcon
+                      onClick={() => alert("로그인 먼저 해주세요!")}
+                    />
                   </>
                 ) : (
                   <>
-                    <t.ShopIcon />
+                    <t.ShopIcon
+                      onClick={() => alert("로그인 먼저 해주세요!")}
+                    />
                     <t.SchIcon onClick={() => setSearchIsOpen(true)} />
                     <t.EtcIcon onClick={() => setInfoIsOpen(true)} />
                   </>
