@@ -13,11 +13,11 @@ import {
   editZipcode,
   editAddress1,
   editAddress2,
-} from "../../../redux/reducer/paymentSlice";
+} from "../../../redux/reducer/payUserSlice";
 
 export const NewPayInput = () => {
   const { name, pNumber, zipcode, address1, address2 } = useAppSelector(
-    (state: RootState) => state.paymentReducer
+    (state: RootState) => state.payUserSlice
   );
   const dispatch = useAppDispatch();
 

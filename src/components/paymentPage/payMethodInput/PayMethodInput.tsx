@@ -8,7 +8,7 @@ import { PayListType } from "../../../containers/paymentPage/orderPList/orderPLi
 import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
 import useDelPay from "./usePayMethodInput";
 import { useAppDispatch } from "../../../redux/store";
-import { editDNo } from "../../../redux/reducer/paymentSlice";
+import { editDNo } from "../../../redux/reducer/payUserSlice";
 
 const PayMethodInput = (props: RadiobtnType & PayListType) => {
   const dispatch = useAppDispatch();

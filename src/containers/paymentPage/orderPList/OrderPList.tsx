@@ -16,7 +16,6 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
-import { initializeUseSelector } from "react-redux/es/hooks/useSelector";
 
 const OrderPList = () => {
   const titles = [
@@ -33,28 +32,8 @@ const OrderPList = () => {
   //get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
   //paymentReducer data 받아오기
-  const {
-    name,
-    dNo,
-    pNumber,
-    zipcode,
-    address1,
-    address2,
-    memo,
-    aBrand,
-    kNo,
-    pNo,
-    pThumbnail,
-    pCategory,
-    pName,
-    pCost,
-    pDiscount,
-    pSale,
-    pOption,
-    pPrice,
-    pCnt,
-    oPrice,
-  } = useAppSelector((state: RootState) => state.paymentReducer);
+  const { name, dNo, pNumber, zipcode, address1, address2, memo } =
+    useAppSelector((state: RootState) => state.payUserSlice);
   const navigate = useNavigate();
   //post 요청할 데이터들
   const postPay = {
@@ -67,21 +46,21 @@ const OrderPList = () => {
       d_Address3: address2,
       d_Memo: memo,
     },
-    products: {
-      kNo: kNo,
-      pNo: pNo,
-      pThumbnail: pThumbnail,
-      pCategory: pCategory,
-      aBrand: aBrand,
-      pName: pName,
-      pCost: pCost,
-      pDiscount: pDiscount,
-      pSale: pSale,
-      pOption: pOption,
-      pPrice: pPrice,
-      pCnt: pCnt,
-    },
-    oPrice: oPrice,
+    // products: {
+    //   kNo: kNo,
+    //   pNo: pNo,
+    //   pThumbnail: pThumbnail,
+    //   pCategory: pCategory,
+    //   aBrand: aBrand,
+    //   pName: pName,
+    //   pCost: pCost,
+    //   pDiscount: pDiscount,
+    //   pSale: pSale,
+    //   pOption: pOption,
+    //   pPrice: pPrice,
+    //   pCnt: pCnt,
+    // },
+    // oPrice: oPrice,
   };
 
   const { mutate, isSuccess } = usePostPay(postPay);

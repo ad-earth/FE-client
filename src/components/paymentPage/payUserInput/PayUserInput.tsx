@@ -2,12 +2,12 @@ import * as t from "./payUserInput.style";
 import Input from "../../../elements/Input";
 import { useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { editName, editPNumber } from "../../../redux/reducer/paymentSlice";
+import { editName, editPNumber } from "../../../redux/reducer/payUserSlice";
 import { RootState } from "../../../redux/store";
 
 const PayUserInput = () => {
   const { name, pNumber } = useAppSelector(
-    (state: RootState) => state.paymentReducer
+    (state: RootState) => state.payUserSlice
   );
   const dispatch = useAppDispatch();
 

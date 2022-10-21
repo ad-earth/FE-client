@@ -2,13 +2,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import paymentReducer from "./reducer/paymentSlice";
 import cartSlice from "./reducer/cartSlice";
 import userSlice from "./reducer/userSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import payPdtSlice from "./reducer/payPdtSlice";
+import payUserSlice from "./reducer/payUserSlice";
 
 const rootReducer = combineReducers({
-  paymentReducer: paymentReducer,
+  payUserSlice: payUserSlice,
+  payPdtSlice: payPdtSlice,
   cartSlice: cartSlice,
   userSlice: userSlice,
 });
@@ -16,7 +18,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["userSlice", "cartSlice"],
+  whitelist: ["userSlice", "cartSlice", "payPdtSlice"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

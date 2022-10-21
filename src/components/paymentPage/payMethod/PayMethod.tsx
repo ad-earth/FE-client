@@ -6,7 +6,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../redux/store";
-import { editMemo } from "../../../redux/reducer/paymentSlice";
+import { editMemo } from "../../../redux/reducer/payUserSlice";
 
 export interface MemoType {
   BtnonClick?: () => void;
@@ -68,7 +68,7 @@ export const PayMethodInfo = (props: GetPayUserType) => {
 };
 
 export const PayMethodSelect = (props: MemoType) => {
-  const { memo } = useAppSelector((state: RootState) => state.paymentReducer);
+  const { memo } = useAppSelector((state: RootState) => state.payUserSlice);
   const dispatch = useAppDispatch();
 
   const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
