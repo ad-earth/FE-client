@@ -1,5 +1,5 @@
 import axiosInstance from "./instance";
-
+import { CartType } from "../types/types";
 //마이페이지
 export const getOrders = (page: number) =>
   axiosInstance.get(`/orders?page=${page}&maxpost=10`);
@@ -132,31 +132,7 @@ export const putNewPw = (u_Idx: number, u_Pw: string) => {
 };
 
 //로그아웃시 서버 데이터 전달
-export const postCartData = (
-  k_No: number,
-  p_No: number,
-  p_Thumbnail: string[],
-  p_Category: string,
-  a_Brand: string,
-  p_Name: string,
-  p_Cost: number,
-  p_Sale: boolean,
-  p_Discount: number,
-  p_Option: Array<string | number | null>[],
-  p_Price: number,
-  p_Cnt: number
-) =>
+export const postCartData = (cartList: CartType) =>
   axiosInstance.post(`/carts`, {
-    k_No,
-    p_No,
-    p_Thumbnail,
-    p_Category,
-    a_Brand,
-    p_Name,
-    p_Cost,
-    p_Sale,
-    p_Discount,
-    p_Option,
-    p_Price,
-    p_Cnt,
+    cartList: cartList,
   });

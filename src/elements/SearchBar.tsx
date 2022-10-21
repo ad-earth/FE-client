@@ -3,11 +3,31 @@ import { theme } from "../style/theme";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 
 export const SearchBar = () => {
+  // const navigate = useNavigate();
+  // const [keyParams, setKeyParams] = useState<string>("욕실");
+  // const [pageParams, setPageParams] = useState<number>(1);
+
+  // const keywordRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+  // const submitHandler = (event: React.FormEvent) => {
+  //   const keyParams = keywordRef.current!.value;
+  //   navigate(`/search/${keyParams}`);
+  //   event.preventDefault();
+  //   setKeyParams(keyParams);
+  // };
+
   return (
+    // <form onSubmit={submitHandler}>
     <InputDiv>
-      <SearchInput placeholder="Search" />
-      <SearchIcon />
+      <SearchInput
+        placeholder="Search"
+        type="text"
+        // ref={keywordRef}
+      />
+      <SearchIcon
+      // onClick={submitHandler}
+      />
     </InputDiv>
+    // </form>
   );
 };
 
