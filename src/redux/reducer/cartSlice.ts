@@ -26,7 +26,7 @@ export interface CartDataType {
     name: string;
     price: number;
     discount: number;
-    option: Array<string | number | null>[];
+    option: [string | null, string | null, number | null, number, number][];
     totalPrice: number;
     totalCnt: number;
   }[];
@@ -52,18 +52,19 @@ const initialState: CartDataType = {
   checkedItems: [],
   orderData: [
     {
-      id: 0,
+      id: 1665330347274,
       keywordNo: 0,
-      prodNo: "",
-      thumbnail: "",
-      category: "",
-      brand: "",
-      name: "",
-      price: 0,
+      prodNo: "1665330347274",
+      thumbnail:
+        "https://adearth-bucket.s3.ap-northeast-2.amazonaws.com/THUMBNAIL/bath1-1.jpeg",
+      category: "욕실",
+      brand: "노플라스틱선데이",
+      name: "튜브짜개",
+      price: 4000,
       discount: 0,
-      option: [],
-      totalPrice: 0,
-      totalCnt: 0,
+      option: [["아이보리", "대", 0, 1, 3000]],
+      totalPrice: 3000,
+      totalCnt: 1,
     },
   ],
 };

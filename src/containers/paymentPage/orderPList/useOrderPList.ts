@@ -16,20 +16,9 @@ const postPayList = async (data: PayDataType) => {
     data.address.d_Address1,
     data.address.d_Address2,
     data.address.d_Address3,
-    data.address.d_Memo
-    // data.products.kNo,
-    // data.products.pNo,
-    // data.products.pThumbnail,
-    // data.products.pCategory,
-    // data.products.aBrand,
-    // data.products.pName,
-    // data.products.pCost,
-    // data.products.pDiscount,
-    // data.products.pSale,
-    // data.products.pOption,
-    // data.products.pPrice,
-    // data.products.pCnt,
-    // data.oPrice
+    data.address.d_Memo,
+    data.products,
+    data.o_Price
   );
   return res;
 };

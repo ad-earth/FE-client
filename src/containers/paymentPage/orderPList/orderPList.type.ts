@@ -1,14 +1,15 @@
 import { PayUserInfoType } from "../../../components/paymentPage/payUserInfo/payUserInfo.type";
 
 export interface PayListType {
+  BtnonClick?: () => void;
   userInfo?: PayUserInfoType;
   addressList: PayAddressData[];
 }
 
 export interface PayDataType {
   address: PayAddressData;
-  products: PayProductsData;
-  oPrice: number;
+  products: PayProductsData[];
+  o_Price: number;
 }
 
 export interface PayAddressData {

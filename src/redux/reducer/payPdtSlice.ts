@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 export interface PayProductsType {
   products: {
     kNo: number;
@@ -45,8 +44,11 @@ const payPdtSlice = createSlice({
     setPayData: (state, action) => {
       state.products = action.payload;
     },
+    setPriceData: (state, action) => {
+      state.oPrice = action.payload;
+    },
   },
 });
 
-export const { setPayData } = payPdtSlice.actions;
+export const { setPayData, setPriceData } = payPdtSlice.actions;
 export default payPdtSlice.reducer;

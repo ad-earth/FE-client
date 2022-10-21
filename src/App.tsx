@@ -68,9 +68,7 @@ function App() {
               path="/detail/:category/:prodNo"
               element={<DetailPage />}
             ></Route>
-            <Route path="/payment" element={<PaymentPage />}>
-              <Route path=":prodNo" element={<PaymentPage />}></Route>
-            </Route>
+            <Route path="/payment" element={<PaymentPage />}></Route>
             <Route path="/complete" element={<CompletePage />}></Route>
           </Routes>
           <Footer />

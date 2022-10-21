@@ -26,7 +26,6 @@ const PayUserInput = () => {
       setIsName(true);
     }
   }, []);
-  console.log(name);
 
   // 연락처
   const onChangePhone = useCallback(

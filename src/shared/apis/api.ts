@@ -1,3 +1,4 @@
+import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
 
 //마이페이지
@@ -92,20 +93,9 @@ export const postPay = (
   d_Address1: string,
   d_Address2: string,
   d_Address3: string,
-  d_Memo: string
-  // k_No: number,
-  // p_No: number,
-  // p_Thumbnail: string,
-  // p_Category: string,
-  // a_Brand: string,
-  // p_Name: string,
-  // p_Cost: number,
-  // p_Discount: number,
-  // p_Sale: boolean,
-  // p_Option: [string | null, string | null, string | null, number, number][],
-  // p_Price: number,
-  // p_Cnt: number,
-  // o_Price: number
+  d_Memo: string,
+  products: PayProductsData[],
+  o_Price: number
 ) =>
   axiosInstance.post(`/payment/complete`, {
     address: {
@@ -117,23 +107,8 @@ export const postPay = (
       d_Address3,
       d_Memo,
     },
-    // products: [
-    //   {
-    //     k_No,
-    //     p_No,
-    //     p_Thumbnail,
-    //     p_Category,
-    //     a_Brand,
-    //     p_Name,
-    //     p_Cost,
-    //     p_Discount,
-    //     p_Sale,
-    //     p_Option,
-    //     p_Price,
-    //     p_Cnt,
-    //   },
-    // ],
-    // o_Price,
+    products: products,
+    o_Price,
   });
 export const deletePay = (dNo: string) =>
   axiosInstance.delete(`/shipping-list/${dNo}`);

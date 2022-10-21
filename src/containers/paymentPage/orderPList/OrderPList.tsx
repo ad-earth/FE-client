@@ -25,16 +25,17 @@ const OrderPList = () => {
     "주문 요약",
     "결제수단",
   ];
+  const navigate = useNavigate();
   const [btnopen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
-  const [data, setData] = useState([]);
-  const { prodNo } = useParams<{ prodNo: string }>();
   //get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
-  //paymentReducer data 받아오기
+  //slice에서 data 받아오기
+  const data = useAppSelector((state) => state.cartSlice.orderData);
+  const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
+  const products = useAppSelector((state) => state.payPdtSlice.products);
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
-  const navigate = useNavigate();
   //post 요청할 데이터들
   const postPay = {
     address: {
@@ -46,23 +47,9 @@ const OrderPList = () => {
       d_Address3: address2,
       d_Memo: memo,
     },
-    // products: {
-    //   kNo: kNo,
-    //   pNo: pNo,
-    //   pThumbnail: pThumbnail,
-    //   pCategory: pCategory,
-    //   aBrand: aBrand,
-    //   pName: pName,
-    //   pCost: pCost,
-    //   pDiscount: pDiscount,
-    //   pSale: pSale,
-    //   pOption: pOption,
-    //   pPrice: pPrice,
-    //   pCnt: pCnt,
-    // },
-    // oPrice: oPrice,
+    products: products,
+    o_Price: oPrice,
   };
-
   const { mutate, isSuccess } = usePostPay(postPay);
   //결제하기 버튼
   const PayClick = () => {
@@ -71,41 +58,14 @@ const OrderPList = () => {
       alert("이름을 입력해주세요");
     }
   };
-  //indexedDB
-  async function getCart() {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readonly").objectStore("cart");
-    const getReq = store.getAll();
-    try {
-      getReq.then((response) => {
-        setData(response);
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   useEffect(() => {
     if (isSuccess) {
       alert("결제가 완료되었습니다.");
       navigate("/complete");
-      getCart();
     } else {
       // alert("다시 시도해주세요.");
-      getCart();
     }
   }, [isSuccess]);
-  //파라미터로 담아온 prodNo만 걸러서 데이터 추출
-
-  const result = data.filter((v) => v.id === Number(prodNo));
 
   return (
     <>
@@ -114,7 +74,7 @@ const OrderPList = () => {
           <t.LPListArea>
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={result} />
+              <PdtInfo data={data} />
               <FreeShipping />
             </t.LTipOff>
 
@@ -154,7 +114,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary data={result} />
+              <PaySummary data={data} />
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>

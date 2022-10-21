@@ -8,10 +8,6 @@ import {
 } from "../../../redux/store";
 import { editMemo } from "../../../redux/reducer/payUserSlice";
 
-export interface MemoType {
-  BtnonClick?: () => void;
-}
-
 interface GetPayUserType {
   uAddress1: string;
   uAddress2: string;
@@ -19,7 +15,7 @@ interface GetPayUserType {
   uName: string;
   uPhone: string;
 }
-export const PayMethod = (props: PayListType & MemoType) => {
+export const PayMethod = (props: PayListType) => {
   // console.log(props.addressList);
   return (
     <>
@@ -67,13 +63,14 @@ export const PayMethodInfo = (props: GetPayUserType) => {
   );
 };
 
-export const PayMethodSelect = (props: MemoType) => {
+export const PayMethodSelect = () => {
   const { memo } = useAppSelector((state: RootState) => state.payUserSlice);
   const dispatch = useAppDispatch();
 
   const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(editMemo(e.target.value));
   };
+
   return (
     <t.ShipDiv>
       <t.PayText>배송메모</t.PayText>
