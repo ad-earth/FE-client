@@ -22,7 +22,7 @@ type ProductType = {
   p_Cost: number;
   p_Discount: number;
   p_Option: Array<
-    [string | null, string | null, number | null, number | null, number | null]
+    [string | null, string | null, string | null, number | null, number | null]
   >;
 };
 
@@ -43,7 +43,7 @@ const OptionModal = (props: ModalType) => {
     }
   }, [props.option]);
   console.log(props.option);
-  console.log(product);
+  console.log("product", product);
 
   // 상품 가격 할인율 계산
   let price = product && product.p_Cost * (1 - product.p_Discount / 100);
@@ -128,84 +128,95 @@ const OptionModal = (props: ModalType) => {
               <t.Close onClick={() => props.handleClose()} />
             </t.OptHeader>
             <t.OptContents>
-              <t.ItemInfo>
-                <img src={product && product.p_Thumbnail[0]} />
-                <t.ItemDesc>
-                  [{product && product.a_Brand}] {product && product.p_Name}
-                  <span>{product && product.p_Cost}원</span>
-                </t.ItemDesc>
-              </t.ItemInfo>
+              <>
+                <t.ItemInfo>
+                  <img src={product && product.p_Thumbnail[0]} />
+                  <t.ItemDesc>
+                    [{product && product.a_Brand}] {product && product.p_Name}
+                    <span>{product && product.p_Cost}원</span>
+                  </t.ItemDesc>
+                </t.ItemInfo>
 
-              {/* 드롭다운 */}
-              <t.DropDown>
-                <p>{product && product.p_Name} *</p>
-                <>
-                  {product &&
-                    product.p_Option.map((option, i: number) => (
-                      <>
-                        {option[0] !== null ? (
-                          <t.ColorDiv key={i}>
-                            {option[0]}
-                            <ColorHoverIcon />
-                          </t.ColorDiv>
-                        ) : null}
-                      </>
-                    ))}
-
+                {/* 드롭다운 */}
+                <t.DropDown>
+                  <p>{product && product.p_Name} *</p>
                   <>
-                    <t.OptDrop drop={drop} onClick={() => setDrop(!drop)}>
-                      {product && product.p_Name}(필수)
-                      {drop ? <t.ArrowUp /> : <t.ArrowDown />}
-                    </t.OptDrop>
+                    <t.ColorBox>
+                      {product &&
+                        product.p_Option.map((option, i: number) => (
+                          <>
+                            {option[0] !== null ? (
+                              <t.ColorDiv key={i}>
+                                {option[0]}
+                                <ColorHoverIcon />
+                              </t.ColorDiv>
+                            ) : null}
+                          </>
+                        ))}
+                    </t.ColorBox>
 
-                    {drop ? (
-                      <>
-                        {product &&
-                          product.p_Option.map((option, i: number) => {
-                            return (
-                              <t.DropMenu
-                                key={i}
-                                onClick={() => {
-                                  {
-                                    option[4] != 0
-                                      ? addOptionList(
-                                          option[0],
-                                          option[1],
-                                          option[3]
-                                        )
-                                      : alert(
-                                          "선택하신 상품은 재고가 없습니다."
-                                        );
-                                  }
-                                  setDrop(!drop);
-                                }}
-                              >
-                                {option[2]}
-                              </t.DropMenu>
-                            );
-                          })}
-                      </>
-                    ) : null}
+                    <>
+                      <t.OptDrop drop={drop} onClick={() => setDrop(!drop)}>
+                        {product && product.p_Name}(필수)
+                        {drop ? <t.ArrowUp /> : <t.ArrowDown />}
+                      </t.OptDrop>
+
+                      {drop ? (
+                        <>
+                          {product &&
+                            product.p_Option.map((option, i: number) => {
+                              return (
+                                <t.DropMenu
+                                  key={i}
+                                  onClick={() => {
+                                    {
+                                      option[4] != 0
+                                        ? addOptionList(
+                                            option[0],
+                                            option[2],
+                                            option[3]
+                                          )
+                                        : alert(
+                                            "선택하신 상품은 재고가 없습니다."
+                                          );
+                                    }
+                                    setDrop(!drop);
+                                  }}
+                                >
+                                  {option[0] && option[0]}{" "}
+                                  {option[2] && option[2]}{" "}
+                                  {option[4] === 0 ? "(품절)" : null}
+                                </t.DropMenu>
+                              );
+                            })}
+                        </>
+                      ) : null}
+                    </>
                   </>
-                </>
-              </t.DropDown>
-
-              <t.SelectBox>
-                <t.SelInfo>
-                  <p>성인용(19cm)</p>
-                  <t.CancelBtn />
-                </t.SelInfo>
-                <t.SelPrice>
-                  <CountButton />
+                </t.DropDown>
+                {props.option &&
+                  props.option.map((item, i) => (
+                    <t.SelectBox key={i}>
+                      <t.SelInfo>
+                        <p>
+                          {item[0] ? item[0] : ""}
+                          {item[1] ? item[1] : ""}
+                        </p>
+                        <t.CancelBtn />
+                      </t.SelInfo>
+                      <t.SelPrice>
+                        <CountButton />
+                        <p>{item[4]}원</p>
+                      </t.SelPrice>
+                    </t.SelectBox>
+                  ))}
+                <t.Total>
+                  <div>
+                    총 수량 <span>1</span>개
+                  </div>
                   <p>2,800원</p>
-                </t.SelPrice>
-              </t.SelectBox>
-              <t.Total>
-                <div>
-                  총 수량 <span>1</span>개
-                </div>
-                <p>2,800원</p>
-              </t.Total>
+                </t.Total>
+              </>
             </t.OptContents>
 
             <t.OptBtn>
