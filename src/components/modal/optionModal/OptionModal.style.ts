@@ -119,8 +119,12 @@ export const ArrowDown = styled(KeyboardArrowDownRoundedIcon)({
     cursor: "pointer",
   },
 });
-export const DropMenu = styled.div`
+export const DropMenuWrapper = styled.div`
   position: absolute;
+  width: 100%;
+`;
+export const DropMenu = styled.div`
+  // position: absolute;
   width: 100%;
   z-index: 5px;
   color: ${theme.fc09};
@@ -139,6 +143,11 @@ export const DropMenu = styled.div`
   :hover {
     background: ${theme.bg04};
   }
+`;
+export const OptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
 `;
 export const SelectBox = styled.div`
   width: 100%;

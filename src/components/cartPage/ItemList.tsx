@@ -5,19 +5,38 @@ import { SquareBadge } from "../../elements/Badge";
 import { MainButton } from "../../elements/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setCheckedItems } from "../../redux/reducer/cartSlice";
+import { setCheckedItems, setOrderData } from "../../redux/reducer/cartSlice";
 
 interface PropsType {
   allChecked: boolean;
 }
 
+type orderDataType = {
+  id: number;
+  keywordNo: number;
+  prodNo: string;
+  thumbnail: string;
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: Array<string | number | null>[];
+  totalPrice: number;
+  totalCnt: number;
+};
+
 const ItemList = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const orderData = useAppSelector((state) => state.cartSlice.orderData);
   const [viewport, setViewport] = useState(visualViewport.width);
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
   const [option, setOption] = useState([] || null);
+  const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [kNo, setkNo] = useState(0);
   const [checkedList, setCheckedList] = useState([]);
 
   useEffect(() => {
@@ -29,11 +48,17 @@ const ItemList = (props: PropsType) => {
 
   const handleOption = (
     prodNo: string,
-    option: (string | number)[][] | null
+    option: Array<string | number | null>[],
+    price: number,
+    discount: number,
+    kNo: number
   ) => {
     setOptionIsOpen(true);
     setProdNo(prodNo);
     setOption(option);
+    setPrice(price);
+    setDiscount(discount);
+    setkNo(kNo);
   };
 
   // 개별 상품 선택 | 해제
@@ -66,6 +91,14 @@ const ItemList = (props: PropsType) => {
     }
   }, [checkedList]);
 
+  const handleBuy = (data: orderDataType) => {
+    let cartList = [];
+    cartList.push(data);
+    dispatch(setOrderData(cartList));
+    window.location.href = "/payment";
+  };
+  console.log("order", orderData);
+
   return (
     <>
       <OptionModal
@@ -73,6 +106,9 @@ const ItemList = (props: PropsType) => {
         handleClose={() => setOptionIsOpen(false)}
         prodNo={prodNo}
         option={option}
+        price={price}
+        discount={discount}
+        kNo={kNo}
       />
       {viewport <= 990 ? (
         <>
@@ -140,7 +176,15 @@ const ItemList = (props: PropsType) => {
                       color={theme.fc14}
                       hBorder={`0.5px solid ${theme.ls03}`}
                       hBgColor={theme.bg01}
-                      onClick={() => handleOption(val.prodNo, val.option)}
+                      onClick={() =>
+                        handleOption(
+                          val.prodNo,
+                          val.option,
+                          val.price,
+                          val.discount,
+                          val.keywordNo
+                        )
+                      }
                     >
                       옵션 / 수량 변경
                     </MainButton>
@@ -208,7 +252,15 @@ const ItemList = (props: PropsType) => {
                     color={theme.fc14}
                     hBorder={`0.5px solid ${theme.ls03}`}
                     hBgColor={theme.bg01}
-                    onClick={() => handleOption(val.prodNo, val.option)}
+                    onClick={() =>
+                      handleOption(
+                        val.prodNo,
+                        val.option,
+                        val.price,
+                        val.discount,
+                        val.keywordNo
+                      )
+                    }
                   >
                     옵션 / 수량 변경
                   </MainButton>
@@ -219,6 +271,7 @@ const ItemList = (props: PropsType) => {
                     width={"106px"}
                     fontWeight={"normal"}
                     radius={"30px"}
+                    onClick={() => handleBuy(val)}
                   >
                     바로구매
                   </MainButton>
