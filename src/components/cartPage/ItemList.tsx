@@ -1,17 +1,24 @@
 import * as t from "./itemList.style";
 import { theme } from "../../style/theme";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { SquareBadge } from "../../elements/Badge";
 import { MainButton } from "../../elements/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
-import { useAppSelector } from "../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { setCheckedItems } from "../../redux/reducer/cartSlice";
 
-const ItemList = () => {
+interface PropsType {
+  allChecked: boolean;
+}
+
+const ItemList = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [viewport, setViewport] = useState(visualViewport.width);
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
   const [option, setOption] = useState([] || null);
-  const [viewport, setViewport] = useState(visualViewport.width);
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [checkedList, setCheckedList] = useState([]);
 
   useEffect(() => {
     const resizeListener = () => {
@@ -29,6 +36,36 @@ const ItemList = () => {
     setOption(option);
   };
 
+  // 개별 상품 선택 | 해제
+  const handleCheck = useCallback(
+    (checked: boolean, id: string) => {
+      if (checked) {
+        setCheckedList([...checkedList, Number(id)]);
+      } else {
+        setCheckedList(checkedList.filter((el) => el !== Number(id)));
+      }
+    },
+    [checkedList]
+  );
+
+  // 전체 선택 | 해제
+  const allCheckedItem = useMemo(() => {
+    if (props.allChecked) {
+      setCheckedList(cartData.map((el) => el.id));
+      return <t.CheckBox type="checkbox" defaultChecked={true} />;
+    } else {
+      setCheckedList([]);
+      return <t.CheckBox type="checkbox" defaultChecked={false} />;
+    }
+  }, [props.allChecked]);
+
+  // 선택상품 배열 저장
+  useEffect(() => {
+    if (checkedList) {
+      dispatch(setCheckedItems(checkedList));
+    }
+  }, [checkedList]);
+
   return (
     <>
       <OptionModal
@@ -42,11 +79,24 @@ const ItemList = () => {
           {cartData.map((val, i: number) => (
             <t.ItemWrapper>
               <t.SmallProdInfo key={i}>
-                <t.CheckBox type="checkbox" />
+                {props.allChecked ? (
+                  <>{allCheckedItem}</>
+                ) : (
+                  <t.CheckBox
+                    type="checkbox"
+                    value={val.id || ""}
+                    onChange={(e) => {
+                      handleCheck(
+                        e.currentTarget.checked,
+                        e.currentTarget.value
+                      );
+                    }}
+                  />
+                )}
                 <t.SmallDiv>
                   <t.ProdInfo>
                     <t.InfoDiv>
-                      <img src={val.thumbnail[0]} />
+                      <img src={val.thumbnail} />
                       <p>
                         [{val.brand}] {val.name}
                       </p>
@@ -54,7 +104,7 @@ const ItemList = () => {
                     <t.Close2 />
                   </t.ProdInfo>
                   {val.option.map((opt, i: number) => (
-                    <t.OptDiv key={val.id}>
+                    <t.OptDiv key={i}>
                       <div>
                         <SquareBadge />
                         <span>
@@ -113,8 +163,21 @@ const ItemList = () => {
             <t.BigDiv>
               <t.ItemWrapper>
                 <t.ProdInfo key={val.id}>
-                  <t.CheckBox type="checkbox" />
-                  <img src={val.thumbnail[0]} />
+                  {props.allChecked ? (
+                    <>{allCheckedItem}</>
+                  ) : (
+                    <t.CheckBox
+                      type="checkbox"
+                      value={val.id || ""}
+                      onChange={(e) => {
+                        handleCheck(
+                          e.currentTarget.checked,
+                          e.currentTarget.value
+                        );
+                      }}
+                    />
+                  )}
+                  <img src={val.thumbnail} />
                   <t.InfoDiv>
                     <p>
                       [{val.brand}] {val.name}

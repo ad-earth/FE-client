@@ -73,6 +73,7 @@ const Header = () => {
     }
   };
 
+  console.log("thumbnail:", cartData[0].thumbnail);
   useEffect(() => {
     if (token) {
       getCart();
