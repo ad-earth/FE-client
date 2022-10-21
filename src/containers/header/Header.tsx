@@ -11,8 +11,9 @@ import ScrollHeader from "../../components/header/scroll/ScrollHeader";
 import MenuDrop from "../../elements/MenuDrop";
 import useDropDown from "../../hooks/useDropDown";
 import AsideHeader from "../../components/header/aside/AsideHeader";
+import { useLogOut } from "./useLogout";
 
-let data: {
+let cateData: {
   id: number;
   cate: string;
   path: string;
@@ -36,9 +37,6 @@ const Header = () => {
   const { isDropped, dropRef, handleRemove } = useDropDown();
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state) => state.cartSlice.cartData);
-  const handelLogOut = () => {
-    localStorage.clear();
-  };
 
   const goHome = () => {
     window.location.href = "/";
@@ -73,12 +71,29 @@ const Header = () => {
     }
   };
 
-  console.log("thumbnail:", cartData[0].thumbnail);
   useEffect(() => {
     if (token) {
       getCart();
     }
   }, []);
+
+  const CData = {
+    cartList: cartData,
+  };
+
+  const { mutate, isSuccess, data } = useLogOut(CData);
+
+  useEffect(() => {
+    if (isSuccess) {
+      console.log("Success");
+      localStorage.clear();
+      window.location.href = "/";
+    }
+  }, [isSuccess]);
+
+  const handelLogOut = () => {
+    mutate();
+  };
 
   return (
     <>
@@ -97,7 +112,7 @@ const Header = () => {
             <p onClick={handleRemove} ref={dropRef}>
               장보기
             </p>
-            <MenuDrop isDropped={isDropped} data={data} />
+            <MenuDrop isDropped={isDropped} cateData={cateData} />
           </t.LeftDiv>
           <t.RightDiv>
             <SearchBar />
@@ -133,7 +148,6 @@ const Header = () => {
                     <span
                       onClick={() => {
                         handelLogOut();
-                        window.location.reload();
                       }}
                     >
                       로그아웃
