@@ -34,6 +34,8 @@ const OrderPList = () => {
   const data = useAppSelector((state) => state.cartSlice.orderData);
   const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
   const products = useAppSelector((state) => state.payPdtSlice.products);
+  const state = useAppSelector((state) => state.payErrorSlice);
+
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
   //post 요청할 데이터들
@@ -56,6 +58,11 @@ const OrderPList = () => {
     mutate();
     if (btnchange && name === "") {
       alert("이름을 입력해주세요");
+    } else if (state.agree === false) {
+      alert("전체 동의에 체크해주세요");
+      // !isSuccess
+    } else {
+      // gg
     }
   };
   useEffect(() => {

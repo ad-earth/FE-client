@@ -9,7 +9,6 @@ export interface PaymentState {
   address2: string;
   memo: string;
 }
-
 const initialState = {
   //address//
   dNo: "null",
