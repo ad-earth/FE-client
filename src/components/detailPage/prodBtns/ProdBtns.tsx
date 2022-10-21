@@ -12,10 +12,10 @@ import { useProdInfo } from "../../../containers/detailPage/prodInfo/useProdInfo
 const ProdBtns = (props: PropsType) => {
   const navigate = useNavigate();
   const updateProdLike = useProdLike();
-  const { prodNo } = useParams();
+
   const productNumber = String(props.prodNo);
-  const data = useGetLike(prodNo ? prodNo : productNumber);
-  const prodData = useProdInfo(prodNo ? prodNo : productNumber);
+  const data = useGetLike(productNumber);
+  const prodData = useProdInfo(productNumber);
 
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
@@ -68,7 +68,7 @@ const ProdBtns = (props: PropsType) => {
           radius={"30px"}
           onClick={() => {
             setCart();
-            navigate(`/payment/${prodNo}`);
+            navigate(`/payment/${props.prodNo}`);
           }}
         >
           구매하기
