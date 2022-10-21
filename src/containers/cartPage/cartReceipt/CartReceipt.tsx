@@ -3,6 +3,7 @@ import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/Buttons";
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { setOrderData } from "../../../redux/reducer/cartSlice";
 
 type ObjType = {
   [id: string]: number;
@@ -44,6 +45,21 @@ const CartReceipt = () => {
     }
   }, [checkedItems]);
 
+  const handleBuy = () => {
+    let cartList = [];
+    if (checkedItems.length > 0) {
+      for (let i in cartData) {
+        for (let j in checkedItems) {
+          if (cartData[i].id == checkedItems[j]) {
+            cartList.push(cartData[i]);
+          }
+        }
+      }
+    }
+    dispatch(setOrderData(cartList));
+    window.location.href = "/payment";
+  };
+
   return (
     <t.Container>
       {viewport <= 990 ? (
@@ -76,6 +92,7 @@ const CartReceipt = () => {
                 fontSize={theme.fc16}
                 radius={"30px"}
                 padding={"16px 0"}
+                onClick={handleBuy}
               >
                 주문하기
               </MainButton>
@@ -108,6 +125,7 @@ const CartReceipt = () => {
               fontSize={theme.fc16}
               radius={"30px"}
               padding={"16px 0"}
+              onClick={handleBuy}
             >
               주문하기
             </MainButton>
