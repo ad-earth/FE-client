@@ -1,0 +1,59 @@
+name: CI-CD
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@v2
+
+      - name: Check Node v
+        run: node -v
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build
+        run: CI='' yarn build
+        
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "REACT_APP_SERVER_URL=$REACT_APP_SERVER_URL" >> .env.production
+          echo "REACT_APP_BUCKET_NAME=$REACT_APP_BUCKET_NAME" >> .env.production
+          echo "REACT_APP_REGION=$REACT_APP_REGION" >> .env.production
+          echo "REACT_APP_ACCESS=$REACT_APP_ACCESS" >> .env.production
+          echo "REACT_APP_SECRET=$REACT_APP_SECRET" >> .env.production
+          echo "REACT_APP_BUCKET_URL=$REACT_APP_BUCKET_URL" >> .env.production
+        env:
+          REACT_APP_SERVER_URL: '${{ secrets.REACT_APP_SERVER_URL }}'
+          REACT_APP_BUCKET_NAME: '${{ secrets.REACT_APP_BUCKET_NAME }}'
+          REACT_APP_REGION: '${{ secrets.REACT_APP_REGION }}'
+          REACT_APP_ACCESS: '${{ secrets.REACT_APP_ACCESS }}'
+          REACT_APP_SECRET: '${{ secrets.REACT_APP_SECRET }}'
+          REACT_APP_BUCKET_URL: '${{ secrets.REACT_APP_BUCKET_URL }}'
+
+      # aws user 연결
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1 
+        with: 
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+          aws-region: ap-northeast-2
+
+      # react 빌드한 /build를 s3로 업로드
+      - name: Upload to S3
+        env:
+          BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME}}
+        run: |
+          aws s3 sync \
+            ./build s3://$BUCKET_NAME
+      # 업로드한 s3 파일을 각 CDN 캐시 무효화하여 리프레시 하기
+      - name: CloudFront Invalidation
+        env:
+          CLOUD_FRONT_ID: ${{ secrets.DISTRIBUTION_ID}}
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id $CLOUD_FRONT_ID --paths "/*"
