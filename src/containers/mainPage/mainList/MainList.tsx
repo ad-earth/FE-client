@@ -3,10 +3,10 @@ import { useMemo } from "react";
 import BestProducts from "../../../components/mainPage/bestProducts/BestProducts";
 import MainLinks from "../../../components/mainPage/mainLinks/MainLinks";
 import NewProducts from "../../../components/mainPage/newProducts/NewProducts";
-import { useMainList } from "./useMainList";
+import { useMainListQuery } from "./useMainListQuery";
 
 const MainList = () => {
-  const mainData = useMainList();
+  const mainData = useMainListQuery();
 
   const { bestList, newList } = useMemo(
     () => ({
