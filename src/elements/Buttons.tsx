@@ -1,9 +1,12 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import styled from "styled-components";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 import { theme } from "../style/theme";
+import { OptionListType } from "../components/detailPage/productOptions/productOptions.type";
+import { changeOption } from "../components/detailPage/productOptions/optionsHandler";
+
 interface BtnType {
   width?: string;
   fontSize?: string;
@@ -21,9 +24,10 @@ interface BtnType {
 }
 interface PropsType {
   id?: number;
-  changeOptionList?: (id: number, qty: number) => void;
   qty?: number;
+  optionList?: OptionListType;
   setQty?: Dispatch<SetStateAction<number>>;
+  setOptionList?: (optionList: OptionListType) => void;
 }
 
 export const MainButton = (props: BtnType) => {
@@ -61,12 +65,12 @@ export const OptionCountButton = (props: PropsType) => {
   let qty = props.qty;
   function addQty() {
     qty += 1;
-    props.changeOptionList(props.id, qty);
+    props.setOptionList(changeOption(props.id, qty, props.optionList));
   }
   function substractQty() {
     if (qty !== 1) {
       qty -= 1;
-      props.changeOptionList(props.id, qty);
+      props.setOptionList(changeOption(props.id, qty, props.optionList));
     }
   }
   return (
