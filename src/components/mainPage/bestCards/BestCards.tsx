@@ -11,10 +11,7 @@ const BestCards = (props: PropsType) => {
     <t.MainContainer>
       {props?.bestList?.map((x) => {
         return (
-          <t.CardWrapper
-            key={x.p_No}
-            onClick={() => navigate(`/detail/메인/${x.p_No}`)}
-          >
+          <t.CardWrapper key={x.p_No}>
             <Card
               pThumbnail={x.p_Thumbnail}
               aBrand={x.a_Brand}
@@ -25,6 +22,7 @@ const BestCards = (props: PropsType) => {
               pBest={x.p_Best}
               pNew={x.p_New}
               pSale={x.p_Sale}
+              pNo={x.p_No}
             />
           </t.CardWrapper>
         );

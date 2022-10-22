@@ -50,10 +50,7 @@ const NewCarousel = (props: PropsType) => {
       <Slider {...setting}>
         {props?.newList?.map((x) => {
           return (
-            <div
-              key={x.p_No}
-              onClick={() => navigate(`/detail/메인/${x.p_No}`)}
-            >
+            <div key={x.p_No}>
               <Card
                 pThumbnail={x.p_Thumbnail}
                 aBrand={x.a_Brand}
@@ -64,6 +61,7 @@ const NewCarousel = (props: PropsType) => {
                 pBest={x.p_Best}
                 pNew={x.p_New}
                 pSale={x.p_Sale}
+                pNo={x.p_No}
               />
             </div>
           );
