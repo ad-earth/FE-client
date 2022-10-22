@@ -2,20 +2,16 @@ import { useNavigate } from "react-router-dom";
 
 import * as t from "./bestCards.style";
 import Card from "../../card/Card";
-import { useBestCards } from "./useBestCards";
+import { PropsType } from "../bestProducts/bestProducts.type";
 
-const BestCards = () => {
+const BestCards = (props: PropsType) => {
   const navigate = useNavigate();
-  const bestProducts = useBestCards();
 
   return (
     <t.MainContainer>
-      {bestProducts.map((x) => {
+      {props?.bestList?.map((x) => {
         return (
-          <t.CardWrapper
-            key={x.p_No}
-            onClick={() => navigate(`/detail/메인/${x.p_No}`)}
-          >
+          <t.CardWrapper key={x.p_No}>
             <Card
               pThumbnail={x.p_Thumbnail}
               aBrand={x.a_Brand}
@@ -26,6 +22,7 @@ const BestCards = () => {
               pBest={x.p_Best}
               pNew={x.p_New}
               pSale={x.p_Sale}
+              pNo={x.p_No}
             />
           </t.CardWrapper>
         );
