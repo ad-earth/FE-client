@@ -4,20 +4,16 @@ import React, { useState } from "react";
 import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
 import { NewPayInput } from "../newPayInput/NewPayInput";
 import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
-import {
-  PayAddressListType,
-  PayListType,
-} from "../../../containers/paymentPage/orderPList/orderPList.type";
+import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
 import useDelPay from "./usePayMethodInput";
 import { useAppDispatch } from "../../../redux/store";
-import { editDNo } from "../../../redux/reducer/paymentSlice";
+import { editDNo } from "../../../redux/reducer/payUserSlice";
 
 const PayMethodInput = (props: RadiobtnType & PayListType) => {
   const dispatch = useAppDispatch();
   const [tab, setTab] = useState(false);
   const [select, setSelect] = useState<string>("");
-  const [param, setParam] = useState<string>("");
 
   //라디오 버튼 선택
   const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,13 +27,15 @@ const PayMethodInput = (props: RadiobtnType & PayListType) => {
     }
   };
   //배송지 목록 삭제
-  const { mutate, isSuccess } = useDelPay(Number(param));
+
+  const { mutate } = useDelPay();
   const handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
-    if (isSuccess) {
-      alert("삭제되었습니다");
-    }
-    setParam(e.currentTarget.value);
-    mutate();
+    const del = e.currentTarget.value;
+    mutate(del, {
+      onSuccess: () => {
+        alert("삭제 되었습니다");
+      },
+    });
   };
 
   return (
@@ -69,7 +67,7 @@ const PayMethodInput = (props: RadiobtnType & PayListType) => {
         ) : (
           <>
             <t.DivArea style={{ marginTop: "10px" }}>
-              {props.addressList.map((val: PayAddressListType) => {
+              {props.addressList.map((val, i: number) => {
                 return (
                   <t.Div key={val.d_No}>
                     <RadioBtn

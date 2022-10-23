@@ -2,7 +2,7 @@ import * as t from "./cardIcon.style";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ListModal from "../../../containers/listPage/listModa/ListModal";
+import ListModal from "../../../containers/listPage/listModal/ListModal";
 import { useIcon } from "./useCardIcon";
 import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
 

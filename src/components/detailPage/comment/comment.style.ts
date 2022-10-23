@@ -7,13 +7,13 @@ export const MainContainer = styled.div`
   display: flex;
   color: ${theme.fc09};
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid ${theme.ls13};
-  padding: 15px 0;
+  padding: 15px 10px;
   box-sizing: border-box;
 `;
 export const CommentText = styled.div`
-  width: 60%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   font-size: ${theme.fs14};
@@ -29,21 +29,23 @@ export const IcStar = styled(StarRoundedIcon)({
   },
 });
 export const WriterInfo = styled.div`
-  width: 17%;
+  width: 20%;
   display: flex;
   flex-direction: column;
   font-size: ${theme.fs13};
   gap: 5px;
+  text-align: right;
 `;
 export const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
+  justify-content: right;
   gap: 5px;
   button {
     padding: 0;
     border: 0;
     outline: none;
-    background: ${theme.bg01};
+    background: none;
     cursor: pointer;
   }
 `;

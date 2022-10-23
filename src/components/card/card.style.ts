@@ -24,6 +24,16 @@ export const Div = styled.div`
   margin-top: 1rem;
   padding-bottom: 0.5rem;
 `;
+export const IconDiv = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+`;
+export const Icon = styled.div`
+  padding-bottom: 10px;
+  padding-right: 5px;
+`;
+
 export const CardTitle = styled.div`
   text-transform: capitalize;
   margin-bottom: 0.3rem;

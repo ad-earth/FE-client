@@ -1,27 +1,22 @@
-import { editproducts } from "../../../redux/reducer/paymentSlice";
-import {
-  RootState,
-  useAppDispatch,
-  useAppSelector,
-} from "../../../redux/store";
-import { DataType, DbDataType } from "./pdInfo.type";
+import { useEffect } from "react";
+import { setPayData } from "../../../redux/reducer/payPdtSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { DataType } from "./pdInfo.type";
 import * as t from "./pdtInfo.style";
 
-const PdtInfo = (props: DbDataType) => {
+const PdtInfo = (props: DataType) => {
   console.log(props.data);
-  const { products } = useAppSelector(
-    (state: RootState) => state.paymentReducer
-  );
-  const data = () => {
-    dispatch(editproducts(props.data));
-  };
-
-  console.log(products);
-
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setPayData(props.data));
+  });
+  const data = useAppSelector((state) => state.payPdtSlice.products);
+  console.log("data: ", data);
+
   return (
     <>
-      {props.data.map((val: DataType, i: number) => {
+      {props.data.map((val, i: number) => {
         return (
           <>
             {val.option.map(
@@ -29,16 +24,16 @@ const PdtInfo = (props: DbDataType) => {
                 v: [
                   string | null,
                   string | null,
-                  string | null,
+                  number | null,
                   number,
                   number
                 ],
                 idx: number
               ) => {
                 return (
-                  <t.ListArea>
+                  <t.ListArea key={String(v[0])}>
                     <t.PdArea>
-                      <t.PdInfoDiv key={!v[0] ? i : v[0]}>
+                      <t.PdInfoDiv>
                         <t.ProductImg src={val.thumbnail} />
                         <t.ProductInfo>
                           <t.ProductName>

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-import History from "../components/detailPage/history/History";
-import ProdContents from "../containers/detailPage/prodContents/ProdContents";
-import ProdInfo from "../containers/detailPage/prodInfo/ProdInfo";
+import Navigation from "../components/detailPage/navigation/Navigation";
+import Details from "../containers/detailPage/details/Details";
+import Contents from "../containers/detailPage/contents/Contents";
 
 const DetailPage = () => {
   useEffect(() => {
@@ -10,9 +10,9 @@ const DetailPage = () => {
   }, []);
   return (
     <>
-      <History />
-      <ProdInfo />
-      <ProdContents />
+      <Navigation />
+      <Details />
+      <Contents />
     </>
   );
 };

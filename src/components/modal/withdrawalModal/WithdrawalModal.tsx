@@ -17,13 +17,14 @@ interface ModalType {
 
 function WithdrawalModal(props: ModalType) {
   let navigate = useNavigate();
-  // const [items, setItems] = useState<string>(
-  //   localStorage.getItem("u_idx") || ""
-  // );
+
   const { mutate, isSuccess } = useWithdrawalModal();
   if (isSuccess) {
+    alert("탈퇴 성공!");
+    localStorage.clear();
     navigate("/");
   }
+  //탈퇴 버튼 선택
   const logoutClick = () => {
     mutate();
     props.handleClose();
@@ -59,9 +60,7 @@ function WithdrawalModal(props: ModalType) {
                 radius="30px"
                 width="initial"
                 padding="10px 25px"
-                onClick={() => {
-                  logoutClick();
-                }}
+                onClick={logoutClick}
               >
                 탈퇴하기
               </MainButton>

@@ -60,14 +60,10 @@ function App() {
             <Route path="/list" element={<ListPage />}>
               <Route path=":category" element={<ListPage />}></Route>
             </Route>
-
             <Route path="/search" element={<SearchPage />}>
               <Route path=":keyParams" element={<SearchPage />}></Route>
             </Route>
-            <Route
-              path="/detail/:category/:prodNo"
-              element={<DetailPage />}
-            ></Route>
+            <Route path="/detail/productNo" element={<DetailPage />}></Route>
             <Route path="/payment" element={<PaymentPage />}>
               <Route path=":prodNo" element={<PaymentPage />}></Route>
             </Route>

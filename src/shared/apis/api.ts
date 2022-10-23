@@ -1,3 +1,4 @@
+import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
 import { CartType } from "../types/types";
 //마이페이지
@@ -33,12 +34,20 @@ export const postReviews = (id: number, r_Content: string, r_Score: number) =>
   axiosInstance.post(`/reviews/${id}`, { r_Content, r_Score });
 export const deleteUserWithdrawal = () => axiosInstance.delete(`/users`);
 
-//메인페이지
+// 메인페이지 메인 상품 조회
 export const getMain = () => axiosInstance.get(`/main`);
 
-//상세페이지
-export const getProdDetails = (p_No: string) =>
-  axiosInstance.get(`/products/${p_No}`);
+// 상세페이지 상품 상세 정보 조회
+export const getDetails = (productNo: string, keyword?: string) =>
+  axiosInstance.get(`/products/${productNo}?${keyword ? keyword : null}`);
+
+// 상세페이지 구매평 조회
+export const getReviews = (productNo: string, page: number) =>
+  axiosInstance.get(`/reviews/${productNo}?page=${page}&maxpost=10`);
+
+// 상세페이지 구매평 삭제
+export const deleteReview = (reviewNo: number) =>
+  axiosInstance.delete(`/reviews/${reviewNo}`);
 
 //장보기페이지
 export const getList = (sort: string, pageNo: string) =>
@@ -92,7 +101,9 @@ export const postPay = (
   d_Address1: string,
   d_Address2: string,
   d_Address3: string,
-  d_Memo: string
+  d_Memo: string,
+  products: PayProductsData[],
+  o_Price: number
 ) =>
   axiosInstance.post(`/payment/complete`, {
     address: {
@@ -104,8 +115,10 @@ export const postPay = (
       d_Address3,
       d_Memo,
     },
+    products: products,
+    o_Price,
   });
-export const deletePay = (dNo: number) =>
+export const deletePay = (dNo: string) =>
   axiosInstance.delete(`/shipping-list/${dNo}`);
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
