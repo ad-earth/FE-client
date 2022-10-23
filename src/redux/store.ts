@@ -6,8 +6,8 @@ import cartSlice from "./reducer/cartSlice";
 import userSlice from "./reducer/userSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import payPdtSlice from "./reducer/payPdtSlice";
-import payUserSlice from "./reducer/payUserSlice";
 import payErrorSlice from "./reducer/payErrorSlice";
+import payUserSlice from "./reducer/payUserSlice";
 
 const rootReducer = combineReducers({
   payUserSlice: payUserSlice,
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["userSlice", "cartSlice", "payPdtSlice"],
+  whitelist: ["userSlice", "cartSlice"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

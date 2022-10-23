@@ -11,15 +11,21 @@ const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
-  console.log(props.pOption);
+  const { keyParams } = useParams<{ keyParams: string }>();
 
   return (
     <>
-      <t.CardCp>
+      <t.CardCp
+        onClick={() =>
+          navigate({
+            pathname: `/detail/${props.pNo}`,
+            search: `category=${category}&keword=${keyParams}`,
+          })
+        }
+      >
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
-              onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
               src={
@@ -40,7 +46,6 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
-                  onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
                   src={
@@ -49,12 +54,10 @@ const Card = (props: CardCompoType) => {
                       : props.pThumbnail[0]
                   }
                 />
-                {/* // props.pThumbnail.length > 1 ? true : false */}
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
               <t.CardImg
-                onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
                 src={
@@ -80,7 +83,7 @@ const Card = (props: CardCompoType) => {
             </t.IconDiv>
           ) : null}
 
-          <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
+          <t.CardTitle>
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
 
