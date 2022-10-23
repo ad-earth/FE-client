@@ -15,23 +15,23 @@ const Navigation = () => {
         Home &nbsp;
       </span>
       &nbsp;
-      {category === "undefined" ? null : (
+      {category === "undefined" || category === "메인" ? null : (
         <span
           onClick={() => {
             navigate(`/list/전체`);
           }}
         >
-          &gt; 장보기 &gt;
+          &gt; 장보기
         </span>
       )}
       &nbsp;
-      {category === "undefined" ? null : (
+      {category === "undefined" || category === "메인" ? null : (
         <div
           onClick={() => {
             navigate(category === "전체" ? `/list` : `/list/${category}`);
           }}
         >
-          {category}
+          &gt;{category}
         </div>
       )}
     </t.HistoryNav>
