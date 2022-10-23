@@ -3,6 +3,7 @@ import { theme } from "../../../style/theme";
 import * as t from "./asideNav.style";
 import { NavLink } from "react-router-dom";
 import WithdrawalModal from "../../modal/withdrawalModal/WithdrawalModal";
+import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
 
 interface NavLinkType {
   name: string;
@@ -12,12 +13,14 @@ interface NavLinkType {
 
 const AsideNav = () => {
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
+  const [userInfoIsOpen, setUserInfoIsOpen] = useState<boolean>(false);
   const navClickEvent = (
     data: NavLinkType,
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     data.path === "modal" && e.preventDefault();
     data.name === "회원탈퇴" && setWithdrawaIsOpen(!withdrawaIsOpen);
+    data.name === "정보 수정" && setUserInfoIsOpen(!userInfoIsOpen);
   };
 
   return (
@@ -26,6 +29,11 @@ const AsideNav = () => {
       <WithdrawalModal
         isOpen={withdrawaIsOpen}
         handleClose={() => setWithdrawaIsOpen(false)}
+      />
+      {/* 정보수정 모달 */}
+      <UserInfoModal
+        isOpen={userInfoIsOpen}
+        handleClose={() => setUserInfoIsOpen(false)}
       />
       <t.NavListBox>
         {list.map((data) => (
