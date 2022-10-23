@@ -63,10 +63,7 @@ function App() {
             <Route path="/search" element={<SearchPage />}>
               <Route path=":keyParams" element={<SearchPage />}></Route>
             </Route>
-            <Route
-              path="/detail/:category/:productNo/:keyword"
-              element={<DetailPage />}
-            ></Route>
+            <Route path="/detail/productNo" element={<DetailPage />}></Route>
             <Route path="/payment" element={<PaymentPage />}>
               <Route path=":prodNo" element={<PaymentPage />}></Route>
             </Route>
