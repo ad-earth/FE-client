@@ -68,15 +68,18 @@ const Card = (props: CardCompoType) => {
         )}
 
         <t.Div>
-          <t.IconDiv>
-            {props.pOption.map((v, i) => {
-              return v[1] === null ? null : (
-                <t.Icon>
-                  <ColorIcon colorCode={v[1]} />
-                </t.Icon>
-              );
-            })}
-          </t.IconDiv>
+          {props.pOption ? (
+            <t.IconDiv>
+              {props.pOption.map((v, i) => {
+                return v[1] === null ? null : (
+                  <t.Icon>
+                    <ColorIcon colorCode={v[1]} />
+                  </t.Icon>
+                );
+              })}
+            </t.IconDiv>
+          ) : null}
+
           <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
