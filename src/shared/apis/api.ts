@@ -1,6 +1,6 @@
 import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
-
+import { CartType } from "../types/types";
 //마이페이지
 export const getOrders = (page: number) =>
   axiosInstance.get(`/orders?page=${page}&maxpost=10`);
@@ -34,12 +34,34 @@ export const postReviews = (id: number, r_Content: string, r_Score: number) =>
   axiosInstance.post(`/reviews/${id}`, { r_Content, r_Score });
 export const deleteUserWithdrawal = () => axiosInstance.delete(`/users`);
 
-//메인페이지
+// 메인페이지 메인 상품 조회
 export const getMain = () => axiosInstance.get(`/main`);
 
-//상세페이지
-export const getProdDetails = (p_No: string) =>
-  axiosInstance.get(`/products/${p_No}`);
+// 상세페이지 상품 상세 정보 조회
+export const getDetails = (productNo: number, keyword?: string) =>
+  axiosInstance.get(`/products/${productNo}?${keyword ? keyword : null}`);
+
+// 상세페이지 구매평 조회
+export const getReviews = (productNo: string, page: number) =>
+  axiosInstance.get(`/reviews/${productNo}?page=${page}&maxpost=10`);
+
+// 상세페이지 구매평 등록
+export const postReview = (productNo: string, review: string, score: string) =>
+  axiosInstance.post(`/reviews/${productNo}`, {
+    r_Content: review,
+    r_Score: score,
+  });
+
+// 상세페이지 구매평 수정
+export const putReview = (reviewNo: string, review: string, score: string) =>
+  axiosInstance.put(`/reviews/${reviewNo}`, {
+    r_Content: review,
+    r_Score: score,
+  });
+
+// 상세페이지 구매평 삭제
+export const deleteReview = (reviewNo: string) =>
+  axiosInstance.delete(`/reviews/${reviewNo}`);
 
 //장보기페이지
 export const getList = (sort: string, pageNo: string) =>
@@ -137,31 +159,7 @@ export const putNewPw = (u_Idx: number, u_Pw: string) => {
 };
 
 //로그아웃시 서버 데이터 전달
-export const postCartData = (
-  k_No: number,
-  p_No: number,
-  p_Thumbnail: string[],
-  p_Category: string,
-  a_Brand: string,
-  p_Name: string,
-  p_Cost: number,
-  p_Sale: boolean,
-  p_Discount: number,
-  p_Option: Array<string | number | null>[],
-  p_Price: number,
-  p_Cnt: number
-) =>
+export const postCartData = (cartList: CartType) =>
   axiosInstance.post(`/carts`, {
-    k_No,
-    p_No,
-    p_Thumbnail,
-    p_Category,
-    a_Brand,
-    p_Name,
-    p_Cost,
-    p_Sale,
-    p_Discount,
-    p_Option,
-    p_Price,
-    p_Cnt,
+    cartList: cartList,
   });

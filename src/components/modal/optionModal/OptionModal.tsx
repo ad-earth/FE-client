@@ -7,7 +7,7 @@ import { MainButton } from "../../../elements/Buttons";
 import Modal from "../Modal";
 import { ColorHoverIcon } from "../../../elements/ColorIcons";
 import { useGetOption } from "./useGetOption";
-import ProdCnt, { ProdOptCnt } from "../../detailPage/prodCnt/ProdCnt";
+// import ProdCnt, { ProdOptCnt } from "../../detailPage/prodCnt/ProdCnt";
 export interface ModalType {
   isOpen?: boolean;
   handleClose: () => void;
@@ -37,7 +37,7 @@ type ProductType = {
 const OptionModal = (props: ModalType) => {
   const [drop, setDrop] = useState(false);
   const [product, setProduct] = useState<ProductType>();
-  const optionData = useGetOption(props.prodNo);
+  const optionData = useGetOption(Number(props.prodNo));
 
   useEffect(() => {
     if (optionData) {
@@ -255,23 +255,24 @@ const OptionModal = (props: ModalType) => {
                     </>
                   </>
                 </t.DropDown>
-                {product && product.p_Option.length > 0 ? (
-                  <>
-                    <ProdOptCnt
+                {
+                  product && product.p_Option.length > 0 ? (
+                    <>
+                      {/* <ProdOptCnt
                       optionList={optionList}
                       changeOptionList={changeOptionList}
                       removeOption={removeOption}
-                    />
-                    <t.Total>
-                      <div>
-                        총 수량 <span>{totalQty}</span>개
-                      </div>
-                      <p>{totalPrice && totalPrice.toLocaleString()}원</p>
-                    </t.Total>
-                  </>
-                ) : (
-                  <ProdCnt price={price} setTotalQty={setTotalQty} />
-                )}
+                    /> */}
+                      <t.Total>
+                        <div>
+                          총 수량 <span>{totalQty}</span>개
+                        </div>
+                        <p>{totalPrice && totalPrice.toLocaleString()}원</p>
+                      </t.Total>
+                    </>
+                  ) : null
+                  // <ProdCnt price={price} setTotalQty={setTotalQty} />
+                }
               </>
             </t.OptContents>
 

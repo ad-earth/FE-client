@@ -2,11 +2,11 @@ import * as t from "./listModal.style";
 import { useEffect, useState } from "react";
 
 import Modal from "../../../components/modal/Modal";
-import ProdName from "../../../components/detailPage/prodName/ProdName";
-import ProdDesc from "../../../components/detailPage/prodDesc/ProdDesc";
-import ProdOpt from "../../../components/detailPage/prodOpt/ProdOpt";
-import ProdCarousel from "../../../components/detailPage/prodCarousel/ProdCarousel";
-import ProdImg from "../../../components/detailPage/prodImg/ProdImg";
+import ProductName from "../../../components/detailPage/productName/ProductName";
+import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
+import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
+import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
+import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import { ProductsType } from "../cardList/cardList.type";
 
 const ListModal = ({
@@ -42,13 +42,13 @@ const ListModal = ({
             <t.ProdInfoContainer>
               {viewport <= 990 ? (
                 <t.Max>
-                  <ProdCarousel img={list.p_Thumbnail} />
+                  <ProductCarousel imgs={list.p_Thumbnail} />
                 </t.Max>
               ) : (
-                <ProdImg img={list.p_Thumbnail} />
+                <ProductImgs imgs={list.p_Thumbnail} />
               )}
               <t.InfoWrapper>
-                <ProdName
+                <ProductName
                   brand={list.a_Brand}
                   name={list.p_Name}
                   best={list.p_Best}
@@ -59,14 +59,15 @@ const ListModal = ({
                   discount={list.p_Discount}
                 />
                 <t.CaroDiv>
-                  <ProdDesc desc={list.p_Desc} brand={list.a_Brand} />
+                  <ProductSummary desc={list.p_Desc} brand={list.a_Brand} />
                 </t.CaroDiv>
-                <ProdOpt
-                  prodNo={list.p_No}
-                  option={list.p_Option}
+                <ProductOptions
+                  productNo={list.p_No}
+                  options={list.p_Option}
                   price={list.p_Cost}
                   discount={list.p_Discount}
-                  likeCnt={list.p_Like}
+                  // likeCnt={list.p_Like}
+                  // like={like}
                 />
               </t.InfoWrapper>
             </t.ProdInfoContainer>

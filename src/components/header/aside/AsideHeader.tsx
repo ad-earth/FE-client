@@ -69,7 +69,7 @@ const AsideHeader = (props: AsideType) => {
                 <t.EtcIcon onClick={handleRemove} />
                 <MenuDrop
                   isDropped={isDropped}
-                  data={data}
+                  cateData={data}
                   width="140px"
                   top="80px"
                   left="82%"
