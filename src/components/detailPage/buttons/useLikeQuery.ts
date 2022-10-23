@@ -1,12 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getDetails, postLike } from "../../../shared/apis/api";
 
-export const useGetLikeQuery = (productNo: number) => {
+export const useGetLikeQuery = (productNo: string) => {
   return useQuery("like", () => getDetails(productNo));
 };
 
-const queryClient = useQueryClient();
 export const usePostLikeQuery = (productNo: number) => {
+  const queryClient = useQueryClient();
   return useMutation(() => postLike(productNo), {
     onSuccess: () => {
       queryClient.invalidateQueries("like");

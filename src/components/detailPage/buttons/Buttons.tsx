@@ -6,9 +6,21 @@ import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/Buttons";
 import { PropsType } from "./buttons.type";
+import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
+import { useMemo } from "react";
 
 const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
+
+  const likeData = useGetLikeQuery(String(props.details?.product?.p_No));
+  const { isLike, likeQty } = useMemo(
+    () => ({
+      isLike: likeData.data?.data.userLike,
+      likeQty: likeData.data?.data.product?.p_Like,
+    }),
+    [likeData]
+  );
+  const { mutate } = usePostLikeQuery(props.details?.product?.p_No);
 
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
@@ -80,16 +92,18 @@ const Buttons = (props: PropsType) => {
         >
           장바구니
         </MainButton>
-        {/* <MainButton
+        <MainButton
           radius={"30px"}
           border={`0.5px solid ${theme.ls03}`}
           bgColor={theme.bg01}
           color={theme.fc09}
           hBorder={`0.5px solid ${theme.ls11}`}
           hBgColor={theme.bg01}
-          onClick={() => updateProdLike(props.prodNo)}
+          onClick={() => {
+            mutate();
+          }}
         >
-          {data && data.userLike ? (
+          {isLike ? (
             <Heart
               style={{
                 color: theme.fc15,
@@ -100,8 +114,8 @@ const Buttons = (props: PropsType) => {
           ) : (
             <Heart style={{ color: theme.fc04, paddingRight: "4px" }} />
           )}
-          {data.product && data.product.p_Like}
-        </MainButton> */}
+          {likeQty}
+        </MainButton>
       </t.BtnWrapper>
     </div>
   );
