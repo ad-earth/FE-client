@@ -21,7 +21,7 @@ const Navigation = () => {
         Home &nbsp;
       </span>
       &nbsp;
-      {category && (
+      {category !== "undefined" ? (
         <span
           onClick={() => {
             navigate(`/list/전체`);
@@ -29,9 +29,9 @@ const Navigation = () => {
         >
           &gt; 장보기
         </span>
-      )}
+      ) : null}
       &nbsp;
-      {category && (
+      {category !== "undefined" ? (
         <div
           onClick={() => {
             navigate(category === "전체" ? `/list` : `/list/${category}`);
@@ -39,7 +39,7 @@ const Navigation = () => {
         >
           &gt; {category}
         </div>
-      )}
+      ) : null}
     </t.HistoryNav>
   );
 };
