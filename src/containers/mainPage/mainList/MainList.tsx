@@ -19,8 +19,8 @@ const MainList = () => {
   return (
     <div>
       <BestProducts bestList={bestList} />
-      <NewProducts newList={newList} />
       <MainLinks />
+      <NewProducts newList={newList} />
     </div>
   );
 };
