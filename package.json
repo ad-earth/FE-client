@@ -22,6 +22,7 @@
     "@types/styled-components": "^5.1.26",
     "axios": "^0.27.2",
     "mobx": "^6.6.1",
+    "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-aws-s3": "^1.5.0",
     "react-aws-s3-typescript": "^1.1.4",

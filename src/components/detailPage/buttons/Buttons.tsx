@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { openDB } from "idb";
 
 import * as t from "./buttons.style";
@@ -6,9 +6,22 @@ import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/Buttons";
 import { PropsType } from "./buttons.type";
+import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
+import { useMemo } from "react";
 
 const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
+  const { productNo } = useParams();
+
+  const likeData = useGetLikeQuery(productNo);
+  const { isLike, likeQty } = useMemo(
+    () => ({
+      isLike: likeData.data?.data.userLike,
+      likeQty: likeData.data?.data.product?.p_Like,
+    }),
+    [likeData]
+  );
+  const { mutate } = usePostLikeQuery(Number(productNo));
 
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
@@ -57,15 +70,46 @@ const Buttons = (props: PropsType) => {
   return (
     <div>
       <t.BtnWrapper>
-        <MainButton
-          radius={"30px"}
-          onClick={() => {
-            setCart();
-            navigate(`/payment`);
-          }}
-        >
-          구매하기
-        </MainButton>
+        {props.details?.product?.p_Soldout ? (
+          <MainButton
+            width={"200%"}
+            radius={"30px"}
+            bgColor={theme.bg09}
+            hBgColor={theme.bg09}
+            onClick={() => {
+              alert("이 상품은 현재 재고가 없어 구매가 불가합니다.");
+            }}
+          >
+            품절된 상품입니다.
+          </MainButton>
+        ) : (
+          <>
+            <MainButton
+              radius={"30px"}
+              onClick={() => {
+                setCart();
+                navigate(`/payment`);
+              }}
+            >
+              구매하기
+            </MainButton>
+            <MainButton
+              radius={"30px"}
+              border={`0.5px solid ${theme.ls03}`}
+              bgColor={theme.bg01}
+              color={theme.fc09}
+              hBorder={`0.5px solid ${theme.ls11}`}
+              hBgColor={theme.bg01}
+              onClick={() => {
+                setCart();
+                navigate("/cart");
+              }}
+            >
+              장바구니
+            </MainButton>
+          </>
+        )}
+
         <MainButton
           radius={"30px"}
           border={`0.5px solid ${theme.ls03}`}
@@ -74,22 +118,10 @@ const Buttons = (props: PropsType) => {
           hBorder={`0.5px solid ${theme.ls11}`}
           hBgColor={theme.bg01}
           onClick={() => {
-            setCart();
-            navigate("/cart");
+            mutate();
           }}
         >
-          장바구니
-        </MainButton>
-        {/* <MainButton
-          radius={"30px"}
-          border={`0.5px solid ${theme.ls03}`}
-          bgColor={theme.bg01}
-          color={theme.fc09}
-          hBorder={`0.5px solid ${theme.ls11}`}
-          hBgColor={theme.bg01}
-          onClick={() => updateProdLike(props.prodNo)}
-        >
-          {data && data.userLike ? (
+          {isLike ? (
             <Heart
               style={{
                 color: theme.fc15,
@@ -100,8 +132,8 @@ const Buttons = (props: PropsType) => {
           ) : (
             <Heart style={{ color: theme.fc04, paddingRight: "4px" }} />
           )}
-          {data.product && data.product.p_Like}
-        </MainButton> */}
+          {likeQty}
+        </MainButton>
       </t.BtnWrapper>
     </div>
   );
