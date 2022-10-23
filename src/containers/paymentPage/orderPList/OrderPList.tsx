@@ -78,64 +78,66 @@ const OrderPList = () => {
     <>
       {data && GetPaylist && (
         <t.PayArea>
-          <t.LPListArea>
-            <t.LTipOff>
-              <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={data} />
-              <FreeShipping />
-            </t.LTipOff>
+          <form>
+            <t.LPListArea>
+              <t.LTipOff>
+                <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
+                <PdtInfo data={data} />
+                <FreeShipping />
+              </t.LTipOff>
 
-            {btnopen ? (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
-                <PayUserInput />
-              </t.LTipOff>
-            ) : (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
-                <PayUserInfo
-                  userInfo={GetPaylist.userInfo}
-                  BtnonClick={() => setBtnopen(true)}
-                />
-              </t.LTipOff>
-            )}
-            {btnchange ? (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
-                <PayMethodInput
-                  addressList={GetPaylist.addressList}
-                  userInfo={GetPaylist.userInfo}
-                />
-              </t.LTipOff>
-            ) : (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
-                <PayMethod
-                  BtnonClick={() => setBtnchange(true)}
-                  addressList={GetPaylist.addressList}
-                  userInfo={GetPaylist.userInfo}
-                />
-              </t.LTipOff>
-            )}
-          </t.LPListArea>
-          <t.RPayArea>
-            <t.RTipOff>
-              <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary data={data} />
-            </t.RTipOff>
-            <t.RTipOff>
-              <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>
-              <PayRadioBtn></PayRadioBtn>
-            </t.RTipOff>
-            <t.RTipOff style={{ display: "rleative" }}>
-              <PayAgree />
-              <t.RBtnDiv>
-                <MainButton width="100%" onClick={PayClick}>
-                  결제하기
-                </MainButton>
-              </t.RBtnDiv>
-            </t.RTipOff>
-          </t.RPayArea>
+              {btnopen ? (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
+                  <PayUserInput />
+                </t.LTipOff>
+              ) : (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
+                  <PayUserInfo
+                    userInfo={GetPaylist.userInfo}
+                    BtnonClick={() => setBtnopen(true)}
+                  />
+                </t.LTipOff>
+              )}
+              {btnchange ? (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
+                  <PayMethodInput
+                    addressList={GetPaylist.addressList}
+                    userInfo={GetPaylist.userInfo}
+                  />
+                </t.LTipOff>
+              ) : (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
+                  <PayMethod
+                    BtnonClick={() => setBtnchange(true)}
+                    addressList={GetPaylist.addressList}
+                    userInfo={GetPaylist.userInfo}
+                  />
+                </t.LTipOff>
+              )}
+            </t.LPListArea>
+            <t.RPayArea>
+              <t.RTipOff>
+                <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
+                <PaySummary data={data} />
+              </t.RTipOff>
+              <t.RTipOff>
+                <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>
+                <PayRadioBtn></PayRadioBtn>
+              </t.RTipOff>
+              <t.RTipOff style={{ display: "rleative" }}>
+                <PayAgree />
+                <t.RBtnDiv>
+                  <MainButton width="100%" onClick={PayClick}>
+                    결제하기
+                  </MainButton>
+                </t.RBtnDiv>
+              </t.RTipOff>
+            </t.RPayArea>
+          </form>
         </t.PayArea>
       )}
     </>

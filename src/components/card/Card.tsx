@@ -11,6 +11,7 @@ const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
+  console.log(props.pOption);
 
   return (
     <>
@@ -67,11 +68,15 @@ const Card = (props: CardCompoType) => {
         )}
 
         <t.Div>
-          {props.pOption ? (
-            <t.Div>
-              <ColorIcon colorCode={props.pOption} />
-            </t.Div>
-          ) : null}
+          <t.IconDiv>
+            {props.pOption.map((v, i) => {
+              return v[1] === null ? null : (
+                <t.Icon>
+                  <ColorIcon colorCode={v[1]} />
+                </t.Icon>
+              );
+            })}
+          </t.IconDiv>
           <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
