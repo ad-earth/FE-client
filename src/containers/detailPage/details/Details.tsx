@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import QueryString from "qs";
 
 import * as t from "./details.style";
 import { useDetailQuery } from "./useDetailQuery";
@@ -10,8 +11,13 @@ import ProductSummary from "../../../components/detailPage/productSummary/Produc
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
 
 const Details = () => {
-  const { productNo, keyword } = useParams();
-  const detailData = useDetailQuery(Number(productNo), keyword);
+  const { productNo } = useParams();
+  const location = useLocation();
+  const query = QueryString.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const keyword = String(query.keyword);
+  const detailData = useDetailQuery(productNo, keyword ? keyword : null);
 
   const { productDetail, details } = useMemo(
     () => ({

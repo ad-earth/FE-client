@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import Navigation from "../components/detailPage/navigation/Navigation";
 import Details from "../containers/detailPage/details/Details";
-import ProdContents from "../containers/detailPage/prodContents/ProdContents";
+import Contents from "../containers/detailPage/contents/Contents";
 
 const DetailPage = () => {
   useEffect(() => {
@@ -12,7 +12,7 @@ const DetailPage = () => {
     <>
       <Navigation />
       <Details />
-      <ProdContents />
+      <Contents />
     </>
   );
 };

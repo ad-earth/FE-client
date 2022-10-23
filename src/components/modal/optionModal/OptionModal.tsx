@@ -37,7 +37,7 @@ type ProductType = {
 const OptionModal = (props: ModalType) => {
   const [drop, setDrop] = useState(false);
   const [product, setProduct] = useState<ProductType>();
-  const optionData = useGetOption(Number(props.prodNo));
+  const optionData = useGetOption(props.prodNo);
 
   useEffect(() => {
     if (optionData) {

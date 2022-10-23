@@ -2,6 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
 export const MainContainer = styled.div`
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
+`;
+export const List = styled.div`
   width: 98%;
   display: flex;
   flex-direction: column;
@@ -17,7 +25,6 @@ export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border-top: 1px solid ${theme.ls13};
-  margin-top: 30px;
 `;
 export const Page = styled.div`
   margin-top: 30px;

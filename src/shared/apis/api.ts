@@ -38,29 +38,15 @@ export const deleteUserWithdrawal = () => axiosInstance.delete(`/users`);
 export const getMain = () => axiosInstance.get(`/main`);
 
 // 상세페이지 상품 상세 정보 조회
-export const getDetails = (productNo: number, keyword?: string) =>
+export const getDetails = (productNo: string, keyword?: string) =>
   axiosInstance.get(`/products/${productNo}?${keyword ? keyword : null}`);
 
 // 상세페이지 구매평 조회
 export const getReviews = (productNo: string, page: number) =>
   axiosInstance.get(`/reviews/${productNo}?page=${page}&maxpost=10`);
 
-// 상세페이지 구매평 등록
-export const postReview = (productNo: string, review: string, score: string) =>
-  axiosInstance.post(`/reviews/${productNo}`, {
-    r_Content: review,
-    r_Score: score,
-  });
-
-// 상세페이지 구매평 수정
-export const putReview = (reviewNo: string, review: string, score: string) =>
-  axiosInstance.put(`/reviews/${reviewNo}`, {
-    r_Content: review,
-    r_Score: score,
-  });
-
 // 상세페이지 구매평 삭제
-export const deleteReview = (reviewNo: string) =>
+export const deleteReview = (reviewNo: number) =>
   axiosInstance.delete(`/reviews/${reviewNo}`);
 
 //장보기페이지
