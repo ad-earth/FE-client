@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { openDB } from "idb";
 import { useNavigate, useParams } from "react-router-dom";
 //pages//
+import { RootState, useAppSelector } from "../../../redux/store";
 import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
 import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
 import PayMethod from "../../../components/paymentPage/payMethod/PayMethod";
@@ -27,22 +28,17 @@ const OrderPList = () => {
   const navigate = useNavigate();
   const [btnopen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
-
-  const [name, setName] = useState("");
-  const [pNumber, setPNumber] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [memo, setMemo] = useState("");
-  const [dNo, setDNo] = useState<string>(null);
-
-  const [data, setData] = useState([]);
-
-  const MemoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setMemo(e.target.value);
-  };
+  //get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
+  //slice에서 data 받아오기
+  const data = useAppSelector((state) => state.cartSlice.orderData);
+  const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
+  const products = useAppSelector((state) => state.payPdtSlice.products);
+  const state = useAppSelector((state) => state.payErrorSlice);
 
+  const { name, dNo, pNumber, zipcode, address1, address2, memo } =
+    useAppSelector((state: RootState) => state.payUserSlice);
+  //post 요청할 데이터들
   const postPay = {
     address: {
       d_No: Number(dNo),
@@ -53,126 +49,95 @@ const OrderPList = () => {
       d_Address3: address2,
       d_Memo: memo,
     },
+    products: products,
+    o_Price: oPrice,
   };
-
   const { mutate, isSuccess } = usePostPay(postPay);
+  //결제하기 버튼
   const PayClick = () => {
     mutate();
-  };
-  //indexedDB
-  async function getCart() {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readonly").objectStore("cart");
-    const getReq = store.getAll();
-    try {
-      getReq.then((response) => {
-        setData(response);
-      });
-    } catch (err) {
-      console.error(err);
+    if (btnchange && name === "") {
+      alert("이름을 입력해주세요");
+    } else if (state.agree === false) {
+      alert("전체 동의에 체크해주세요");
+      // !isSuccess
+    } else {
+      // gg
     }
-  }
-
+  };
   useEffect(() => {
     if (isSuccess) {
       alert("결제가 완료되었습니다.");
       navigate("/complete");
-      getCart();
     } else {
       // alert("다시 시도해주세요.");
-      getCart();
     }
   }, [isSuccess]);
-  //파라미터로 담아온 prodNo만 걸러서 데이터 추출
-  const { prodNo } = useParams<{ prodNo: string }>();
-  const result = data.filter((v) => v.id === Number(prodNo));
 
   return (
     <>
       {data && GetPaylist && (
         <t.PayArea>
-          <t.LPListArea>
-            <t.LTipOff>
-              <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={result} />
-              <FreeShipping />
-            </t.LTipOff>
+          <form>
+            <t.LPListArea>
+              <t.LTipOff>
+                <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
+                <PdtInfo data={data} />
+                <FreeShipping />
+              </t.LTipOff>
 
-            {btnopen ? (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
-                <PayUserInput />
-              </t.LTipOff>
-            ) : (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
-                <PayUserInfo
-                  userInfo={GetPaylist.userInfo}
-                  BtnonClick={() => setBtnopen(true)}
-                />
-              </t.LTipOff>
-            )}
-            {btnchange ? (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
-                <PayMethodInput
-                  dNo={dNo}
-                  setDNo={setDNo}
-                  name={name}
-                  setName={setName}
-                  pNumber={pNumber}
-                  setPNumber={setPNumber}
-                  zipcode={zipcode}
-                  setZipcode={setZipcode}
-                  address1={address1}
-                  setAddress1={setAddress1}
-                  address2={address2}
-                  setAddress2={setAddress2}
-                  memo={memo}
-                  MemoChange={MemoChange}
-                  addressList={GetPaylist.addressList}
-                  userInfo={GetPaylist.userInfo}
-                />
-              </t.LTipOff>
-            ) : (
-              <t.LTipOff>
-                <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
-                <PayMethod
-                  memo={memo}
-                  MemoChange={MemoChange}
-                  BtnonClick={() => setBtnchange(true)}
-                  addressList={GetPaylist.addressList}
-                  userInfo={GetPaylist.userInfo}
-                />
-              </t.LTipOff>
-            )}
-          </t.LPListArea>
-          <t.RPayArea>
-            <t.RTipOff>
-              <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary data={result} />
-            </t.RTipOff>
-            <t.RTipOff>
-              <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>
-              <PayRadioBtn></PayRadioBtn>
-            </t.RTipOff>
-            <t.RTipOff style={{ display: "rleative" }}>
-              <PayAgree />
-              <t.RBtnDiv>
-                <MainButton width="100%" onClick={PayClick}>
-                  결제하기
-                </MainButton>
-              </t.RBtnDiv>
-            </t.RTipOff>
-          </t.RPayArea>
+              {btnopen ? (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
+                  <PayUserInput />
+                </t.LTipOff>
+              ) : (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
+                  <PayUserInfo
+                    userInfo={GetPaylist.userInfo}
+                    BtnonClick={() => setBtnopen(true)}
+                  />
+                </t.LTipOff>
+              )}
+              {btnchange ? (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
+                  <PayMethodInput
+                    addressList={GetPaylist.addressList}
+                    userInfo={GetPaylist.userInfo}
+                  />
+                </t.LTipOff>
+              ) : (
+                <t.LTipOff>
+                  <t.LOrderInfoDiv>{titles[2]}</t.LOrderInfoDiv>
+                  <PayMethod
+                    BtnonClick={() => setBtnchange(true)}
+                    addressList={GetPaylist.addressList}
+                    userInfo={GetPaylist.userInfo}
+                  />
+                </t.LTipOff>
+              )}
+            </t.LPListArea>
+            <t.RPayArea>
+              <t.RTipOff>
+                <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
+                <PaySummary data={data} />
+              </t.RTipOff>
+              <t.RTipOff>
+                <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>
+                <PayRadioBtn></PayRadioBtn>
+              </t.RTipOff>
+              <t.RTipOff style={{ display: "rleative" }}>
+                <PayAgree />
+                <t.RBtnDiv>
+                  <MainButton width="100%" onClick={PayClick}>
+                    결제하기
+                  </MainButton>
+                </t.RBtnDiv>
+              </t.RTipOff>
+            </t.RPayArea>
+          </form>
         </t.PayArea>
       )}
     </>

@@ -1,11 +1,18 @@
-import { DbDataType } from "../pdtInfo/pdInfo.type";
-import * as t from "./PaySummary.style";
+import { useEffect } from "react";
+import { setPriceData } from "../../../redux/reducer/payPdtSlice";
+import { useAppDispatch } from "../../../redux/store";
+import { DataType } from "../pdtInfo/pdInfo.type";
+import * as t from "./paySummary.style";
 
-const PaySummary = (props: DbDataType) => {
+const PaySummary = (props: DataType) => {
+  const dispatch = useAppDispatch();
   const totalP = props.data.reduce((a, currentObject) => {
     return a + currentObject.totalPrice;
   }, 0);
 
+  useEffect(() => {
+    dispatch(setPriceData(totalP));
+  });
   return (
     <>
       {props.data && (

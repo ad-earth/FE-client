@@ -1,82 +1,75 @@
-import * as t from "./PayMethodInput.style";
+import * as t from "./payMethodInput.style";
 import React, { useState } from "react";
 
-import {
-  MemoType,
-  PayMethodInfo,
-  PayMethodSelect,
-} from "../payMethod/PayMethod";
+import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
 import { NewPayInput } from "../newPayInput/NewPayInput";
 import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
-import {
-  PayAddressListType,
-  PayListType,
-} from "../../../containers/paymentPage/orderPList/orderPList.type";
+import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
-import { AddressType } from "../newPayInput/NewPayInput";
 import useDelPay from "./usePayMethodInput";
+import { useAppDispatch } from "../../../redux/store";
+import { editDNo } from "../../../redux/reducer/payUserSlice";
 
-const PayMethodInput = (
-  props: RadiobtnType & AddressType & MemoType & PayListType
-) => {
+const PayMethodInput = (props: RadiobtnType & PayListType) => {
+  const dispatch = useAppDispatch();
   const [tab, setTab] = useState(false);
   const [select, setSelect] = useState<string>("");
-  const [param, setParam] = useState<string>("");
 
   //라디오 버튼 선택
   const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === "") {
       setSelect(value);
-      props.setDNo(value);
+      dispatch(editDNo(value));
     } else {
       setSelect(value);
-      props.setDNo(value);
+      dispatch(editDNo(value));
     }
   };
   //배송지 목록 삭제
-  const { mutate, isSuccess } = useDelPay(Number(param));
+
+  const { mutate } = useDelPay();
   const handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
-    mutate();
-    if (isSuccess) {
-      alert("삭제되었습니다");
-    }
-    setParam(e.currentTarget.value);
+    const del = e.currentTarget.value;
+    mutate(del, {
+      onSuccess: () => {
+        alert("삭제 되었습니다");
+      },
+    });
   };
 
   return (
     <t.DivArea>
       <t.TbtnDiv>
-        <t.Tbtn onClick={() => setTab(false)} bgColor="#bebebe">
+        <t.Tbtn
+          onClick={() => {
+            setTab(false);
+            dispatch(editDNo("0"));
+          }}
+          bgColor="#bebebe"
+        >
           배송지 선택
         </t.Tbtn>
-        <t.Tbtn onClick={() => setTab(true)}>신규입력</t.Tbtn>
+        <t.Tbtn
+          onClick={() => {
+            setTab(true);
+            dispatch(editDNo("0"));
+          }}
+        >
+          신규입력
+        </t.Tbtn>
       </t.TbtnDiv>
       <t.ContentsDiv>
         {tab ? (
           <>
-            <NewPayInput
-              setDNo={props.setDNo}
-              name={props.name}
-              setName={props.setName}
-              pNumber={props.pNumber}
-              setPNumber={props.setPNumber}
-              zipcode={props.zipcode}
-              setZipcode={props.setZipcode}
-              address1={props.address1}
-              setAddress1={props.setAddress1}
-              address2={props.address2}
-              setAddress2={props.setAddress2}
-              memo={props.memo}
-              MemoChange={props.MemoChange}
-            />
+            <NewPayInput />
           </>
         ) : (
           <>
             <t.DivArea style={{ marginTop: "10px" }}>
-              {props.addressList.map((val: PayAddressListType, i: number) => {
+              {props.addressList.map((val, i: number) => {
                 return (
-                  <t.Div>
+                  <t.Div key={val.d_No}>
                     <RadioBtn
                       type="radio"
                       value={val.d_No + ""}
@@ -107,10 +100,7 @@ const PayMethodInput = (
                 );
               })}
 
-              <PayMethodSelect
-                memo={props.memo}
-                MemoChange={props.MemoChange}
-              />
+              <PayMethodSelect />
             </t.DivArea>
           </>
         )}

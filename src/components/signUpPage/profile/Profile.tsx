@@ -10,6 +10,7 @@ import * as t from "./Profile.style";
 import ReactS3Client from "react-aws-s3-typescript";
 import { s3Config } from "../../../shared/utils/s3Config";
 import { IConfig } from "../../../../node_modules/react-aws-s3-typescript/dist/types";
+import { useAppSelector } from "../../../redux/store";
 
 interface PropsType {
   imgUrl: string;
@@ -23,11 +24,10 @@ type UploadImg = {
   type: string;
 };
 
-const defaultImg = localStorage.getItem("u_Img");
-
 const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [imgFile, setImgFile] = useState<UploadImg | null>(null);
+  const defaultImg = useAppSelector((state) => state.userSlice.userData.u_Img);
 
   const handleClickFileInput = () => {
     fileInputRef.current?.click();

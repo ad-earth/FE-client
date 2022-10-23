@@ -63,3 +63,21 @@ export interface OrderType {
   o_Price: number;
   oderList: OrderListType[];
 }
+
+// cart
+export interface CartType {
+  cartList: {
+    id: number;
+    keywordNo: number;
+    prodNo: string;
+    thumbnail: string;
+    category: string;
+    brand: string;
+    name: string;
+    price: number;
+    discount: number;
+    option: Array<string | number | null>[];
+    totalPrice: number;
+    totalCnt: number;
+  }[];
+}

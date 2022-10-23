@@ -1,4 +1,4 @@
-import * as t from "./CompleteBody.style";
+import * as t from "./completeBody.style";
 import { MainButton } from "../../../elements/Buttons";
 import { useComplete } from "./useCompleteBody";
 import { CompleteType } from "../completeBody/completeBody.type";

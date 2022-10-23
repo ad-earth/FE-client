@@ -1,9 +1,10 @@
 import * as t from "./AsideHeader.style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MenuDrop from "../../../elements/MenuDrop";
 import useDropDown from "../../../hooks/useDropDown";
 import { theme } from "../../../style/theme";
 import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
+import { useAppSelector } from "../../../redux/store";
 
 interface AsideType {
   isOpen: boolean;
@@ -37,12 +38,11 @@ let data: {
   { id: 5, cate: "로그아웃", path: "/" },
 ];
 
-const userName = localStorage.getItem("u_Name");
-const userId = localStorage.getItem("u_Id");
-
 const AsideHeader = (props: AsideType) => {
   const { isDropped, dropRef, handleRemove } = useDropDown();
   const [infoIsOpen, setInfoIsOpen] = useState(false);
+  const userName = useAppSelector((state) => state.userSlice.userData.u_Name);
+  const userId = useAppSelector((state) => state.userSlice.userData.u_Id);
 
   return (
     <>
@@ -69,7 +69,7 @@ const AsideHeader = (props: AsideType) => {
                 <t.EtcIcon onClick={handleRemove} />
                 <MenuDrop
                   isDropped={isDropped}
-                  data={data}
+                  cateData={data}
                   width="140px"
                   top="80px"
                   left="82%"

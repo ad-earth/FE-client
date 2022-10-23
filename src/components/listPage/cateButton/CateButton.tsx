@@ -1,7 +1,15 @@
+import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as t from "./CateButton.style";
 
-const CateButton = () => {
+import * as t from "./cateButton.style";
+
+const CateButton = ({
+  setPage,
+  setSort,
+}: {
+  setPage: Dispatch<SetStateAction<number>>;
+  setSort: Dispatch<SetStateAction<string>>;
+}) => {
   const categoryList: string[] = [
     "전체",
     "욕실",
@@ -13,33 +21,51 @@ const CateButton = () => {
     "문구",
   ];
   const navigate = useNavigate();
-  const CateClick = (e: any) => {
-    const category = e.target.value;
+  const [active, setActive] = useState<string>("");
+
+  const CateClick = (e: React.FormEvent<HTMLButtonElement>) => {
+    const category = e.currentTarget.value;
     navigate(`/list/${category}`);
+    setPage(1);
+    setSort(`like`);
+    setActive(e.currentTarget.value);
   };
 
   return (
     <>
-      {}
-      <t.BtnWrap className="desktop">
-        {categoryList.map((val, i) => {
-          return (
-            <t.CBtn key={i} value={val} onClick={CateClick}>
-              {val}
-            </t.CBtn>
-          );
-        })}
-      </t.BtnWrap>
-      <t.BtnWrap className="mobile">
-        {categoryList.map((val, i) => {
-          return (
-            <t.SmallCBtn key={i} value={val} onClick={CateClick}>
-              {val}
-            </t.SmallCBtn>
-          );
-        })}
-        <t.LineArea />
-      </t.BtnWrap>
+      <t.BtnArea>
+        <t.BtnWrap>
+          {categoryList.map((val: string, i: number) => {
+            return (
+              <t.CBtn
+                key={i}
+                value={val}
+                onClick={CateClick}
+                active={val === active ? true : false}
+              >
+                {val}
+              </t.CBtn>
+            );
+          })}
+        </t.BtnWrap>
+      </t.BtnArea>
+      <t.SBtnArea>
+        <t.BtnWrap>
+          {categoryList.map((val: string, i: number) => {
+            return (
+              <t.SmallCBtn
+                key={i}
+                value={val}
+                onClick={CateClick}
+                active={val === active ? true : false}
+              >
+                {val}
+              </t.SmallCBtn>
+            );
+          })}
+          <t.LineArea />
+        </t.BtnWrap>
+      </t.SBtnArea>
     </>
   );
 };

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { theme } from "../style/theme";
 
 interface ColorIconType {
-  colorCode?: Array<string | number>[];
+  colorCode?: string | number;
   colorName?: string;
   onClick?: () => void;
 }

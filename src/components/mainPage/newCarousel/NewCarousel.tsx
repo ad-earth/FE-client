@@ -7,11 +7,10 @@ import "slick-carousel/slick/slick-theme.css";
 import * as t from "./newCarousel.style";
 import "../../../style/carousel.css";
 import Card from "../../card/Card";
-import { useNewCarousel } from "./useNewCarousel";
+import { PropsType } from "../newProducts/newProducts.type";
 
-const NewCarousel = () => {
+const NewCarousel = (props: PropsType) => {
   const navigate = useNavigate();
-  const newProducts = useNewCarousel();
 
   //뷰포트 사이즈
   const [viewport, setViewport] = useState(visualViewport.width);
@@ -49,12 +48,9 @@ const NewCarousel = () => {
   return (
     <t.MainContainer>
       <Slider {...setting}>
-        {newProducts.map((x) => {
+        {props?.newList?.map((x) => {
           return (
-            <div
-              key={x.p_No}
-              onClick={() => navigate(`/detail/메인/${x.p_No}`)}
-            >
+            <div key={x.p_No}>
               <Card
                 pThumbnail={x.p_Thumbnail}
                 aBrand={x.a_Brand}
@@ -65,6 +61,7 @@ const NewCarousel = () => {
                 pBest={x.p_Best}
                 pNew={x.p_New}
                 pSale={x.p_Sale}
+                pNo={x.p_No}
               />
             </div>
           );

@@ -30,6 +30,9 @@ export const LeftDiv = styled.div`
     width: 25%;
     object-fit: contain;
     margin-left: 10px;
+    :hover {
+      cursor: pointer;
+    }
   }
   p {
     font-size: ${theme.fs16};

@@ -1,14 +1,16 @@
-import { useState } from "react";
-import * as t from "./PayAgree.style";
+import { editAgree } from "../../../redux/reducer/payErrorSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import * as t from "./payAgree.style";
 
 const PayAgree = () => {
-  const [state, setState] = useState(false);
+  const dispatch = useAppDispatch();
+  const state = useAppSelector((state) => state.payErrorSlice);
 
   const checkHandler = (checked: boolean) => {
     if (checked) {
-      setState(true);
+      dispatch(editAgree(true));
     } else {
-      setState(false);
+      dispatch(editAgree(false));
     }
   };
   return (
@@ -16,7 +18,7 @@ const PayAgree = () => {
       <t.Item>
         <t.CheckBtn
           type="checkbox"
-          checked={state}
+          checked={state.agree}
           onChange={(e) => {
             checkHandler(e.target.checked);
           }}
@@ -27,7 +29,7 @@ const PayAgree = () => {
         <t.Text style={{ margin: "0 5px 0 3px" }}>└ </t.Text>
         <t.CheckBtn
           type="checkbox"
-          checked={state}
+          checked={state.agree}
           onChange={(e) => {
             checkHandler(e.target.checked);
           }}

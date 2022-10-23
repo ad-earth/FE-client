@@ -1,17 +1,43 @@
 import * as t from "./itemList.style";
 import { theme } from "../../style/theme";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../Context";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { SquareBadge } from "../../elements/Badge";
 import { MainButton } from "../../elements/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { setCheckedItems, setOrderData } from "../../redux/reducer/cartSlice";
 
-const ItemList = () => {
+interface PropsType {
+  allChecked: boolean;
+}
+
+type orderDataType = {
+  id: number;
+  keywordNo: number;
+  prodNo: string;
+  thumbnail: string;
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: Array<string | number | null>[];
+  totalPrice: number;
+  totalCnt: number;
+};
+
+const ItemList = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const orderData = useAppSelector((state) => state.cartSlice.orderData);
+  const [viewport, setViewport] = useState(visualViewport.width);
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
   const [option, setOption] = useState([] || null);
-  const [viewport, setViewport] = useState(visualViewport.width);
-  const { cartData } = useContext(UserContext);
+  const [price, setPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [kNo, setkNo] = useState(0);
+  const [checkedList, setCheckedList] = useState([]);
 
   useEffect(() => {
     const resizeListener = () => {
@@ -22,12 +48,56 @@ const ItemList = () => {
 
   const handleOption = (
     prodNo: string,
-    option: (string | number)[][] | null
+    option: Array<string | number | null>[],
+    price: number,
+    discount: number,
+    kNo: number
   ) => {
     setOptionIsOpen(true);
     setProdNo(prodNo);
     setOption(option);
+    setPrice(price);
+    setDiscount(discount);
+    setkNo(kNo);
   };
+
+  // 개별 상품 선택 | 해제
+  const handleCheck = useCallback(
+    (checked: boolean, id: string) => {
+      if (checked) {
+        setCheckedList([...checkedList, Number(id)]);
+      } else {
+        setCheckedList(checkedList.filter((el) => el !== Number(id)));
+      }
+    },
+    [checkedList]
+  );
+
+  // 전체 선택 | 해제
+  const allCheckedItem = useMemo(() => {
+    if (props.allChecked) {
+      setCheckedList(cartData.map((el) => el.id));
+      return <t.CheckBox type="checkbox" defaultChecked={true} />;
+    } else {
+      setCheckedList([]);
+      return <t.CheckBox type="checkbox" defaultChecked={false} />;
+    }
+  }, [props.allChecked]);
+
+  // 선택상품 배열 저장
+  useEffect(() => {
+    if (checkedList) {
+      dispatch(setCheckedItems(checkedList));
+    }
+  }, [checkedList]);
+
+  const handleBuy = (data: orderDataType) => {
+    let cartList = [];
+    cartList.push(data);
+    dispatch(setOrderData(cartList));
+    window.location.href = "/payment";
+  };
+  console.log("order", orderData);
 
   return (
     <>
@@ -36,17 +106,33 @@ const ItemList = () => {
         handleClose={() => setOptionIsOpen(false)}
         prodNo={prodNo}
         option={option}
+        price={price}
+        discount={discount}
+        kNo={kNo}
       />
       {viewport <= 990 ? (
         <>
           {cartData.map((val, i: number) => (
             <t.ItemWrapper>
               <t.SmallProdInfo key={i}>
-                <t.CheckBox type="checkbox" />
+                {props.allChecked ? (
+                  <>{allCheckedItem}</>
+                ) : (
+                  <t.CheckBox
+                    type="checkbox"
+                    value={val.id || ""}
+                    onChange={(e) => {
+                      handleCheck(
+                        e.currentTarget.checked,
+                        e.currentTarget.value
+                      );
+                    }}
+                  />
+                )}
                 <t.SmallDiv>
                   <t.ProdInfo>
                     <t.InfoDiv>
-                      <img src={val.thumbnail[0]} />
+                      <img src={val.thumbnail} />
                       <p>
                         [{val.brand}] {val.name}
                       </p>
@@ -54,7 +140,7 @@ const ItemList = () => {
                     <t.Close2 />
                   </t.ProdInfo>
                   {val.option.map((opt, i: number) => (
-                    <t.OptDiv key={val.id}>
+                    <t.OptDiv key={i}>
                       <div>
                         <SquareBadge />
                         <span>
@@ -90,7 +176,15 @@ const ItemList = () => {
                       color={theme.fc14}
                       hBorder={`0.5px solid ${theme.ls03}`}
                       hBgColor={theme.bg01}
-                      onClick={() => handleOption(val.prodNo, val.option)}
+                      onClick={() =>
+                        handleOption(
+                          val.prodNo,
+                          val.option,
+                          val.price,
+                          val.discount,
+                          val.keywordNo
+                        )
+                      }
                     >
                       옵션 / 수량 변경
                     </MainButton>
@@ -113,8 +207,21 @@ const ItemList = () => {
             <t.BigDiv>
               <t.ItemWrapper>
                 <t.ProdInfo key={val.id}>
-                  <t.CheckBox type="checkbox" />
-                  <img src={val.thumbnail[0]} />
+                  {props.allChecked ? (
+                    <>{allCheckedItem}</>
+                  ) : (
+                    <t.CheckBox
+                      type="checkbox"
+                      value={val.id || ""}
+                      onChange={(e) => {
+                        handleCheck(
+                          e.currentTarget.checked,
+                          e.currentTarget.value
+                        );
+                      }}
+                    />
+                  )}
+                  <img src={val.thumbnail} />
                   <t.InfoDiv>
                     <p>
                       [{val.brand}] {val.name}
@@ -145,7 +252,15 @@ const ItemList = () => {
                     color={theme.fc14}
                     hBorder={`0.5px solid ${theme.ls03}`}
                     hBgColor={theme.bg01}
-                    onClick={() => handleOption(val.prodNo, val.option)}
+                    onClick={() =>
+                      handleOption(
+                        val.prodNo,
+                        val.option,
+                        val.price,
+                        val.discount,
+                        val.keywordNo
+                      )
+                    }
                   >
                     옵션 / 수량 변경
                   </MainButton>
@@ -156,6 +271,7 @@ const ItemList = () => {
                     width={"106px"}
                     fontWeight={"normal"}
                     radius={"30px"}
+                    onClick={() => handleBuy(val)}
                   >
                     바로구매
                   </MainButton>

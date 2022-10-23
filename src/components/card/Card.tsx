@@ -11,14 +11,21 @@ const Card = (props: CardCompoType) => {
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
+  const { keyParams } = useParams<{ keyParams: string }>();
 
   return (
     <>
-      <t.CardCp>
+      <t.CardCp
+        onClick={() =>
+          navigate({
+            pathname: `/detail/${props.pNo}`,
+            search: `category=${category}&keword=${keyParams}`,
+          })
+        }
+      >
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
-              onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
               src={
@@ -39,7 +46,6 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
-                  onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
                   src={
@@ -48,12 +54,10 @@ const Card = (props: CardCompoType) => {
                       : props.pThumbnail[0]
                   }
                 />
-                {/* // props.pThumbnail.length > 1 ? true : false */}
                 <Badge type={"ad"}>AD</Badge>
               </t.AdCardArea>
             ) : (
               <t.CardImg
-                onClick={() => navigate(`/detail/${category}/${props.pNo}`)}
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
                 src={
@@ -68,11 +72,18 @@ const Card = (props: CardCompoType) => {
 
         <t.Div>
           {props.pOption ? (
-            <t.Div>
-              <ColorIcon colorCode={props.pOption} />
-            </t.Div>
+            <t.IconDiv>
+              {props.pOption.map((v, i) => {
+                return v[1] === null ? null : (
+                  <t.Icon>
+                    <ColorIcon colorCode={v[1]} />
+                  </t.Icon>
+                );
+              })}
+            </t.IconDiv>
           ) : null}
-          <t.CardTitle onClick={() => navigate(`/detail/main/${props.pNo}`)}>
+
+          <t.CardTitle>
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
 

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const SearchPage = () => {
   const navigate = useNavigate();
-  const [keyParams, setKeyParams] = useState<string>("");
+  const [keyParams, setKeyParams] = useState<string>("욕실");
   const [pageParams, setPageParams] = useState<number>(1);
 
   const keywordRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -25,7 +25,6 @@ const SearchPage = () => {
     String(pageParams)
   );
 
-  console.log(SearchListData);
   const onClearInput = () => {
     keywordRef.current.value = "";
   };

@@ -8,7 +8,7 @@ interface PropsType {
   radius?: string;
   fcColor?: string;
   bgColor?: string;
-  data: {
+  cateData: {
     id: number;
     cate: string;
     path: string;
@@ -20,9 +20,9 @@ const MenuDrop = (props: PropsType) => {
   return (
     <MenuContainer {...props}>
       <ul>
-        {props.data.map((data, i: number) => (
-          <a href={data.path}>
-            <li key={i}>{data.cate}</li>
+        {props.cateData.map((data, i: number) => (
+          <a href={data.path} key={i}>
+            <li>{data.cate}</li>
           </a>
         ))}
       </ul>

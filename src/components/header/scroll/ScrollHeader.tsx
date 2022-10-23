@@ -1,13 +1,13 @@
 import * as t from "./ScrollHeader.style";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useScrHeaderVisible } from "./useScrollHeader";
 import scrollLogo from "../../../assets/logo/scrollLogo.png";
 
-const ScrollHeader = () => {
-  const [loginState, setLoginState] = useState(false);
-  const { isHeaderVisible } = useScrHeaderVisible();
+const token = localStorage.getItem("token");
 
+const ScrollHeader = () => {
+  const { isHeaderVisible } = useScrHeaderVisible();
+  const navigate = useNavigate();
   const handelLogOut = () => {
     localStorage.clear();
   };
@@ -17,10 +17,10 @@ const ScrollHeader = () => {
       {!isHeaderVisible ? (
         <t.ScHeadContainer>
           <t.ScHeadWrapper>
-            <t.LeftDiv>장보기</t.LeftDiv>
+            <t.LeftDiv onClick={() => navigate("/list")}>장보기</t.LeftDiv>
             <img src={scrollLogo} />
             <t.RightDiv>
-              {loginState ? (
+              {!token ? (
                 <>
                   <Link to={"/login"}>
                     <span>로그인</span>
