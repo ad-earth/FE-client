@@ -1,4 +1,3 @@
-import { useState, SetStateAction, Dispatch } from "react";
 import { useNavigate, Link } from "react-router-dom";
 //style
 import * as t from "./orderList.style";
@@ -6,37 +5,17 @@ import { theme } from "../../../../style/theme";
 //components
 import Product from "../product/Product";
 import { MainButton } from "../../../../elements/Buttons";
+//type
+import { ProductType } from "../../../../containers/myPage/order/order.type";
+import { PropsType } from "./orderList.type";
 
-interface PropsType {
-  p_No: number;
-  p_Thumbnail: string[];
-  a_Brand: string;
-  p_Name: string;
-  p_Option: Array<
-    [string | null, string | null, number | null, number | null, number | null]
-  >;
-  o_Status: string;
-  r_Status: boolean;
-}
+const OrderList = (props: PropsType) => {
+  const { products, orderNo, infoIsOpen, setInfoIsOpen, setProduct } = props;
+  const navigate = useNavigate();
 
-const OrderList = ({
-  products,
-  orderNo,
-  // handleClose,
-  infoIsOpen,
-  setInfoIsOpen,
-  setProduct,
-}: {
-  products: PropsType[];
-  orderNo?: number;
-  infoIsOpen?: boolean;
-  setInfoIsOpen?: Dispatch<SetStateAction<boolean>>;
-  setProduct?: Dispatch<SetStateAction<PropsType>>;
-}) => {
-  let navigate = useNavigate();
-
-  const ClickEvent = (data: PropsType) => {
-    setProduct(data);
+  //구매평 작성 클릭
+  const ClickEvent = (product: ProductType) => {
+    setProduct(product);
     setInfoIsOpen(!infoIsOpen);
   };
   return (
@@ -78,9 +57,7 @@ const OrderList = ({
                 fontSize={`${theme.fs12}`}
                 fontWeight="500"
                 padding="10px 16px"
-                onClick={() => {
-                  ClickEvent(product);
-                }}
+                onClick={() => ClickEvent(product)}
               >
                 구매평 작성
               </MainButton>
