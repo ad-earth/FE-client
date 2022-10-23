@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { openDB } from "idb";
 
 import * as t from "./buttons.style";
@@ -11,8 +11,9 @@ import { useMemo } from "react";
 
 const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
+  const { productNo } = useParams();
 
-  const likeData = useGetLikeQuery(String(props.details?.product?.p_No));
+  const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
     () => ({
       isLike: likeData.data?.data.userLike,
@@ -20,7 +21,7 @@ const Buttons = (props: PropsType) => {
     }),
     [likeData]
   );
-  const { mutate } = usePostLikeQuery(props.details?.product?.p_No);
+  const { mutate } = usePostLikeQuery(Number(productNo));
 
   async function setCart() {
     let cartOptionList: (string | number)[][] = [];
@@ -69,29 +70,46 @@ const Buttons = (props: PropsType) => {
   return (
     <div>
       <t.BtnWrapper>
-        <MainButton
-          radius={"30px"}
-          onClick={() => {
-            setCart();
-            navigate(`/payment`);
-          }}
-        >
-          구매하기
-        </MainButton>
-        <MainButton
-          radius={"30px"}
-          border={`0.5px solid ${theme.ls03}`}
-          bgColor={theme.bg01}
-          color={theme.fc09}
-          hBorder={`0.5px solid ${theme.ls11}`}
-          hBgColor={theme.bg01}
-          onClick={() => {
-            setCart();
-            navigate("/cart");
-          }}
-        >
-          장바구니
-        </MainButton>
+        {props.details?.product?.p_Cnt === 0 ? (
+          <MainButton
+            width={"200%"}
+            radius={"30px"}
+            bgColor={theme.bg09}
+            hBgColor={theme.bg09}
+            onClick={() => {
+              alert("이 상품은 현재 재고가 없어 구매가 불가합니다.");
+            }}
+          >
+            품절된 상품입니다.
+          </MainButton>
+        ) : (
+          <>
+            <MainButton
+              radius={"30px"}
+              onClick={() => {
+                setCart();
+                navigate(`/payment`);
+              }}
+            >
+              구매하기
+            </MainButton>
+            <MainButton
+              radius={"30px"}
+              border={`0.5px solid ${theme.ls03}`}
+              bgColor={theme.bg01}
+              color={theme.fc09}
+              hBorder={`0.5px solid ${theme.ls11}`}
+              hBgColor={theme.bg01}
+              onClick={() => {
+                setCart();
+                navigate("/cart");
+              }}
+            >
+              장바구니
+            </MainButton>
+          </>
+        )}
+
         <MainButton
           radius={"30px"}
           border={`0.5px solid ${theme.ls03}`}
