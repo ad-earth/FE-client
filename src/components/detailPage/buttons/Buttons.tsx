@@ -70,7 +70,7 @@ const Buttons = (props: PropsType) => {
   return (
     <div>
       <t.BtnWrapper>
-        {props.details?.product?.p_Cnt === 0 ? (
+        {props.details?.product?.p_Soldout ? (
           <MainButton
             width={"200%"}
             radius={"30px"}
