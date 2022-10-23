@@ -11,7 +11,7 @@ import ProductOptions from "../../../components/detailPage/productOptions/Produc
 
 const Details = () => {
   const { productNo, keyword } = useParams();
-  const detailData = useDetailQuery(Number(productNo), keyword);
+  const detailData = useDetailQuery(productNo, keyword);
 
   const { productDetail, details } = useMemo(
     () => ({
