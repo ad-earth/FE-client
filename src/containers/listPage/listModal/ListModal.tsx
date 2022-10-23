@@ -66,6 +66,7 @@ const ListModal = ({
                   options={list.p_Option}
                   price={list.p_Cost}
                   discount={list.p_Discount}
+                  // likeCnt={list.p_Like}
                   // like={like}
                 />
               </t.InfoWrapper>

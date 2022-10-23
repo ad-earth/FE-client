@@ -1,3 +1,4 @@
+import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
 import { CartType } from "../types/types";
 //마이페이지
@@ -100,7 +101,9 @@ export const postPay = (
   d_Address1: string,
   d_Address2: string,
   d_Address3: string,
-  d_Memo: string
+  d_Memo: string,
+  products: PayProductsData[],
+  o_Price: number
 ) =>
   axiosInstance.post(`/payment/complete`, {
     address: {
@@ -112,8 +115,10 @@ export const postPay = (
       d_Address3,
       d_Memo,
     },
+    products: products,
+    o_Price,
   });
-export const deletePay = (dNo: number) =>
+export const deletePay = (dNo: string) =>
   axiosInstance.delete(`/shipping-list/${dNo}`);
 //좋아요버튼
 export const postLike = (id: number) => axiosInstance.post(`/wish-list/${id}`);
