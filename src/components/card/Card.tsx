@@ -12,6 +12,13 @@ const Card = (props: CardCompoType) => {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const { keyParams } = useParams<{ keyParams: string }>();
+  //-- 컬러칩 중복제거
+  let optionArr = [];
+  for (let i in props.pOption) {
+    optionArr.push(props.pOption[i][1]);
+  }
+  const optionColor = new Set(optionArr);
+  const newColorCode = [...optionColor];
 
   return (
     <>
@@ -73,10 +80,10 @@ const Card = (props: CardCompoType) => {
         <t.Div>
           {props.pOption ? (
             <t.IconDiv>
-              {props.pOption.map((v, i) => {
-                return v[1] === null ? null : (
+              {newColorCode.map((v) => {
+                return v === null ? null : (
                   <t.Icon>
-                    <ColorIcon colorCode={v[1]} />
+                    <ColorIcon colorCode={v} />
                   </t.Icon>
                 );
               })}
