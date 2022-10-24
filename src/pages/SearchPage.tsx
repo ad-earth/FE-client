@@ -6,6 +6,7 @@ import useSearchDataList from "../containers/searchPage/searchBody/useSearchBody
 import PageBtn from "../components/listPage/pagination/PageBtn";
 import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
 import { useNavigate } from "react-router-dom";
+import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
 
 const SearchPage = () => {
   const navigate = useNavigate();
@@ -49,6 +50,9 @@ const SearchPage = () => {
             cnt={SearchListData.cnt}
             pageNo={SearchListData.pageNo}
           />
+          {SearchListData.cnt === 0 ? (
+            <EmptyDiv message={"검색어를 입력해주세요."} />
+          ) : null}
           <PageBtn
             page={pageParams}
             setPage={setPageParams}

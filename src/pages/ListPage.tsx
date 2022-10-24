@@ -6,6 +6,7 @@ import PageBtn from "../components/listPage/pagination/PageBtn";
 import CardList from "../containers/listPage/cardList/CardList";
 import { useCateList } from "../containers/listPage/cardList/useCardList";
 import { CardListType } from "../containers/listPage/cardList/cardList.type";
+import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
 
 export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
@@ -38,6 +39,9 @@ export const ListPage = () => {
               pageNo={CateListData.pageNo}
             />
           )}
+          {CateListData.cnt === 0 ? (
+            <EmptyDiv message={"등록된 상품이 없습니다."} />
+          ) : null}
           <PageBtn
             setPage={setPageParams}
             cnt={CateListData.cnt}

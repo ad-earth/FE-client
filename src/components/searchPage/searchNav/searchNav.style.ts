@@ -13,3 +13,14 @@ export const LineDiv = styled.div`
     color: ${({ theme }) => theme.fc09};
   }
 `;
+export const EmptyDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 15px;
+  margin: 150px 0 200px;
+  & span {
+    font-size: ${({ theme }) => theme.fs15};
+    color: ${({ theme }) => theme.fc09};
+  }
+`;

@@ -9,4 +9,13 @@ const SearchNav = () => {
     </>
   );
 };
-export default SearchNav;
+
+const EmptyDiv = ({ message }: { message: string }) => {
+  return (
+    <t.EmptyDiv>
+      <span>{message}</span>
+    </t.EmptyDiv>
+  );
+};
+
+export { SearchNav, EmptyDiv };
