@@ -40,10 +40,9 @@ const Details = () => {
 
   return (
     <t.ProdInfoContainer>
-      <Error
-        isError={detailData.isError}
-        errorMessage={detailData.error?.response.data.success}
-      ></Error>
+      <Error isError={detailData.isError}>
+        {detailData.error?.response?.data.success}
+      </Error>
       {viewport <= 990 ? (
         <ProductCarousel imgs={productDetail?.p_Thumbnail} />
       ) : (

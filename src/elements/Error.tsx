@@ -3,7 +3,7 @@ import Alert from "@mui/material/Alert";
 
 interface PropsType {
   isError: boolean;
-  errorMessage: string;
+  children?: React.ReactNode;
 }
 const Error = (props: PropsType) => {
   const [open, setOpen] = useState(true);
@@ -21,7 +21,7 @@ const Error = (props: PropsType) => {
             zIndex: "999",
           }}
         >
-          {props.errorMessage}
+          {props.children}
         </Alert>
       ) : null}
     </div>
