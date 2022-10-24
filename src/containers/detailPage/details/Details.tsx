@@ -9,6 +9,7 @@ import ProductCarousel from "../../../components/detailPage/productCarousel/Prod
 import ProductName from "../../../components/detailPage/productName/ProductName";
 import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
+import Error from "../../../elements/Error";
 
 const Details = () => {
   const { productNo } = useParams();
@@ -39,6 +40,10 @@ const Details = () => {
 
   return (
     <t.ProdInfoContainer>
+      <Error
+        isError={detailData.isError}
+        errorMessage={detailData.error?.response.data.success}
+      ></Error>
       {viewport <= 990 ? (
         <ProductCarousel imgs={productDetail?.p_Thumbnail} />
       ) : (
