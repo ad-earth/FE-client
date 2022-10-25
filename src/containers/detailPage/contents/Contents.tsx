@@ -5,7 +5,6 @@ import * as t from "./contents.style";
 import CommentList from "../../../components/detailPage/commentList/CommentList";
 import Description from "../../../components/detailPage/description/Description";
 import { useGetCommentsQuery } from "./useGetCommentsQuery";
-import { useContentsQuery } from "./useContentsQuery";
 import { useAppSelector } from "../../../redux/store";
 
 const Contents = () => {
@@ -15,16 +14,13 @@ const Contents = () => {
   // 상세정보 & 구매평 스위치
   const [contentsChange, setContentsChange] = useState(false);
 
-  const contents = useContentsQuery(productNo);
-
   const data = useGetCommentsQuery(productNo, page);
-  const { reviewQty, reviewList, content } = useMemo(
+  const { reviewQty, reviewList } = useMemo(
     () => ({
       reviewQty: data.data?.data.p_review,
       reviewList: data.data?.data.reviews,
-      content: contents.data?.data.product.p_Content,
     }),
-    [data, contents]
+    [data]
   );
   return (
     <t.MainContainer>
@@ -38,7 +34,7 @@ const Contents = () => {
         {contentsChange ? (
           <CommentList reviewQty={reviewQty} reviewList={reviewList} />
         ) : (
-          <Description content={content} />
+          <Description />
         )}
       </t.ContentsWrapper>
     </t.MainContainer>

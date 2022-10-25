@@ -4,10 +4,10 @@ import { setErrorMessage, setIsError } from "../../../redux/reducer/errorSlice";
 import { useAppDispatch } from "../../../redux/store";
 import { getDetails } from "../../../shared/apis/api";
 
-export const useDetailQuery = (productNo: string, keyWord?: string) => {
+export const useDetailQuery = (productNo: string, keyword?: string) => {
   const dispatch = useAppDispatch();
 
-  return useQuery("detail", () => getDetails(productNo, keyWord), {
+  return useQuery("detail", () => getDetails(productNo, keyword), {
     onSuccess: ({ data }) => {
       dispatch(setDetails(data));
     },

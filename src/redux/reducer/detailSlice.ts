@@ -16,6 +16,7 @@ export interface productDataType {
       p_Discount: number;
       p_Option: [[string, string, string, number, number]];
       p_Desc: string;
+      p_Content: string;
       p_Soldout: boolean;
       p_Review: number;
       p_Like: number;
@@ -45,6 +46,7 @@ const initialState: productDataType = {
       p_Review: 0,
       p_Like: 0,
       p_New: false,
+      p_Content: null,
     },
   },
   reviewPage: 1,
