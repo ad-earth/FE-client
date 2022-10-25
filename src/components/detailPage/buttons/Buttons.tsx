@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { openDB } from "idb";
 
@@ -7,11 +8,12 @@ import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/Buttons";
 import { PropsType } from "./buttons.type";
 import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
-import { useMemo } from "react";
+import { useAppSelector } from "../../../redux/store";
 
 const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
   const { productNo } = useParams();
+  const optionList = useAppSelector((state) => state.optionSlice.optionData);
 
   const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
@@ -27,7 +29,7 @@ const Buttons = (props: PropsType) => {
     let cartOptionList: (string | number)[][] = [];
     let cartOption: (string | number)[];
 
-    props.optionList?.map((option) => {
+    optionList.map((option) => {
       if (!option.color && !option.size) {
         cartOptionList = [];
       } else {

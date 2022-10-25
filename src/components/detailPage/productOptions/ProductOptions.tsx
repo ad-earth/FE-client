@@ -5,8 +5,13 @@ import { OptionListType, PropsType } from "./productOptions.type";
 import { useDiscount } from "../productName/useDiscount";
 import { addOption } from "./optionsHandler";
 import ProductQty from "../productQty/ProductQty";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { setOptionData } from "../../../redux/reducer/optionSlice";
 
 const ProductOptions = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+
   // 옵션 유무 체크
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
   useEffect(() => {
@@ -22,7 +27,7 @@ const ProductOptions = (props: PropsType) => {
   const price = useDiscount(props.price, props.discount);
 
   // 선택한 옵션 리스트
-  const [optionList, setOptionList] = useState<OptionListType>([]);
+  // const [optionList, setOptionList] = useState<OptionListType>([]);
   const [optionId, setOptionId] = useState<number>(0);
 
   // 옵션 리스트에 옵션 추가
@@ -35,7 +40,7 @@ const ProductOptions = (props: PropsType) => {
       optionList,
       optionId
     );
-    setOptionList([...optionList, newOption]);
+    dispatch(setOptionData([...optionList, newOption]));
     setOptionId(newOptionId);
   };
 
@@ -86,9 +91,7 @@ const ProductOptions = (props: PropsType) => {
       ) : null}
       <ProductQty
         haveOptions={haveOptions}
-        optionList={optionList}
         price={price}
-        setOptionList={setOptionList}
         details={props.details}
       />
     </t.MainContainer>

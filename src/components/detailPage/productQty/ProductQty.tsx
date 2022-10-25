@@ -7,19 +7,24 @@ import { removeOption } from "../productOptions/optionsHandler";
 import { useTotalPrice } from "./useTotalPrice";
 import { useTotalQty } from "./useTotalQty";
 import Buttons from "../buttons/Buttons";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { setOptionData } from "../../../redux/reducer/optionSlice";
 
 const ProductQty = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+
   const [qty, setQty] = useState<number>(1);
   // 상품 총 가격 계산
-  const totalPrice = useTotalPrice(props.optionList);
+  const totalPrice = useTotalPrice(optionList);
   // 상품 총 수량 계산
-  const totalQty = useTotalQty(props.optionList);
+  const totalQty = useTotalQty(optionList);
 
   return (
     <div>
       {props.haveOptions ? (
         <div>
-          {props.optionList.map((option) => {
+          {optionList.map((option) => {
             return (
               <div key={option.id}>
                 <t.OptBox>
@@ -27,20 +32,15 @@ const ProductQty = (props: PropsType) => {
                     {option?.color} {option?.size}
                     <t.IcX
                       onClick={() =>
-                        props.setOptionList(
-                          removeOption(option.id, props.optionList)
+                        dispatch(
+                          setOptionData(removeOption(option.id, optionList))
                         )
                       }
                     />
                   </t.OptWrapper>
                   <t.CountWrapper>
-                    <OptionCountButton
-                      id={option.id}
-                      qty={option.qty}
-                      optionList={props?.optionList}
-                      setOptionList={props?.setOptionList}
-                    />
-                    {(option?.price * option?.qty).toLocaleString()}원
+                    <OptionCountButton id={option.id} qty={option.qty} />
+                    {(option.price * option.qty).toLocaleString()}원
                   </t.CountWrapper>
                 </t.OptBox>
               </div>
@@ -68,7 +68,7 @@ const ProductQty = (props: PropsType) => {
       )}
       <Buttons
         details={props.details}
-        optionList={props.optionList}
+        optionList={optionList}
         totalPrice={totalPrice}
         totalQty={totalQty}
       />
