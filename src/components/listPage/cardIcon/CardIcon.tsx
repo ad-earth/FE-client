@@ -1,6 +1,6 @@
 import * as t from "./cardIcon.style";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import ListModal from "../../../containers/listPage/listModal/ListModal";
 import { useIcon } from "./useCardIcon";
@@ -16,7 +16,8 @@ const CardIcon = ({
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const [plus, setPlus] = useState<number>(val.p_Like);
   const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
-
+  const { category } = useParams<{ category: string }>();
+  const { keyParams } = useParams<{ keyParams: string }>();
   const navigate = useNavigate();
   const { mutate } = useIcon();
 
@@ -41,7 +42,12 @@ const CardIcon = ({
         <t.IconDiv>
           <t.IconSpan>
             <t.MessageIcon
-              onClick={() => navigate(`/detail/main/${val.p_No}`)}
+              onClick={() =>
+                navigate({
+                  pathname: `/detail/${val.p_No}`,
+                  search: `category=${category}&keword=${keyParams}`,
+                })
+              }
             />
             <t.Count>{val.p_Review}</t.Count>
           </t.IconSpan>
