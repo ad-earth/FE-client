@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { boolean } from "yup";
 
 export interface productDataType {
   details: {
@@ -23,6 +22,7 @@ export interface productDataType {
       p_New: boolean;
     };
   };
+  reviewPage: number;
 }
 
 const initialState: productDataType = {
@@ -47,6 +47,7 @@ const initialState: productDataType = {
       p_New: false,
     },
   },
+  reviewPage: 1,
 };
 
 const detailSlice = createSlice({
@@ -56,8 +57,11 @@ const detailSlice = createSlice({
     setDetails: (state, action) => {
       state.details = action.payload;
     },
+    setReviewPage: (state, action) => {
+      state.reviewPage = action.payload;
+    },
   },
 });
 
-export const { setDetails } = detailSlice.actions;
+export const { setDetails, setReviewPage } = detailSlice.actions;
 export default detailSlice.reducer;

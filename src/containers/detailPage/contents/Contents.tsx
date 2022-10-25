@@ -6,10 +6,11 @@ import CommentList from "../../../components/detailPage/commentList/CommentList"
 import Description from "../../../components/detailPage/description/Description";
 import { useGetCommentsQuery } from "./useGetCommentsQuery";
 import { useContentsQuery } from "./useContentsQuery";
+import { useAppSelector } from "../../../redux/store";
 
 const Contents = () => {
   const { productNo } = useParams();
-  const [page, setPage] = useState<number>(1);
+  const page = useAppSelector((state) => state.detailSlice.reviewPage);
 
   // 상세정보 & 구매평 스위치
   const [contentsChange, setContentsChange] = useState(false);
@@ -35,11 +36,7 @@ const Contents = () => {
       </t.MenuWrapper>
       <t.ContentsWrapper>
         {contentsChange ? (
-          <CommentList
-            setPage={setPage}
-            reviewQty={reviewQty}
-            reviewList={reviewList}
-          />
+          <CommentList reviewQty={reviewQty} reviewList={reviewList} />
         ) : (
           <Description content={content} />
         )}
