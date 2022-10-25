@@ -1,15 +1,14 @@
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
+import { useAppSelector } from "../redux/store";
 
-interface PropsType {
-  isError: boolean;
-  children?: React.ReactNode;
-}
-const Error = (props: PropsType) => {
+const Error = () => {
+  const isError = useAppSelector((state) => state.errorSlice.isError);
+  const errorMessage = useAppSelector((state) => state.errorSlice.errorMessage);
   const [open, setOpen] = useState(true);
   return (
     <div>
-      {props.isError && open ? (
+      {isError && open ? (
         <Alert
           severity="error"
           onClose={() => setOpen(false)}
@@ -21,7 +20,7 @@ const Error = (props: PropsType) => {
             zIndex: "999",
           }}
         >
-          {props.children}
+          {errorMessage}
         </Alert>
       ) : null}
     </div>
