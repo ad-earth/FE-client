@@ -10,6 +10,7 @@ import ProductName from "../../../components/detailPage/productName/ProductName"
 import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
 import Error from "../../../elements/Error";
+import { useAppSelector } from "../../../redux/store";
 
 const Details = () => {
   const { productNo } = useParams();
@@ -18,12 +19,13 @@ const Details = () => {
     ignoreQueryPrefix: true,
   });
   const keyword = String(query.keyword);
-  const detailData = useDetailQuery(productNo, keyword ? keyword : null);
 
-  const { productDetail, details } = useMemo(
+  useDetailQuery(productNo, keyword ? keyword : null);
+  const detailData = useAppSelector((state) => state.detailSlice.details);
+
+  const { productDetail } = useMemo(
     () => ({
-      productDetail: detailData.data?.data.product,
-      details: detailData.data?.data,
+      productDetail: detailData?.product,
     }),
     [detailData]
   );
@@ -41,33 +43,11 @@ const Details = () => {
   return (
     <t.ProdInfoContainer>
       <Error />
-      {viewport <= 990 ? (
-        <ProductCarousel imgs={productDetail?.p_Thumbnail} />
-      ) : (
-        <ProductImgs imgs={productDetail?.p_Thumbnail} />
-      )}
+      {viewport <= 990 ? <ProductCarousel /> : <ProductImgs />}
       <t.InfoWrapper>
-        <ProductName
-          price={productDetail?.p_Cost}
-          discount={productDetail?.p_Discount}
-          brand={productDetail?.a_Brand}
-          name={productDetail?.p_Name}
-          best={productDetail?.p_Best}
-          new={productDetail?.p_New}
-          sale={productDetail?.p_Sale}
-          soldout={productDetail?.p_Soldout}
-        />
-        <ProductSummary
-          desc={productDetail?.p_Desc}
-          brand={productDetail?.a_Brand}
-        />
-        <ProductOptions
-          details={details}
-          options={productDetail?.p_Option}
-          price={productDetail?.p_Cost}
-          discount={productDetail?.p_Discount}
-          productNo={productDetail?.p_No}
-        />
+        <ProductName />
+        <ProductSummary />
+        <ProductOptions />
       </t.InfoWrapper>
     </t.ProdInfoContainer>
   );

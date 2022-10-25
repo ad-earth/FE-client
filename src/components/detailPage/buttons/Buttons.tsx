@@ -14,6 +14,7 @@ const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
   const { productNo } = useParams();
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
@@ -54,15 +55,15 @@ const Buttons = (props: PropsType) => {
     });
     store = db.transaction("cart", "readwrite").objectStore("cart");
     store.put({
-      id: props.details?.product?.p_No,
-      keywordNo: props.details?.k_No,
-      prodNo: props.details?.product?.p_No,
-      thumbnail: props.details?.product?.p_Thumbnail[0],
-      category: props.details?.product?.p_Category,
-      brand: props.details?.product?.a_Brand,
-      name: props.details?.product?.p_Name,
-      price: props.details?.product?.p_Cost,
-      discount: props.details?.product?.p_Discount,
+      id: detailData?.product?.p_No,
+      keywordNo: detailData?.k_No,
+      prodNo: detailData?.product?.p_No,
+      thumbnail: detailData?.product?.p_Thumbnail[0],
+      category: detailData?.product?.p_Category,
+      brand: detailData?.product?.a_Brand,
+      name: detailData?.product?.p_Name,
+      price: detailData?.product?.p_Cost,
+      discount: detailData?.product?.p_Discount,
       option: cartOptionList,
       totalPrice: props.totalPrice,
       totalCnt: props.totalQty,
@@ -72,7 +73,7 @@ const Buttons = (props: PropsType) => {
   return (
     <div>
       <t.BtnWrapper>
-        {props.details?.product?.p_Soldout ? (
+        {detailData?.product.p_Soldout ? (
           <MainButton
             width={"200%"}
             radius={"30px"}

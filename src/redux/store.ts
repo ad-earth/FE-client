@@ -10,6 +10,7 @@ import cartSlice from "./reducer/cartSlice";
 import userSlice from "./reducer/userSlice";
 import optionSlice from "./reducer/optionSlice";
 import errorSlice from "./reducer/errorSlice";
+import detailSlice from "./reducer/detailSlice";
 
 const rootReducer = combineReducers({
   payUserSlice: payUserSlice,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   userSlice: userSlice,
   optionSlice: optionSlice,
   errorSlice: errorSlice,
+  detailSlice: detailSlice,
 });
 
 const persistConfig = {
