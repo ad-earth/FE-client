@@ -19,12 +19,12 @@ const ProductCarousel = () => {
       <Slider {...setting}>
         {detailData?.product.p_Thumbnail.map((img, idx) => {
           return (
-            <>
-              <t.ProdImg key={idx} src={img} alt="상품 이미지" />
+            <div key={idx}>
+              <t.ProdImg src={img} alt="상품 이미지" />
               <t.Page>
                 {idx + 1}/ {detailData?.product.p_Thumbnail.length}
               </t.Page>
-            </>
+            </div>
           );
         })}
       </Slider>
