@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { openDB } from "idb";
+import { useNavigate } from "react-router-dom";
 
 import * as t from "./buttons.style";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
@@ -9,14 +8,15 @@ import { MainButton } from "../../../elements/Buttons";
 import { PropsType } from "./buttons.type";
 import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
 import { useAppSelector } from "../../../redux/store";
+import { putCartDB } from "../../../shared/utils/putCartDB";
+import { putPayDB } from "../../../shared/utils/putPayDB";
 
 const Buttons = (props: PropsType) => {
   const navigate = useNavigate();
-  const { productNo } = useParams();
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const likeData = useGetLikeQuery(productNo);
+  const likeData = useGetLikeQuery(String(detailData?.product.p_No));
   const { isLike, likeQty } = useMemo(
     () => ({
       isLike: likeData.data?.data.userLike,
@@ -24,51 +24,7 @@ const Buttons = (props: PropsType) => {
     }),
     [likeData]
   );
-  const { mutate } = usePostLikeQuery(Number(productNo));
-
-  async function setCart() {
-    let cartOptionList: (string | number)[][] = [];
-    let cartOption: (string | number)[];
-
-    optionList.map((option) => {
-      if (!option.color && !option.size) {
-        cartOptionList = [];
-      } else {
-        cartOption = [
-          option.color,
-          option.size,
-          option.extraCost,
-          option.qty,
-          (option.extraCost + option.price) * option.qty,
-        ];
-        cartOptionList.push(cartOption);
-      }
-    });
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    store.put({
-      id: detailData?.product?.p_No,
-      keywordNo: detailData?.k_No,
-      prodNo: detailData?.product?.p_No,
-      thumbnail: detailData?.product?.p_Thumbnail[0],
-      category: detailData?.product?.p_Category,
-      brand: detailData?.product?.a_Brand,
-      name: detailData?.product?.p_Name,
-      price: detailData?.product?.p_Cost,
-      discount: detailData?.product?.p_Discount,
-      option: cartOptionList,
-      totalPrice: props.totalPrice,
-      totalCnt: props.totalQty,
-    });
-  }
+  const { mutate } = usePostLikeQuery(detailData?.product.p_No);
 
   return (
     <div>
@@ -90,7 +46,13 @@ const Buttons = (props: PropsType) => {
             <MainButton
               radius={"30px"}
               onClick={() => {
-                setCart();
+                putPayDB(
+                  detailData,
+                  optionList,
+                  props.qty,
+                  props.totalPrice,
+                  props.totalQty
+                );
                 navigate(`/payment`);
               }}
             >
@@ -104,7 +66,13 @@ const Buttons = (props: PropsType) => {
               hBorder={`0.5px solid ${theme.ls11}`}
               hBgColor={theme.bg01}
               onClick={() => {
-                setCart();
+                putCartDB(
+                  detailData,
+                  optionList,
+                  props.qty,
+                  props.totalPrice,
+                  props.totalQty
+                );
                 navigate("/cart");
               }}
             >
