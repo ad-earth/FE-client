@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 import * as t from "./buttons.style";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
@@ -9,14 +9,16 @@ import { PropsType } from "./buttons.type";
 import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
 import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
-import { putPayDB } from "../../../shared/utils/putPayDB";
+import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
+import ChoiceModal from "../../../elements/ChoiceModal";
 
 const Buttons = (props: PropsType) => {
+  const { productNo } = useParams();
   const navigate = useNavigate();
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const likeData = useGetLikeQuery(String(detailData?.product.p_No));
+  const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
     () => ({
       isLike: likeData.data?.data.userLike,
@@ -24,10 +26,13 @@ const Buttons = (props: PropsType) => {
     }),
     [likeData]
   );
-  const { mutate } = usePostLikeQuery(detailData?.product.p_No);
+  const { mutate } = usePostLikeQuery(productNo);
+
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <div>
+      <ChoiceModal open={open} />
       <t.BtnWrapper>
         {detailData?.product.p_Soldout ? (
           <MainButton
@@ -46,14 +51,14 @@ const Buttons = (props: PropsType) => {
             <MainButton
               radius={"30px"}
               onClick={() => {
-                putPayDB(
+                putPaymentDB(
                   detailData,
                   optionList,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
                 );
-                navigate(`/payment`);
+                navigate("/payment");
               }}
             >
               구매하기
@@ -73,7 +78,7 @@ const Buttons = (props: PropsType) => {
                   props.totalPrice,
                   props.totalQty
                 );
-                navigate("/cart");
+                setOpen(true);
               }}
             >
               장바구니
