@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,9 +6,11 @@ import "slick-carousel/slick/slick-theme.css";
 import * as t from "./mainBanner.style";
 import "../../../style/carousel.css";
 import { mainBanner, mainBanner990 } from "../../../shared/utils/imgUrls";
+import { useViewport } from "../../../hooks/useViewport";
 
 const MainBanner = () => {
   const navigate = useNavigate();
+
   // carousel option
   const setting = {
     autoplaySpeed: 3000,
@@ -24,14 +25,9 @@ const MainBanner = () => {
       </t.DotsWrapper>
     ),
   };
+
   //뷰포트 사이즈에 따라 배너 이미지 변경
-  const [viewport, setViewport] = useState(visualViewport.width);
-  useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+  const viewport = useViewport();
 
   return (
     <>

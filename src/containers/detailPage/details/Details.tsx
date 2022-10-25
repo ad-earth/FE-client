@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import QueryString from "qs";
 
@@ -11,6 +11,7 @@ import ProductSummary from "../../../components/detailPage/productSummary/Produc
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
 import Error from "../../../elements/Error";
 import { useAppSelector } from "../../../redux/store";
+import { useViewport } from "../../../hooks/useViewport";
 
 const Details = () => {
   const { productNo } = useParams();
@@ -31,14 +32,7 @@ const Details = () => {
   );
 
   //뷰포트 사이즈에 따라 상품 썸네일 carousel로 변경
-  const [viewport, setViewport] = useState(visualViewport.width);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+  const viewport = useViewport();
 
   return (
     <t.ProdInfoContainer>

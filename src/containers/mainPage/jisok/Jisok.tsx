@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
-
 import * as t from "./jisok.style";
 import { MainButton } from "../../../elements/Buttons";
 import { theme } from "../../../style/theme";
+import { useViewport } from "../../../hooks/useViewport";
 
 const Jisok = () => {
   //뷰포트 사이즈에 따라 배너 이미지 변경
-  const [viewport, setViewport] = useState(visualViewport.width);
-  useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+  const viewport = useViewport();
+
   return (
     <div>
       {viewport <= 990 ? null : (
