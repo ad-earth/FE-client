@@ -1,5 +1,4 @@
 export interface PropsType {
-  setPage: (page: number) => void;
   reviewQty: number;
   reviewList: {
     createdAt: string;
