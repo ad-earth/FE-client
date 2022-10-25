@@ -2,13 +2,13 @@ import { openDB } from "idb";
 import { DetailType } from "../../components/detailPage/buttons/buttons.type";
 import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
 
-export async function putCartDB(
+export const putCartDB = async (
   detailData: DetailType,
   optionList: OptionListType,
   qty: number,
   totalPrice: number,
   totalQty: number
-) {
+) => {
   let store;
   const db = await openDB("cart", 1, {
     upgrade(db) {
@@ -33,4 +33,4 @@ export async function putCartDB(
     totalPrice: totalPrice,
     totalQty: totalQty !== 0 ? totalQty : qty,
   });
-}
+};
