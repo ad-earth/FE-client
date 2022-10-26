@@ -38,11 +38,13 @@ export const removeOption = (targetId: number, optionList: OptionListType) => {
 // 옵션 수량 수정
 export const changeOption = (
   newId: number,
-  qty: number,
+  newQty: number,
   optionList: OptionListType
 ) => {
-  let index = optionList.findIndex((option) => option.id === newId);
-  let newOptionList = [...optionList];
-  newOptionList[index].qty = qty;
-  return newOptionList;
+  let findIndex = optionList.findIndex((option) => option.id === newId);
+  let copyList = [...optionList];
+  if (findIndex != -1) {
+    copyList[findIndex] = { ...copyList[findIndex], qty: newQty };
+  }
+  return copyList;
 };

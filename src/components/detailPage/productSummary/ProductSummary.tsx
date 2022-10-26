@@ -1,13 +1,15 @@
 import * as t from "./productSummary.style";
-import { PropsType } from "./productSummary.type";
+import { useAppSelector } from "../../../redux/store";
 
-const ProductSummary = (props: PropsType) => {
+const ProductSummary = () => {
+  const detailData = useAppSelector((store) => store.detailSlice.details);
+
   return (
     <t.MainContainer>
-      <p>{props.desc}</p>
+      <p>{detailData?.product.p_Desc}</p>
       <t.Description>
         <span>원산지</span>&ensp; 대한민국 <br />
-        <span>브랜드</span>&ensp; {props.brand} <br />
+        <span>브랜드</span>&ensp; {detailData?.product.a_Brand} <br />
         <span>배송비</span>&ensp; 전 품목 무료배송 <br />
       </t.Description>
     </t.MainContainer>

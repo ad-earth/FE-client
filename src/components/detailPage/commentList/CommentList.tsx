@@ -3,11 +3,14 @@ import Pagination from "@mui/material/Pagination";
 import * as t from "./commentList.style";
 import Comment from "../comment/Comment";
 import { PropsType } from "./commentList.type";
+import { useAppDispatch } from "../../../redux/store";
+import { setReviewPage } from "../../../redux/reducer/detailSlice";
 
 const CommentList = (props: PropsType) => {
+  const dispatch = useAppDispatch();
   // 페이지네이션
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
-    props.setPage(value);
+    dispatch(setReviewPage(value));
   };
 
   return (

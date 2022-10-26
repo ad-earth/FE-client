@@ -3,9 +3,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import * as t from "./productCarousel.style";
-import { PropsType } from "./productCarousel.type";
+import { useAppSelector } from "../../../redux/store";
 
-const ProductCarousel = (props: PropsType) => {
+const ProductCarousel = () => {
+  const detailData = useAppSelector((state) => state.detailSlice.details);
+
   // carousel option
   const setting = {
     dots: false,
@@ -15,14 +17,14 @@ const ProductCarousel = (props: PropsType) => {
   return (
     <t.MainContainer>
       <Slider {...setting}>
-        {props.imgs?.map((img, idx) => {
+        {detailData?.product.p_Thumbnail.map((img, idx) => {
           return (
-            <>
-              <t.ProdImg key={idx} src={img} alt="상품 이미지" />
+            <div key={idx}>
+              <t.ProdImg src={img} alt="상품 이미지" />
               <t.Page>
-                {idx + 1}/ {props.imgs?.length}
+                {idx + 1}/ {detailData?.product.p_Thumbnail.length}
               </t.Page>
-            </>
+            </div>
           );
         })}
       </Slider>

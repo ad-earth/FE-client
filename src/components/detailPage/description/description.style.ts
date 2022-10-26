@@ -8,6 +8,7 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
   color: ${theme.fc09};
+  text-align: center;
   img {
     width: 100%;
     object-fit: contain;

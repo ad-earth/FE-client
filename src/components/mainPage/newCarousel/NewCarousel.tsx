@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,19 +6,11 @@ import * as t from "./newCarousel.style";
 import "../../../style/carousel.css";
 import Card from "../../card/Card";
 import { PropsType } from "../newProducts/newProducts.type";
+import { useViewport } from "../../../hooks/useViewport";
 
 const NewCarousel = (props: PropsType) => {
-  const navigate = useNavigate();
-
   //뷰포트 사이즈
-  const [viewport, setViewport] = useState(visualViewport.width);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+  const viewport = useViewport();
 
   // carousel option
   let setting;
