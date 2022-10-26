@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Alert from "@mui/material/Alert";
-import { useAppSelector } from "../redux/store";
+import { useAppSelector } from "../../redux/store";
 
 const Error = () => {
   const isError = useAppSelector((state) => state.errorSlice.isError);

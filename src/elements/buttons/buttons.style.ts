@@ -25,6 +25,18 @@ export const Btn = styled.button`
     cursor: pointer;
   }
 `;
+export const AddIcon = styled(AddRoundedIcon)({
+  "&.MuiSvgIcon-root": {
+    fontSize: `${theme.fs18}`,
+    cursor: "pointer",
+  },
+});
+export const RemoveIcon = styled(RemoveRoundedIcon)({
+  "&.MuiSvgIcon-root": {
+    fontSize: `${theme.fs18}`,
+    cursor: "pointer",
+  },
+});
 export const CountBtn = styled.div`
   width: 100px;
   height: 27px;
@@ -58,17 +70,3 @@ export const Input = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-export const AddIcon = styled(AddRoundedIcon)({
-  "&.MuiSvgIcon-root": {
-    fontSize: `${theme.fs18}`,
-    cursor: "pointer",
-  },
-});
-
-export const RemoveIcon = styled(RemoveRoundedIcon)({
-  "&.MuiSvgIcon-root": {
-    fontSize: `${theme.fs18}`,
-    cursor: "pointer",
-  },
-});
