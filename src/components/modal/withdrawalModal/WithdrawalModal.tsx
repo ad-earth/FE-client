@@ -1,4 +1,4 @@
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
 // import { useMutation } from "react-query";

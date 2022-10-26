@@ -1,5 +1,5 @@
 import * as t from "./jisok.style";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { theme } from "../../../style/theme";
 import { useViewport } from "../../../hooks/useViewport";
 

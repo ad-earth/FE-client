@@ -1,5 +1,5 @@
 import React from "react";
-import { MainButton } from "../../../../elements/Buttons";
+import { MainButton } from "../../../../elements/buttons/Buttons";
 import useMobileMediaQuery from "../../../../hooks/useMobileMediaQuery";
 import Product from "../product/Product";
 import * as t from "./orderListDetail.style";

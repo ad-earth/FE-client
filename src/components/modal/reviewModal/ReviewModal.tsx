@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
 // component
 import Modal from "../Modal";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 // style
 import * as t from "./reviewModal.style";
 // Icons

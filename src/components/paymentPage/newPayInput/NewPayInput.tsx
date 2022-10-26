@@ -1,7 +1,7 @@
 import * as t from "./newPayInput.style";
 import { useCallback, useState } from "react";
 import { useDaumPostcodePopup } from "react-daum-postcode";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import Input from "../../../elements/Input";
 import { PayMethodSelect } from "../payMethod/PayMethod";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";

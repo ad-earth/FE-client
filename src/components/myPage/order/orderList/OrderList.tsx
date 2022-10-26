@@ -4,7 +4,7 @@ import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
 //components
 import Product from "../product/Product";
-import { MainButton } from "../../../../elements/Buttons";
+import { MainButton } from "../../../../elements/buttons/Buttons";
 //type
 import { ProductType } from "../../../../containers/myPage/order/order.type";
 import { PropsType } from "./orderList.type";

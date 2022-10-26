@@ -5,7 +5,7 @@ import { openDB } from "idb";
 import * as t from "./buttons.style";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
 import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { PropsType } from "./buttons.type";
 import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
 import { useAppSelector } from "../../../redux/store";

@@ -1,6 +1,6 @@
 import * as t from "./CartReceipt.style";
 import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOrderData } from "../../../redux/reducer/cartSlice";

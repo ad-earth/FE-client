@@ -2,7 +2,7 @@ import * as t from "./AddressForm.style";
 import { theme } from "../../../style/theme";
 import { Dispatch, SetStateAction } from "react";
 import Input from "../../../elements/Input";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../redux/store";

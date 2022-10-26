@@ -13,7 +13,7 @@ import PayMethodInput from "../../../components/paymentPage/payMethodInput/PayMe
 import PayRadioBtn from "../../../components/paymentPage/payRadioBtn/PayRadioBtn";
 import PaySummary from "../../../components/paymentPage/paySummary/PaySummary";
 import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
 

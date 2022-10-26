@@ -6,7 +6,7 @@ import * as t from "./cancelDetail.style";
 import CancelInfo from "../../../components/myPage/cancel/cancelInfo/CancelInfo";
 import CancelListDetail from "../../../components/myPage/cancel/cancelListDetail/CancelListDetail";
 import CancelAmount from "../../../components/myPage/cancel/cancelAmount/CancelAmount";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 //hook
 import useCancelDetail from "./useCancelDetail";
 import useMobileMediaQuery from "../../../hooks/useMobileMediaQuery";

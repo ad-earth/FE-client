@@ -9,7 +9,7 @@ import { useSignUpForm } from "./useSignUpForm";
 import Profile from "../../components/signUpPage/profile/Profile";
 import AddressForm from "../../components/signUpPage/addressForm/AddressForm";
 import Input from "../../elements/Input";
-import { MainButton } from "../../elements/Buttons";
+import { MainButton } from "../../elements/buttons/Buttons";
 
 interface FormValue {
   userId: string;

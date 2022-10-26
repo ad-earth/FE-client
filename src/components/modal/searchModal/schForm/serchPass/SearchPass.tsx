@@ -8,7 +8,7 @@ import {
   SearchPassValidation,
 } from "../../../../../shared/utils/yup";
 import Input from "../../../../../elements/Input";
-import { MainButton } from "../../../../../elements/Buttons";
+import { MainButton } from "../../../../../elements/buttons/Buttons";
 import { useSearchPass } from "./useSearchPass";
 import { useResetPass } from "./useResetPass";
 
