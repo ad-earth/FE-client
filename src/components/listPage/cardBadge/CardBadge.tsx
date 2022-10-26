@@ -1,4 +1,4 @@
-import { Badge } from "../../../elements/Badge";
+import { Badge } from "../../../elements/badge/Badge";
 import * as t from "./cardBadge.style";
 import { CardBadgeType } from "./cardBadge.type";
 

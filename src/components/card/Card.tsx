@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
 import { ColorIcon } from "../../elements/ColorIcons";
-import { Badge } from "../../elements/Badge";
+import { Badge } from "../../elements/badge/Badge";
 import { CardCompoType } from "./card.type";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
 

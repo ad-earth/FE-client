@@ -1,7 +1,7 @@
 import * as t from "./itemList.style";
 import { theme } from "../../style/theme";
 import { useEffect, useState, useCallback, useMemo } from "react";
-import { SquareBadge } from "../../elements/Badge";
+import { SquareBadge } from "../../elements/badge/Badge";
 import { MainButton } from "../../elements/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
