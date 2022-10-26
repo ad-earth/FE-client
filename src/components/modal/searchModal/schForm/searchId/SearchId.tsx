@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useSearchId } from "./useSearchId";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SearchIdValidation } from "../../../../../shared/utils/yup";
-import Input from "../../../../../elements/Input";
+import Input from "../../../../../elements/input/Input";
 import { MainButton } from "../../../../../elements/buttons/Buttons";
 
 type IdValue = {

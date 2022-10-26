@@ -8,7 +8,7 @@ import { useUserInfoModal } from "./useUserInfoModal";
 import Modal from "../Modal";
 import Profile from "../../signUpPage/profile/Profile";
 import AddressForm from "../../signUpPage/addressForm/AddressForm";
-import Input from "../../../elements/Input";
+import Input from "../../../elements/input/Input";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { useAppSelector } from "../../../redux/store";
 

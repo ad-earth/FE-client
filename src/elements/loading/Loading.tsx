@@ -1,18 +1,15 @@
+import * as t from "./loading.style";
+import { theme } from "../../style/theme";
 import { useIsFetching, useIsMutating } from "react-query";
 import { FadeLoader } from "react-spinners";
-import styled from "styled-components";
-import { theme } from "../style/theme";
 
-interface PropsType {
-  display: string;
-}
 const Loading = () => {
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
   const display = isFetching || isMutating ? "inherit" : "none";
 
   return (
-    <Display display={display}>
+    <t.Display display={display}>
       <FadeLoader
         color={theme.fc15}
         height={15}
@@ -20,17 +17,8 @@ const Loading = () => {
         radius={2}
         margin={2}
       ></FadeLoader>
-    </Display>
+    </t.Display>
   );
 };
 
 export default Loading;
-
-const Display = styled.div`
-  display: ${(props: PropsType) => props.display};
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-`;
