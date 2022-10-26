@@ -4,7 +4,9 @@ import { PayDataType } from "./orderPList.type";
 
 export const useGetPay = () => {
   const queryFn = async () => await getPay();
-  const res = useQuery("getPay", queryFn);
+  const res = useQuery("getPay", queryFn, {
+    refetchOnWindowFocus: false,
+  });
   return res.data?.data;
 };
 
