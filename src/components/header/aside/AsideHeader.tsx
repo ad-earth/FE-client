@@ -1,6 +1,6 @@
 import * as t from "./AsideHeader.style";
 import { useState } from "react";
-import MenuDrop from "../../../elements/MenuDrop";
+import MenuDrop from "../../../elements/menuDrop/MenuDrop";
 import useDropDown from "../../../hooks/useDropDown";
 import { theme } from "../../../style/theme";
 import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
