@@ -1,22 +1,16 @@
-import React from "react";
 import styled, { css } from "styled-components";
+import { theme } from "../../style/theme";
+import { BadgeType } from "./badge.type";
 
-import { theme } from "../style/theme";
+export const SqBadge = styled.div`
+  width: 20px;
+  font-size: ${theme.fs10};
+  color: ${theme.fc09};
+  border: 1px solid ${theme.rgba05};
+  padding: 2px 4px;
+`;
 
-interface BadgeType {
-  children?: React.ReactNode;
-  type: "new" | "best" | "sale" | "soldout" | "ad";
-}
-
-export const Badge = (props: BadgeType) => {
-  return <BadgeBox type={props.type}>{props.children}</BadgeBox>;
-};
-
-export const SquareBadge = () => {
-  return <SqBadge>필수</SqBadge>;
-};
-
-const BadgeBox = styled.div<BadgeType>`
+export const BadgeBox = styled.div<BadgeType>`
   ${({ type, theme }) => {
     if (type === "new") {
       return css`
@@ -48,12 +42,4 @@ const BadgeBox = styled.div<BadgeType>`
   font-weight: 400;
   text-align: center;
   padding: 2px 8px;
-`;
-
-const SqBadge = styled.div`
-  width: 20px;
-  font-size: ${theme.fs10};
-  color: ${theme.fc09};
-  border: 1px solid ${theme.rgba05};
-  padding: 2px 4px;
 `;

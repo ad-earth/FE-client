@@ -3,7 +3,7 @@ import * as t from "./searchBody.style";
 import Card from "../../../components/card/Card";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
-import SearchNav from "../../../components/searchPage/searchNav/SearchNav";
+import { SearchNav } from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 import { SProductsType, SearchType } from "./searchPage.type";
 

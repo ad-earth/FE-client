@@ -9,7 +9,7 @@ import ProductCarousel from "../../../components/detailPage/productCarousel/Prod
 import ProductName from "../../../components/detailPage/productName/ProductName";
 import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
-import Error from "../../../elements/Error";
+import Error from "../../../elements/error/Error";
 import { useAppSelector } from "../../../redux/store";
 import { useViewport } from "../../../hooks/useViewport";
 

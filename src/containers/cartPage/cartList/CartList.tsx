@@ -3,7 +3,7 @@ import { theme } from "../../../style/theme";
 import { useState } from "react";
 import { openDB } from "idb";
 import { useAppSelector } from "../../../redux/store";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import ItemList from "../../../components/cartPage/ItemList";
 
 const token = localStorage.getItem("token");

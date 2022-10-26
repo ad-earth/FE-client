@@ -27,7 +27,7 @@ import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
-import Loading from "./elements/Loading";
+import Loading from "./elements/loading/Loading";
 
 const queryClient = new QueryClient();
 

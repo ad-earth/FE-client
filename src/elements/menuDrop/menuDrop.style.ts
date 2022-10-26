@@ -1,38 +1,8 @@
 import styled from "styled-components";
-import { theme } from "../style/theme";
+import { theme } from "../../style/theme";
+import { MenuDropType } from "./menuDrop.type";
 
-interface PropsType {
-  width?: string;
-  top?: string;
-  left?: string;
-  radius?: string;
-  fcColor?: string;
-  bgColor?: string;
-  cateData: {
-    id: number;
-    cate: string;
-    path: string;
-  }[];
-  isDropped?: boolean;
-}
-
-const MenuDrop = (props: PropsType) => {
-  return (
-    <MenuContainer {...props}>
-      <ul>
-        {props.cateData.map((data, i: number) => (
-          <a href={data.path} key={i}>
-            <li>{data.cate}</li>
-          </a>
-        ))}
-      </ul>
-    </MenuContainer>
-  );
-};
-
-export default MenuDrop;
-
-const MenuContainer = styled.div<PropsType>`
+export const MenuContainer = styled.div<MenuDropType>`
   width: ${(props) => (props.width ? props.width : "120px")};
   position: absolute;
   top: ${(props) => (props.top ? props.top : "60px")};

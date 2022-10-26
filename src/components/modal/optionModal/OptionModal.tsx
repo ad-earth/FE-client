@@ -3,9 +3,9 @@ import { theme } from "../../../style/theme";
 import { useEffect, useState } from "react";
 import { openDB } from "idb";
 
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import Modal from "../Modal";
-import { ColorHoverIcon } from "../../../elements/ColorIcons";
+import { ColorHoverIcon } from "../../../elements/colorIcons/ColorIcons";
 import { useGetOption } from "./useGetOption";
 // import ProdCnt, { ProdOptCnt } from "../../detailPage/prodCnt/ProdCnt";
 export interface ModalType {

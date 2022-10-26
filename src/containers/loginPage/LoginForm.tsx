@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { openDB } from "idb";
 import { useLoginForm } from "./useLoginForm";
-import { MainButton } from "../../elements/Buttons";
-import Input from "../../elements/Input";
+import { MainButton } from "../../elements/buttons/Buttons";
+import Input from "../../elements/input/Input";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
 const LoginForm = () => {

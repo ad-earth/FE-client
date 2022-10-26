@@ -1,7 +1,7 @@
 import * as t from "./payRadioBtn.style";
 import React, { useState } from "react";
 
-import Input from "../../../elements/Input";
+import Input from "../../../elements/input/Input";
 import { DropBtn } from "../payMethod/payMethod.style";
 import { useRef } from "react";
 

@@ -1,5 +1,5 @@
 import * as t from "./payMethod.style";
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 import {
   RootState,

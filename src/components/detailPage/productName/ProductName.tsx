@@ -1,5 +1,5 @@
 import * as t from "./productName.style";
-import { Badge } from "../../../elements/Badge";
+import { Badge } from "../../../elements/badge/Badge";
 import { useDiscount } from "./useDiscount";
 import { useAppSelector } from "../../../redux/store";
 

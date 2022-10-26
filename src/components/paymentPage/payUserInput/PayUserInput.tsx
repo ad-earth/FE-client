@@ -1,5 +1,5 @@
 import * as t from "./payUserInput.style";
-import Input from "../../../elements/Input";
+import Input from "../../../elements/input/Input";
 import { useCallback, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { editName, editPNumber } from "../../../redux/reducer/payUserSlice";

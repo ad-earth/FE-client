@@ -8,8 +8,8 @@ import { SignUpValidation } from "../../shared/utils/yup";
 import { useSignUpForm } from "./useSignUpForm";
 import Profile from "../../components/signUpPage/profile/Profile";
 import AddressForm from "../../components/signUpPage/addressForm/AddressForm";
-import Input from "../../elements/Input";
-import { MainButton } from "../../elements/Buttons";
+import Input from "../../elements/input/Input";
+import { MainButton } from "../../elements/buttons/Buttons";
 
 interface FormValue {
   userId: string;
