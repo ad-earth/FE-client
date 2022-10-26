@@ -2,7 +2,7 @@ import * as t from "./card.style";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 
-import { ColorIcon } from "../../elements/ColorIcons";
+import { ColorIcon } from "../../elements/colorIcons/ColorIcons";
 import { Badge } from "../../elements/badge/Badge";
 import { CardCompoType } from "./card.type";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
