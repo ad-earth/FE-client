@@ -1,31 +1,39 @@
 import * as t from "./productName.style";
 import { Badge } from "../../../elements/Badge";
-import { PropsType } from "./productName.type";
 import { useDiscount } from "./useDiscount";
+import { useAppSelector } from "../../../redux/store";
 
-const ProductName = (props: PropsType) => {
+const ProductName = () => {
+  const detailData = useAppSelector((store) => store.detailSlice.details);
+
   // 상품 할인가 계산
-  const discountedPrice = useDiscount(props.price, props.discount);
+  const discountedPrice = useDiscount(
+    detailData?.product.p_Cost,
+    detailData?.product.p_Discount
+  );
+
   return (
     <t.MainContainer>
       <t.NameWrapper>
         <t.Name>
-          [{props.brand}] {props.name}
+          [{detailData?.product.a_Brand}] {detailData?.product.p_Name}
         </t.Name>
-        {props.best && <Badge type={"best"}>BEST</Badge>}
-        {props.new && <Badge type={"new"}>NEW</Badge>}
-        {props.sale && <Badge type={"sale"}>SALE</Badge>}
-        {props.soldout && <Badge type={"soldout"}>SOLDOUT</Badge>}
+        {detailData?.product.p_Best && <Badge type={"best"}>BEST</Badge>}
+        {detailData?.product.p_New && <Badge type={"new"}>NEW</Badge>}
+        {detailData?.product.p_Sale && <Badge type={"sale"}>SALE</Badge>}
+        {detailData?.product.p_Soldout && (
+          <Badge type={"soldout"}>SOLDOUT</Badge>
+        )}
       </t.NameWrapper>
-      {props.discount !== 0 ? (
+      {detailData?.product.p_Discount !== 0 ? (
         <t.PriceWrapper>
           <t.Price>{discountedPrice?.toLocaleString()}원</t.Price>
           <t.DiscountedPrice>
-            {props.price?.toLocaleString()}원
+            {detailData?.product.p_Cost?.toLocaleString()}원
           </t.DiscountedPrice>
         </t.PriceWrapper>
       ) : (
-        <t.Price>{props.price?.toLocaleString()}원</t.Price>
+        <t.Price>{detailData?.product.p_Cost?.toLocaleString()}원</t.Price>
       )}
       <t.Line />
     </t.MainContainer>

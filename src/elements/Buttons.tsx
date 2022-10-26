@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -6,6 +6,8 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { theme } from "../style/theme";
 import { OptionListType } from "../components/detailPage/productOptions/productOptions.type";
 import { changeOption } from "../components/detailPage/productOptions/optionsHandler";
+import { useAppDispatch, useAppSelector } from "../redux/store";
+import { setOptionData } from "../redux/reducer/optionSlice";
 
 interface BtnType {
   width?: string;
@@ -27,7 +29,6 @@ interface PropsType {
   qty?: number;
   optionList?: OptionListType;
   setQty?: Dispatch<SetStateAction<number>>;
-  setOptionList?: (optionList: OptionListType) => void;
 }
 
 export const MainButton = (props: BtnType) => {
@@ -62,15 +63,18 @@ export const CountButton = (props: PropsType) => {
 
 // 수량 수정 버튼(상품 옵션이 있는 경우)
 export const OptionCountButton = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+
   let qty = props.qty;
   function addQty() {
     qty += 1;
-    props.setOptionList(changeOption(props.id, qty, props.optionList));
+    dispatch(setOptionData(changeOption(props.id, qty, optionList)));
   }
   function substractQty() {
     if (qty !== 1) {
       qty -= 1;
-      props.setOptionList(changeOption(props.id, qty, props.optionList));
+      dispatch(setOptionData(changeOption(props.id, qty, optionList)));
     }
   }
   return (

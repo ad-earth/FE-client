@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router-dom";
-
 import * as t from "./bestCards.style";
 import Card from "../../card/Card";
 import { PropsType } from "../bestProducts/bestProducts.type";
 
 const BestCards = (props: PropsType) => {
-  const navigate = useNavigate();
-
   return (
     <t.MainContainer>
       {props?.bestList?.map((x) => {

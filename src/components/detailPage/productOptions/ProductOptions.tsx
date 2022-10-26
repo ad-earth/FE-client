@@ -1,28 +1,36 @@
 import { useEffect, useState } from "react";
 
 import * as t from "./productOptions.style";
-import { OptionListType, PropsType } from "./productOptions.type";
 import { useDiscount } from "../productName/useDiscount";
 import { addOption } from "./optionsHandler";
 import ProductQty from "../productQty/ProductQty";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { setOptionData } from "../../../redux/reducer/optionSlice";
 
-const ProductOptions = (props: PropsType) => {
+const ProductOptions = () => {
+  const dispatch = useAppDispatch();
+  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const detailData = useAppSelector((state) => state.detailSlice.details);
+
   // 옵션 유무 체크
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
   useEffect(() => {
-    if (props.options?.length > 1) {
+    if (detailData?.product.p_Option.length > 1) {
       setHaveOptions(true);
     }
-  }, [props.options]);
+  }, [detailData.product.p_Option]);
 
   // 옵션 드롭다운
   const [drop, setDrop] = useState<boolean>(false);
 
   // 상품 가격 계산
-  const price = useDiscount(props.price, props.discount);
+  const price = useDiscount(
+    detailData?.product.p_Cost,
+    detailData?.product.p_Discount
+  );
 
   // 선택한 옵션 리스트
-  const [optionList, setOptionList] = useState<OptionListType>([]);
+  // const [optionList, setOptionList] = useState<OptionListType>([]);
   const [optionId, setOptionId] = useState<number>(0);
 
   // 옵션 리스트에 옵션 추가
@@ -35,7 +43,7 @@ const ProductOptions = (props: PropsType) => {
       optionList,
       optionId
     );
-    setOptionList([...optionList, newOption]);
+    dispatch(setOptionData([...optionList, newOption]));
     setOptionId(newOptionId);
   };
 
@@ -55,7 +63,7 @@ const ProductOptions = (props: PropsType) => {
           </t.OptDropDown>
           {drop ? (
             <t.DropMenuWrapper>
-              {props.options?.map((option, idx) => {
+              {detailData?.product.p_Option?.map((option, idx) => {
                 return (
                   <t.DropMenu
                     key={idx}
@@ -84,13 +92,7 @@ const ProductOptions = (props: PropsType) => {
           ) : null}
         </>
       ) : null}
-      <ProductQty
-        haveOptions={haveOptions}
-        optionList={optionList}
-        price={price}
-        setOptionList={setOptionList}
-        details={props.details}
-      />
+      <ProductQty haveOptions={haveOptions} price={price} />
     </t.MainContainer>
   );
 };

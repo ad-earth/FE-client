@@ -37,7 +37,7 @@ const ListModal = ({
     <>
       {isOpen && (
         <Modal handleClose={() => handleClose()} isOpen={isOpen}>
-          <t.BtnDiv>
+          {/* <t.BtnDiv>
             <t.Xbtn sx={{ fontSize: "36px" }} onClick={close} />
             <t.ProdInfoContainer>
               {viewport <= 990 ? (
@@ -71,7 +71,7 @@ const ListModal = ({
                 />
               </t.InfoWrapper>
             </t.ProdInfoContainer>
-          </t.BtnDiv>
+          </t.BtnDiv> */}
         </Modal>
       )}
     </>
