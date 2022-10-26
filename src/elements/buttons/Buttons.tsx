@@ -1,5 +1,4 @@
 import * as t from "./buttons.style";
-
 import { changeOption } from "../../components/detailPage/productOptions/optionsHandler";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { setOptionData } from "../../redux/reducer/optionSlice";

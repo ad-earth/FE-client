@@ -1,5 +1,5 @@
-import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
+import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import { CartType } from "../types/types";
 //마이페이지
 export const getOrders = (page: number) =>
