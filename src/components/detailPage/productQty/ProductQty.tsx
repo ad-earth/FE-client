@@ -69,6 +69,7 @@ const ProductQty = (props: PropsType) => {
       )}
       <Buttons
         optionList={optionList}
+        qty={qty}
         totalPrice={totalPrice}
         totalQty={totalQty}
       />

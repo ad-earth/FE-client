@@ -1,6 +1,5 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { openDB } from "idb";
 
 import * as t from "./buttons.style";
 import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
@@ -9,10 +8,13 @@ import { MainButton } from "../../../elements/buttons/Buttons";
 import { PropsType } from "./buttons.type";
 import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
 import { useAppSelector } from "../../../redux/store";
+import { putCartDB } from "../../../shared/utils/putCartDB";
+import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
+import ChoiceModal from "../../../elements/ChoiceModal";
 
 const Buttons = (props: PropsType) => {
-  const navigate = useNavigate();
   const { productNo } = useParams();
+  const navigate = useNavigate();
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
@@ -24,54 +26,13 @@ const Buttons = (props: PropsType) => {
     }),
     [likeData]
   );
-  const { mutate } = usePostLikeQuery(Number(productNo));
+  const { mutate } = usePostLikeQuery(productNo);
 
-  async function setCart() {
-    let cartOptionList: (string | number)[][] = [];
-    let cartOption: (string | number)[];
-
-    optionList.map((option) => {
-      if (!option.color && !option.size) {
-        cartOptionList = [];
-      } else {
-        cartOption = [
-          option.color,
-          option.size,
-          option.extraCost,
-          option.qty,
-          (option.extraCost + option.price) * option.qty,
-        ];
-        cartOptionList.push(cartOption);
-      }
-    });
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    store.put({
-      id: detailData?.product?.p_No,
-      keywordNo: detailData?.k_No,
-      prodNo: detailData?.product?.p_No,
-      thumbnail: detailData?.product?.p_Thumbnail[0],
-      category: detailData?.product?.p_Category,
-      brand: detailData?.product?.a_Brand,
-      name: detailData?.product?.p_Name,
-      price: detailData?.product?.p_Cost,
-      discount: detailData?.product?.p_Discount,
-      option: cartOptionList,
-      totalPrice: props.totalPrice,
-      totalCnt: props.totalQty,
-    });
-  }
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <div>
+      <ChoiceModal open={open} />
       <t.BtnWrapper>
         {detailData?.product.p_Soldout ? (
           <MainButton
@@ -90,8 +51,14 @@ const Buttons = (props: PropsType) => {
             <MainButton
               radius={"30px"}
               onClick={() => {
-                setCart();
-                navigate(`/payment`);
+                putPaymentDB(
+                  detailData,
+                  optionList,
+                  props.qty,
+                  props.totalPrice,
+                  props.totalQty
+                );
+                navigate("/payment");
               }}
             >
               구매하기
@@ -104,8 +71,14 @@ const Buttons = (props: PropsType) => {
               hBorder={`0.5px solid ${theme.ls11}`}
               hBgColor={theme.bg01}
               onClick={() => {
-                setCart();
-                navigate("/cart");
+                putCartDB(
+                  detailData,
+                  optionList,
+                  props.qty,
+                  props.totalPrice,
+                  props.totalQty
+                );
+                setOpen(true);
               }}
             >
               장바구니
