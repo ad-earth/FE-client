@@ -11,7 +11,6 @@ import { useViewport } from "../../../hooks/useViewport";
 const MainBanner = () => {
   const navigate = useNavigate();
 
-  // carousel option
   const setting = {
     autoplaySpeed: 3000,
     autoplay: true,
