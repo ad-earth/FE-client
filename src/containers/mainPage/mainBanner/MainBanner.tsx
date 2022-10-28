@@ -26,7 +26,6 @@ const MainBanner = () => {
     ),
   };
 
-  //뷰포트 사이즈에 따라 배너 이미지 변경
   const viewport = useViewport();
 
   return (

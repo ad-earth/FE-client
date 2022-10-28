@@ -9,10 +9,8 @@ import { PropsType } from "../newProducts/newProducts.type";
 import { useViewport } from "../../../hooks/useViewport";
 
 const NewCarousel = (props: PropsType) => {
-  //뷰포트 사이즈
   const viewport = useViewport();
 
-  // carousel option
   let setting;
 
   if (viewport <= 990) {
