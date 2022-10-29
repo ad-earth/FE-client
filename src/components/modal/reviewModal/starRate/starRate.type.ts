@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
-import { StateType } from "../reviewModal.type";
+import { ReviewType } from "../reviewModal.type";
 
 export interface PropsType {
-  starVal: StateType;
-  setStarVal: Dispatch<SetStateAction<StateType>>;
+  starVal: ReviewType;
+  setStarVal: Dispatch<SetStateAction<ReviewType>>;
 }

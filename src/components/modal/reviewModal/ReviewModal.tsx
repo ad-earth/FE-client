@@ -2,15 +2,15 @@ import { useState, useRef } from "react";
 import Modal from "../Modal";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import * as t from "./reviewModal.style";
-import useReviewModal from "./useReviewModal";
+import useReviewModalQuery from "./useReviewModalQuery";
 import { useAppSelector } from "../../../redux/store";
-import { PropsType, StateType } from "./reviewModal.type";
+import { PropsType, ReviewType } from "./reviewModal.type";
 import StarRate from "./starRate/StarRate";
 
 export default function ReviewModal({ handleClose, isOpen }: PropsType) {
   const reviewData = useAppSelector((store) => store.reviewSlice.review);
 
-  const [reviewState, setReviewState] = useState<StateType>({
+  const [reviewState, setReviewState] = useState<ReviewType>({
     id: 0,
     r_Content: "",
     r_Score: 5,
@@ -21,7 +21,7 @@ export default function ReviewModal({ handleClose, isOpen }: PropsType) {
     setReviewState({ ...reviewState, r_Content: event.target.value });
   };
   //hook
-  const { mutate: addReview, isSuccess } = useReviewModal(reviewState);
+  const { mutate: addReview, isSuccess } = useReviewModalQuery(reviewState);
   if (isSuccess) {
     alert("리뷰등록이 완료되었습니다!");
     handleClose();
