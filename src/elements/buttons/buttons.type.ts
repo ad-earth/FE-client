@@ -22,3 +22,10 @@ export interface PropsType {
   optionList?: OptionListType;
   setQty?: Dispatch<SetStateAction<number>>;
 }
+
+export interface NotFoundType {
+  type: string;
+  onClick: () => void;
+  text: string;
+  children?: React.ReactNode;
+}
