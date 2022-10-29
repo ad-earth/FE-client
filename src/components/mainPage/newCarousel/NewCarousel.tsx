@@ -1,12 +1,11 @@
+import * as t from "./newCarousel.style";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import * as t from "./newCarousel.style";
-import "../../../style/carousel.css";
-import Card from "../../card/Card";
 import { PropsType } from "../newProducts/newProducts.type";
 import { useViewport } from "../../../hooks/useViewport";
+import "../../../style/carousel.css";
+import Card from "../../card/Card";
 
 const NewCarousel = (props: PropsType) => {
   const viewport = useViewport();

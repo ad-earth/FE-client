@@ -1,6 +1,6 @@
 import * as t from "./bestCards.style";
-import Card from "../../card/Card";
 import { PropsType } from "../bestProducts/bestProducts.type";
+import Card from "../../card/Card";
 
 const BestCards = (props: PropsType) => {
   return (

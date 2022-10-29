@@ -1,12 +1,11 @@
+import * as t from "./mainBanner.style";
 import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import * as t from "./mainBanner.style";
+import { useViewport } from "../../../hooks/useViewport";
 import "../../../style/carousel.css";
 import { mainBanner, mainBanner990 } from "../../../shared/utils/imgUrls";
-import { useViewport } from "../../../hooks/useViewport";
 
 const MainBanner = () => {
   const navigate = useNavigate();

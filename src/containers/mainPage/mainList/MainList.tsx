@@ -1,9 +1,8 @@
 import { useMemo } from "react";
-
+import { useGetMainListQuery } from "./useGetMainListQuery";
 import BestProducts from "../../../components/mainPage/bestProducts/BestProducts";
 import MainLinks from "../../../components/mainPage/mainLinks/MainLinks";
 import NewProducts from "../../../components/mainPage/newProducts/NewProducts";
-import { useGetMainListQuery } from "./useGetMainListQuery";
 
 const MainList = () => {
   const mainData = useGetMainListQuery();
