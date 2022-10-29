@@ -6,4 +6,5 @@ export interface PropsType {
     [string | null, string | null, number | null, number | null, number | null]
   >;
   o_Status: string;
+  p_No: number;
 }

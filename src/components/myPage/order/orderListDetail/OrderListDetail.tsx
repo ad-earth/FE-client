@@ -7,6 +7,7 @@ import { useAppDispatch } from "../../../../redux/store";
 import { setReviewData } from "../../../../redux/reducer/reviewSlice";
 import { useViewport } from "../../../../hooks/useViewport";
 import { PropsType } from "./orderListDetail.type";
+import { Link } from "react-router-dom";
 
 const OrderListDetail = ({ products }: { products: PropsType[] }) => {
   const viewport = useViewport();
@@ -37,7 +38,9 @@ const OrderListDetail = ({ products }: { products: PropsType[] }) => {
           {products.map((product: PropsType, i: number) => (
             <tr key={i}>
               <td>
-                <Product product={product} />
+                <Link to={`/detail/${product.p_No}`} className="link">
+                  <Product product={product} />
+                </Link>
               </td>
               {i === 0 ? (
                 <td rowSpan={products.length} className="center">
