@@ -11,7 +11,7 @@ interface NavLinkType {
   id: number;
 }
 
-const AsideNav = () => {
+export const AsideNavDesktop = () => {
   const [withdrawaIsOpen, setWithdrawaIsOpen] = useState<boolean>(false);
   const [userInfoIsOpen, setUserInfoIsOpen] = useState<boolean>(false);
   const navClickEvent = (
@@ -57,6 +57,34 @@ const AsideNav = () => {
     </>
   );
 };
+export const AsideNavMobile = () => {
+  const navClickEvent = (
+    data: NavLinkType,
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    data.path === "modal" && e.preventDefault();
+  };
+
+  return (
+    <>
+      {listMobile.map((data) => (
+        <t.MobileNav key={data.id}>
+          <NavLink
+            to={data.path}
+            onClick={(e) => navClickEvent(data, e)}
+            style={({ isActive }) => ({
+              borderBottom: `2px solid ${
+                isActive ? `${theme.fc15}` : `${theme.fc01}`
+              }`,
+            })}
+          >
+            {data.name}
+          </NavLink>
+        </t.MobileNav>
+      ))}
+    </>
+  );
+};
 const list: NavLinkType[] = [
   { id: 1, name: "주문 조회", path: "mypage" },
   { id: 2, name: "위시 리스트", path: "wish" },
@@ -64,5 +92,8 @@ const list: NavLinkType[] = [
   { id: 4, name: "정보 수정", path: "modal" },
   { id: 5, name: "회원탈퇴", path: "modal" },
 ];
-
-export default AsideNav;
+const listMobile = [
+  { id: 1, name: "주문 조회", path: "mypage" },
+  { id: 2, name: "위시 리스트", path: "wish" },
+  { id: 3, name: "취소 조회", path: "cancel" },
+];

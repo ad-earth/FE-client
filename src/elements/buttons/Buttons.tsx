@@ -2,7 +2,7 @@ import * as t from "./buttons.style";
 import { changeOption } from "../../components/detailPage/productOptions/optionsHandler";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { setOptionData } from "../../redux/reducer/optionSlice";
-import { BtnType, PropsType } from "./buttons.type";
+import { BtnType, PropsType, NotFoundType } from "./buttons.type";
 
 export const MainButton = (props: BtnType) => {
   return <t.Btn {...props}>{props.children}</t.Btn>;
@@ -61,4 +61,39 @@ export const OptionCountButton = (props: PropsType) => {
       </t.Plus>
     </t.CountBtn>
   );
+};
+
+//notFound
+export const NotFoundBtn = (props: NotFoundType) => {
+  const { type, text, children, onClick } = props;
+  if (type === "back") {
+    return (
+      <t.Btn
+        onClick={onClick}
+        width="200px"
+        radius="5px"
+        bgColor="transparent"
+        hBgColor="transparent"
+        border="1px solid #000"
+        hBorder="1px solid #000"
+        hColor="#000"
+        color="#000"
+      >
+        {text ? text : children}
+      </t.Btn>
+    );
+  }
+  if (type === "home") {
+    return (
+      <t.Btn
+        onClick={onClick}
+        width="200px"
+        radius="5px"
+        bgColor="#000"
+        hBgColor="#000"
+      >
+        {text ? text : children}
+      </t.Btn>
+    );
+  }
 };

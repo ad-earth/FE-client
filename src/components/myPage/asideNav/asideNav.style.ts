@@ -8,7 +8,18 @@ export const NavListBox = styled.ul`
   & li a {
     color: ${({ theme }) => theme.fc14};
   }
-  @media (max-width: 990px) {
-    display: none;
+`;
+export const MobileNav = styled.div`
+  margin-bottom: 20px;
+  border-bottom: 1px solid ${({ theme }) => theme.ls03};
+  width: 33%;
+  float: left;
+  a {
+    width: 100%;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    background-color: ${({ theme }) => theme.bg01};
+    color: ${({ theme }) => theme.fc14};
   }
 `;
