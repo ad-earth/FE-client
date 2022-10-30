@@ -7,10 +7,11 @@ export const MainContainer = styled.div`
   row-gap: 30px;
   @media (max-width: 990px) {
     width: 100%;
-    margin: 30px auto;
     grid-template-columns: repeat(2, 50%);
+    margin: 30px auto;
   }
 `;
+
 export const CardWrapper = styled.div`
   width: 100%;
 `;
