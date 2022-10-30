@@ -5,24 +5,22 @@ import Card from "../../card/Card";
 const BestCards = (props: PropsType) => {
   return (
     <t.MainContainer>
-      {props?.bestList?.map((x) => {
-        return (
-          <t.CardWrapper key={x.p_No}>
-            <Card
-              pThumbnail={x.p_Thumbnail}
-              aBrand={x.a_Brand}
-              pName={x.p_Name}
-              pCost={x.p_Cost}
-              pDiscount={x.p_Discount}
-              pSoldOut={x.p_Soldout}
-              pBest={x.p_Best}
-              pNew={x.p_New}
-              pSale={x.p_Sale}
-              pNo={x.p_No}
-            />
-          </t.CardWrapper>
-        );
-      })}
+      {props.bestList?.map((best) => (
+        <t.CardWrapper key={best.p_No}>
+          <Card
+            pThumbnail={best.p_Thumbnail}
+            aBrand={best.a_Brand}
+            pName={best.p_Name}
+            pCost={best.p_Cost}
+            pDiscount={best.p_Discount}
+            pSoldOut={best.p_Soldout}
+            pBest={best.p_Best}
+            pNew={best.p_New}
+            pSale={best.p_Sale}
+            pNo={best.p_No}
+          />
+        </t.CardWrapper>
+      ))}
     </t.MainContainer>
   );
 };

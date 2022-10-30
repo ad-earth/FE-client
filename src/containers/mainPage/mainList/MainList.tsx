@@ -16,11 +16,11 @@ const MainList = () => {
   );
 
   return (
-    <div>
+    <>
       <BestProducts bestList={bestList} />
       <MainLinks />
       <NewProducts newList={newList} />
-    </div>
+    </>
   );
 };
 

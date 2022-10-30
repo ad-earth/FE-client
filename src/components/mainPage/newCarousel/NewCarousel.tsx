@@ -10,10 +10,10 @@ import Card from "../../card/Card";
 const NewCarousel = (props: PropsType) => {
   const viewport = useViewport();
 
-  let setting;
+  let carouselSetting;
 
   if (viewport <= 990) {
-    setting = {
+    carouselSetting = {
       autoplaySpeed: 3000,
       autoplay: true,
       dotsClass: "slick-dots",
@@ -22,7 +22,7 @@ const NewCarousel = (props: PropsType) => {
       slidesToScroll: 2,
     };
   } else {
-    setting = {
+    carouselSetting = {
       autoplaySpeed: 3000,
       autoplay: true,
       dotsClass: "slick-dots",
@@ -34,25 +34,23 @@ const NewCarousel = (props: PropsType) => {
 
   return (
     <t.MainContainer>
-      <Slider {...setting}>
-        {props?.newList?.map((x) => {
-          return (
-            <div key={x.p_No}>
-              <Card
-                pThumbnail={x.p_Thumbnail}
-                aBrand={x.a_Brand}
-                pName={x.p_Name}
-                pCost={x.p_Cost}
-                pDiscount={x.p_Discount}
-                pSoldOut={x.p_Soldout}
-                pBest={x.p_Best}
-                pNew={x.p_New}
-                pSale={x.p_Sale}
-                pNo={x.p_No}
-              />
-            </div>
-          );
-        })}
+      <Slider {...carouselSetting}>
+        {props.newList?.map((product) => (
+          <div key={product.p_No}>
+            <Card
+              pThumbnail={product.p_Thumbnail}
+              aBrand={product.a_Brand}
+              pName={product.p_Name}
+              pCost={product.p_Cost}
+              pDiscount={product.p_Discount}
+              pSoldOut={product.p_Soldout}
+              pBest={product.p_Best}
+              pNew={product.p_New}
+              pSale={product.p_Sale}
+              pNo={product.p_No}
+            />
+          </div>
+        ))}
       </Slider>
     </t.MainContainer>
   );
