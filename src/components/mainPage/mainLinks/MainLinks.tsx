@@ -8,6 +8,7 @@ import {
 
 const MainLinks = () => {
   const navigate = useNavigate();
+
   return (
     <t.Background>
       <t.MainContainer>
