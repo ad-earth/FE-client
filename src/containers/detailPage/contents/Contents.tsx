@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import * as t from "./contents.style";
 import ReviewList from "../../../components/detailPage/reviewList/ReviewList";
 import Description from "../../../components/detailPage/description/Description";
-import { useGetCommentsQuery } from "./useGetCommentsQuery";
+import { useGetReviewsQuery } from "./useGetReviewsQuery";
 import { useAppSelector } from "../../../redux/store";
 
 const Contents = () => {
@@ -13,7 +13,7 @@ const Contents = () => {
 
   const [menuSwitch, setMenuSwitch] = useState(false);
 
-  const data = useGetCommentsQuery(productNo, page);
+  const data = useGetReviewsQuery(productNo, page);
   const { reviewQty, reviewList } = useMemo(
     () => ({
       reviewQty: data.data?.data.p_review,
