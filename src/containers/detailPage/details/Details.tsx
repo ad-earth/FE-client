@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import QueryString from "qs";
 
 import * as t from "./details.style";
-import { useDetailQuery } from "./useDetailQuery";
+import { useGetDetailQuery } from "./useGetDetailQuery";
 import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
 import ProductName from "../../../components/detailPage/productName/ProductName";
@@ -20,7 +20,7 @@ const Details = () => {
     ignoreQueryPrefix: true,
   });
   const keyword = String(query.keyword);
-  useDetailQuery(productNo, keyword ? keyword : null);
+  useGetDetailQuery(productNo, keyword ? keyword : null);
   const viewport = useViewport();
 
   return (
