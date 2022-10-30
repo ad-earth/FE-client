@@ -1,9 +1,5 @@
 import * as t from "./missionBox.style";
-
-interface PropsType {
-  category: string;
-  amount: string;
-}
+import { PropsType } from "./missionBox.type";
 
 const MissionBox = (props: PropsType) => {
   return (
