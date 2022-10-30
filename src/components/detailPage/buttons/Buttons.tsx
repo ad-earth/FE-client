@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import * as t from "./buttons.style";
-import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
+
 import { theme } from "../../../style/theme";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { PropsType } from "./buttons.type";
@@ -16,7 +16,7 @@ import ChoiceModal from "../../../elements/ChoiceModal";
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();
   const navigate = useNavigate();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const likeData = useGetLikeQuery(productNo);
@@ -54,7 +54,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putPaymentDB(
                   detailData,
-                  optionList,
+                  optionData,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
@@ -74,7 +74,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putCartDB(
                   detailData,
-                  optionList,
+                  optionData,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
@@ -98,17 +98,7 @@ const Buttons = (props: PropsType) => {
             mutate();
           }}
         >
-          {isLike ? (
-            <Heart
-              style={{
-                color: theme.fc15,
-                fill: theme.bg16,
-                paddingRight: "4px",
-              }}
-            />
-          ) : (
-            <Heart style={{ color: theme.fc04, paddingRight: "4px" }} />
-          )}
+          {isLike ? <t.HeartIcon /> : <t.NoHeartIcon />}
           {likeQty}
         </MainButton>
       </t.BtnWrapper>
