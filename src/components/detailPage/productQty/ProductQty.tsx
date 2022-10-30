@@ -1,17 +1,16 @@
-import { useState } from "react";
-
 import * as t from "./productQty.style";
+import { useState } from "react";
+import { PropsType } from "./productQty.type";
+import { useTotalPrice } from "./useTotalPrice";
+import { useTotalQty } from "./useTotalQty";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { setOptionData } from "../../../redux/reducer/optionSlice";
+import { removeOption } from "../productOptions/optionsHandler";
 import {
   CountButton,
   OptionCountButton,
 } from "../../../elements/buttons/Buttons";
-import { PropsType } from "./productQty.type";
-import { removeOption } from "../productOptions/optionsHandler";
-import { useTotalPrice } from "./useTotalPrice";
-import { useTotalQty } from "./useTotalQty";
 import Buttons from "../buttons/Buttons";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { setOptionData } from "../../../redux/reducer/optionSlice";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();

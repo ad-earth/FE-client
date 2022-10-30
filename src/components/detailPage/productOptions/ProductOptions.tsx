@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-
 import * as t from "./productOptions.style";
+import { useEffect, useState } from "react";
 import { useDiscount } from "../productName/useDiscount";
 import { addOption } from "./optionsHandler";
-import ProductQty from "../productQty/ProductQty";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
+import ProductQty from "../productQty/ProductQty";
 
 const ProductOptions = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +12,7 @@ const ProductOptions = () => {
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
+
   useEffect(() => {
     if (detailData?.product.p_Option.length > 1) {
       setHaveOptions(true);

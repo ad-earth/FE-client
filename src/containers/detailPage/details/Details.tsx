@@ -1,17 +1,14 @@
-import { useMemo } from "react";
+import * as t from "./details.style";
 import { useLocation, useParams } from "react-router-dom";
 import QueryString from "qs";
-
-import * as t from "./details.style";
 import { useGetDetailQuery } from "./useGetDetailQuery";
-import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
+import { useViewport } from "../../../hooks/useViewport";
+import Error from "../../../elements/error/Error";
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
+import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import ProductName from "../../../components/detailPage/productName/ProductName";
 import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
-import Error from "../../../elements/error/Error";
-import { useAppSelector } from "../../../redux/store";
-import { useViewport } from "../../../hooks/useViewport";
 
 const Details = () => {
   const { productNo } = useParams();

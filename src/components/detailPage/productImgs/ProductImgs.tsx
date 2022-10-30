@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import * as t from "./productImgs.style";
+import { useState } from "react";
 import { useAppSelector } from "../../../redux/store";
 
 const ProductImgs = () => {

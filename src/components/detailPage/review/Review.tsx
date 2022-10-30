@@ -3,7 +3,6 @@ import { PropsType } from "./review.type";
 import { useDelReviewQuery } from "./useDelReviewQuery";
 
 const Review = (props: PropsType) => {
-  console.log(props);
   let usernameLength = props.review?.u_Id.length;
   let maskingUsername =
     props.review?.u_Id.substring(0, usernameLength - 3) + "***";

@@ -1,17 +1,16 @@
+import * as t from "./contents.style";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import * as t from "./contents.style";
+import { useAppSelector } from "../../../redux/store";
+import { useGetReviewsQuery } from "./useGetReviewsQuery";
 import ReviewList from "../../../components/detailPage/reviewList/ReviewList";
 import Description from "../../../components/detailPage/description/Description";
-import { useGetReviewsQuery } from "./useGetReviewsQuery";
-import { useAppSelector } from "../../../redux/store";
 
 const Contents = () => {
   const { productNo } = useParams();
   const pageData = useAppSelector((state) => state.detailSlice.reviewPage);
 
-  const [menuSwitch, setMenuSwitch] = useState(false);
+  const [menuSwitch, setMenuSwitch] = useState<boolean>(false);
 
   const reviewQuery = useGetReviewsQuery(productNo, pageData);
   const { reviewQty, reviewList } = useMemo(

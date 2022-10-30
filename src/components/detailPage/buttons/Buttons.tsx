@@ -1,10 +1,7 @@
+import * as t from "./buttons.style";
+import { theme } from "../../../style/theme";
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import * as t from "./buttons.style";
-
-import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/buttons/Buttons";
 import { PropsType } from "./buttons.type";
 import { useGetLikeQuery } from "./useGetLikeQuery";
 import { usePostLikeQuery } from "./usePostLikeQuery";
@@ -12,6 +9,7 @@ import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
 import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
 import ChoiceModal from "../../../elements/ChoiceModal";
+import { MainButton } from "../../../elements/buttons/Buttons";
 
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();

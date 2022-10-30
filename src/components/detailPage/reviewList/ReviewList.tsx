@@ -1,10 +1,9 @@
-import Pagination from "@mui/material/Pagination";
-
 import * as t from "./reviewList.style";
-import Review from "../review/Review";
+import Pagination from "@mui/material/Pagination";
 import { PropsType } from "./reviewList.type";
 import { useAppDispatch } from "../../../redux/store";
 import { setReviewPage } from "../../../redux/reducer/detailSlice";
+import Review from "../review/Review";
 
 const ReviewList = (props: PropsType) => {
   const dispatch = useAppDispatch();

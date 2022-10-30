@@ -1,6 +1,6 @@
 import * as t from "./description.style";
-import DeliveryInfo from "../deliveryInfo/DeliveryInfo";
 import { useAppSelector } from "../../../redux/store";
+import DeliveryInfo from "../deliveryInfo/DeliveryInfo";
 
 const Description = () => {
   const detailData = useAppSelector((state) => state.detailSlice.details);
