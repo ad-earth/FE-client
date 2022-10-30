@@ -1,12 +1,12 @@
 import Pagination from "@mui/material/Pagination";
 
-import * as t from "./commentList.style";
-import Comment from "../comment/Comment";
-import { PropsType } from "./commentList.type";
+import * as t from "./reviewList.style";
+import Review from "../review/Review";
+import { PropsType } from "./reviewList.type";
 import { useAppDispatch } from "../../../redux/store";
 import { setReviewPage } from "../../../redux/reducer/detailSlice";
 
-const CommentList = (props: PropsType) => {
+const ReviewList = (props: PropsType) => {
   const dispatch = useAppDispatch();
   // 페이지네이션
   const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -24,7 +24,7 @@ const CommentList = (props: PropsType) => {
 
         {props.reviewList?.map((review) => (
           <t.CommentWrapper key={review.r_No}>
-            <Comment
+            <Review
               date={review.createdAt}
               review={review.r_Content}
               reviewNo={review.r_No}
@@ -45,4 +45,4 @@ const CommentList = (props: PropsType) => {
   );
 };
 
-export default CommentList;
+export default ReviewList;
