@@ -11,6 +11,5 @@ export const useCartDB = async (id: number) => {
     },
   });
   store = db.transaction("cart", "readonly").objectStore("cart");
-  let getReq = store.get(id);
-  return getReq;
+  return store.get(id);
 };

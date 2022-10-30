@@ -11,6 +11,5 @@ export const useAllCartDB = async () => {
     },
   });
   store = db.transaction("cart", "readonly").objectStore("cart");
-  let getAllReq = store.getAll();
-  return getAllReq;
+  return store.getAll();
 };

@@ -10,9 +10,9 @@ export const addOption = (
 ) => {
   let isOption = false;
   let qty = 1;
-  optionList.map((option) => {
-    option.color + option.size === color + size && (isOption = true);
-  });
+  optionList.map(
+    (option) => option.color + option.size === color + size && (isOption = true)
+  );
   if (isOption) {
     alert("선택한 옵션입니다.");
   } else {

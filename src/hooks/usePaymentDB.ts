@@ -11,6 +11,5 @@ export const usePaymentDB = async (id: number) => {
     },
   });
   store = db.transaction("payment", "readonly").objectStore("payment");
-  let getReq = store.get(id);
-  return getReq;
+  return store.get(id);
 };
