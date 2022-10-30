@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import * as t from "./contents.style";
-import CommentList from "../../../components/detailPage/commentList/CommentList";
+import ReviewList from "../../../components/detailPage/reviewList/ReviewList";
 import Description from "../../../components/detailPage/description/Description";
 import { useGetCommentsQuery } from "./useGetCommentsQuery";
 import { useAppSelector } from "../../../redux/store";
@@ -31,7 +31,7 @@ const Contents = () => {
       </t.MenuWrapper>
       <t.ContentsWrapper>
         {menuSwitch ? (
-          <CommentList reviewQty={reviewQty} reviewList={reviewList} />
+          <ReviewList reviewQty={reviewQty} reviewList={reviewList} />
         ) : (
           <Description />
         )}
