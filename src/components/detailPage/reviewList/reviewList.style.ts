@@ -9,6 +9,7 @@ export const MainContainer = styled.div`
     width: 100%;
   }
 `;
+
 export const List = styled.div`
   width: 98%;
   display: flex;
@@ -20,14 +21,16 @@ export const List = styled.div`
     margin: 10px 0;
   }
 `;
+
 export const CommentWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   border-top: 1px solid ${theme.ls13};
 `;
+
 export const Page = styled.div`
-  margin-top: 30px;
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 `;
