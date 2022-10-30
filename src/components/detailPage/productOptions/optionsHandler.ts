@@ -1,4 +1,4 @@
-import { OptionListType } from "./productOptions.type";
+import { OptionListType } from "../../../shared/types/types";
 
 export const addOption = (
   color: string,

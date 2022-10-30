@@ -27,13 +27,7 @@ const ReviewList = (props: PropsType) => {
 
         {props.reviewList?.map((review) => (
           <t.CommentWrapper key={review.r_No}>
-            <Review
-              date={review.createdAt}
-              review={review.r_Content}
-              reviewNo={review.r_No}
-              score={review.r_Score}
-              user={review.u_Id}
-            />
+            <Review review={review} />
           </t.CommentWrapper>
         ))}
 

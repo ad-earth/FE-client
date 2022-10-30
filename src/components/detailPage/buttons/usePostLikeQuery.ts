@@ -1,5 +1,5 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
-import { getDetails, postLike } from "../../../shared/apis/api";
+import { useMutation, useQueryClient } from "react-query";
+import { postLike } from "../../../shared/apis/api";
 
 export const usePostLikeQuery = (productNo: string) => {
   const queryClient = useQueryClient();

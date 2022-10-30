@@ -1,4 +1,4 @@
-export type ProductType = {
+export interface ProductType {
   p_No: number;
   p_Category: string;
   p_Thumbnail: string[];
@@ -11,7 +11,32 @@ export type ProductType = {
   p_Soldout: boolean;
   p_Best: boolean;
   p_New: boolean;
-};
+}
+
+export interface ProductDetailType extends ProductType {
+  p_Cnt: number;
+  p_Content: string;
+  p_Desc: string;
+  p_Like: number;
+  p_Review: number;
+}
+
+export type OptionListType = {
+  id: number;
+  color: string;
+  size: string;
+  extraCost: number;
+  price: number;
+  qty: number;
+}[];
+
+export interface ReviewType {
+  r_No: number;
+  u_Id: string;
+  r_Score: number;
+  r_Content: string;
+  createdAt: string;
+}
 
 // cart
 export interface CartType {

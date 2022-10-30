@@ -1,18 +1,24 @@
 import { useQuery } from "react-query";
-import { setDetails } from "../../../redux/reducer/detailSlice";
-import { setErrorMessage, setIsError } from "../../../redux/reducer/errorSlice";
+import { AxiosResponse } from "axios";
+import { DetailResponseType } from "./details.type";
 import { useAppDispatch } from "../../../redux/store";
 import { getDetails } from "../../../shared/apis/api";
+import { setDetails } from "../../../redux/reducer/detailSlice";
+import { setErrorMessage, setIsError } from "../../../redux/reducer/errorSlice";
 
 export const useGetDetailQuery = (productNo: string, keyword?: string) => {
   const dispatch = useAppDispatch();
 
-  return useQuery("detail", () => getDetails(productNo, keyword), {
-    onSuccess: ({ data }) => {
-      dispatch(setDetails(data));
-    },
-    onError: ({ message }) => {
-      dispatch(setIsError(true)) && dispatch(setErrorMessage(message));
-    },
-  });
+  return useQuery<AxiosResponse<DetailResponseType>, Error>(
+    "detail",
+    () => getDetails(productNo, keyword),
+    {
+      onSuccess: ({ data }) => {
+        dispatch(setDetails(data));
+      },
+      onError: ({ message }) => {
+        dispatch(setIsError(true)) && dispatch(setErrorMessage(message));
+      },
+    }
+  );
 };

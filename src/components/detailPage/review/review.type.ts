@@ -1,7 +1,5 @@
+import { ReviewType } from "../../../shared/types/types";
+
 export interface PropsType {
-  date?: string;
-  review: string;
-  reviewNo?: number;
-  score?: number;
-  user?: string;
+  review: ReviewType;
 }
