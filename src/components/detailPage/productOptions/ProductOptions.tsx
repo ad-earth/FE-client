@@ -12,7 +12,6 @@ const ProductOptions = () => {
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  // 옵션 유무 체크
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
   useEffect(() => {
     if (detailData?.product.p_Option.length > 1) {
@@ -20,21 +19,16 @@ const ProductOptions = () => {
     }
   }, [detailData.product.p_Option]);
 
-  // 옵션 드롭다운
-  const [drop, setDrop] = useState<boolean>(false);
+  const [optionDropDown, setOptionDropDown] = useState<boolean>(false);
 
-  // 상품 가격 계산
   const price = useDiscount(
     detailData?.product.p_Cost,
     detailData?.product.p_Discount
   );
 
-  // 선택한 옵션 리스트
-  // const [optionList, setOptionList] = useState<OptionListType>([]);
   const [optionId, setOptionId] = useState<number>(0);
 
-  // 옵션 리스트에 옵션 추가
-  const handleOption = (color: string, size: string, extraCost: number) => {
+  const handleOptionList = (color: string, size: string, extraCost: number) => {
     const { newOption, newOptionId } = addOption(
       color,
       size,
@@ -53,15 +47,15 @@ const ProductOptions = () => {
         <>
           <t.Option>옵션</t.Option>
           <t.OptDropDown
-            drop={drop}
+            drop={optionDropDown}
             onClick={() => {
-              setDrop(!drop);
+              setOptionDropDown(!optionDropDown);
             }}
           >
             옵션 선택
-            {drop ? <t.IcToggleUp /> : <t.IcToggleDown />}
+            {optionDropDown ? <t.IcToggleUp /> : <t.IcToggleDown />}
           </t.OptDropDown>
-          {drop ? (
+          {optionDropDown ? (
             <t.DropMenuWrapper>
               {detailData?.product.p_Option?.map((option, idx) => {
                 return (
@@ -70,10 +64,10 @@ const ProductOptions = () => {
                     onClick={() => {
                       {
                         option[4] != 0
-                          ? handleOption(option[0], option[2], option[3])
+                          ? handleOptionList(option[0], option[2], option[3])
                           : alert("선택하신 상품은 재고가 없습니다.");
                       }
-                      setDrop(!drop);
+                      setOptionDropDown(!optionDropDown);
                     }}
                   >
                     <t.ColorOptionWrapper>

@@ -11,8 +11,7 @@ const Contents = () => {
   const { productNo } = useParams();
   const page = useAppSelector((state) => state.detailSlice.reviewPage);
 
-  // 상세정보 & 구매평 스위치
-  const [contentsChange, setContentsChange] = useState(false);
+  const [menuSwitch, setMenuSwitch] = useState(false);
 
   const data = useGetCommentsQuery(productNo, page);
   const { reviewQty, reviewList } = useMemo(
@@ -25,13 +24,13 @@ const Contents = () => {
   return (
     <t.MainContainer>
       <t.MenuWrapper>
-        <t.Menu onClick={() => setContentsChange(false)}>상세정보</t.Menu>
-        <t.Menu onClick={() => setContentsChange(true)} className="right">
+        <t.Menu onClick={() => setMenuSwitch(false)}>상세정보</t.Menu>
+        <t.Menu onClick={() => setMenuSwitch(true)} className="right">
           구매평 ({reviewQty})
         </t.Menu>
       </t.MenuWrapper>
       <t.ContentsWrapper>
-        {contentsChange ? (
+        {menuSwitch ? (
           <CommentList reviewQty={reviewQty} reviewList={reviewList} />
         ) : (
           <Description />

@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 import * as t from "./productQty.style";
-import { CountButton, OptionCountButton } from "../../../elements/buttons/Buttons";
+import {
+  CountButton,
+  OptionCountButton,
+} from "../../../elements/buttons/Buttons";
 import { PropsType } from "./productQty.type";
 import { removeOption } from "../productOptions/optionsHandler";
 import { useTotalPrice } from "./useTotalPrice";
@@ -16,9 +19,7 @@ const ProductQty = (props: PropsType) => {
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const [qty, setQty] = useState<number>(1);
-  // 상품 총 가격 계산
   const totalPrice = useTotalPrice(optionList);
-  // 상품 총 수량 계산
   const totalQty = useTotalQty(optionList);
 
   return (

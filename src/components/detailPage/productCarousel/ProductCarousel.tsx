@@ -8,15 +8,14 @@ import { useAppSelector } from "../../../redux/store";
 const ProductCarousel = () => {
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  // carousel option
-  const setting = {
+  const carouselSetting = {
     dots: false,
     slidesToShow: 1,
     slidesToScroll: 1,
   };
   return (
     <t.MainContainer>
-      <Slider {...setting}>
+      <Slider {...carouselSetting}>
         {detailData?.product.p_Thumbnail.map((img, idx) => {
           return (
             <div key={idx}>

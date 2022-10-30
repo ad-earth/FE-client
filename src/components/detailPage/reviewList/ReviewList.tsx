@@ -8,8 +8,11 @@ import { setReviewPage } from "../../../redux/reducer/detailSlice";
 
 const ReviewList = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  // 페이지네이션
-  const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
+
+  const handlePagination = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     dispatch(setReviewPage(value));
   };
 
@@ -37,7 +40,7 @@ const ReviewList = (props: PropsType) => {
         <t.Page>
           <Pagination
             count={Math.ceil(props?.reviewQty / 5)}
-            onChange={handlePage}
+            onChange={handlePagination}
           />
         </t.Page>
       </t.List>

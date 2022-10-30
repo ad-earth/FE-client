@@ -20,18 +20,7 @@ const Details = () => {
     ignoreQueryPrefix: true,
   });
   const keyword = String(query.keyword);
-
   useDetailQuery(productNo, keyword ? keyword : null);
-  const detailData = useAppSelector((state) => state.detailSlice.details);
-
-  const { productDetail } = useMemo(
-    () => ({
-      productDetail: detailData?.product,
-    }),
-    [detailData]
-  );
-
-  //뷰포트 사이즈에 따라 상품 썸네일 carousel로 변경
   const viewport = useViewport();
 
   return (

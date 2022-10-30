@@ -7,6 +7,7 @@ const Description = () => {
   function createMarkup() {
     return { __html: detailData?.product.p_Content };
   }
+
   return (
     <t.MainContainer>
       <div dangerouslySetInnerHTML={createMarkup()}></div>
