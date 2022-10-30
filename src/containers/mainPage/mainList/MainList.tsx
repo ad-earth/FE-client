@@ -5,14 +5,14 @@ import MainLinks from "../../../components/mainPage/mainLinks/MainLinks";
 import NewProducts from "../../../components/mainPage/newProducts/NewProducts";
 
 const MainList = () => {
-  const mainData = useGetMainListQuery();
+  const mainQuery = useGetMainListQuery();
 
   const { bestList, newList } = useMemo(
     () => ({
-      bestList: mainData.data?.data.Best,
-      newList: mainData.data?.data.New,
+      bestList: mainQuery.data?.data.Best,
+      newList: mainQuery.data?.data.New,
     }),
-    [mainData]
+    [mainQuery]
   );
 
   return (
