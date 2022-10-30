@@ -15,18 +15,18 @@ import { setOptionData } from "../../../redux/reducer/optionSlice";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const [qty, setQty] = useState<number>(1);
-  const totalPrice = useTotalPrice(optionList);
-  const totalQty = useTotalQty(optionList);
+  const totalPrice = useTotalPrice(optionData);
+  const totalQty = useTotalQty(optionData);
 
   return (
     <div>
       {props.haveOptions ? (
         <div>
-          {optionList.map((option) => {
+          {optionData.map((option) => {
             return (
               <div key={option.id}>
                 <t.OptBox>
@@ -35,7 +35,7 @@ const ProductQty = (props: PropsType) => {
                     <t.IcX
                       onClick={() =>
                         dispatch(
-                          setOptionData(removeOption(option.id, optionList))
+                          setOptionData(removeOption(option.id, optionData))
                         )
                       }
                     />
@@ -69,7 +69,7 @@ const ProductQty = (props: PropsType) => {
         </div>
       )}
       <Buttons
-        optionList={optionList}
+        optionList={optionData}
         qty={qty}
         totalPrice={totalPrice}
         totalQty={totalQty}

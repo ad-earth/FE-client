@@ -9,7 +9,7 @@ import { setOptionData } from "../../../redux/reducer/optionSlice";
 
 const ProductOptions = () => {
   const dispatch = useAppDispatch();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
@@ -34,10 +34,10 @@ const ProductOptions = () => {
       size,
       extraCost,
       price,
-      optionList,
+      optionData,
       optionId
     );
-    dispatch(setOptionData([...optionList, newOption]));
+    dispatch(setOptionData([...optionData, newOption]));
     setOptionId(newOptionId);
   };
 

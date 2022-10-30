@@ -19,8 +19,10 @@ const Details = () => {
   const query = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-  const keyword = String(query.keyword);
-  useGetDetailQuery(productNo, keyword ? keyword : null);
+  const queryKeyword = String(query.keyword);
+
+  useGetDetailQuery(productNo, queryKeyword ? queryKeyword : null);
+
   const viewport = useViewport();
 
   return (

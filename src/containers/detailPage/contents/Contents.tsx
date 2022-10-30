@@ -9,17 +9,17 @@ import { useAppSelector } from "../../../redux/store";
 
 const Contents = () => {
   const { productNo } = useParams();
-  const page = useAppSelector((state) => state.detailSlice.reviewPage);
+  const pageData = useAppSelector((state) => state.detailSlice.reviewPage);
 
   const [menuSwitch, setMenuSwitch] = useState(false);
 
-  const data = useGetReviewsQuery(productNo, page);
+  const reviewQuery = useGetReviewsQuery(productNo, pageData);
   const { reviewQty, reviewList } = useMemo(
     () => ({
-      reviewQty: data.data?.data.p_review,
-      reviewList: data.data?.data.reviews,
+      reviewQty: reviewQuery.data?.data.p_review,
+      reviewList: reviewQuery.data?.data.reviews,
     }),
-    [data]
+    [reviewQuery]
   );
   return (
     <t.MainContainer>

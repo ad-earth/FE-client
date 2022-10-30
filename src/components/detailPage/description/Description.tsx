@@ -4,6 +4,7 @@ import { useAppSelector } from "../../../redux/store";
 
 const Description = () => {
   const detailData = useAppSelector((state) => state.detailSlice.details);
+
   function createMarkup() {
     return { __html: detailData?.product.p_Content };
   }

@@ -12,9 +12,9 @@ const Review = (props: PropsType) => {
     <t.MainContainer>
       <t.CommentText>
         <t.StarWrapper>
-          {Array.from({ length: props.score }, (star, idx) => {
-            return <t.IcStar key={idx} />;
-          })}
+          {Array.from({ length: props.score }, (star, idx) => (
+            <t.IcStar key={idx} />
+          ))}
         </t.StarWrapper>
         {props?.review}
       </t.CommentText>
