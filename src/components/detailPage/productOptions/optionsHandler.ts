@@ -1,6 +1,5 @@
 import { OptionListType } from "./productOptions.type";
 
-// 옵션 추가
 export const addOption = (
   color: string,
   size: string,
@@ -29,13 +28,11 @@ export const addOption = (
   }
 };
 
-// 옵션 삭제
 export const removeOption = (targetId: number, optionList: OptionListType) => {
   let newOptionList = optionList.filter((option) => option.id !== targetId);
   return newOptionList;
 };
 
-// 옵션 수량 수정
 export const changeOption = (
   newId: number,
   newQty: number,
