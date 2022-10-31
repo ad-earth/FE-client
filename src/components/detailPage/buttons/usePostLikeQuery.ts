@@ -5,7 +5,7 @@ export const usePostLikeQuery = (productNo: string) => {
   const queryClient = useQueryClient();
   return useMutation(() => postLike(Number(productNo)), {
     onSuccess: () => {
-      queryClient.invalidateQueries("like");
+      queryClient.invalidateQueries("detail");
     },
   });
 };

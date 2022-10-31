@@ -3,7 +3,6 @@ import { theme } from "../../../style/theme";
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PropsType } from "./buttons.type";
-import { useGetLikeQuery } from "./useGetLikeQuery";
 import { usePostLikeQuery } from "./usePostLikeQuery";
 import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
@@ -17,13 +16,12 @@ const Buttons = (props: PropsType) => {
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
     () => ({
-      isLike: likeData.data?.data.userLike,
-      likeQty: likeData.data?.data.product?.p_Like,
+      isLike: detailData?.userLike,
+      likeQty: detailData?.product.p_Like,
     }),
-    [likeData]
+    [detailData]
   );
   const { mutate } = usePostLikeQuery(productNo);
 
