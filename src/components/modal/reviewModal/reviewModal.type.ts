@@ -1,5 +1,4 @@
 export interface ReviewType {
-  id: number;
   r_Content: string;
   r_Score: number | null;
 }

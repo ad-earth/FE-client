@@ -10,7 +10,8 @@ export interface ProdType {
 export interface ProductType extends ProdType {
   p_No: number;
   o_Status: string;
-  r_Status: boolean;
+  r_Status: boolean; //리뷰 등록 여부
+  p_Status: boolean; // 상품 존재 여부
 }
 
 //주문 정보

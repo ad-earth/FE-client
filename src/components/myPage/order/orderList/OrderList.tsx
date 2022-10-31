@@ -37,7 +37,8 @@ const OrderList = ({ products, orderNo }: PropsType) => {
             </Link>
           </t.ProductBox>
           <t.ButtonBox>
-            {list.o_Status === "주문완료" ? (
+            {/* 주문완료, 취소완료 , 배송완료  */}
+            {list.o_Status === "주문완료" && (
               <MainButton
                 bgColor="transparent"
                 radius="30px"
@@ -57,7 +58,8 @@ const OrderList = ({ products, orderNo }: PropsType) => {
               >
                 취소
               </MainButton>
-            ) : list.o_Status === "배송완료" && list.r_Status ? (
+            )}
+            {list.p_Status && list.r_Status && (
               <MainButton
                 radius="30px"
                 border="1px solid transparent"
@@ -69,8 +71,6 @@ const OrderList = ({ products, orderNo }: PropsType) => {
               >
                 구매평 작성
               </MainButton>
-            ) : (
-              <></>
             )}
           </t.ButtonBox>
         </t.OderListBox>

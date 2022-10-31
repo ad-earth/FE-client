@@ -11,7 +11,6 @@ const UserHeadInfo = () => {
   const userName = userData?.u_Name;
   const userImg = userData?.u_Img;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 모달
-  console.log(userData);
   return (
     <>
       {/* 리뷰모달  */}
