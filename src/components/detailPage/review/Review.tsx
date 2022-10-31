@@ -24,7 +24,7 @@ const Review = (props: PropsType) => {
         <br />
         {props.review?.createdAt}
         <t.BtnWrapper>
-          <button onClick={() => mutate}>삭제</button>
+          <button onClick={() => mutate()}>삭제</button>
         </t.BtnWrapper>
       </t.WriterInfo>
     </t.MainContainer>
