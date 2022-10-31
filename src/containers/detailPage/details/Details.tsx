@@ -18,7 +18,10 @@ const Details = () => {
   });
   const queryKeyword = String(query.keyword);
 
-  useGetDetailQuery(productNo, queryKeyword ? queryKeyword : null);
+  useGetDetailQuery(
+    productNo,
+    queryKeyword !== "undefined" ? queryKeyword : null
+  );
 
   const viewport = useViewport();
 
