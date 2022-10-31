@@ -90,9 +90,7 @@ const Buttons = (props: PropsType) => {
           color={theme.fc09}
           hBorder={`0.5px solid ${theme.ls11}`}
           hBgColor={theme.bg01}
-          onClick={() => {
-            mutate();
-          }}
+          onClick={() => mutate()}
         >
           {isLike ? <t.HeartIcon /> : <t.NoHeartIcon />}
           {likeQty}

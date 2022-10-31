@@ -5,7 +5,7 @@ import { getReviews } from "../../../shared/apis/api";
 
 export const useGetReviewsQuery = (productNo: string, page: number) => {
   return useQuery<AxiosResponse<ReviewResponseType>, Error>(
-    ["reviews", { page: page }],
+    ["reviews", page],
     () => getReviews(productNo, page)
   );
 };
