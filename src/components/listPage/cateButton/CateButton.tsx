@@ -27,7 +27,7 @@ const CateButton = ({
     const category = e.currentTarget.value;
     navigate(`/list/${category}`);
     setPage(1);
-    setSort(`like`);
+    setSort(`recent`);
     setActive(e.currentTarget.value);
   };
 
