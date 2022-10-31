@@ -10,9 +10,10 @@ export const MainContainer = styled.div`
     line-height: 1.8;
   }
 `;
+
 export const Description = styled.div`
-  margin-top: 30px;
   color: ${theme.fc09};
+  margin-top: 30px;
   font-size: ${theme.fs13};
   line-height: 1.8;
   span {

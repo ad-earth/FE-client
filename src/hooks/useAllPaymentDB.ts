@@ -11,6 +11,5 @@ export const useAllPaymentDB = async () => {
     },
   });
   store = db.transaction("payment", "readonly").objectStore("payment");
-  let getAllReq = store.getAll();
-  return getAllReq;
+  return store.getAll();
 };

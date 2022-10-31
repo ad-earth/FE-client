@@ -1,5 +1,5 @@
-import { delivery } from "../../../shared/utils/imgUrls";
 import * as t from "./deliveryInfo.style";
+import { delivery } from "../../../shared/utils/imgUrls";
 
 const DeliveryInfo = () => {
   return (

@@ -11,6 +11,7 @@ export const MainContainer = styled.div`
     line-height: 25px;
   }
 `;
+
 export const Title = styled.div`
   padding: 10px 0;
   box-sizing: border-box;

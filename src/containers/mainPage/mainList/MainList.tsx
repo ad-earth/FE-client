@@ -1,27 +1,26 @@
 import { useMemo } from "react";
-
+import { useGetMainListQuery } from "./useGetMainListQuery";
 import BestProducts from "../../../components/mainPage/bestProducts/BestProducts";
 import MainLinks from "../../../components/mainPage/mainLinks/MainLinks";
 import NewProducts from "../../../components/mainPage/newProducts/NewProducts";
-import { useMainListQuery } from "./useMainListQuery";
 
 const MainList = () => {
-  const mainData = useMainListQuery();
+  const mainQuery = useGetMainListQuery();
 
   const { bestList, newList } = useMemo(
     () => ({
-      bestList: mainData.data?.data.Best,
-      newList: mainData.data?.data.New,
+      bestList: mainQuery.data?.data.Best,
+      newList: mainQuery.data?.data.New,
     }),
-    [mainData]
+    [mainQuery]
   );
 
   return (
-    <div>
+    <>
       <BestProducts bestList={bestList} />
       <MainLinks />
       <NewProducts newList={newList} />
-    </div>
+    </>
   );
 };
 

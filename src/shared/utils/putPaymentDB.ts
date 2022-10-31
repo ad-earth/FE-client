@@ -1,9 +1,9 @@
 import { openDB } from "idb";
-import { DetailType } from "../../components/detailPage/buttons/buttons.type";
-import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
+import { DetailResponseType } from "../../containers/detailPage/details/details.type";
+import { OptionListType } from "../types/types";
 
 export const putPaymentDB = async (
-  detailData: DetailType,
+  detailData: DetailResponseType,
   optionList: OptionListType,
   qty: number,
   totalPrice: number,

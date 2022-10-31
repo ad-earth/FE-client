@@ -1,30 +1,27 @@
+import * as t from "./buttons.style";
+import { theme } from "../../../style/theme";
 import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import * as t from "./buttons.style";
-import { ReactComponent as Heart } from "../../../assets/icons/heart.svg";
-import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/buttons/Buttons";
 import { PropsType } from "./buttons.type";
-import { useGetLikeQuery, usePostLikeQuery } from "./useLikeQuery";
+import { usePostLikeQuery } from "./usePostLikeQuery";
 import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
 import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
 import ChoiceModal from "../../../elements/ChoiceModal";
+import { MainButton } from "../../../elements/buttons/Buttons";
 
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();
   const navigate = useNavigate();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const likeData = useGetLikeQuery(productNo);
   const { isLike, likeQty } = useMemo(
     () => ({
-      isLike: likeData.data?.data.userLike,
-      likeQty: likeData.data?.data.product?.p_Like,
+      isLike: detailData?.userLike,
+      likeQty: detailData?.product.p_Like,
     }),
-    [likeData]
+    [detailData]
   );
   const { mutate } = usePostLikeQuery(productNo);
 
@@ -53,7 +50,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putPaymentDB(
                   detailData,
-                  optionList,
+                  optionData,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
@@ -73,7 +70,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putCartDB(
                   detailData,
-                  optionList,
+                  optionData,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
@@ -93,21 +90,9 @@ const Buttons = (props: PropsType) => {
           color={theme.fc09}
           hBorder={`0.5px solid ${theme.ls11}`}
           hBgColor={theme.bg01}
-          onClick={() => {
-            mutate();
-          }}
+          onClick={() => mutate()}
         >
-          {isLike ? (
-            <Heart
-              style={{
-                color: theme.fc15,
-                fill: theme.bg16,
-                paddingRight: "4px",
-              }}
-            />
-          ) : (
-            <Heart style={{ color: theme.fc04, paddingRight: "4px" }} />
-          )}
+          {isLike ? <t.HeartIcon /> : <t.NoHeartIcon />}
           {likeQty}
         </MainButton>
       </t.BtnWrapper>
