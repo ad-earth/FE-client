@@ -1,10 +1,10 @@
-import { editAgree } from "../../../redux/reducer/payErrorSlice";
+import { editAgree } from "../../../redux/reducer/payCheckSlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import * as t from "./payAgree.style";
 
 const PayAgree = () => {
   const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.payErrorSlice);
+  const state = useAppSelector((state) => state.payCheckSlice);
 
   const checkHandler = (checked: boolean) => {
     if (checked) {

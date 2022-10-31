@@ -10,7 +10,7 @@ import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
 
 export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
-  const [sortParams, setSortParams] = useState<string>("like");
+  const [sortParams, setSortParams] = useState<string>("recent");
   const [pageParams, setPageParams] = useState<number>(1);
 
   //카테고리 api 호출

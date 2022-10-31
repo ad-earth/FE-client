@@ -1,5 +1,6 @@
 import * as t from "./payMethodInput.style";
 import React, { useState } from "react";
+import { useQueryClient } from "react-query";
 
 import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
 import { NewPayInput } from "../newPayInput/NewPayInput";
@@ -7,15 +8,17 @@ import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
 import useDelPay from "./usePayMethodInput";
-import { useAppDispatch } from "../../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { editDNo } from "../../../redux/reducer/payUserSlice";
+import { editTab } from "../../../redux/reducer/payCheckSlice";
 
 const PayMethodInput = (props: RadiobtnType & PayListType) => {
+  const tab = useAppSelector((state) => state.payCheckSlice.tab);
   const dispatch = useAppDispatch();
-  const [tab, setTab] = useState(false);
   const [select, setSelect] = useState<string>("");
+  const queryClient = useQueryClient();
 
-  //라디오 버튼 선택
+  //--라디오 버튼 선택
   const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     if (value === "") {
@@ -26,14 +29,14 @@ const PayMethodInput = (props: RadiobtnType & PayListType) => {
       dispatch(editDNo(value));
     }
   };
-  //배송지 목록 삭제
-
+  //--배송지 목록 삭제
   const { mutate } = useDelPay();
   const handleClick = (e: React.FormEvent<HTMLButtonElement>) => {
     const del = e.currentTarget.value;
     mutate(del, {
       onSuccess: () => {
         alert("삭제 되었습니다");
+        queryClient.invalidateQueries("getPay");
       },
     });
   };
@@ -43,7 +46,8 @@ const PayMethodInput = (props: RadiobtnType & PayListType) => {
       <t.TbtnDiv>
         <t.Tbtn
           onClick={() => {
-            setTab(false);
+            dispatch(editTab(false));
+            // setTab(false);
             dispatch(editDNo("0"));
           }}
           bgColor="#bebebe"
@@ -52,7 +56,8 @@ const PayMethodInput = (props: RadiobtnType & PayListType) => {
         </t.Tbtn>
         <t.Tbtn
           onClick={() => {
-            setTab(true);
+            // setTab(true);
+            dispatch(editTab(true));
             dispatch(editDNo("0"));
           }}
         >

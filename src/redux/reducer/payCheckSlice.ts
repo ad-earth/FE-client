@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface PayErrorType {
+export interface PayCheckType {
   agree: boolean;
   tab: boolean;
 }
 const initialState = {
   agree: false,
   tab: false,
-} as PayErrorType;
+} as PayCheckType;
 
-const payErrorSlice = createSlice({
-  name: "payErrorReducer",
+const payCheckSlice = createSlice({
+  name: "payCheckReducer",
   initialState,
   reducers: {
     editAgree: (state, action: PayloadAction<boolean>) => {
@@ -23,5 +23,5 @@ const payErrorSlice = createSlice({
 });
 
 // createSlice 로 생성된 액션과 리듀서를 export 해준다.
-export const { editAgree, editTab } = payErrorSlice.actions;
-export default payErrorSlice.reducer;
+export const { editAgree, editTab } = payCheckSlice.actions;
+export default payCheckSlice.reducer;

@@ -14,17 +14,20 @@ const ListModal = ({
   isOpen,
   handleClose,
   userLike,
+  productNo,
 }: {
   list: ProductsType;
   isOpen: boolean;
   handleClose: () => void;
   userLike: number[];
+  productNo: number;
 }) => {
   function close(e: React.MouseEvent) {
     e.preventDefault();
     handleClose();
   }
-  const like = userLike.includes(list.p_No);
+  // const {data}= useGetDetailQuery(productNo);
+  // const like = userLike.includes(list.p_No);
   const [viewport, setViewport] = useState(visualViewport.width);
   useEffect(() => {
     const resizeListener = () => {
@@ -37,41 +40,32 @@ const ListModal = ({
     <>
       {isOpen && (
         <Modal handleClose={() => handleClose()} isOpen={isOpen}>
-          {/* <t.BtnDiv>
+          <t.BtnDiv>
             <t.Xbtn sx={{ fontSize: "36px" }} onClick={close} />
             <t.ProdInfoContainer>
               {viewport <= 990 ? (
                 <t.Max>
-                  <ProductCarousel imgs={list.p_Thumbnail} />
+                  <ProductCarousel />
                 </t.Max>
               ) : (
-                <ProductImgs imgs={list.p_Thumbnail} />
+                <ProductImgs />
               )}
               <t.InfoWrapper>
-                <ProductName
-                  brand={list.a_Brand}
-                  name={list.p_Name}
-                  best={list.p_Best}
-                  new={list.p_New}
-                  sale={list.p_Sale}
-                  soldout={list.p_Soldout}
-                  price={list.p_Cost}
-                  discount={list.p_Discount}
-                />
+                <ProductName />
                 <t.CaroDiv>
-                  <ProductSummary desc={list.p_Desc} brand={list.a_Brand} />
+                  <ProductSummary />
                 </t.CaroDiv>
                 <ProductOptions
-                  productNo={list.p_No}
-                  options={list.p_Option}
-                  price={list.p_Cost}
-                  discount={list.p_Discount}
-                  // likeCnt={list.p_Like}
-                  // like={like}
+                // productNo={list.p_No}
+                // options={list.p_Option}
+                // price={list.p_Cost}
+                // discount={list.p_Discount}
+                // likeCnt={list.p_Like}
+                // like={like}
                 />
               </t.InfoWrapper>
             </t.ProdInfoContainer>
-          </t.BtnDiv> */}
+          </t.BtnDiv>
         </Modal>
       )}
     </>

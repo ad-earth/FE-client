@@ -26,7 +26,7 @@ export const NewPayInput = () => {
   const [isName, setIsName] = useState<boolean>(false);
   const [phoneMessage, setPhoneMessage] = useState<string>("");
   const [isPhone, setIsPhone] = useState<boolean>(false);
-
+  //== 주소찾기
   const handleComplete = (data: any) => {
     let fullAddress = data.address;
     let address2 = "";
@@ -55,7 +55,7 @@ export const NewPayInput = () => {
     dispatch(editZipcode(value));
     dispatch(editAddress1(value));
   };
-  // 이름
+  //-- 이름
   const onChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(editName(e.target.value));
     if (e.target.value.length < 2 || e.target.value.length > 5) {
@@ -66,14 +66,15 @@ export const NewPayInput = () => {
       setIsName(true);
     }
   }, []);
-  // 연락처
+
+  //-- 연락처 유효성 체크
   const onChangePhone = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const regExp = /^01(?:0|1|[6-9])(?:\d{3}|\d{4})\d{4}$/;
-      const emailCurrent = e.target.value;
-      dispatch(editPNumber(emailCurrent));
-      if (!regExp.test(emailCurrent)) {
-        setPhoneMessage("올바른 전화번호를 입력하세요.");
+      const regExp = /^\d{2,3}-\d{3,4}-\d{4}$/;
+      const currentNum = e.target.value;
+      dispatch(editPNumber(currentNum));
+      if (!regExp.test(currentNum)) {
+        setPhoneMessage("하이픈(-)을 포함한 형태로 입력해주세요.");
         setIsPhone(false);
       } else {
         setPhoneMessage("올바른 전화번호 형식입니다 : )");

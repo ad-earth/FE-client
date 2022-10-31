@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import ListModal from "../../../containers/listPage/listModal/ListModal";
 import { useIcon } from "./useCardIcon";
 import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
+import { useQueryClient } from "react-query";
 
 const CardIcon = ({
   val,
@@ -20,12 +21,15 @@ const CardIcon = ({
   const { keyParams } = useParams<{ keyParams: string }>();
   const navigate = useNavigate();
   const { mutate } = useIcon();
+  const queryClient = useQueryClient();
 
+  //--찜하기 버튼
   const heartClick = () => {
     mutate(val.p_No, {
       onSuccess: () => {
         setInculde(!include);
         setPlus(include ? plus - 1 : plus + 1);
+        queryClient.invalidateQueries("cardList");
       },
     });
   };
@@ -37,6 +41,7 @@ const CardIcon = ({
         handleClose={() => setInfoIsOpen(false)}
         userLike={userLike}
         list={val}
+        productNo={val.p_No}
       />
       <t.CardCp>
         <t.IconDiv>
