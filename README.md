@@ -1,11 +1,14 @@
 # 광고지구 🌎 CPC 키워드 광고를 적용한 이커머스 플랫폼
 ![adearth](https://user-images.githubusercontent.com/105091138/195831143-6d111bdf-cb33-4919-a0c8-d813124c89d7.png)
 ## 📌 바로가기
-### [구매자 (지구샵 클론 코딩)](https://adearth.shop) | [판매자 (CPC 키워드 광고주 솔루션)](https://adearth-admin.shop)<br />
-[구매자 FE GitHub Repository](https://github.com/ad-earth/FE-client) / [판매자 FE GitHub Repository](https://github.com/ad-earth/FE-admin)<br />
-[BE GitHub Repository](https://github.com/ad-earth/BE-server)<br />
+> ### [구매자 (지구샵 클론 코딩)](https://adearth.shop) | [구매자 FE GitHub Repository](https://github.com/ad-earth/FE-client)<br />
+> ### [판매자 (CPC 키워드 광고주 솔루션)](https://adearth-admin.shop) | [판매자 FE GitHub Repository](https://github.com/ad-earth/FE-admin)<br />
+> ### [BE GitHub Repository](https://github.com/ad-earth/BE-server)<br />
 
-## 🙌 프로젝트 소개
+## [🙌 프로젝트 개요](https://github.com/ad-earth/FE-client/wiki/Project-Summary)
+
+#### 프로젝트 타임라인
+2022.08.09. ~ 2022.10
 
 #### 프로젝트 주제
 - CPC 키워드 광고를 적용한 이커머스 플랫폼 
@@ -19,8 +22,17 @@
 - 기존 CPC 키워드 광고주 페이지의 문제점들을 개선해 광고 입찰에 꼭 필요한 기능들만 선별하여 제공함으로써 사용자의 경험을 개선
 - 편리하고 간편한 서비스를 광고주들에게 제공함으로써 신규 광고주 유입 효과 기대
 
-## ⌛️ 프로젝트 타임라인
-2022.08.09. ~ 2022.10.12. (약 2개월)
+## [🛠 기술 스택 및 라이브러리](https://github.com/ad-earth/FE-client/wiki/Tech-Stack)
+
+## [🧑‍🚀 유저 플로우 차트](https://github.com/ad-earth/FE-client/wiki/Flow-Chart)
+
+## [📚API](https://documenter.getpostman.com/view/18707207/2s7Z7ZnZDy)
+
+## 📗 Ground Rule
+* [📖 Git Flow](https://github.com/ad-earth/FE-client/wiki/Git-Flow)
+* [📖 Git Convention](https://github.com/ad-earth/FE-client/wiki/Git-Convention)
+* [📖 Commit Message Prefix](https://github.com/ad-earth/FE-client/wiki/Commit-Message-Prefix)
+* [📖 Convention](https://github.com/ad-earth/FE-client/wiki/Convention)
 
 ## 💫 서비스 주요 기능
 | 페이지 | 기능 |
@@ -37,7 +49,7 @@
 ## ⚙️ 아키텍쳐
 ![광고지구아키텍처 001](https://user-images.githubusercontent.com/105091138/195766564-08299428-e979-49f0-97c8-7a130a7b106c.jpeg)
 
-## 🛠 기술 스택 및 라이브러리
+## [🛠 기술 스택 및 라이브러리](https://github.com/ad-earth/FE-client/wiki/Tech-Stack)
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"> <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-61DAFB?style=for-the-badge&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/redux_toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white">
     <br>
 <img src="https://img.shields.io/badge/axios-6236FF?style=for-the-badge&logo=axios&logoColor=white"> <img src="https://img.shields.io/badge/aws_route53-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/aws_cloud_front-FF9900?style=for-the-badge&logo=awsfargate&logoColor=white"> <img src="https://img.shields.io/badge/amazon_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"> 
@@ -45,24 +57,6 @@
 <br>
 <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"></div>
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/github actions-2088FF?style=for-the-badge&logo=github actions&logoColor=white">
-
-
-| 라이브러리 | 버전 | 적용 |
-|------|------|------|
-|axios|0.27.2|Promise 기반 HTTP 클라이언트|
-|react-intersection-observer|9.4.0|무한 스크롤|
-|react-query|3.0|서버 fetching 상태 관리|
-|reduxjs/toolkit||전역 상태 관리|
-|react-router-dom|6.3.0|라우팅|
-|react-slick|0.29.0|carousel|
-|react-spinners|0.13.4|전역 로딩 처리|
-|styled-components|5.3.5|스타일|
-|typescript|4.4.2|정적 타입 관리|
-|mui|5.10.2|아이콘 / pagination ui / tooltip|
-|jest-dom|5.14.1|테스트|
-|react-hook-form|7.37.0|동적 form|
-|yup|0.32.11|유효성 검사|
-|react-aws-s3-typescript|1.1.4|aws-s3 버킷 연결|
 
 <!-- ## 🚀 트러블슈팅 
 
