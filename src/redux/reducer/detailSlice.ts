@@ -1,27 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { DetailResponseType } from "../../containers/detailPage/details/details.type";
 
 export interface productDataType {
-  details: {
-    userLike: boolean;
-    k_No: number;
-    product: {
-      p_Best: boolean;
-      p_No: number;
-      p_Category: string;
-      p_Thumbnail: string[];
-      a_Brand: string;
-      p_Name: string;
-      p_Cost: number;
-      p_Sale: boolean;
-      p_Discount: number;
-      p_Option: [[string, string, string, number, number]];
-      p_Desc: string;
-      p_Soldout: boolean;
-      p_Review: number;
-      p_Like: number;
-      p_New: boolean;
-    };
-  };
+  details: DetailResponseType;
   reviewPage: number;
 }
 
@@ -30,21 +11,23 @@ const initialState: productDataType = {
     userLike: false,
     k_No: null,
     product: {
-      p_Best: false,
-      p_No: null,
-      p_Category: null,
+      p_No: 0,
+      p_Category: "",
       p_Thumbnail: [],
-      a_Brand: null,
-      p_Name: null,
+      a_Brand: "",
+      p_Name: "",
       p_Cost: 0,
       p_Sale: false,
       p_Discount: 0,
-      p_Option: [[null, null, null, null, null]],
-      p_Desc: null,
+      p_Option: [],
       p_Soldout: false,
-      p_Review: 0,
-      p_Like: 0,
+      p_Best: false,
       p_New: false,
+      p_Cnt: 0,
+      p_Content: "",
+      p_Desc: "",
+      p_Like: 0,
+      p_Review: 0,
     },
   },
   reviewPage: 1,

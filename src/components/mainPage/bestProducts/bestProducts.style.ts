@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
 export const MainContainer = styled.div`
-  margin: 50px auto;
+  width: 1200px;
   display: flex;
   justify-content: space-between;
+  margin: 50px auto;
   color: ${theme.fc09};
-  width: 1200px;
+
   @media (min-width: 991px) and (max-width: 1200px) {
     width: 100%;
   }
@@ -15,6 +16,7 @@ export const MainContainer = styled.div`
     flex-direction: column;
   }
 `;
+
 export const TitleWrapper = styled.div`
   width: 32%;
   margin-left: 2%;
@@ -22,12 +24,13 @@ export const TitleWrapper = styled.div`
   line-height: 1.5;
   @media (max-width: 990px) {
     width: 98%;
-    margin: 0 auto;
     display: flex;
     align-items: flex-start;
+    margin: 0 auto;
     font-size: ${theme.fs14};
   }
 `;
+
 export const Title = styled.div`
   width: 100%;
   display: flex;
@@ -42,12 +45,13 @@ export const Title = styled.div`
     }
   }
 `;
+
 export const Image = styled.div`
-  display: flex;
   width: 100%;
-  border-radius: 500px;
+  display: flex;
   margin-top: 30px;
   overflow: hidden;
+  border-radius: 500px;
   img {
     width: 100%;
   }

@@ -16,7 +16,7 @@ import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
 import Footer from "./containers/footer/Footer";
-
+import NotFound from "./pages/NotFound";
 //mypage
 import Mypage from "./pages/MyPage";
 import Order from "./containers/myPage/order/Order";
@@ -68,6 +68,7 @@ function App() {
               <Route path=":prodNo" element={<PaymentPage />}></Route>
             </Route>
             <Route path="/complete" element={<CompletePage />}></Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
           <ReactQueryDevtools />

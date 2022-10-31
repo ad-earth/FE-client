@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
+import { OptionListType } from "../../shared/types/types";
 
 export interface BtnType {
   width?: string;
@@ -21,4 +21,11 @@ export interface PropsType {
   qty?: number;
   optionList?: OptionListType;
   setQty?: Dispatch<SetStateAction<number>>;
+}
+
+export interface NotFoundType {
+  type: string;
+  onClick: () => void;
+  text: string;
+  children?: React.ReactNode;
 }

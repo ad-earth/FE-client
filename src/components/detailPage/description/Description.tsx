@@ -1,11 +1,14 @@
 import * as t from "./description.style";
+import { useAppSelector } from "../../../redux/store";
 import DeliveryInfo from "../deliveryInfo/DeliveryInfo";
-import { PropsType } from "./description.type";
 
-const Description = (props: PropsType) => {
+const Description = () => {
+  const detailData = useAppSelector((state) => state.detailSlice.details);
+
   function createMarkup() {
-    return { __html: props.content };
+    return { __html: detailData?.product.p_Content };
   }
+
   return (
     <t.MainContainer>
       <div dangerouslySetInnerHTML={createMarkup()}></div>

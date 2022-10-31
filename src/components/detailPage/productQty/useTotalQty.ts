@@ -1,4 +1,4 @@
-import { OptionListType } from "../productOptions/productOptions.type";
+import { OptionListType } from "../../../shared/types/types";
 
 export const useTotalQty = (optionList: OptionListType) => {
   let totalQty = 0;

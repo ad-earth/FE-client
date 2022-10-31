@@ -8,6 +8,7 @@ export const UserImg = styled.div`
   align-items: center;
   display: flex;
   padding-right: 20px;
+  cursor: pointer;
 `;
 export const UserName = styled.p`
   font-size: ${({ theme }) => theme.fs22};

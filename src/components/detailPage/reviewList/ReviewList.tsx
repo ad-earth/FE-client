@@ -1,15 +1,17 @@
+import * as t from "./reviewList.style";
 import Pagination from "@mui/material/Pagination";
-
-import * as t from "./commentList.style";
-import Comment from "../comment/Comment";
-import { PropsType } from "./commentList.type";
+import { PropsType } from "./reviewList.type";
 import { useAppDispatch } from "../../../redux/store";
 import { setReviewPage } from "../../../redux/reducer/detailSlice";
+import Review from "../review/Review";
 
-const CommentList = (props: PropsType) => {
+const ReviewList = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  // 페이지네이션
-  const handlePage = (event: React.ChangeEvent<unknown>, value: number) => {
+
+  const handlePagination = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
     dispatch(setReviewPage(value));
   };
 
@@ -24,20 +26,14 @@ const CommentList = (props: PropsType) => {
 
         {props.reviewList?.map((review) => (
           <t.CommentWrapper key={review.r_No}>
-            <Comment
-              date={review.createdAt}
-              review={review.r_Content}
-              reviewNo={review.r_No}
-              score={review.r_Score}
-              user={review.u_Id}
-            />
+            <Review review={review} />
           </t.CommentWrapper>
         ))}
 
         <t.Page>
           <Pagination
             count={Math.ceil(props?.reviewQty / 5)}
-            onChange={handlePage}
+            onChange={handlePagination}
           />
         </t.Page>
       </t.List>
@@ -45,4 +41,4 @@ const CommentList = (props: PropsType) => {
   );
 };
 
-export default CommentList;
+export default ReviewList;

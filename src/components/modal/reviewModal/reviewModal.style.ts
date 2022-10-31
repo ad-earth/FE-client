@@ -75,7 +75,7 @@ export const InfoText = styled.div`
     font-size: ${({ theme }) => theme.fs13};
   }
 `;
-export const StarRating = styled.div`
+export const StarRateBox = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;

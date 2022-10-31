@@ -12,7 +12,7 @@ const fetchPostList = async (pageParam: number) => {
   };
 };
 
-const useOrder = () => {
+const useOrderQuery = () => {
   return useInfiniteQuery(
     ["orderList"],
     ({ pageParam = 1 }) => fetchPostList(pageParam),
@@ -27,4 +27,4 @@ const useOrder = () => {
   );
 };
 
-export default useOrder;
+export default useOrderQuery;

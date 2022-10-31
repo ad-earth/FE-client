@@ -1,3 +1,3 @@
-export interface PropsType {
+export interface StyleType {
   imgUrl?: string;
 }

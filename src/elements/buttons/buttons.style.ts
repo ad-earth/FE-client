@@ -12,16 +12,19 @@ export const Btn = styled.button`
   font-size: ${(props) => (props.fontSize ? props.fontSize : theme.fs14)};
   font-weight: ${(props) => (props.fontWeight ? props.fontWeight : "bold")};
   color: ${(props) => (props.color ? props.color : theme.fc01)};
-  border: ${(props: BtnType) => (props.border ? props.border : "none")};
+  border: ${(props: BtnType) =>
+    props.border ? props.border : "1px solid transparent"};
   border-radius: ${(props: BtnType) => (props.radius ? props.radius : "none")};
   background-color: ${(props: BtnType) =>
     props.bgColor ? props.bgColor : theme.bg16};
   padding: ${(props) => (props.padding ? `${props.padding}` : "10px 0")};
   :hover {
-    border: ${(props: BtnType) => (props.hBorder ? props.hBorder : "none")};
+    border: ${(props: BtnType) =>
+      props.hBorder ? props.hBorder : "1px solid transparent"};
     background-color: ${(props) =>
       props.hBgColor ? props.hBgColor : theme.bg16};
     transition: 0.5s;
+    color: ${(props) => (props.hColor ? props.hColor : theme.fc01)};
     cursor: pointer;
   }
 `;

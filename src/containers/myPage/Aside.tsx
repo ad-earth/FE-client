@@ -1,22 +1,26 @@
-import AsideNav from "../../components/myPage/asideNav/AsideNav";
+import {
+  AsideNavDesktop,
+  AsideNavMobile,
+} from "../../components/myPage/asideNav/AsideNav";
 import styled from "styled-components";
+import { useViewport } from "../../hooks/useViewport";
 
-const Aside = () => {
+export const Aside = () => {
+  //뷰포트 사이즈
+  const viewport = useViewport();
   return (
     <Section>
-      <AsideNav />
+      {viewport > 990 ? <AsideNavDesktop /> : <AsideNavMobile />}
     </Section>
   );
 };
-
-export default Aside;
 
 const Section = styled.div`
   width: 16%;
   padding: 0 12px;
   box-sizing: border-box;
   @media (max-width: 990px) {
-    width: 0;
+    width: 100%;
     padding: 0;
   }
 `;

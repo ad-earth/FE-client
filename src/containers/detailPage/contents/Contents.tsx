@@ -1,44 +1,38 @@
+import * as t from "./contents.style";
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import * as t from "./contents.style";
-import CommentList from "../../../components/detailPage/commentList/CommentList";
-import Description from "../../../components/detailPage/description/Description";
-import { useGetCommentsQuery } from "./useGetCommentsQuery";
-import { useContentsQuery } from "./useContentsQuery";
 import { useAppSelector } from "../../../redux/store";
+import { useGetReviewsQuery } from "./useGetReviewsQuery";
+import ReviewList from "../../../components/detailPage/reviewList/ReviewList";
+import Description from "../../../components/detailPage/description/Description";
 
 const Contents = () => {
   const { productNo } = useParams();
-  const page = useAppSelector((state) => state.detailSlice.reviewPage);
+  const pageData = useAppSelector((state) => state.detailSlice.reviewPage);
 
-  // 상세정보 & 구매평 스위치
-  const [contentsChange, setContentsChange] = useState(false);
+  const [menuSwitch, setMenuSwitch] = useState<boolean>(false);
 
-  const contents = useContentsQuery(productNo);
-
-  const data = useGetCommentsQuery(productNo, page);
-  const { reviewQty, reviewList, content } = useMemo(
+  const reviewQuery = useGetReviewsQuery(productNo, pageData);
+  const { reviewQty, reviewList } = useMemo(
     () => ({
-      reviewQty: data.data?.data.p_review,
-      reviewList: data.data?.data.reviews,
-      content: contents.data?.data.product.p_Content,
+      reviewQty: reviewQuery.data?.data.p_review,
+      reviewList: reviewQuery.data?.data.reviews,
     }),
-    [data, contents]
+    [reviewQuery]
   );
   return (
     <t.MainContainer>
       <t.MenuWrapper>
-        <t.Menu onClick={() => setContentsChange(false)}>상세정보</t.Menu>
-        <t.Menu onClick={() => setContentsChange(true)} className="right">
+        <t.Menu onClick={() => setMenuSwitch(false)}>상세정보</t.Menu>
+        <t.Menu onClick={() => setMenuSwitch(true)} className="right">
           구매평 ({reviewQty})
         </t.Menu>
       </t.MenuWrapper>
       <t.ContentsWrapper>
-        {contentsChange ? (
-          <CommentList reviewQty={reviewQty} reviewList={reviewList} />
+        {menuSwitch ? (
+          <ReviewList reviewQty={reviewQty} reviewList={reviewList} />
         ) : (
-          <Description content={content} />
+          <Description />
         )}
       </t.ContentsWrapper>
     </t.MainContainer>

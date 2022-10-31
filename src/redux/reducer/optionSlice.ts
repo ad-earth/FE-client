@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
+import { OptionListType } from "../../shared/types/types";
 
 export interface optionDataType {
   optionData: OptionListType;
