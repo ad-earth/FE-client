@@ -1,5 +1,5 @@
 import * as t from "./productQty.style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PropsType } from "./productQty.type";
 import { useTotalPrice } from "./useTotalPrice";
 import { useTotalQty } from "./useTotalQty";
@@ -14,6 +14,11 @@ import Buttons from "../buttons/Buttons";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setOptionData([]));
+  }, []);
+
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
