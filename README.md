@@ -26,7 +26,7 @@
 
 ## [🧑‍🚀 유저 플로우 차트](https://github.com/ad-earth/FE-client/wiki/Flow-Chart)
 
-## [📚API](https://documenter.getpostman.com/view/18707207/2s7Z7ZnZDy)
+## [📚 API](https://documenter.getpostman.com/view/18707207/2s7Z7ZnZDy)
 
 ## 📗 Ground Rule
 * [📖 Git Flow](https://github.com/ad-earth/FE-client/wiki/Git-Flow)
