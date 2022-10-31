@@ -5,7 +5,7 @@ import { useTotalPrice } from "./useTotalPrice";
 import { useTotalQty } from "./useTotalQty";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
-import { removeOption } from "../productOptions/optionsHandler";
+import { removeUserOption } from "../productOptions/optionHandler";
 import {
   CountButton,
   OptionCountButton,
@@ -34,7 +34,7 @@ const ProductQty = (props: PropsType) => {
                     <t.IcX
                       onClick={() =>
                         dispatch(
-                          setOptionData(removeOption(option.id, optionData))
+                          setOptionData(removeUserOption(option.id, optionData))
                         )
                       }
                     />

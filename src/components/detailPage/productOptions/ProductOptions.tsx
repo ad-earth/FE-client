@@ -1,7 +1,7 @@
 import * as t from "./productOptions.style";
 import { useEffect, useState } from "react";
 import { useDiscount } from "../productName/useDiscount";
-import { addOption } from "./optionsHandler";
+import { addUserOption } from "./optionHandler";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
 import ProductQty from "../productQty/ProductQty";
@@ -28,16 +28,20 @@ const ProductOptions = () => {
 
   const [optionId, setOptionId] = useState<number>(0);
 
-  const handleOptionList = (color: string, size: string, extraCost: number) => {
-    const { newOption, newOptionId } = addOption(
-      color,
-      size,
-      extraCost,
+  const handleUserOptionList = (
+    selectedColor: string,
+    userSize: string,
+    userExtraCost: number
+  ) => {
+    const { userOption, newOptionId } = addUserOption(
+      selectedColor,
+      userSize,
+      userExtraCost,
       price,
       optionData,
       optionId
     );
-    dispatch(setOptionData([...optionData, newOption]));
+    dispatch(setOptionData([...optionData, userOption]));
     setOptionId(newOptionId);
   };
 
@@ -64,7 +68,11 @@ const ProductOptions = () => {
                     onClick={() => {
                       {
                         option[4] != 0
-                          ? handleOptionList(option[0], option[2], option[3])
+                          ? handleUserOptionList(
+                              option[0],
+                              option[2],
+                              option[3]
+                            )
                           : alert("선택하신 상품은 재고가 없습니다.");
                       }
                       setOptionDropDown(!optionDropDown);
