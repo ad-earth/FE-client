@@ -1,15 +1,11 @@
 import * as t from "./missionBox.style";
+import { PropsType } from "./missionBox.type";
 
-interface PropsType {
-  category: string;
-  amount: string;
-}
-
-const MissionBox = (props: PropsType) => {
+const MissionBox = ({ category, amount }: PropsType) => {
   return (
     <t.MainContainer>
-      <t.Category>{props.category}</t.Category>
-      <t.Amount>{props.amount}</t.Amount>
+      <t.Category>{category}</t.Category>
+      <t.Amount>{amount}</t.Amount>
     </t.MainContainer>
   );
 };

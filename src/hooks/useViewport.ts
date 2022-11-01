@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-// viewport size handle custom hook
 export const useViewport = () => {
   const [viewport, setViewport] = useState<number>(visualViewport.width);
 

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
+import { OptionListType } from "../../shared/types/types";
 
 export interface BtnType {
   width?: string;

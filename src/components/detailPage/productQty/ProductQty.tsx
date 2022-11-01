@@ -1,31 +1,36 @@
-import { useState } from "react";
-
 import * as t from "./productQty.style";
-import { CountButton, OptionCountButton } from "../../../elements/buttons/Buttons";
+import { useEffect, useState } from "react";
 import { PropsType } from "./productQty.type";
-import { removeOption } from "../productOptions/optionsHandler";
 import { useTotalPrice } from "./useTotalPrice";
 import { useTotalQty } from "./useTotalQty";
-import Buttons from "../buttons/Buttons";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
+import { removeUserOption } from "../productOptions/optionHandler";
+import {
+  CountButton,
+  OptionCountButton,
+} from "../../../elements/buttons/Buttons";
+import Buttons from "../buttons/Buttons";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+
+  useEffect(() => {
+    dispatch(setOptionData([]));
+  }, []);
+
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   const [qty, setQty] = useState<number>(1);
-  // 상품 총 가격 계산
-  const totalPrice = useTotalPrice(optionList);
-  // 상품 총 수량 계산
-  const totalQty = useTotalQty(optionList);
+  const totalPrice = useTotalPrice(optionData);
+  const totalQty = useTotalQty(optionData);
 
   return (
     <div>
       {props.haveOptions ? (
         <div>
-          {optionList.map((option) => {
+          {optionData.map((option) => {
             return (
               <div key={option.id}>
                 <t.OptBox>
@@ -34,7 +39,7 @@ const ProductQty = (props: PropsType) => {
                     <t.IcX
                       onClick={() =>
                         dispatch(
-                          setOptionData(removeOption(option.id, optionList))
+                          setOptionData(removeUserOption(option.id, optionData))
                         )
                       }
                     />
@@ -68,7 +73,7 @@ const ProductQty = (props: PropsType) => {
         </div>
       )}
       <Buttons
-        optionList={optionList}
+        optionList={optionData}
         qty={qty}
         totalPrice={totalPrice}
         totalQty={totalQty}
