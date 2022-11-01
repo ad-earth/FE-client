@@ -43,8 +43,9 @@ const OrderList = ({ products, orderNo }: PropsType) => {
                 bgColor="transparent"
                 radius="30px"
                 border={`1px solid ${theme.rgba08}`}
-                hBorder={`1px solid ${theme.ls11}`}
                 hBgColor="transparent"
+                hBorder={`1px solid ${theme.rgba08}`}
+                hColor={`${theme.fc14}`}
                 color={`${theme.fc14}`}
                 fontSize={`${theme.fc12}`}
                 fontWeight="500"
@@ -62,8 +63,6 @@ const OrderList = ({ products, orderNo }: PropsType) => {
             {list.p_Status && list.r_Status && (
               <MainButton
                 radius="30px"
-                border="1px solid transparent"
-                hBorder="1px solid transparent"
                 fontSize={`${theme.fs12}`}
                 fontWeight="500"
                 padding="10px 16px"
