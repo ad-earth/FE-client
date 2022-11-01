@@ -7,4 +7,6 @@ export interface PropsType {
   >;
   o_Status: string;
   p_No: number;
+  r_Status: boolean; //리뷰 등록 여부
+  p_Status: boolean; // 상품 존재 여부
 }
