@@ -29,7 +29,7 @@ const Card = (props: CardCompoType) => {
               onClick={() =>
                 navigate({
                   pathname: `/detail/${props.pNo}`,
-                  search: `category=${category}&keword=${keyParams}`,
+                  search: `category=${category}&keyword=${keyParams}`,
                 })
               }
               onMouseEnter={() => setImgHover(true)}

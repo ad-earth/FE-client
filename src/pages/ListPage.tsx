@@ -12,8 +12,6 @@ import { useAppSelector } from "../redux/store";
 
 export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
-  const [sortParams, setSortParams] = useState<string>("recent");
-  const [pageParams, setPageParams] = useState<number>(1);
   const { pageNo, sort } = useAppSelector((state) => state.listSlice);
   //카테고리 api 호출
   const CateListData: CardListType = useCateList(
