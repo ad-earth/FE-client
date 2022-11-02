@@ -13,10 +13,10 @@ import { editDNo } from "../../../redux/reducer/payUserSlice";
 import { editTab } from "../../../redux/reducer/payCheckSlice";
 
 const PayMethodInput = (props: RadiobtnType & PayListType) => {
-  const tab = useAppSelector((state) => state.payCheckSlice.tab);
   const dispatch = useAppDispatch();
-  const [select, setSelect] = useState<string>("");
   const queryClient = useQueryClient();
+  const tab = useAppSelector((state) => state.payCheckSlice.tab);
+  const [select, setSelect] = useState<string>("");
 
   //--라디오 버튼 선택
   const handleSelectChange = (e: React.ChangeEvent<HTMLInputElement>) => {

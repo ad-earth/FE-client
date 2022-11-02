@@ -16,6 +16,12 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
+import { usePaymentDB } from "../../../hooks/usePaymentDB";
+import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
+import {
+  DataPropsType,
+  DataType,
+} from "../../../components/paymentPage/pdtInfo/pdInfo.type";
 
 const OrderPList = () => {
   const titles = [
@@ -26,19 +32,24 @@ const OrderPList = () => {
     "결제수단",
   ];
   const navigate = useNavigate();
-  const [btnopen, setBtnopen] = useState<boolean>(false);
+  const [btnOpen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
-  //get요청으로 data 받아오기
+  //-- get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
-  //slice에서 data 받아오기
+  //-- slice에서 data 받아오기
   const data = useAppSelector((state) => state.cartSlice.orderData);
   const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
+  const [dtData, setDtData] = useState();
+  const [cartData, setCartData] = useState<DataType[]>();
 
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
-  //post 요청할 데이터들
+  const { isName, isPNumber, isUserName, isUserPhone } = useAppSelector(
+    (state: RootState) => state.payCheckSlice
+  );
+  //-- post 요청할 데이터들
   const postPay = {
     address: {
       d_No: Number(dNo),
@@ -55,41 +66,56 @@ const OrderPList = () => {
   const { mutate, isSuccess } = usePostPay(postPay);
   //결제하기 버튼
   const PayClick = () => {
-    if (btnchange === true && name === "") {
+    if (isUserName === false && btnOpen === true) {
       alert("이름을 입력해주세요");
+    } else if (isUserPhone === false && btnOpen === true) {
+      alert("연락처를 입력해주세요");
     } else if (state.agree === false) {
       alert("전체 동의에 체크해주세요");
-      // !isSuccess
-    } else if (name === "" && state.tab === true) {
+    } else if (isName === false && state.tab === true) {
       alert("이름을 입력해주세요");
-    } else if (pNumber === "" && state.tab === true) {
+    } else if (isPNumber === false && state.tab !== false) {
       alert("연락처를 입력해주세요");
+    } else if (zipcode === "" && state.tab !== false) {
+      alert("주소를 입력해주세요");
+    } else if (address2 === "" && state.tab !== false) {
+      alert("상세 주소를 입력해주세요");
     } else {
       mutate();
     }
   };
+
   useEffect(() => {
     if (isSuccess) {
       alert("결제가 완료되었습니다.");
       navigate("/complete");
     } else {
-      // alert("다시 시도해주세요.");
     }
   }, [isSuccess]);
+  const detailDB = usePaymentDB(1665330347274);
+  const cartDB = useAllPaymentDB();
+  console.log(cartData);
 
+  useEffect(() => {
+    detailDB.then((response) => setDtData(response));
+    cartDB.then((response) => setCartData(response));
+  }, []);
+
+  console.log("dtData: ", cartData);
   return (
     <>
-      {data && GetPaylist && (
+      {dtData && GetPaylist && (
         <t.PayArea>
           {/* <form> */}
           <t.LPListArea>
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo data={data} />
+
+              <PdtInfo data={dtData && dtData} />
               <FreeShipping />
             </t.LTipOff>
 
-            {btnopen ? (
+            {btnOpen ? (
               <t.LTipOff>
                 <t.LOrderInfoDiv>{titles[1]}</t.LOrderInfoDiv>
                 <PayUserInput />
@@ -125,7 +151,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary data={data} />
+              {/* <PaySummary data={dtDataArr} /> */}
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>

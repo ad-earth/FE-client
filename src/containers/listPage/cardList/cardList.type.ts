@@ -1,10 +1,9 @@
 export interface CardListType {
   products: ProductsType[];
-  sortChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+
   cnt: number;
   userLike: number[];
   pageNo: number;
-  sort: string;
 }
 
 export interface ProductsType {

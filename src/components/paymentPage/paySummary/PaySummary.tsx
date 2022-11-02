@@ -10,6 +10,8 @@ const PaySummary = (props: DataType) => {
     return a + currentObject.totalPrice;
   }, 0);
 
+  console.log("PS", props.data);
+
   useEffect(() => {
     dispatch(setPriceData(totalP));
   });

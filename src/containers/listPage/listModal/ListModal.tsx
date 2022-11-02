@@ -8,6 +8,7 @@ import ProductOptions from "../../../components/detailPage/productOptions/Produc
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
 import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import { ProductsType } from "../cardList/cardList.type";
+import { useGetDetailQuery } from "../../detailPage/details/useGetDetailQuery";
 
 const ListModal = ({
   list,
@@ -26,7 +27,7 @@ const ListModal = ({
     e.preventDefault();
     handleClose();
   }
-  // const {data}= useGetDetailQuery(productNo);
+  // const data = useGetDetailQuery(String(productNo));
   // const like = userLike.includes(list.p_No);
   const [viewport, setViewport] = useState(visualViewport.width);
   useEffect(() => {
@@ -35,6 +36,7 @@ const ListModal = ({
     };
     window.addEventListener("resize", resizeListener);
   });
+  // console.log(productNo);
 
   return (
     <>

@@ -10,6 +10,7 @@ export const usePaymentDB = async (id: number) => {
       });
     },
   });
+
   store = db.transaction("payment", "readonly").objectStore("payment");
   return store.get(id);
 };

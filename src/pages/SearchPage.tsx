@@ -58,11 +58,7 @@ const SearchPage = () => {
           {SearchListData.cnt === 0 ? (
             <EmptyDiv message={"검색된 정보가 없습니다."} />
           ) : null}
-          <PageBtn
-            page={pageParams}
-            setPage={setPageParams}
-            cnt={SearchListData.cnt}
-          />
+          <PageBtn cnt={SearchListData.cnt} />
         </>
       )}
     </>
