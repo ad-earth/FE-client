@@ -39,7 +39,7 @@ export const getMain = () => axiosInstance.get(`/main`);
 
 // 상세페이지 상품 상세 정보 조회
 export const getDetails = (productNo: string, keyword?: string) =>
-  axiosInstance.get(`/products/${productNo}?${keyword && keyword}`);
+  axiosInstance.get(`/products/${productNo}?keyword=${keyword}`);
 
 // 상세페이지 구매평 조회
 export const getReviews = (productNo: string, page: number) =>
