@@ -11,8 +11,10 @@ import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs"
 const ListModal = ({
   isOpen,
   handleClose,
+  pNo,
 }: {
   isOpen: boolean;
+  pNo: number;
   handleClose: () => void;
 }) => {
   function close(e: React.MouseEvent) {

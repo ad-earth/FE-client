@@ -24,7 +24,7 @@ const CardIcon = ({
   const { mutate } = useIcon();
   const queryClient = useQueryClient();
 
-  const data = useGetDetailQuery(String(val.p_No));
+  // const data = useGetDetailQuery(String(val.p_No));
 
   //--찜하기 버튼
   const heartClick = () => {
@@ -39,7 +39,6 @@ const CardIcon = ({
 
   return (
     <>
-      <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
       <t.CardCp>
         <t.IconDiv>
           <t.IconSpan>
@@ -61,10 +60,15 @@ const CardIcon = ({
             )}
             <t.Count>{plus}</t.Count>
           </t.IconSpan>
+          <ListModal
+            isOpen={infoIsOpen}
+            handleClose={() => setInfoIsOpen(false)}
+            pNo={val.p_No}
+          />
           <t.CartIcon
             onClick={() => {
               setInfoIsOpen(true);
-              data.refetch();
+              // data.refatch();
             }}
           />
         </t.IconDiv>
