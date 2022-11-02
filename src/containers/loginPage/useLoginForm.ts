@@ -22,6 +22,7 @@ export const useLoginForm = (data: Data) => {
         dispatch(setUserData(data.userInfo));
       }
       if (data.cartList) {
+        console.log("data.cartList: ", data.cartList);
         return data.cartList;
       }
     },

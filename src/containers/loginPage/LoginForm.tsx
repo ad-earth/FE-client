@@ -2,8 +2,8 @@ import * as t from "./LoginForm.style";
 import { theme } from "../../style/theme";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { openDB } from "idb";
 import { useLoginForm } from "./useLoginForm";
+import { putAllCartDB } from "../../shared/utils/putCartDB";
 import { MainButton } from "../../elements/buttons/Buttons";
 import Input from "../../elements/input/Input";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
@@ -19,48 +19,14 @@ const LoginForm = () => {
     u_Pw: pw,
   };
 
-  const setCart = async () => {
-    console.log(data.cartList);
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    try {
-      for (let i = 0; i < data.cartList.length; i++) {
-        store.put({
-          id: data.cartList[i].p_No,
-          keywordNo: data.cartList[i].k_No,
-          prodNo: data.cartList[i].p_No,
-          thumbnail: data.cartList[i].p_Thumbnail,
-          category: data.cartList[i].p_Category,
-          brand: data.cartList[i].a_Brand,
-          name: data.cartList[i].p_Name,
-          price: data.cartList[i].p_Cost,
-          discount: data.cartList[i].p_Discount,
-          option: data.cartList[i].p_Option,
-          totalPrice: data.cartList[i].p_Price,
-          totalCnt: data.cartList[i].p_Cnt,
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const { mutate, isSuccess, data } = useLoginForm(loginData);
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Success");
+      putAllCartDB(data);
+      console.log("Success", data);
       navigate("/");
       window.location.href = "/";
-      setCart();
     }
   }, [isSuccess]);
 

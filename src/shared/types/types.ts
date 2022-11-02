@@ -55,3 +55,18 @@ export interface CartType {
     totalCnt: number;
   }[];
 }
+export interface CartResponseType {
+  cartList: {
+    k_No: number;
+    p_No: string;
+    p_Thumbnail: string;
+    p_Category: string;
+    a_Brand: string;
+    p_Name: string;
+    p_Cost: number;
+    p_Discount: number;
+    p_Option: Array<string | number | null>[];
+    p_Price: number;
+    p_Cnt: number;
+  }[];
+}

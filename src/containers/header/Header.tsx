@@ -12,6 +12,8 @@ import MenuDrop from "../../elements/menuDrop/MenuDrop";
 import useDropDown from "../../hooks/useDropDown";
 import AsideHeader from "../../components/header/aside/AsideHeader";
 import { useLogOut } from "./useLogout";
+import { useViewport } from "../../hooks/useViewport";
+import { getAllCartDB } from "../../hooks/useAllCartDB";
 
 let cateData: {
   id: number;
@@ -31,69 +33,44 @@ let cateData: {
 const token = localStorage.getItem("token");
 
 const Header = () => {
-  const [viewport, setViewport] = useState(visualViewport.width);
+  const viewport = useViewport();
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [infoIsOpen, setInfoIsOpen] = useState(false);
   const { isDropped, dropRef, handleRemove } = useDropDown();
   const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  // const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [cartData, setCartData] = useState();
+  // const CartData = useAllCartDB();
+  // CartData.then((res) => setCartDB(res))
 
+  console.log("CartData: ");
   const goHome = () => {
     window.location.href = "/";
   };
 
   useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
+    const result = getAllCartDB();
+    console.log("result: ", result);
+    // result.then((res) =>setCartData(res))
   });
 
-  // 장바구니 정보 가져오기
-  const getCart = async () => {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readonly").objectStore("cart");
-    const request = store.getAll();
-    try {
-      request.then((response) => {
-        dispatch(setCartData(response));
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const CData = {
+  //   cartList: cartData,
+  // };
 
-  useEffect(() => {
-    if (token) {
-      getCart();
-    }
-  }, []);
+  // const { mutate, isSuccess, data } = useLogOut(CData);
 
-  const CData = {
-    cartList: cartData,
-  };
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     console.log("Success");
+  //     localStorage.clear();
+  //     window.location.href = "/";
+  //   }
+  // }, [isSuccess]);
 
-  const { mutate, isSuccess, data } = useLogOut(CData);
-
-  useEffect(() => {
-    if (isSuccess) {
-      console.log("Success");
-      localStorage.clear();
-      window.location.href = "/";
-    }
-  }, [isSuccess]);
-
-  const handelLogOut = () => {
-    mutate();
-  };
+  // const handelLogOut = () => {
+  //   mutate();
+  // };
 
   return (
     <>
@@ -147,7 +124,7 @@ const Header = () => {
                   <>
                     <span
                       onClick={() => {
-                        handelLogOut();
+                        // handelLogOut();
                       }}
                     >
                       로그아웃
@@ -158,7 +135,7 @@ const Header = () => {
                     <div>
                       <Link to={"/cart"}>
                         <t.CountBadge
-                          badgeContent={cartData ? cartData.length : ""}
+                        // badgeContent={cartData ? cartData.length : ""}
                         >
                           <t.ShopIcon />
                         </t.CountBadge>
@@ -170,7 +147,7 @@ const Header = () => {
                     <div>
                       <Link to={"/cart"}>
                         <t.CountBadge
-                          badgeContent={cartData ? cartData.length : ""}
+                        // badgeContent={cartData ? cartData.length : ""}
                         >
                           <t.ShopIcon />
                         </t.CountBadge>
