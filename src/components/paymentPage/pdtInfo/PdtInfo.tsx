@@ -17,7 +17,7 @@ const PdtInfo = ({
 
   useEffect(() => {
     dispatch(setPayData(dtData));
-    dispatch(setPayData(cartData));
+    // dispatch(setPayData(cartData));
   }, []);
 
   return (
