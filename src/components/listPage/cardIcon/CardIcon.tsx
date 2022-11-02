@@ -45,7 +45,7 @@ const CardIcon = ({
               onClick={() =>
                 navigate({
                   pathname: `/detail/${val.p_No}`,
-                  search: `category=${category}&keword=${keyParams}`,
+                  search: `category=${category}&keyword=${keyParams}`,
                 })
               }
             />
