@@ -1,6 +1,5 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
-import { openDB } from "idb";
 import { useNavigate, useParams } from "react-router-dom";
 //pages//
 import { RootState, useAppSelector } from "../../../redux/store";
@@ -18,10 +17,7 @@ import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
 import { usePaymentDB } from "../../../hooks/usePaymentDB";
 import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
-import {
-  DataPropsType,
-  DataType,
-} from "../../../components/paymentPage/pdtInfo/pdInfo.type";
+import { DataPropsType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
 
 const OrderPList = () => {
   const titles = [
@@ -34,15 +30,16 @@ const OrderPList = () => {
   const navigate = useNavigate();
   const [btnOpen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
+  const { prodNo } = useParams();
+
   //-- get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
   //-- slice에서 data 받아오기
-  const data = useAppSelector((state) => state.cartSlice.orderData);
   const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
   const [dtData, setDtData] = useState();
-  const [cartData, setCartData] = useState<DataType[]>();
+  const [cartData, setCartData] = useState<DataPropsType[]>();
 
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
@@ -64,7 +61,7 @@ const OrderPList = () => {
     o_Price: oPrice,
   };
   const { mutate, isSuccess } = usePostPay(postPay);
-  //결제하기 버튼
+  //-- 결제하기 버튼
   const PayClick = () => {
     if (isUserName === false && btnOpen === true) {
       alert("이름을 입력해주세요");
@@ -85,6 +82,13 @@ const OrderPList = () => {
     }
   };
 
+  //-- 데이터 내려가는 형식 맞추기
+  let dtDataArr = [];
+  dtDataArr.push(dtData);
+  //-- indexedDB
+  const detailDB = usePaymentDB(Number(prodNo));
+  const cartDB = useAllPaymentDB();
+
   useEffect(() => {
     if (isSuccess) {
       alert("결제가 완료되었습니다.");
@@ -92,26 +96,20 @@ const OrderPList = () => {
     } else {
     }
   }, [isSuccess]);
-  const detailDB = usePaymentDB(1665330347274);
-  const cartDB = useAllPaymentDB();
-  console.log(cartData);
 
   useEffect(() => {
     detailDB.then((response) => setDtData(response));
     cartDB.then((response) => setCartData(response));
   }, []);
 
-  console.log("dtData: ", cartData);
   return (
     <>
-      {dtData && GetPaylist && (
+      {dtData && GetPaylist && cartData && (
         <t.PayArea>
-          {/* <form> */}
           <t.LPListArea>
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-
-              <PdtInfo data={dtData && dtData} />
+              <PdtInfo dtData={dtDataArr} cartData={cartData} />
               <FreeShipping />
             </t.LTipOff>
 
@@ -151,7 +149,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              {/* <PaySummary data={dtDataArr} /> */}
+              <PaySummary dtData={dtDataArr} cartData={cartData} />
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>
@@ -166,7 +164,6 @@ const OrderPList = () => {
               </t.RBtnDiv>
             </t.RTipOff>
           </t.RPayArea>
-          {/* </form> */}
         </t.PayArea>
       )}
     </>

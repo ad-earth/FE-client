@@ -11,6 +11,7 @@ import { useAppSelector } from "../redux/store";
 
 const SearchPage = () => {
   const navigate = useNavigate();
+
   const [keyword, setKeyword] = useState<string>("");
   const { keyParams } = useParams();
   const { pageNo } = useAppSelector((state) => state.listSlice);

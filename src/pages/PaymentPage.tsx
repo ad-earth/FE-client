@@ -20,7 +20,7 @@ const Area = styled.div`
   display: grid;
   justify-content: center;
   width: 100%;
-  @media (max-width: 930px) {
+  @media (max-width: 990px) {
     display: flex;
     flex-direction: column;
     justify-content: center;

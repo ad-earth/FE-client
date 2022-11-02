@@ -1,5 +1,5 @@
 import * as t from "./cardIcon.style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ListModal from "../../../containers/listPage/listModal/ListModal";
@@ -23,10 +23,8 @@ const CardIcon = ({
   const navigate = useNavigate();
   const { mutate } = useIcon();
   const queryClient = useQueryClient();
-  // const [dataNo, setDataNo] = useState<number>(null);
+
   const data = useGetDetailQuery(String(val.p_No));
-  // console.log(data);
-  // console.log(val.p_No);
 
   //--찜하기 버튼
   const heartClick = () => {
@@ -39,19 +37,9 @@ const CardIcon = ({
     });
   };
 
-  // useEffect(() => {
-  //   data.refetch();
-  // }, [dataNo]);
-
   return (
     <>
-      <ListModal
-        isOpen={infoIsOpen}
-        handleClose={() => setInfoIsOpen(false)}
-        userLike={userLike}
-        list={val}
-        productNo={val.p_No}
-      />
+      <ListModal isOpen={infoIsOpen} handleClose={() => setInfoIsOpen(false)} />
       <t.CardCp>
         <t.IconDiv>
           <t.IconSpan>
