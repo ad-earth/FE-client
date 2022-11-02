@@ -22,17 +22,16 @@ const Card = (props: CardCompoType) => {
 
   return (
     <>
-      <t.CardCp
-        onClick={() =>
-          navigate({
-            pathname: `/detail/${props.pNo}`,
-            search: `category=${category}&keyword=${keyParams}`,
-          })
-        }
-      >
+      <t.CardCp>
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
+              onClick={() =>
+                navigate({
+                  pathname: `/detail/${props.pNo}`,
+                  search: `category=${category}&keyword=${keyParams}`,
+                })
+              }
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
               src={
@@ -53,6 +52,12 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
+                  onClick={() =>
+                    navigate({
+                      pathname: `/detail/${props.pNo}`,
+                      search: `category=${category}&keyword=${keyParams}`,
+                    })
+                  }
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
                   src={
@@ -65,6 +70,12 @@ const Card = (props: CardCompoType) => {
               </t.AdCardArea>
             ) : (
               <t.CardImg
+                onClick={() =>
+                  navigate({
+                    pathname: `/detail/${props.pNo}`,
+                    search: `category=${category}&keyword=null`,
+                  })
+                }
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
                 src={
@@ -90,7 +101,14 @@ const Card = (props: CardCompoType) => {
             </t.IconDiv>
           ) : null}
 
-          <t.CardTitle>
+          <t.CardTitle
+            onClick={() =>
+              navigate({
+                pathname: `/detail/${props.pNo}`,
+                search: `category=${category}&keyword=${keyParams}`,
+              })
+            }
+          >
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
 

@@ -7,13 +7,14 @@ import PageBtn from "../components/listPage/pagination/PageBtn";
 import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
 import { useNavigate, useParams } from "react-router-dom";
 import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
+import { useAppSelector } from "../redux/store";
 
 const SearchPage = () => {
   const navigate = useNavigate();
-  const [keyword, setKeyword] = useState<string>("");
-  const [pageParams, setPageParams] = useState<number>(1);
-  const { keyParams } = useParams();
 
+  const [keyword, setKeyword] = useState<string>("");
+  const { keyParams } = useParams();
+  const { pageNo } = useAppSelector((state) => state.listSlice);
   const keywordRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const submitHandler = (event: React.FormEvent) => {
     const keyword = keywordRef.current!.value;
@@ -24,7 +25,7 @@ const SearchPage = () => {
 
   const SearchListData: SearchType = useSearchDataList(
     keyParams,
-    String(pageParams)
+    String(pageNo)
   );
 
   const onClearInput = () => {
@@ -58,11 +59,7 @@ const SearchPage = () => {
           {SearchListData.cnt === 0 ? (
             <EmptyDiv message={"검색된 정보가 없습니다."} />
           ) : null}
-          <PageBtn
-            page={pageParams}
-            setPage={setPageParams}
-            cnt={SearchListData.cnt}
-          />
+          <PageBtn cnt={SearchListData.cnt} />
         </>
       )}
     </>

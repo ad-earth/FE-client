@@ -2,16 +2,26 @@ import styled from "styled-components";
 import { theme } from "../../../style/theme";
 
 export const LPListArea = styled.div`
+  margin-left: 16px;
   width: 470px;
   visibility: visible;
   float: left;
   display: flex;
   flex-direction: column;
-  @media (max-width: 930px) {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  align-items: flex-start;
+  @media (max-width: 990px) {
     display: flex;
     width: 95%;
     margin: 0 20px;
     align-items: center;
+  }
+  @media (max-width: 480px) {
+    display: flex;
+    width: 83%;
+    margin-left: 15px;
+    align-items: flex-start;
   }
 `;
 export const LTipOff = styled.div`
@@ -36,13 +46,18 @@ export const RPayArea = styled.div`
   float: right;
   display: flex;
   -webkit-flex-direction: column;
-  -ms-flex-direction: column;
   align-items: flex-end;
-  @media (max-width: 930px) {
+  @media (max-width: 990px) {
     display: flex;
     width: 120%;
     margin: 10 auto;
     align-items: flex-end;
+  }
+  @media (max-width: 480px) {
+    display: flex;
+    width: 105%;
+    margin: 0px -11px 0px;
+    align-items: center;
   }
 `;
 export const RTipOff = styled.div`

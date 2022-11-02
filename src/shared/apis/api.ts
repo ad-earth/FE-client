@@ -49,10 +49,6 @@ export const getReviews = (productNo: string, page: number) =>
 export const deleteReview = (reviewNo: number) =>
   axiosInstance.delete(`/reviews/${reviewNo}`);
 
-//장보기페이지
-export const getList = (sort: string, pageNo: string) =>
-  axiosInstance.get(`/main/products?sort=${sort}&page=${pageNo}&maxpost=20`);
-
 //카테고리 조회
 export const getCate = (category: string, sort: string, pageNo: string) =>
   axiosInstance.get(
