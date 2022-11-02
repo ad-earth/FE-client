@@ -55,7 +55,7 @@ const Buttons = (props: PropsType) => {
                   props.totalPrice,
                   props.totalQty
                 );
-                navigate("/payment");
+                navigate(`/payment/${productNo}`);
               }}
             >
               구매하기
