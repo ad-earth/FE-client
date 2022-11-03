@@ -47,7 +47,7 @@ export const TBody = styled.tbody`
   }
   & .buttonBox {
     height: 100%;
-    color: #${({ theme }) => theme.fc09};
+    color: ${({ theme }) => theme.fc09};
     font-weight: 600;
     display: revert;
     @media (max-width: 990px) {

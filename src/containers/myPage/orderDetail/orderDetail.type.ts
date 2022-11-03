@@ -24,6 +24,8 @@ export interface ProductsType {
   p_Price: number;
   p_Cnt: number;
   o_Status: string;
+  r_Status: boolean; //리뷰 등록 여부
+  p_Status: boolean; // 상품 존재 여부
 }
 
 export interface OrderType {

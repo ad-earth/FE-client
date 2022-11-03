@@ -12,7 +12,7 @@ export const NavListBox = styled.ul`
 export const MobileNav = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.ls03};
-  width: 33%;
+  width: calc(100% / 3);
   float: left;
   a {
     width: 100%;

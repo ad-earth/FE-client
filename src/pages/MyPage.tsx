@@ -1,10 +1,20 @@
+import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 //components
 import { Aside } from "../containers/myPage/Aside";
 import UserHead from "../containers/myPage/UserHead";
 
 const MyPage = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  // 로그인 유저 확인
+  useEffect(() => {
+    if (token) return;
+    navigate("/");
+  }, [token]);
+
   return (
     <Wrap>
       <Aside />
