@@ -1,10 +1,10 @@
 import { openDB } from "idb";
 import { DetailResponseType } from "../../containers/detailPage/details/details.type";
-import { OptionListType } from "../types/types";
+import { OptionArrType } from "../types/types";
 
 export const putPaymentDB = async (
   detailData: DetailResponseType,
-  optionList: OptionListType,
+  optionList: OptionArrType[],
   qty: number,
   totalPrice: number,
   totalQty: number

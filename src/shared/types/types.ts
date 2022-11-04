@@ -24,11 +24,14 @@ export interface ProductDetailType extends ProductType {
 export type OptionListType = {
   id: number;
   color: string;
+  colorCode: string;
   size: string;
   extraCost: number;
   price: number;
   qty: number;
 }[];
+
+export type OptionArrType = [string, string, string, number, number, number];
 
 export interface ReviewType {
   r_No: number;

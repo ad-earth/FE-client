@@ -1,10 +1,10 @@
 import { openDB } from "idb";
 import { DetailResponseType } from "../../containers/detailPage/details/details.type";
-import { OptionListType } from "../types/types";
+import { OptionArrType } from "../types/types";
 
 export const putCartDB = async (
   detailData: DetailResponseType,
-  optionData: OptionListType,
+  optionList: OptionArrType[],
   qty: number,
   totalPrice: number,
   totalQty: number
@@ -29,7 +29,7 @@ export const putCartDB = async (
     name: detailData?.product.p_Name,
     price: detailData?.product.p_Cost,
     discount: detailData?.product.p_Discount,
-    option: optionData,
+    option: optionList,
     totalPrice: totalPrice,
     totalQty: totalQty !== 0 ? totalQty : qty,
   });

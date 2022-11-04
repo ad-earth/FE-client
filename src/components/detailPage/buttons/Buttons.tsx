@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PropsType } from "./buttons.type";
 import { usePostLikeQuery } from "./usePostLikeQuery";
+import { useOptionList } from "./useOptionList";
 import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
 import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
@@ -13,8 +14,9 @@ import { MainButton } from "../../../elements/buttons/Buttons";
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();
   const navigate = useNavigate();
-  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
+
+  const optionList = useOptionList();
 
   const { isLike, likeQty } = useMemo(
     () => ({
@@ -23,6 +25,7 @@ const Buttons = (props: PropsType) => {
     }),
     [detailData]
   );
+
   const { mutate } = usePostLikeQuery(productNo);
 
   const [open, setOpen] = useState<boolean>(false);
@@ -50,7 +53,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putPaymentDB(
                   detailData,
-                  optionData,
+                  optionList,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
@@ -70,7 +73,7 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putCartDB(
                   detailData,
-                  optionData,
+                  optionList,
                   props.qty,
                   props.totalPrice,
                   props.totalQty
