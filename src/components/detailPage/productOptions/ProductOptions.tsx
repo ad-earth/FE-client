@@ -30,11 +30,13 @@ const ProductOptions = () => {
 
   const handleUserOptionList = (
     selectedColor: string,
+    selectedColorCode: string,
     userSize: string,
     userExtraCost: number
   ) => {
     const { userOption, newOptionId } = addUserOption(
       selectedColor,
+      selectedColorCode,
       userSize,
       userExtraCost,
       price,
@@ -70,6 +72,7 @@ const ProductOptions = () => {
                         option[4] != 0
                           ? handleUserOptionList(
                               option[0],
+                              option[1],
                               option[2],
                               option[3]
                             )
