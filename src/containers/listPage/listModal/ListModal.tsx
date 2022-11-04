@@ -7,21 +7,23 @@ import ProductSummary from "../../../components/detailPage/productSummary/Produc
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
 import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
+import { useGetDetailQuery } from "../../detailPage/details/useGetDetailQuery";
 
 const ListModal = ({
   isOpen,
   handleClose,
-  pNo,
-}: {
+}: // pNo,
+{
   isOpen: boolean;
-  pNo: number;
+  // pNo: number;
   handleClose: () => void;
 }) => {
   function close(e: React.MouseEvent) {
     e.preventDefault();
     handleClose();
   }
-
+  // console.log(pNo);
+  // const data = useGetDetailQuery(String(pNo));
   const [viewport, setViewport] = useState(visualViewport.width);
   useEffect(() => {
     const resizeListener = () => {

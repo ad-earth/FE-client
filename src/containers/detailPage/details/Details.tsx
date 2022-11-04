@@ -17,6 +17,7 @@ const Details = () => {
     ignoreQueryPrefix: true,
   });
   const queryKeyword = String(query.keyword);
+  console.log(productNo);
 
   useGetDetailQuery(
     productNo,

@@ -18,6 +18,7 @@ import { PayListType } from "./orderPList.type";
 import { usePaymentDB } from "../../../hooks/usePaymentDB";
 import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
 import { DataPropsType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
+// import { CardTravelRounded } from "@mui/icons-material";
 
 const OrderPList = () => {
   const titles = [
@@ -38,7 +39,6 @@ const OrderPList = () => {
   const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
-  const [dtData, setDtData] = useState();
   const [cartData, setCartData] = useState<DataPropsType[]>();
 
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
@@ -82,11 +82,7 @@ const OrderPList = () => {
     }
   };
 
-  //-- 데이터 내려가는 형식 맞추기
-  let dtDataArr = [];
-  dtDataArr.push(dtData);
   //-- indexedDB
-  const detailDB = usePaymentDB(Number(prodNo));
   const cartDB = useAllPaymentDB();
 
   useEffect(() => {
@@ -98,18 +94,18 @@ const OrderPList = () => {
   }, [isSuccess]);
 
   useEffect(() => {
-    detailDB.then((response) => setDtData(response));
     cartDB.then((response) => setCartData(response));
   }, []);
+  console.log(cartData);
 
   return (
     <>
-      {dtData && GetPaylist && cartData && (
+      {GetPaylist && cartData && (
         <t.PayArea>
           <t.LPListArea>
             <t.LTipOff>
               <t.LOrderInfoDiv>{titles[0]}</t.LOrderInfoDiv>
-              <PdtInfo dtData={dtDataArr} cartData={cartData} />
+              <PdtInfo data={cartData} />
               <FreeShipping />
             </t.LTipOff>
 
@@ -149,7 +145,7 @@ const OrderPList = () => {
           <t.RPayArea>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[3]}</t.ROrderInfoDiv>
-              <PaySummary dtData={dtDataArr} cartData={cartData} />
+              <PaySummary data={cartData} />
             </t.RTipOff>
             <t.RTipOff>
               <t.ROrderInfoDiv>{titles[4]}</t.ROrderInfoDiv>

@@ -9,7 +9,7 @@ export interface DataType {
     name: string;
     price: number;
     discount: number;
-    option: [string | null, string | null, number | null, number, number][];
+    option: OptionType[];
     totalPrice: number;
     totalCnt: number;
   }[];
@@ -26,7 +26,7 @@ export interface DataPropsType {
   id: number;
   keywordNo: number;
   prodNo: string;
-  thumbnail: string;
+  thumbnail: string[];
   category: string;
   brand: string;
   name: string;

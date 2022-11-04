@@ -4,15 +4,9 @@ import { useAppDispatch } from "../../../redux/store";
 import { DataPropsType, DataType } from "../pdtInfo/pdInfo.type";
 import * as t from "./paySummary.style";
 
-const PaySummary = ({
-  dtData,
-  cartData,
-}: {
-  dtData: DataPropsType[];
-  cartData: DataPropsType[];
-}) => {
+const PaySummary = ({ data }: { data: DataPropsType[] }) => {
   const dispatch = useAppDispatch();
-  const totalP = dtData.reduce((a: any, currentObject: any) => {
+  const totalP = data.reduce((a: any, currentObject: any) => {
     return a + currentObject.totalPrice;
   }, 0);
 
@@ -23,7 +17,7 @@ const PaySummary = ({
   });
   return (
     <>
-      {dtData && (
+      {data && (
         <>
           <t.DivArea>
             <t.Div>

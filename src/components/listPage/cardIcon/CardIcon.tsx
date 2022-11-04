@@ -24,7 +24,8 @@ const CardIcon = ({
   const { mutate } = useIcon();
   const queryClient = useQueryClient();
 
-  // const data = useGetDetailQuery(String(val.p_No));
+  // const data = useGetDetailQuery();
+  const [productNo, setProductNo] = useState<number>(null);
 
   //--찜하기 버튼
   const heartClick = () => {
@@ -35,6 +36,22 @@ const CardIcon = ({
         queryClient.invalidateQueries("cardList");
       },
     });
+  };
+  //  useGetDetailQuery(
+  //    productNo,
+  //    queryKeyword !== "undefined" ? queryKeyword : null
+  //  );
+
+  // useGetDetailQuery(String(val.p_No));
+  const ModalClick = () => {
+    setInfoIsOpen(true);
+    setProductNo(val.p_No);
+    console.log(val.p_No);
+    console.log(keyParams);
+    useGetDetailQuery(
+      val.p_No ? String(val.p_No) : null,
+      keyParams !== "undefined" ? keyParams : null
+    );
   };
 
   return (
@@ -63,14 +80,9 @@ const CardIcon = ({
           <ListModal
             isOpen={infoIsOpen}
             handleClose={() => setInfoIsOpen(false)}
-            pNo={val.p_No}
+            // pNo={val.p_No}
           />
-          <t.CartIcon
-            onClick={() => {
-              setInfoIsOpen(true);
-              // data.refatch();
-            }}
-          />
+          <t.CartIcon onClick={ModalClick} />
         </t.IconDiv>
       </t.CardCp>
     </>
