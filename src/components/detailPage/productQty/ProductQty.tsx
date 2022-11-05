@@ -1,8 +1,8 @@
 import * as t from "./productQty.style";
 import { useEffect, useState } from "react";
 import { PropsType } from "./productQty.type";
-import { useTotalPrice } from "./useTotalPrice";
-import { useTotalQty } from "./useTotalQty";
+import { useTotalOptionPrice } from "./useTotalOptionPrice";
+import { useTotalOptionQty } from "./useTotalOptionQty";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
 import { removeUserOption } from "../productOptions/optionHandler";
@@ -11,6 +11,7 @@ import {
   OptionCountButton,
 } from "../../../elements/buttons/Buttons";
 import Buttons from "../buttons/Buttons";
+import { useDiscount } from "../productName/useDiscount";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
@@ -21,11 +22,14 @@ const ProductQty = (props: PropsType) => {
 
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
-
   const [qty, setQty] = useState<number>(1);
-  const totalPrice = useTotalPrice(optionData);
-  const totalQty = useTotalQty(optionData);
+  const price = useDiscount(
+    detailData.product.p_Cost,
+    detailData.product.p_Discount
+  );
 
+  const totalOptionQty = useTotalOptionQty(optionData);
+  const totalOptionPrice = useTotalOptionPrice(optionData);
   return (
     <div>
       {props.haveOptions ? (
@@ -53,8 +57,8 @@ const ProductQty = (props: PropsType) => {
             );
           })}
           <t.Price>
-            총 상품 금액({totalQty}개)
-            <span>{totalPrice?.toLocaleString()}원</span>
+            총 상품 금액({totalOptionQty}개)
+            <span>{totalOptionPrice?.toLocaleString()}원</span>
           </t.Price>
         </div>
       ) : (
@@ -63,20 +67,21 @@ const ProductQty = (props: PropsType) => {
             <t.OptWrapper>수량</t.OptWrapper>
             <t.CountWrapper>
               <CountButton qty={qty} setQty={setQty} />
-              {(detailData?.product.p_Cost * qty).toLocaleString()}원
+              {(props.price * qty).toLocaleString()}원
             </t.CountWrapper>
           </t.OptBox>
           <t.Price>
             총 상품 금액({qty}개)
-            <span>{(detailData?.product.p_Cost * qty).toLocaleString()}원</span>
+            <span>{(props.price * qty).toLocaleString()}원</span>
           </t.Price>
         </div>
       )}
       <Buttons
         optionList={optionData}
         qty={qty}
-        totalPrice={totalPrice}
-        totalQty={totalQty}
+        totalOptionPrice={totalOptionPrice}
+        totalOptionQty={totalOptionQty}
+        totalPrice={props.price * qty}
       />
     </div>
   );

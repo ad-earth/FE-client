@@ -6,8 +6,9 @@ export const putPaymentDB = async (
   detailData: DetailResponseType,
   optionList: OptionArrType[],
   qty: number,
-  totalPrice: number,
-  totalQty: number
+  totalOptionPrice: number,
+  totalOptionQty: number,
+  totalPrice: number
 ) => {
   let store;
   const db = await openDB("payment", 1, {
@@ -30,7 +31,7 @@ export const putPaymentDB = async (
     price: detailData?.product.p_Cost,
     discount: detailData?.product.p_Discount,
     option: optionList,
-    totalPrice: totalPrice,
-    totalQty: totalQty !== 0 ? totalQty : qty,
+    totalPrice: totalOptionPrice !== 0 ? totalOptionPrice : totalPrice,
+    totalQty: totalOptionQty !== 0 ? totalOptionQty : qty,
   });
 };

@@ -10,13 +10,18 @@ import { putCartDB } from "../../../shared/utils/putCartDB";
 import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
 import ChoiceModal from "../../../elements/ChoiceModal";
 import { MainButton } from "../../../elements/buttons/Buttons";
+import { useDiscount } from "../productName/useDiscount";
 
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();
   const navigate = useNavigate();
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const optionList = useOptionList();
+  const price = useDiscount(
+    detailData.product.p_Cost,
+    detailData.product.p_Discount
+  );
+  const optionList = useOptionList(price);
 
   const { isLike, likeQty } = useMemo(
     () => ({
@@ -55,8 +60,9 @@ const Buttons = (props: PropsType) => {
                   detailData,
                   optionList,
                   props.qty,
-                  props.totalPrice,
-                  props.totalQty
+                  props.totalOptionPrice,
+                  props.totalOptionQty,
+                  props.totalPrice
                 );
                 navigate(`/payment/${productNo}`);
               }}
@@ -75,8 +81,9 @@ const Buttons = (props: PropsType) => {
                   detailData,
                   optionList,
                   props.qty,
-                  props.totalPrice,
-                  props.totalQty
+                  props.totalOptionPrice,
+                  props.totalOptionQty,
+                  props.totalPrice
                 );
                 setOpen(true);
               }}
