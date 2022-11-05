@@ -1,5 +1,5 @@
 import * as t from "./cardIcon.style";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import ListModal from "../../../containers/listPage/listModal/ListModal";
@@ -7,6 +7,8 @@ import { useIcon } from "./useCardIcon";
 import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
 import { useQueryClient } from "react-query";
 import { useGetDetailQuery } from "../../../containers/detailPage/details/useGetDetailQuery";
+import { useAppSelector } from "../../../redux/store";
+import { usePostLikeQuery } from "../../detailPage/buttons/usePostLikeQuery";
 
 const CardIcon = ({
   val,
@@ -24,7 +26,6 @@ const CardIcon = ({
   const { mutate } = useIcon();
   const queryClient = useQueryClient();
 
-  // const data = useGetDetailQuery();
   const [productNo, setProductNo] = useState<number>(null);
 
   //--찜하기 버튼
@@ -37,22 +38,25 @@ const CardIcon = ({
       },
     });
   };
-  //  useGetDetailQuery(
-  //    productNo,
-  //    queryKeyword !== "undefined" ? queryKeyword : null
-  //  );
-
-  // useGetDetailQuery(String(val.p_No));
+  //-- 리스트 모달
+  const { refetch } = useGetDetailQuery(
+    val.p_No ? String(val.p_No) : null,
+    keyParams !== undefined ? keyParams : null
+  );
   const ModalClick = () => {
     setInfoIsOpen(true);
     setProductNo(val.p_No);
-    console.log(val.p_No);
-    console.log(keyParams);
-    useGetDetailQuery(
-      val.p_No ? String(val.p_No) : null,
-      keyParams !== "undefined" ? keyParams : null
-    );
+    refetch();
   };
+  const detailData = useAppSelector((state) => state.detailSlice.details);
+
+  const { isLike, likeQty } = useMemo(
+    () => ({
+      isLike: detailData?.userLike,
+      likeQty: detailData?.product.p_Like,
+    }),
+    [detailData]
+  );
 
   return (
     <>
@@ -80,7 +84,6 @@ const CardIcon = ({
           <ListModal
             isOpen={infoIsOpen}
             handleClose={() => setInfoIsOpen(false)}
-            // pNo={val.p_No}
           />
           <t.CartIcon onClick={ModalClick} />
         </t.IconDiv>

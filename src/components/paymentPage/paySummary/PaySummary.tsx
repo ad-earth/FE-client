@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { setPriceData } from "../../../redux/reducer/payPdtSlice";
 import { useAppDispatch } from "../../../redux/store";
-import { DataPropsType, DataType } from "../pdtInfo/pdInfo.type";
+import { DataPropsType } from "../pdtInfo/pdInfo.type";
 import * as t from "./paySummary.style";
 
 const PaySummary = ({ data }: { data: DataPropsType[] }) => {

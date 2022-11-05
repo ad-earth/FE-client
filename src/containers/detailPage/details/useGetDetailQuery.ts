@@ -7,8 +7,6 @@ import { setDetails } from "../../../redux/reducer/detailSlice";
 import { setErrorMessage, setIsError } from "../../../redux/reducer/errorSlice";
 
 export const useGetDetailQuery = (productNo: string, keyword?: string) => {
-  console.log(keyword);
-
   const dispatch = useAppDispatch();
 
   return useQuery<AxiosResponse<DetailResponseType>, Error>(
