@@ -1,8 +1,12 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //pages//
-import { RootState, useAppSelector } from "../../../redux/store";
+import {
+  RootState,
+  useAppDispatch,
+  useAppSelector,
+} from "../../../redux/store";
 import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
 import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
 import PayMethod from "../../../components/paymentPage/payMethod/PayMethod";
@@ -15,10 +19,10 @@ import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { useGetPay, usePostPay } from "./useOrderPList";
 import { PayListType } from "./orderPList.type";
-import { usePaymentDB } from "../../../hooks/usePaymentDB";
 import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
 import { DataPropsType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
-// import { CardTravelRounded } from "@mui/icons-material";
+import { useDeletePayDB } from "../../../hooks/useDeletePayDB";
+import { editClear } from "../../../redux/reducer/payCheckSlice";
 
 const OrderPList = () => {
   const titles = [
@@ -31,7 +35,7 @@ const OrderPList = () => {
   const navigate = useNavigate();
   const [btnOpen, setBtnopen] = useState<boolean>(false);
   const [btnchange, setBtnchange] = useState<boolean>(false);
-  const { prodNo } = useParams();
+  const dispatch = useAppDispatch();
 
   //-- get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
@@ -40,7 +44,7 @@ const OrderPList = () => {
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
   const [cartData, setCartData] = useState<DataPropsType[]>();
-
+  //-- redux
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
   const { isName, isPNumber, isUserName, isUserPhone } = useAppSelector(
@@ -61,6 +65,7 @@ const OrderPList = () => {
     o_Price: oPrice,
   };
   const { mutate, isSuccess } = usePostPay(postPay);
+
   //-- 결제하기 버튼
   const PayClick = () => {
     if (isUserName === false && btnOpen === true) {
@@ -79,11 +84,12 @@ const OrderPList = () => {
       alert("상세 주소를 입력해주세요");
     } else {
       mutate();
+      dispatch(editClear(true));
     }
   };
-
   //-- indexedDB
   const cartDB = useAllPaymentDB();
+  useDeletePayDB();
 
   useEffect(() => {
     if (isSuccess) {
@@ -95,8 +101,7 @@ const OrderPList = () => {
 
   useEffect(() => {
     cartDB.then((response) => setCartData(response));
-  }, []);
-  console.log(cartData);
+  }, [cartDB]);
 
   return (
     <>

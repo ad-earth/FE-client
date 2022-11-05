@@ -30,7 +30,7 @@ const PdtInfo = ({ data }: { data: DataPropsType[] }) => {
                             </t.ProductName>
                             <t.ProducOption>{val.totalQty}개</t.ProducOption>
                             <t.ProducPrice>
-                              {val.price.toLocaleString("ko-KR")}원
+                              {val.totalPrice.toLocaleString("ko-KR")}원
                             </t.ProducPrice>
                           </t.ProductInfo>
                         </t.PdInfoDiv>
