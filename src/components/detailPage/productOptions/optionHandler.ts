@@ -25,7 +25,7 @@ export const addUserOption = (
       colorCode: selectedColorCode,
       size: selectedSize,
       extraCost: selectedExtraPrice,
-      price: price + selectedExtraPrice,
+      price: (price + selectedExtraPrice) * userQty,
       qty: userQty,
     };
     return { userOption: userOption, newOptionId: optionId + 1 };
