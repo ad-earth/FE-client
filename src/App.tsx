@@ -60,7 +60,7 @@ function App() {
             <Route path="/list/:category" element={<ListPage />}></Route>
             <Route path="/search/:keyParams" element={<SearchPage />}></Route>
             <Route path="/detail/:productNo" element={<DetailPage />}></Route>
-            <Route path="/payment/:prodNo" element={<PaymentPage />}></Route>
+            <Route path="/payment" element={<PaymentPage />}></Route>
             <Route path="/complete" element={<CompletePage />}></Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -84,12 +84,11 @@ const OrderPList = () => {
       alert("상세 주소를 입력해주세요");
     } else {
       mutate();
-      dispatch(editClear(true));
     }
   };
+
   //-- indexedDB
   const cartDB = useAllPaymentDB();
-  useDeletePayDB();
 
   useEffect(() => {
     if (isSuccess) {
@@ -98,10 +97,15 @@ const OrderPList = () => {
     } else {
     }
   }, [isSuccess]);
-
+  //-- 디비 리덕스 저장
   useEffect(() => {
     cartDB.then((response) => setCartData(response));
-  }, [cartDB]);
+  }, []);
+  //-- 디비 삭제
+  useEffect(() => {
+    dispatch(editClear(true));
+  }, [dispatch]);
+  useDeletePayDB();
 
   return (
     <>
