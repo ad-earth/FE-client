@@ -1,6 +1,6 @@
-import { Badge } from "../../../elements/badge/Badge";
 import * as t from "./cardBadge.style";
 import { CardBadgeType } from "./cardBadge.type";
+import { Badge } from "../../../elements/badge/Badge";
 
 const CardBadge = (props: CardBadgeType) => {
   return (

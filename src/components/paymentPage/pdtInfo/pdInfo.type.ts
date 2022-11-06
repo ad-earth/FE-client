@@ -5,11 +5,19 @@ export interface DataType {
     prodNo: string;
     thumbnail: string;
     category: string;
+    totalQty: number;
     brand: string;
     name: string;
     price: number;
     discount: number;
-    option: [string | null, string | null, number | null, number, number][];
+    option: [
+      string | null,
+      string | null,
+      string | null,
+      number | null,
+      number,
+      number
+    ][];
     totalPrice: number;
     totalCnt: number;
   }[];
@@ -26,13 +34,21 @@ export interface DataPropsType {
   id: number;
   keywordNo: number;
   prodNo: string;
-  thumbnail: string;
+  thumbnail: string[];
   category: string;
+  totalQty: number;
   brand: string;
   name: string;
   price: number;
   discount: number;
-  option: OptionType[];
+  option: [
+    string | null,
+    string | null,
+    string | null,
+    number | null,
+    number,
+    number
+  ][];
   totalPrice: number;
   totalCnt: number;
 }

@@ -1,9 +1,8 @@
+import * as t from "./cateButton.style";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { editPagNo, editSort } from "../../../redux/reducer/listSlice";
 import { useAppDispatch } from "../../../redux/store";
-
-import * as t from "./cateButton.style";
+import { editPagNo, editSort } from "../../../redux/reducer/listSlice";
 
 const CateButton = () => {
   const categoryList: string[] = [

@@ -1,29 +1,21 @@
-import { useEffect } from "react";
-import { setPriceData } from "../../../redux/reducer/payPdtSlice";
-import { useAppDispatch } from "../../../redux/store";
-import { DataPropsType, DataType } from "../pdtInfo/pdInfo.type";
 import * as t from "./paySummary.style";
+import { useEffect } from "react";
+import { DataPropsType } from "../pdtInfo/pdInfo.type";
+import { useAppDispatch } from "../../../redux/store";
+import { setPriceData } from "../../../redux/reducer/payPdtSlice";
 
-const PaySummary = ({
-  dtData,
-  cartData,
-}: {
-  dtData: DataPropsType[];
-  cartData: DataPropsType[];
-}) => {
+const PaySummary = ({ data }: { data: DataPropsType[] }) => {
   const dispatch = useAppDispatch();
-  const totalP = dtData.reduce((a: any, currentObject: any) => {
+  const totalP = data.reduce((a: any, currentObject: any) => {
     return a + currentObject.totalPrice;
   }, 0);
-
-  // console.log("PS", dtData.totalPrice);
 
   useEffect(() => {
     dispatch(setPriceData(totalP));
   });
   return (
     <>
-      {dtData && (
+      {data && (
         <>
           <t.DivArea>
             <t.Div>

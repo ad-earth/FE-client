@@ -1,16 +1,15 @@
 import * as t from "./payMethodInput.style";
 import React, { useState } from "react";
 import { useQueryClient } from "react-query";
-
-import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
-import { NewPayInput } from "../newPayInput/NewPayInput";
-import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
+import { RadiobtnType } from "../payRadioBtn/payRadioBtn.type";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
-import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
 import useDelPay from "./usePayMethodInput";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
+import { NewPayInput } from "../newPayInput/NewPayInput";
+import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
 import { editDNo } from "../../../redux/reducer/payUserSlice";
 import { editTab } from "../../../redux/reducer/payCheckSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
 const PayMethodInput = (props: RadiobtnType & PayListType) => {
   const dispatch = useAppDispatch();

@@ -1,16 +1,15 @@
 import * as t from "./card.style";
-import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-
-import { ColorIcon } from "../../elements/colorIcons/ColorIcons";
-import { Badge } from "../../elements/badge/Badge";
-import { CardCompoType } from "./card.type";
+import { useNavigate, useParams } from "react-router-dom";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import { CardCompoType } from "./card.type";
+import { Badge } from "../../elements/badge/Badge";
+import { ColorIcon } from "../../elements/colorIcons/ColorIcons";
 
 const Card = (props: CardCompoType) => {
+  const navigate = useNavigate();
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const { category } = useParams<{ category: string }>();
-  const navigate = useNavigate();
   const { keyParams } = useParams<{ keyParams: string }>();
   //-- 컬러칩 중복제거
   let optionArr = [];

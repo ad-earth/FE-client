@@ -1,7 +1,7 @@
 import * as t from "./loading.style";
 import { theme } from "../../style/theme";
-import { useIsFetching, useIsMutating } from "react-query";
 import { FadeLoader } from "react-spinners";
+import { useIsFetching, useIsMutating } from "react-query";
 
 const Loading = () => {
   const isFetching = useIsFetching();

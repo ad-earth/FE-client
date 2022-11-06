@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RadiobtnType } from "./PayRadioBtn";
+import { RadiobtnType } from "./payRadioBtn.type";
 
 export const Wrapper = styled.div`
   width: 100%;

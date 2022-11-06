@@ -7,6 +7,7 @@ export interface PayCheckType {
   isPNumber: boolean;
   isUserName: boolean;
   isUserPhone: boolean;
+  clear: boolean;
 }
 const initialState = {
   agree: false,
@@ -15,6 +16,7 @@ const initialState = {
   isPNumber: false,
   isUserName: false,
   isUserPhone: false,
+  clear: false,
 } as PayCheckType;
 
 const payCheckSlice = createSlice({
@@ -39,6 +41,9 @@ const payCheckSlice = createSlice({
     editIsUserPhone: (state, action: PayloadAction<boolean>) => {
       state.isUserPhone = action.payload;
     },
+    editClear: (state, action: PayloadAction<boolean>) => {
+      state.clear = action.payload;
+    },
   },
 });
 
@@ -50,5 +55,6 @@ export const {
   editisPNumber,
   editIsUserName,
   editIsUserPhone,
+  editClear,
 } = payCheckSlice.actions;
 export default payCheckSlice.reducer;

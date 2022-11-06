@@ -1,11 +1,10 @@
 import * as t from "./cardIcon.style";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-
-import ListModal from "../../../containers/listPage/listModal/ListModal";
-import { useIcon } from "./useCardIcon";
-import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
 import { useQueryClient } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useIcon } from "./useCardIconQuery";
+import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
+import ListModal from "../../../containers/listPage/listModal/ListModal";
 import { useGetDetailQuery } from "../../../containers/detailPage/details/useGetDetailQuery";
 
 const CardIcon = ({
@@ -15,16 +14,15 @@ const CardIcon = ({
   val: ProductsType;
   userLike: number[];
 }) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
-  const [plus, setPlus] = useState<number>(val.p_Like);
-  const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { mutate } = useIcon();
   const { category } = useParams<{ category: string }>();
   const { keyParams } = useParams<{ keyParams: string }>();
-  const navigate = useNavigate();
-  const { mutate } = useIcon();
-  const queryClient = useQueryClient();
-
-  // const data = useGetDetailQuery(String(val.p_No));
+  const [plus, setPlus] = useState<number>(val.p_Like);
+  const [productNo, setProductNo] = useState<number>(null);
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
 
   //--찜하기 버튼
   const heartClick = () => {
@@ -35,6 +33,17 @@ const CardIcon = ({
         queryClient.invalidateQueries("cardList");
       },
     });
+  };
+
+  //-- 리스트 모달
+  const { refetch } = useGetDetailQuery(
+    val.p_No ? String(val.p_No) : null,
+    keyParams !== undefined ? keyParams : null
+  );
+  const ModalClick = () => {
+    setInfoIsOpen(true);
+    setProductNo(val.p_No);
+    refetch();
   };
 
   return (
@@ -63,14 +72,8 @@ const CardIcon = ({
           <ListModal
             isOpen={infoIsOpen}
             handleClose={() => setInfoIsOpen(false)}
-            pNo={val.p_No}
           />
-          <t.CartIcon
-            onClick={() => {
-              setInfoIsOpen(true);
-              // data.refatch();
-            }}
-          />
+          <t.CartIcon onClick={ModalClick} />
         </t.IconDiv>
       </t.CardCp>
     </>
