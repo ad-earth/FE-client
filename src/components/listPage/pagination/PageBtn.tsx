@@ -1,7 +1,7 @@
-import { Pagination, PaginationItem } from "@mui/material";
 import { AreaPage } from "./pageBtn.sytle";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { Pagination, PaginationItem } from "@mui/material";
 import { editPagNo } from "../../../redux/reducer/listSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
 const PageBtn = ({ cnt }: { cnt: number }) => {
   //-- reducer

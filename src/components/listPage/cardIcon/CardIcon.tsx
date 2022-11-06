@@ -1,14 +1,11 @@
 import * as t from "./cardIcon.style";
-import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-
-import ListModal from "../../../containers/listPage/listModal/ListModal";
-import { useIcon } from "./useCardIcon";
-import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
+import { useState } from "react";
 import { useQueryClient } from "react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useIcon } from "./useCardIconQuery";
+import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
+import ListModal from "../../../containers/listPage/listModal/ListModal";
 import { useGetDetailQuery } from "../../../containers/detailPage/details/useGetDetailQuery";
-import { useAppSelector } from "../../../redux/store";
-import { usePostLikeQuery } from "../../detailPage/buttons/usePostLikeQuery";
 
 const CardIcon = ({
   val,
@@ -17,16 +14,15 @@ const CardIcon = ({
   val: ProductsType;
   userLike: number[];
 }) => {
-  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
-  const [plus, setPlus] = useState<number>(val.p_Like);
-  const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { mutate } = useIcon();
   const { category } = useParams<{ category: string }>();
   const { keyParams } = useParams<{ keyParams: string }>();
-  const navigate = useNavigate();
-  const { mutate } = useIcon();
-  const queryClient = useQueryClient();
-
+  const [plus, setPlus] = useState<number>(val.p_Like);
   const [productNo, setProductNo] = useState<number>(null);
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
 
   //--찜하기 버튼
   const heartClick = () => {
@@ -38,6 +34,7 @@ const CardIcon = ({
       },
     });
   };
+
   //-- 리스트 모달
   const { refetch } = useGetDetailQuery(
     val.p_No ? String(val.p_No) : null,
@@ -48,15 +45,6 @@ const CardIcon = ({
     setProductNo(val.p_No);
     refetch();
   };
-  const detailData = useAppSelector((state) => state.detailSlice.details);
-
-  const { isLike, likeQty } = useMemo(
-    () => ({
-      isLike: detailData?.userLike,
-      likeQty: detailData?.product.p_Like,
-    }),
-    [detailData]
-  );
 
   return (
     <>

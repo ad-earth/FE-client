@@ -1,19 +1,16 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-
-import CateButton from "../components/listPage/cateButton/CateButton";
 import PageBtn from "../components/listPage/pagination/PageBtn";
-import CardList from "../containers/listPage/cardList/CardList";
-import { useCateList } from "../containers/listPage/cardList/useCardList";
-import { CardListType } from "../containers/listPage/cardList/cardList.type";
+import CateButton from "../components/listPage/cateButton/CateButton";
 import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
-import { SelectChangeEvent } from "@mui/material";
+import CardList from "../containers/listPage/cardList/CardList";
+import { CardListType } from "../containers/listPage/cardList/cardList.type";
+import { useCateList } from "../containers/listPage/cardList/useCardListQuery";
 import { useAppSelector } from "../redux/store";
 
 export const ListPage = () => {
   const { category } = useParams<{ category: string }>();
   const { pageNo, sort } = useAppSelector((state) => state.listSlice);
-  //카테고리 api 호출
+  //-- 카테고리 api 호출
   const CateListData: CardListType = useCateList(
     category,
     sort,

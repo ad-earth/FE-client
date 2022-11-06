@@ -1,23 +1,22 @@
 import * as t from "./payUserInput.style";
-import Input from "../../../elements/input/Input";
 import { useCallback, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import Input from "../../../elements/input/Input";
 import {
   editIsUserName,
   editIsUserPhone,
 } from "../../../redux/reducer/payCheckSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
 const PayUserInput = () => {
   const dispatch = useAppDispatch();
   const [name, setName] = useState<string>("");
   const [pNumber, setPNumber] = useState<string>("");
   const [nameMessage, setNameMessage] = useState<string>("");
-  // const [isUserName, setisUserName] = useState<boolean>(false);
   const [phoneMessage, setPhoneMessage] = useState<string>("");
-  // const [isUserPhone, setisUserPhone] = useState<boolean>(false);
   const { isUserName, isUserPhone } = useAppSelector(
     (state) => state.payCheckSlice
   );
+
   //-- 이름 유효성 체크
   const onChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);

@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
+import { theme } from "../style/theme";
 import PayTitle from "../components/paymentPage/payTitle/PayTitle";
 import OrderPList from "../containers/paymentPage/orderPList/OrderPList";
-import { theme } from "../style/theme";
 
 const PaymentPage = () => {
   return (

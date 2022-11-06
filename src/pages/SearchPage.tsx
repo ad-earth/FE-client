@@ -1,12 +1,11 @@
-import { useRef, useState } from "react";
 import * as t from "../components/searchPage/sqSearchBar/sqSearchBar.style";
-
-import SearchBody from "../containers/searchPage/searchBody/SearchBody";
-import useSearchDataList from "../containers/searchPage/searchBody/useSearchBody";
-import PageBtn from "../components/listPage/pagination/PageBtn";
-import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
+import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import PageBtn from "../components/listPage/pagination/PageBtn";
 import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
+import SearchBody from "../containers/searchPage/searchBody/SearchBody";
+import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
+import useSearchDataList from "../containers/searchPage/searchBody/useSearchBodyQuery";
 import { useAppSelector } from "../redux/store";
 
 const SearchPage = () => {

@@ -1,8 +1,8 @@
 import * as t from "./buttons.style";
-import { changeUserOptionQty } from "../../components/detailPage/productOptions/optionHandler";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setOptionData } from "../../redux/reducer/optionSlice";
 import { BtnType, PropsType, NotFoundType } from "./buttons.type";
+import { changeUserOptionQty } from "../../components/detailPage/productOptions/optionHandler";
+import { setOptionData } from "../../redux/reducer/optionSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 export const MainButton = (props: BtnType) => {
   return <t.Btn {...props}>{props.children}</t.Btn>;

@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { setPayData } from "../../../redux/reducer/payPdtSlice";
-import { useAppDispatch } from "../../../redux/store";
-import { DataPropsType } from "./pdInfo.type";
 import * as t from "./pdtInfo.style";
+import { useEffect } from "react";
+import { DataPropsType } from "./pdInfo.type";
+import { useAppDispatch } from "../../../redux/store";
+import { setPayData } from "../../../redux/reducer/payPdtSlice";
 
 const PdtInfo = ({ data }: { data: DataPropsType[] }) => {
   const dispatch = useAppDispatch();

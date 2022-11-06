@@ -1,28 +1,27 @@
 import * as t from "./orderPList.style";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-//pages//
+import { useGetPay, usePostPay } from "./useOrderPListQuery";
+import { PayListType } from "./orderPList.type";
+import { MainButton } from "../../../elements/buttons/Buttons";
+import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
+import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
+import PayMethod from "../../../components/paymentPage/payMethod/PayMethod";
+import PaySummary from "../../../components/paymentPage/paySummary/PaySummary";
+import PayRadioBtn from "../../../components/paymentPage/payRadioBtn/PayRadioBtn";
+import PayUserInfo from "../../../components/paymentPage/payUserInfo/PayUserInfo";
+import { DataPropsType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
+import PayUserInput from "../../../components/paymentPage/payUserInput/PayUserInput";
+import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
+import PayMethodInput from "../../../components/paymentPage/payMethodInput/PayMethodInput";
+import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
+import { useDeletePayDB } from "../../../hooks/useDeletePayDB";
+import { editClear } from "../../../redux/reducer/payCheckSlice";
 import {
   RootState,
   useAppDispatch,
   useAppSelector,
 } from "../../../redux/store";
-import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/OrderPdtInfo";
-import PdtInfo from "../../../components/paymentPage/pdtInfo/PdtInfo";
-import PayMethod from "../../../components/paymentPage/payMethod/PayMethod";
-import PayUserInfo from "../../../components/paymentPage/payUserInfo/PayUserInfo";
-import PayUserInput from "../../../components/paymentPage/payUserInput/PayUserInput";
-import PayMethodInput from "../../../components/paymentPage/payMethodInput/PayMethodInput";
-import PayRadioBtn from "../../../components/paymentPage/payRadioBtn/PayRadioBtn";
-import PaySummary from "../../../components/paymentPage/paySummary/PaySummary";
-import PayAgree from "../../../components/paymentPage/payAgree/PayAgree";
-import { MainButton } from "../../../elements/buttons/Buttons";
-import { useGetPay, usePostPay } from "./useOrderPList";
-import { PayListType } from "./orderPList.type";
-import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
-import { DataPropsType } from "../../../components/paymentPage/pdtInfo/pdInfo.type";
-import { useDeletePayDB } from "../../../hooks/useDeletePayDB";
-import { editClear } from "../../../redux/reducer/payCheckSlice";
 
 const OrderPList = () => {
   const titles = [
@@ -39,17 +38,20 @@ const OrderPList = () => {
 
   //-- get요청으로 data 받아오기
   const GetPaylist: PayListType = useGetPay();
+
   //-- slice에서 data 받아오기
   const oPrice = useAppSelector((state) => state.payPdtSlice.oPrice);
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
   const [cartData, setCartData] = useState<DataPropsType[]>();
+
   //-- redux
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
     useAppSelector((state: RootState) => state.payUserSlice);
   const { isName, isPNumber, isUserName, isUserPhone } = useAppSelector(
     (state: RootState) => state.payCheckSlice
   );
+
   //-- post 요청할 데이터들
   const postPay = {
     address: {
@@ -97,10 +99,12 @@ const OrderPList = () => {
     } else {
     }
   }, [isSuccess]);
-  //-- 디비 리덕스 저장
+
+  //-- 디비 데이터 redux 저장
   useEffect(() => {
     cartDB.then((response) => setCartData(response));
   }, []);
+
   //-- 디비 삭제
   useEffect(() => {
     dispatch(editClear(true));

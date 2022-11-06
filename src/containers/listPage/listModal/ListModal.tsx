@@ -1,30 +1,25 @@
 import * as t from "./listModal.style";
 import { useEffect, useState } from "react";
-
 import Modal from "../../../components/modal/Modal";
 import ProductName from "../../../components/detailPage/productName/ProductName";
+import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import ProductSummary from "../../../components/detailPage/productSummary/ProductSummary";
 import ProductOptions from "../../../components/detailPage/productOptions/ProductOptions";
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
-import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
-import { useGetDetailQuery } from "../../detailPage/details/useGetDetailQuery";
 
 const ListModal = ({
   isOpen,
   handleClose,
-}: // pNo,
-{
+}: {
   isOpen: boolean;
-  // pNo: number;
   handleClose: () => void;
 }) => {
   function close(e: React.MouseEvent) {
     e.preventDefault();
     handleClose();
   }
-  // console.log(pNo);
-  // const data = useGetDetailQuery(String(pNo));
   const [viewport, setViewport] = useState(visualViewport.width);
+
   useEffect(() => {
     const resizeListener = () => {
       setViewport(visualViewport.width);

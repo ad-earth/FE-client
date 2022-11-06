@@ -1,6 +1,6 @@
 import * as t from "./payUserInfo.style";
-import { MainButton } from "../../../elements/buttons/Buttons";
 import { PayUserInfoType } from "./payUserInfo.type";
+import { MainButton } from "../../../elements/buttons/Buttons";
 
 const PayUserInfo = ({
   userInfo,
