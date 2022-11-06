@@ -1,9 +1,9 @@
 import * as t from "./payRadioBtn.style";
+import { DropBtn } from "../payMethod/payMethod.style";
 import { useRef } from "react";
 import React, { useState } from "react";
 import { RadiobtnType } from "./payRadioBtn.type";
 import Input from "../../../elements/input/Input";
-import { DropBtn } from "../payMethod/payMethod.style";
 
 const PayRadioBtn = () => {
   const [select, setSelect] = useState("");

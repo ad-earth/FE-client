@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RadiobtnType } from "../payRadioBtn/PayRadioBtn";
+import { RadiobtnType } from "../payRadioBtn/payRadioBtn.type";
 
 export const DivArea = styled.div`
   width: 100%;

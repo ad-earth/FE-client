@@ -1,12 +1,11 @@
 import * as t from "./payMethodInput.style";
 import React, { useState } from "react";
 import { useQueryClient } from "react-query";
+import { RadiobtnType } from "../payRadioBtn/payRadioBtn.type";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
 import useDelPay from "./usePayMethodInput";
 import { RadioBtn } from "../payRadioBtn/PayRadioBtn";
 import { NewPayInput } from "../newPayInput/NewPayInput";
-
-import { RadiobtnType } from "../payRadioBtn/payRadioBtn.type";
 import { PayMethodInfo, PayMethodSelect } from "../payMethod/PayMethod";
 import { editDNo } from "../../../redux/reducer/payUserSlice";
 import { editTab } from "../../../redux/reducer/payCheckSlice";
