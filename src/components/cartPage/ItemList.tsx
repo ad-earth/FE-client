@@ -6,6 +6,9 @@ import { MainButton } from "../../elements/buttons/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { setCheckedItems, setOrderData } from "../../redux/reducer/cartSlice";
+import { useViewport } from "../../hooks/useViewport";
+import { getAllCartDB } from "../../hooks/useAllCartDB";
+import { CartType } from "../../shared/types/types";
 
 interface PropsType {
   allChecked: boolean;
@@ -27,10 +30,12 @@ type orderDataType = {
 };
 
 const ItemList = (props: PropsType) => {
+  const viewport = useViewport();
   const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [cartData, setCartData] = useState<CartType[]>();
   const orderData = useAppSelector((state) => state.cartSlice.orderData);
-  const [viewport, setViewport] = useState(visualViewport.width);
+  console.log("cartData: ", cartData);
+
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
   const [option, setOption] = useState([] || null);
@@ -38,13 +43,6 @@ const ItemList = (props: PropsType) => {
   const [discount, setDiscount] = useState(0);
   const [kNo, setkNo] = useState(0);
   const [checkedList, setCheckedList] = useState([]);
-
-  useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
 
   const handleOption = (
     prodNo: string,
@@ -60,6 +58,11 @@ const ItemList = (props: PropsType) => {
     setDiscount(discount);
     setkNo(kNo);
   };
+
+  useEffect(() => {
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
+  }, []);
 
   // 개별 상품 선택 | 해제
   const handleCheck = useCallback(
@@ -92,10 +95,10 @@ const ItemList = (props: PropsType) => {
   }, [checkedList]);
 
   const handleBuy = (data: orderDataType) => {
-    let cartList = [];
-    cartList.push(data);
-    dispatch(setOrderData(cartList));
-    window.location.href = "/payment";
+    // let cartList = [];
+    // cartList.push(data);
+    // dispatch(setOrderData(cartList));
+    // window.location.href = "/payment";
   };
   console.log("order", orderData);
 
@@ -112,7 +115,7 @@ const ItemList = (props: PropsType) => {
       />
       {viewport <= 990 ? (
         <>
-          {cartData.map((val, i: number) => (
+          {cartData?.map((val, i: number) => (
             <t.ItemWrapper>
               <t.SmallProdInfo key={i}>
                 {props.allChecked ? (
@@ -120,7 +123,7 @@ const ItemList = (props: PropsType) => {
                 ) : (
                   <t.CheckBox
                     type="checkbox"
-                    value={val.id || ""}
+                    value={val?.id || ""}
                     onChange={(e) => {
                       handleCheck(
                         e.currentTarget.checked,
@@ -132,14 +135,14 @@ const ItemList = (props: PropsType) => {
                 <t.SmallDiv>
                   <t.ProdInfo>
                     <t.InfoDiv>
-                      <img src={val.thumbnail} />
+                      <img src={val?.thumbnail[0]} />
                       <p>
-                        [{val.brand}] {val.name}
+                        [{val?.brand}] {val?.name}
                       </p>
                     </t.InfoDiv>
                     <t.Close2 />
                   </t.ProdInfo>
-                  {val.option.map((opt, i: number) => (
+                  {val?.option.map((opt, i: number) => (
                     <t.OptDiv key={i}>
                       <div>
                         <SquareBadge />
@@ -152,11 +155,11 @@ const ItemList = (props: PropsType) => {
                   ))}
                   <t.DetailInfo className="line">
                     <p>주문금액</p>
-                    <p>{val.totalPrice}원</p>
+                    <p>{val?.totalPrice}원</p>
                   </t.DetailInfo>
                   <t.DetailInfo>
-                    <span>상품금액(총 {val.totalCnt}개)</span>
-                    <span>{val.totalPrice}원</span>
+                    <span>상품금액(총 {val?.totalCnt}개)</span>
+                    <span>{val?.totalPrice}원</span>
                   </t.DetailInfo>
                   <t.DetailInfo>
                     <span>배송비</span>
@@ -178,11 +181,11 @@ const ItemList = (props: PropsType) => {
                       hBgColor={theme.bg01}
                       onClick={() =>
                         handleOption(
-                          val.prodNo,
-                          val.option,
-                          val.price,
-                          val.discount,
-                          val.keywordNo
+                          val?.prodNo,
+                          val?.option,
+                          val?.price,
+                          val?.discount,
+                          val?.keywordNo
                         )
                       }
                     >
@@ -203,7 +206,7 @@ const ItemList = (props: PropsType) => {
         </>
       ) : (
         <>
-          {cartData.map((val, i: number) => (
+          {cartData?.map((val, i: number) => (
             <t.BigDiv>
               <t.ItemWrapper>
                 <t.ProdInfo key={val.id}>
@@ -212,7 +215,7 @@ const ItemList = (props: PropsType) => {
                   ) : (
                     <t.CheckBox
                       type="checkbox"
-                      value={val.id || ""}
+                      value={val?.id || ""}
                       onChange={(e) => {
                         handleCheck(
                           e.currentTarget.checked,
@@ -221,12 +224,12 @@ const ItemList = (props: PropsType) => {
                       }}
                     />
                   )}
-                  <img src={val.thumbnail} />
+                  <img src={val?.thumbnail[0]} />
                   <t.InfoDiv>
                     <p>
-                      [{val.brand}] {val.name}
+                      [{val?.brand}] {val?.name}
                     </p>
-                    {val.option.map((opt, i: number) => (
+                    {val?.option.map((opt, i: number) => (
                       <t.OptDiv key={i}>
                         <div>
                           <SquareBadge />
@@ -242,7 +245,7 @@ const ItemList = (props: PropsType) => {
                   <t.Close2 />
                 </t.ProdInfo>
                 <t.DetailInfo className="mid">
-                  <span>{val.totalCnt}</span>
+                  <span>{val?.totalCnt}</span>
                   <MainButton
                     width={"106px"}
                     fontWeight={"normal"}
@@ -254,11 +257,11 @@ const ItemList = (props: PropsType) => {
                     hBgColor={theme.bg01}
                     onClick={() =>
                       handleOption(
-                        val.prodNo,
-                        val.option,
-                        val.price,
-                        val.discount,
-                        val.keywordNo
+                        val?.prodNo,
+                        val?.option,
+                        val?.price,
+                        val?.discount,
+                        val?.keywordNo
                       )
                     }
                   >
@@ -266,12 +269,12 @@ const ItemList = (props: PropsType) => {
                   </MainButton>
                 </t.DetailInfo>
                 <t.DetailInfo className="mid">
-                  <p>{val.totalPrice}원</p>
+                  <p>{val?.totalPrice}원</p>
                   <MainButton
                     width={"106px"}
                     fontWeight={"normal"}
                     radius={"30px"}
-                    onClick={() => handleBuy(val)}
+                    // onClick={() => handleBuy(val)}
                   >
                     바로구매
                   </MainButton>

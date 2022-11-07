@@ -1,9 +1,6 @@
 import * as t from "./Header.style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { openDB } from "idb";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setCartData } from "../../redux/reducer/cartSlice";
 import { SearchBar } from "../../elements/searchBar/SearchBar";
 import headLogo from "./../../assets/logo/headLogo.png";
 import SchProdModal from "../../components/modal/schProdModal/SchProdModal";
@@ -14,6 +11,7 @@ import AsideHeader from "../../components/header/aside/AsideHeader";
 import { useLogOut } from "./useLogout";
 import { useViewport } from "../../hooks/useViewport";
 import { getAllCartDB } from "../../hooks/useAllCartDB";
+import { CartType } from "../../shared/types/types";
 
 let cateData: {
   id: number;
@@ -34,25 +32,20 @@ const token = localStorage.getItem("token");
 
 const Header = () => {
   const viewport = useViewport();
+  const { isDropped, dropRef, handleRemove } = useDropDown();
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [infoIsOpen, setInfoIsOpen] = useState(false);
-  const { isDropped, dropRef, handleRemove } = useDropDown();
-  const dispatch = useAppDispatch();
-  // const cartData = useAppSelector((state) => state.cartSlice.cartData);
-  const [cartData, setCartData] = useState();
-  // const CartData = useAllCartDB();
-  // CartData.then((res) => setCartDB(res))
+  const [cartData, setCartData] = useState<CartType[]>();
+  console.log("cartData: ", cartData);
 
-  console.log("CartData: ");
   const goHome = () => {
     window.location.href = "/";
   };
 
   useEffect(() => {
     const result = getAllCartDB();
-    console.log("result: ", result);
-    // result.then((res) =>setCartData(res))
-  });
+    result.then((res) => setCartData(res));
+  }, []);
 
   // const CData = {
   //   cartList: cartData,
@@ -68,9 +61,10 @@ const Header = () => {
   //   }
   // }, [isSuccess]);
 
-  // const handelLogOut = () => {
-  //   mutate();
-  // };
+  const handelLogOut = () => {
+    localStorage.clear();
+    //   mutate();
+  };
 
   return (
     <>
@@ -103,7 +97,6 @@ const Header = () => {
                     <Link to={"/signup"}>
                       <span>회원가입</span>
                     </Link>
-
                     <t.ShopIcon
                       onClick={() => alert("로그인 먼저 해주세요!")}
                     />
@@ -124,7 +117,7 @@ const Header = () => {
                   <>
                     <span
                       onClick={() => {
-                        // handelLogOut();
+                        handelLogOut();
                       }}
                     >
                       로그아웃
@@ -135,7 +128,7 @@ const Header = () => {
                     <div>
                       <Link to={"/cart"}>
                         <t.CountBadge
-                        // badgeContent={cartData ? cartData.length : ""}
+                          badgeContent={cartData ? cartData.length : ""}
                         >
                           <t.ShopIcon />
                         </t.CountBadge>
@@ -147,7 +140,7 @@ const Header = () => {
                     <div>
                       <Link to={"/cart"}>
                         <t.CountBadge
-                        // badgeContent={cartData ? cartData.length : ""}
+                          badgeContent={cartData ? cartData.length : ""}
                         >
                           <t.ShopIcon />
                         </t.CountBadge>

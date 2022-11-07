@@ -1,31 +1,31 @@
 import * as t from "./CartReceipt.style";
 import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/buttons/Buttons";
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { setOrderData } from "../../../redux/reducer/cartSlice";
+import { MainButton } from "../../../elements/buttons/Buttons";
+import { useViewport } from "../../../hooks/useViewport";
+import { getAllCartDB } from "../../../hooks/useAllCartDB";
+import { CartType } from "../../../shared/types/types";
 
 type ObjType = {
   [id: string]: number;
 };
 
 const CartReceipt = () => {
-  const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const viewport = useViewport();
+  const [cartData, setCartData] = useState<CartType[]>();
   const checkedItems = useAppSelector((state) => state.cartSlice.checkedItems);
-  const [viewport, setViewport] = useState(visualViewport.width);
 
   useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
+  }, []);
 
   // 총 주문 금액
   const totalAmount = useMemo(() => {
     if (checkedItems.length > 0) {
       const total = cartData.map((el) => {
+        console.log("el", el.id);
         const tObj: ObjType = {};
         tObj["id"] = el.id;
         tObj["totalPrice"] = el.totalPrice;
@@ -56,7 +56,7 @@ const CartReceipt = () => {
         }
       }
     }
-    dispatch(setOrderData(cartList));
+    // dispatch(setOrderData(cartList));
     window.location.href = "/payment";
   };
 
