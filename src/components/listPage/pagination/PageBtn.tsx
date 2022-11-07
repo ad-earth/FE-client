@@ -1,19 +1,16 @@
-import { Pagination, PaginationItem } from "@mui/material";
 import { AreaPage } from "./pageBtn.sytle";
-import { Dispatch, SetStateAction } from "react";
+import { Pagination, PaginationItem } from "@mui/material";
+import { editPagNo } from "../../../redux/reducer/listSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
-const PageBtn = ({
-  cnt,
-  page,
-  setPage,
-}: {
-  cnt: number;
-  page: number;
-  setPage: Dispatch<SetStateAction<number>>;
-}) => {
+const PageBtn = ({ cnt }: { cnt: number }) => {
+  //-- reducer
+  const dispatch = useAppDispatch();
+  const { pageNo } = useAppSelector((state) => state.listSlice);
+  //-- 페이지 갯수
   const pageNum = Math.ceil(cnt / 20);
   const onPageChange = (e: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
+    dispatch(editPagNo(value));
   };
 
   return (
@@ -22,7 +19,7 @@ const PageBtn = ({
         <Pagination
           count={pageNum}
           defaultPage={1}
-          page={page}
+          page={pageNo}
           onChange={onPageChange}
           renderItem={(item) => <PaginationItem {...item} />}
         />

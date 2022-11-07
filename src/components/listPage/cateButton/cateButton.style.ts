@@ -56,11 +56,11 @@ export const CBtn = styled.button<{ active: boolean }>`
   }
 `;
 export const SmallCBtn = styled.button<{ active: boolean }>`
-  width: 59px;
-  padding: 0 3px;
-  border: 0.3px solid ${theme.bg01};
+  width: 55px;
+  padding: 0 1px;
+  border: 0.2px solid ${theme.bg01};
   border-radius: 4rem;
-  margin: 0 2px;
+  margin: 0px 2px;
   vertical-align: middle;
   box-sizing: border-box;
   line-height: 25.6px;

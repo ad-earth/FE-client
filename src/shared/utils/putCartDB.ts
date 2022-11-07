@@ -2,13 +2,15 @@ import { openDB } from "idb";
 import { DetailResponseType } from "../../containers/detailPage/details/details.type";
 import { OptionListType } from "../types/types";
 import { CartResponseType } from "../../../src/shared/types/types";
+import { OptionArrType } from "../types/types";
 
 export const putCartDB = async (
   detailData: DetailResponseType,
-  optionData: OptionListType,
+  optionList: OptionArrType[],
   qty: number,
-  totalPrice: number,
-  totalQty: number
+  totalOptionPrice: number,
+  totalOptionQty: number,
+  totalPrice: number
 ) => {
   let store;
   const db = await openDB("cart", 1, {
@@ -30,9 +32,9 @@ export const putCartDB = async (
     name: detailData?.product.p_Name,
     price: detailData?.product.p_Cost,
     discount: detailData?.product.p_Discount,
-    option: optionData,
-    totalPrice: totalPrice,
-    totalQty: totalQty !== 0 ? totalQty : qty,
+    option: optionList,
+    totalPrice: totalOptionPrice !== 0 ? totalOptionPrice : totalPrice,
+    totalQty: totalOptionQty !== 0 ? totalOptionQty : qty,
   });
 };
 

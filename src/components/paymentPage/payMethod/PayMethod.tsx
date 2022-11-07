@@ -1,12 +1,12 @@
 import * as t from "./payMethod.style";
-import { MainButton } from "../../../elements/buttons/Buttons";
 import { PayListType } from "../../../containers/paymentPage/orderPList/orderPList.type";
+import { MainButton } from "../../../elements/buttons/Buttons";
+import { editMemo } from "../../../redux/reducer/payUserSlice";
 import {
   RootState,
   useAppDispatch,
   useAppSelector,
 } from "../../../redux/store";
-import { editMemo } from "../../../redux/reducer/payUserSlice";
 
 interface GetPayUserType {
   uAddress1: string;

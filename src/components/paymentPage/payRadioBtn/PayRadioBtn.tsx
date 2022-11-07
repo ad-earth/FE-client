@@ -1,25 +1,13 @@
 import * as t from "./payRadioBtn.style";
-import React, { useState } from "react";
-
-import Input from "../../../elements/input/Input";
 import { DropBtn } from "../payMethod/payMethod.style";
 import { useRef } from "react";
-
-export interface RadiobtnType {
-  value?: number | string;
-  checked?: boolean;
-  type?: string;
-  select?: boolean;
-  top?: string;
-  bgColor?: string;
-  number?: number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import React, { useState } from "react";
+import { RadiobtnType } from "./payRadioBtn.type";
+import Input from "../../../elements/input/Input";
 
 const PayRadioBtn = () => {
   const [select, setSelect] = useState("");
   const [open, setOpen] = useState(false);
-
   const numberRef = useRef<HTMLInputElement>(null);
 
   const checkHandler = (checked: boolean) => {

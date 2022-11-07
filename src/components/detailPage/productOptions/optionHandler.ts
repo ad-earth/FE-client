@@ -2,6 +2,7 @@ import { OptionListType } from "../../../shared/types/types";
 
 export const addUserOption = (
   selectedColor: string,
+  selectedColorCode: string,
   selectedSize: string,
   selectedExtraPrice: number,
   price: number,
@@ -21,9 +22,10 @@ export const addUserOption = (
     let userOption = {
       id: optionId,
       color: selectedColor,
+      colorCode: selectedColorCode,
       size: selectedSize,
       extraCost: selectedExtraPrice,
-      price: price + selectedExtraPrice,
+      price: (price + selectedExtraPrice) * userQty,
       qty: userQty,
     };
     return { userOption: userOption, newOptionId: optionId + 1 };

@@ -35,7 +35,10 @@ const OrderDetail = () => {
       {orderDetail && (
         <>
           <OrderNumerDetail no={orderDetail.o_No} date={orderDetail.o_Date} />
-          <OrderListDetail products={orderDetail.products} />
+          <OrderListDetail
+            products={orderDetail.products}
+            orderNo={orderDetail.o_No}
+          />
           <OrderUserInfo user={orderDetail.userInfo} />
           <OrderAddress address={orderDetail.address} />
           <OrderAmount

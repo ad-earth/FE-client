@@ -9,6 +9,7 @@ export interface InputType {
   bgColor?: string;
   fBorder?: string;
   value?: string;
+  name?: string;
   type?: string;
   ref?: any;
   defaultValue?: string;

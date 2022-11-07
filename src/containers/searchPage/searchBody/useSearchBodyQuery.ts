@@ -5,6 +5,7 @@ const useSearchDataList = (keyword: string, pageNo: string) => {
   const queryFn = async () => await getSearch(keyword, pageNo);
   const res = useQuery(["orderDetail", [keyword, pageNo]], queryFn, {
     enabled: !![keyword, pageNo],
+    refetchOnWindowFocus: false,
   });
   return res.data?.data;
 };

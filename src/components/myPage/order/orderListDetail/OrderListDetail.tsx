@@ -7,9 +7,17 @@ import { useAppDispatch } from "../../../../redux/store";
 import { setReviewData } from "../../../../redux/reducer/reviewSlice";
 import { useViewport } from "../../../../hooks/useViewport";
 import { PropsType } from "./orderListDetail.type";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { theme } from "../../../../style/theme";
 
-const OrderListDetail = ({ products }: { products: PropsType[] }) => {
+const OrderListDetail = ({
+  products,
+  orderNo,
+}: {
+  products: PropsType[];
+  orderNo: number;
+}) => {
+  const navigate = useNavigate();
   const viewport = useViewport();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 모달
   //구매평 작성 클릭 => 모달 open
@@ -38,9 +46,15 @@ const OrderListDetail = ({ products }: { products: PropsType[] }) => {
           {products.map((product: PropsType, i: number) => (
             <tr key={i}>
               <td>
-                <Link to={`/detail/${product.p_No}`} className="link">
-                  <Product product={product} />
-                </Link>
+                {product.p_Status ? (
+                  <Link to={`/detail/${product.p_No}`} className="link">
+                    <Product product={product} />
+                  </Link>
+                ) : (
+                  <span onClick={() => alert("노출되지 않은 상품입니다.")}>
+                    <Product product={product} />
+                  </span>
+                )}
               </td>
               {i === 0 ? (
                 <td rowSpan={products.length} className="center">
@@ -51,16 +65,41 @@ const OrderListDetail = ({ products }: { products: PropsType[] }) => {
               )}
               <td className="buttonBox">
                 <span>{product.o_Status}</span>
-                {product.o_Status === "배송완료" && (
-                  <t.ButtonBox>
+                <t.ButtonBox>
+                  {/* 주문완료, 취소완료 , 배송완료  */}
+                  {product.o_Status === "주문완료" && (
                     <MainButton
-                      radius="50px"
+                      bgColor="transparent"
+                      radius="30px"
+                      border={`1px solid ${theme.rgba08}`}
+                      hBgColor="transparent"
+                      hBorder={`1px solid ${theme.rgba08}`}
+                      hColor={`${theme.fc14}`}
+                      color={`${theme.fc14}`}
+                      fontSize={`${theme.fc12}`}
+                      fontWeight="500"
+                      // padding="10px 16px"
+                      onClick={() => {
+                        navigate(`/mypage/cancel-call/${orderNo}`, {
+                          state: { products: products, orderNo: orderNo },
+                          replace: true,
+                        });
+                      }}
+                    >
+                      취소
+                    </MainButton>
+                  )}
+                  {product.p_Status && product.r_Status && (
+                    <MainButton
+                      radius="30px"
+                      fontSize={`${theme.fs12}`}
+                      fontWeight="500"
                       onClick={() => addReviweClick(product)}
                     >
                       구매평 작성
                     </MainButton>
-                  </t.ButtonBox>
-                )}
+                  )}
+                </t.ButtonBox>
               </td>
             </tr>
           ))}

@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import CompleteBody from '../containers/completePage/completeBody/CompleteBody'
-import CompleteTitle from '../containers/completePage/completeTitle/CompleteTitle'
+import styled from "styled-components";
+import CompleteBody from "../containers/completePage/completeBody/CompleteBody";
+import CompleteTitle from "../containers/completePage/completeTitle/CompleteTitle";
 
 const CompletePage: React.FC = () => {
   return (
@@ -10,14 +10,14 @@ const CompletePage: React.FC = () => {
         <CompleteBody />
       </Area>
     </>
-  )
-}
+  );
+};
 
-export default CompletePage
+export default CompletePage;
 const Area = styled.div`
   background-color: ${({ theme }) => theme.bg03};
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;

@@ -4,17 +4,24 @@ import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PropsType } from "./buttons.type";
 import { usePostLikeQuery } from "./usePostLikeQuery";
+import { useOptionList } from "./useOptionList";
 import { useAppSelector } from "../../../redux/store";
 import { putCartDB } from "../../../shared/utils/putCartDB";
 import { putPaymentDB } from "../../../shared/utils/putPaymentDB";
 import ChoiceModal from "../../../elements/ChoiceModal";
 import { MainButton } from "../../../elements/buttons/Buttons";
+import { useDiscount } from "../productName/useDiscount";
 
 const Buttons = (props: PropsType) => {
   const { productNo } = useParams();
   const navigate = useNavigate();
-  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
+
+  const price = useDiscount(
+    detailData.product.p_Cost,
+    detailData.product.p_Discount
+  );
+  const optionList = useOptionList(price);
 
   const { isLike, likeQty } = useMemo(
     () => ({
@@ -23,6 +30,7 @@ const Buttons = (props: PropsType) => {
     }),
     [detailData]
   );
+
   const { mutate } = usePostLikeQuery(productNo);
 
   const [open, setOpen] = useState<boolean>(false);
@@ -50,12 +58,13 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putPaymentDB(
                   detailData,
-                  optionData,
+                  optionList,
                   props.qty,
-                  props.totalPrice,
-                  props.totalQty
+                  props.totalOptionPrice,
+                  props.totalOptionQty,
+                  props.totalPrice
                 );
-                navigate(`/payment/${productNo}`);
+                navigate(`/payment`);
               }}
             >
               구매하기
@@ -70,10 +79,11 @@ const Buttons = (props: PropsType) => {
               onClick={() => {
                 putCartDB(
                   detailData,
-                  optionData,
+                  optionList,
                   props.qty,
-                  props.totalPrice,
-                  props.totalQty
+                  props.totalOptionPrice,
+                  props.totalOptionQty,
+                  props.totalPrice
                 );
                 setOpen(true);
               }}

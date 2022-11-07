@@ -1,11 +1,10 @@
 import * as t from "./searchBody.style";
-
+import { SProductsType, SearchType } from "./searchPage.type";
 import Card from "../../../components/card/Card";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
-import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
-import { SearchNav } from "../../../components/searchPage/searchNav/SearchNav";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
-import { SProductsType, SearchType } from "./searchPage.type";
+import { SearchNav } from "../../../components/searchPage/searchNav/SearchNav";
+import SearchCateDrop from "../../../components/searchPage/searchCateDrop/SearchCateDrop";
 
 const SearchBody = (props: SearchType) => {
   return (

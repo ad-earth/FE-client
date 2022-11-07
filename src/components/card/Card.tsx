@@ -1,16 +1,15 @@
 import * as t from "./card.style";
-import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-
-import { ColorIcon } from "../../elements/colorIcons/ColorIcons";
-import { Badge } from "../../elements/badge/Badge";
-import { CardCompoType } from "./card.type";
+import { useNavigate, useParams } from "react-router-dom";
 import HighlightOffRoundedIcon from "@mui/icons-material/HighlightOffRounded";
+import { CardCompoType } from "./card.type";
+import { Badge } from "../../elements/badge/Badge";
+import { ColorIcon } from "../../elements/colorIcons/ColorIcons";
 
 const Card = (props: CardCompoType) => {
+  const navigate = useNavigate();
   const [imgHover, setImgHover] = useState<Boolean>(false);
   const { category } = useParams<{ category: string }>();
-  const navigate = useNavigate();
   const { keyParams } = useParams<{ keyParams: string }>();
   //-- 컬러칩 중복제거
   let optionArr = [];
@@ -22,17 +21,16 @@ const Card = (props: CardCompoType) => {
 
   return (
     <>
-      <t.CardCp
-        onClick={() =>
-          navigate({
-            pathname: `/detail/${props.pNo}`,
-            search: `category=${category}&keyword=${keyParams}`,
-          })
-        }
-      >
+      <t.CardCp>
         {props.type === "wish" ? (
           <t.WishCard>
             <t.CardImg
+              onClick={() =>
+                navigate({
+                  pathname: `/detail/${props.pNo}`,
+                  search: `category=${category}&keyword=${keyParams}`,
+                })
+              }
               onMouseEnter={() => setImgHover(true)}
               onMouseLeave={() => setImgHover(false)}
               src={
@@ -53,6 +51,12 @@ const Card = (props: CardCompoType) => {
             {props.type === "ad" ? (
               <t.AdCardArea>
                 <t.AdCard
+                  onClick={() =>
+                    navigate({
+                      pathname: `/detail/${props.pNo}`,
+                      search: `category=${category}&keyword=${keyParams}`,
+                    })
+                  }
                   onMouseEnter={() => setImgHover(true)}
                   onMouseLeave={() => setImgHover(false)}
                   src={
@@ -65,6 +69,12 @@ const Card = (props: CardCompoType) => {
               </t.AdCardArea>
             ) : (
               <t.CardImg
+                onClick={() =>
+                  navigate({
+                    pathname: `/detail/${props.pNo}`,
+                    search: `category=${category}&keyword=null`,
+                  })
+                }
                 onMouseEnter={() => setImgHover(true)}
                 onMouseLeave={() => setImgHover(false)}
                 src={
@@ -90,7 +100,14 @@ const Card = (props: CardCompoType) => {
             </t.IconDiv>
           ) : null}
 
-          <t.CardTitle>
+          <t.CardTitle
+            onClick={() =>
+              navigate({
+                pathname: `/detail/${props.pNo}`,
+                search: `category=${category}&keyword=${keyParams}`,
+              })
+            }
+          >
             [{props.aBrand}] {props.pName}
           </t.CardTitle>
 
