@@ -24,7 +24,7 @@ const Footer = () => {
         <t.FootWrapper>
           <img src={footLogo} />
           <t.FootText>
-            <p>이용약관 | 개인정보처리방침 | 도매 전용 B2B몰</p>
+            <a href="https://adearth-admin.shop/">광고주 솔루션 바로가기</a>
             <t.SpanTxt>
               <span>• 회사명 : 주식회사 광고지구 | 대표자 : 광고지구</span>
               <span>

@@ -110,8 +110,9 @@ export const FootText = styled.div`
   color: ${theme.fc01};
   font-size: ${theme.fs16};
   font-weight: 600;
-  p {
+  a {
     margin-bottom: 20px;
+    color: ${theme.fc01};
   }
   @media (min-width: 991px) and (max-width: 1200px) {
     width: 100%;
