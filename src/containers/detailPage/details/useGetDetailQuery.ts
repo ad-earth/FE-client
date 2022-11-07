@@ -13,6 +13,7 @@ export const useGetDetailQuery = (productNo: string, keyword?: string) => {
     "detail",
     () => getDetails(productNo, keyword),
     {
+      refetchOnWindowFocus: false,
       onSuccess: ({ data }) => {
         dispatch(setDetails(data));
       },
