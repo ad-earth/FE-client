@@ -1,4 +1,4 @@
-import * as t from "./OptionModal.style";
+import * as t from "./optionModal.style";
 import { theme } from "../../../style/theme";
 import { useEffect, useState } from "react";
 import { openDB } from "idb";

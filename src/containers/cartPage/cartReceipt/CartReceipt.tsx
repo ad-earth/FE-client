@@ -1,4 +1,4 @@
-import * as t from "./CartReceipt.style";
+import * as t from "./cartReceipt.style";
 import { theme } from "../../../style/theme";
 import { useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";

@@ -1,4 +1,4 @@
-import * as t from "../SearchForm.style";
+import * as t from "../searchForm.style";
 import { theme } from "../../../../../style/theme";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";

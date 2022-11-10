@@ -1,4 +1,4 @@
-import * as t from "./SearchModal.style";
+import * as t from "./searchModal.style";
 import { useState } from "react";
 
 import Modal from "../../Modal";

@@ -1,4 +1,4 @@
-import * as t from "./CartList.style";
+import * as t from "./cartList.style";
 import { theme } from "../../../style/theme";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../redux/store";

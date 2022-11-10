@@ -1,4 +1,4 @@
-import * as t from "./AddressForm.style";
+import * as t from "./addressForm.style";
 import { theme } from "../../../style/theme";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../redux/store";

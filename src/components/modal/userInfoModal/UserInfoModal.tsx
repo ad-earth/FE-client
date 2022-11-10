@@ -1,4 +1,4 @@
-import * as t from "./UserInfoModalStyle";
+import * as t from "./userInfoModal.style";
 import { theme } from "../../../style/theme";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

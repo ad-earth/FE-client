@@ -1,4 +1,4 @@
-import * as t from "./Header.style";
+import * as t from "./header.style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SearchBar } from "../../elements/searchBar/SearchBar";

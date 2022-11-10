@@ -1,4 +1,4 @@
-import * as t from "./LoginForm.style";
+import * as t from "./loginForm.style";
 import { theme } from "../../style/theme";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";

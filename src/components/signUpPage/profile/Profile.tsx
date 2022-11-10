@@ -1,4 +1,4 @@
-import * as t from "./Profile.style";
+import * as t from "./profile.style";
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import ReactS3Client from "react-aws-s3-typescript";
 import { s3Config } from "../../../shared/utils/s3Config";

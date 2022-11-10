@@ -1,4 +1,4 @@
-import * as t from "./AsideHeader.style";
+import * as t from "./asideHeader.style";
 import { theme } from "../../../style/theme";
 import { useState } from "react";
 import { useAppSelector } from "../../../redux/store";
