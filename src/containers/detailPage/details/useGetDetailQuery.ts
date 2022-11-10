@@ -10,9 +10,10 @@ export const useGetDetailQuery = (productNo: string, keyword?: string) => {
   const dispatch = useAppDispatch();
 
   return useQuery<AxiosResponse<DetailResponseType>, Error>(
-    "detail",
+    ["detail", productNo],
     () => getDetails(productNo, keyword),
     {
+      enabled: !!productNo,
       refetchOnWindowFocus: false,
       onSuccess: ({ data }) => {
         dispatch(setDetails(data));

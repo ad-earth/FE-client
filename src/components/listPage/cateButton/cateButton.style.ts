@@ -56,7 +56,7 @@ export const CBtn = styled.button<{ active: boolean }>`
   }
 `;
 export const SmallCBtn = styled.button<{ active: boolean }>`
-  width: 55px;
+  width: 53px;
   padding: 0 1px;
   border: 0.2px solid ${theme.bg01};
   border-radius: 4rem;

@@ -6,9 +6,6 @@ import { useIcon } from "./useCardIconQuery";
 import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
 import ListModal from "../../modal/listModal/ListModal";
 import { useGetDetailQuery } from "../../../containers/detailPage/details/useGetDetailQuery";
-import { useAppDispatch } from "../../../redux/store";
-import { setIsError } from "../../../redux/reducer/errorSlice";
-import { editErrorNo } from "../../../redux/reducer/listSlice";
 
 const CardIcon = ({
   val,
@@ -18,7 +15,6 @@ const CardIcon = ({
   userLike: number[];
 }) => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
   const queryClient = useQueryClient();
   const { mutate } = useIcon();
   const { category } = useParams<{ category: string }>();
@@ -27,6 +23,7 @@ const CardIcon = ({
   const [productNo, setProductNo] = useState<number>(null);
   const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const [include, setInculde] = useState<boolean>(userLike.includes(val.p_No));
+
   //--찜하기 버튼
   const heartClick = () => {
     mutate(val.p_No, {
@@ -36,21 +33,19 @@ const CardIcon = ({
         queryClient.invalidateQueries("cardList");
       },
       onError: () => {
-        dispatch(setIsError(true));
-        dispatch(editErrorNo(val.p_No));
+        alert("로그인 후 사용가능합니다.");
       },
     });
   };
 
   //-- 리스트 모달
   const { refetch } = useGetDetailQuery(
-    val.p_No ? String(val.p_No) : null,
+    productNo ? String(productNo) : null,
     keyParams !== undefined ? keyParams : null
   );
   const ModalClick = () => {
     setInfoIsOpen(true);
     setProductNo(val.p_No);
-    refetch();
   };
 
   return (
@@ -79,7 +74,6 @@ const CardIcon = ({
           <ListModal
             isOpen={infoIsOpen}
             handleClose={() => setInfoIsOpen(false)}
-            pNo={val.pNo}
           />
           <t.CartIcon onClick={ModalClick} />
         </t.IconDiv>
