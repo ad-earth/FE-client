@@ -1,19 +1,8 @@
 import { postSignup } from "../../shared/apis/api";
 import { useMutation } from "react-query";
+import { SignUpDataType } from "./signUpForm.type";
 
-interface Data {
-  u_Id: string;
-  u_Pw: string;
-  u_Name: string;
-  u_Address1: string;
-  u_Address2: string;
-  u_Address3: string;
-  u_Gender: string;
-  u_Phone: string;
-  u_Img: string;
-}
-
-const PostSignup = async (data: Data) => {
+const PostSignup = async (data: SignUpDataType) => {
   const res = await postSignup(
     data.u_Id,
     data.u_Pw,
@@ -28,6 +17,6 @@ const PostSignup = async (data: Data) => {
   return res.data;
 };
 
-export const useSignUpForm = (data: Data) => {
+export const useSignUpForm = (data: SignUpDataType) => {
   return useMutation(() => PostSignup(data), {});
 };

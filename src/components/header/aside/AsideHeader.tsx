@@ -1,15 +1,11 @@
 import * as t from "./AsideHeader.style";
-import { useState } from "react";
-import MenuDrop from "../../../elements/menuDrop/MenuDrop";
-import useDropDown from "../../../hooks/useDropDown";
 import { theme } from "../../../style/theme";
-import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
+import { useState } from "react";
 import { useAppSelector } from "../../../redux/store";
-
-interface AsideType {
-  isOpen: boolean;
-  handleClose: () => void;
-}
+import { AsideType } from "./asideHeader.type";
+import useDropDown from "../../../hooks/useDropDown";
+import MenuDrop from "../../../elements/menuDrop/MenuDrop";
+import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
 
 let category: {
   id: number;

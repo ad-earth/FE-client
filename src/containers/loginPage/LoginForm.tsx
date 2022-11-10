@@ -9,7 +9,7 @@ import Input from "../../elements/input/Input";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
 const LoginForm = () => {
-  const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [id, setId] = useState<string>("");
   const [pw, setPw] = useState<string>("");
   const navigate = useNavigate();
