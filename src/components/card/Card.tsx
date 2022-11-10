@@ -18,6 +18,7 @@ const Card = (props: CardCompoType) => {
   }
   const optionColor = new Set(optionArr);
   const newColorCode = [...optionColor];
+  console.log(props.pOption);
 
   return (
     <>
@@ -91,7 +92,7 @@ const Card = (props: CardCompoType) => {
           {props.pOption ? (
             <t.IconDiv>
               {newColorCode.map((v) => {
-                return v === null ? null : (
+                return v === null || v === "" ? null : (
                   <t.Icon>
                     <ColorIcon colorCode={v} />
                   </t.Icon>
