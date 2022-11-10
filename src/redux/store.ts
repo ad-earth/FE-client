@@ -14,6 +14,12 @@ import payCheckSlice from "./reducer/payCheckSlice";
 import reviewSlice from "./reducer/reviewSlice";
 import listSlice from "./reducer/listSlice";
 
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["userSlice", "cartSlice"],
+};
+
 const rootReducer = combineReducers({
   payUserSlice: payUserSlice,
   payPdtSlice: payPdtSlice,
@@ -27,16 +33,14 @@ const rootReducer = combineReducers({
   listSlice: listSlice,
 });
 
-const persistConfig = {
-  key: "root",
-  storage,
-  whitelist: ["userSlice", "cartSlice"],
-};
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
