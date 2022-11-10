@@ -1,15 +1,9 @@
 import * as t from "./searchModal.style";
 import { useState } from "react";
-
+import { ModalType } from "./searchModal.type";
 import Modal from "../../Modal";
 import SearchId from "../schForm/searchId/SearchId";
 import SearchPass from "../schForm/serchPass/SearchPass";
-
-interface ModalType {
-  isOpen?: boolean;
-  handleClose: () => void;
-  isChecked?: boolean;
-}
 
 const SearchModal = (props: ModalType) => {
   const [isChecked, setIsChecked] = useState(true);

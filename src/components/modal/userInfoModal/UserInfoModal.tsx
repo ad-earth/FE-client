@@ -11,17 +11,7 @@ import AddressForm from "../../signUpPage/addressForm/AddressForm";
 import Input from "../../../elements/input/Input";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { useAppSelector } from "../../../redux/store";
-
-interface ModalType {
-  isOpen?: boolean;
-  handleClose: () => void;
-}
-
-type FormValue = {
-  userName: string;
-  gender: string;
-  contact: string;
-};
+import { ModalType, FormValueType } from "./userInfoModal.type";
 
 const UserInfoModal = (props: ModalType) => {
   const uName = useAppSelector((state) => state.userSlice.userData.u_Name);
@@ -31,7 +21,7 @@ const UserInfoModal = (props: ModalType) => {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [extraAddress, setExtraAddress] = useState("");
-  const [formValue, setFormValue] = useState<FormValue>({
+  const [formValue, setFormValue] = useState<FormValueType>({
     userName: "",
     gender: "",
     contact: "",
@@ -42,7 +32,7 @@ const UserInfoModal = (props: ModalType) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValue>({
+  } = useForm<FormValueType>({
     mode: "onChange",
     resolver: yupResolver(UserInfoValidation),
     defaultValues: {
@@ -52,7 +42,7 @@ const UserInfoModal = (props: ModalType) => {
     },
   });
 
-  const submitHandler = (data: FormValue) => {
+  const submitHandler = (data: FormValueType) => {
     setFormValue(data);
   };
 

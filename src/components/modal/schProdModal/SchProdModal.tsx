@@ -1,9 +1,6 @@
 import * as t from "./schProdModal.style";
+import { ModalType } from "./schProdModal.type";
 import Modal from "../Modal";
-interface ModalType {
-  isOpen?: boolean;
-  handleClose: () => void;
-}
 
 const SchProdModal = (props: ModalType) => {
   return (
