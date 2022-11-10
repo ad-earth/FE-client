@@ -1,6 +1,5 @@
 import { openDB } from "idb";
 import { DetailResponseType } from "../../containers/detailPage/details/details.type";
-import { OptionListType } from "../types/types";
 import { CartResponseType } from "../../../src/shared/types/types";
 import { OptionArrType } from "../types/types";
 

@@ -1,5 +1,4 @@
 import * as t from "./Footer.style";
-
 import footLogo from "./../../assets/logo/footLogo.png";
 
 const Footer = () => {

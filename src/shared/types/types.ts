@@ -53,11 +53,11 @@ export interface CartType {
   name: string;
   price: number;
   discount: number;
-  option: Array<string | number | null>[];
+  option: OptionArrType[];
   totalPrice: number;
   totalCnt: number;
 }
-//get으로 받는 데이터
+// 로그인할 때 서버에서 받는 데이터
 export interface CartResponseType {
   cartList: {
     k_No: number;
@@ -68,7 +68,7 @@ export interface CartResponseType {
     p_Name: string;
     p_Cost: number;
     p_Discount: number;
-    p_Option: Array<string | number | null>[];
+    p_Option: OptionArrType[];
     p_Price: number;
     p_Cnt: number;
   }[];

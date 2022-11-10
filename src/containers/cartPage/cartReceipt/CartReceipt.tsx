@@ -24,8 +24,7 @@ const CartReceipt = () => {
   // 총 주문 금액
   const totalAmount = useMemo(() => {
     if (checkedItems.length > 0) {
-      const total = cartData.map((el) => {
-        console.log("el", el.id);
+      const total = cartData?.map((el) => {
         const tObj: ObjType = {};
         tObj["id"] = el.id;
         tObj["totalPrice"] = el.totalPrice;

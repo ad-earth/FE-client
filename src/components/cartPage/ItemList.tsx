@@ -5,7 +5,7 @@ import { SquareBadge } from "../../elements/badge/Badge";
 import { MainButton } from "../../elements/buttons/Buttons";
 import OptionModal from "../modal/optionModal/OptionModal";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setCheckedItems, setOrderData } from "../../redux/reducer/cartSlice";
+import { setCheckedItems } from "../../redux/reducer/cartSlice";
 import { useViewport } from "../../hooks/useViewport";
 import { getAllCartDB } from "../../hooks/useAllCartDB";
 import { CartType } from "../../shared/types/types";
@@ -14,27 +14,10 @@ interface PropsType {
   allChecked: boolean;
 }
 
-type orderDataType = {
-  id: number;
-  keywordNo: number;
-  prodNo: string;
-  thumbnail: string;
-  category: string;
-  brand: string;
-  name: string;
-  price: number;
-  discount: number;
-  option: Array<string | number | null>[];
-  totalPrice: number;
-  totalCnt: number;
-};
-
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
   const dispatch = useAppDispatch();
   const [cartData, setCartData] = useState<CartType[]>();
-  const orderData = useAppSelector((state) => state.cartSlice.orderData);
-  console.log("cartData: ", cartData);
 
   const [optionIsOpen, setOptionIsOpen] = useState(false);
   const [prodNo, setProdNo] = useState("");
@@ -79,7 +62,7 @@ const ItemList = (props: PropsType) => {
   // 전체 선택 | 해제
   const allCheckedItem = useMemo(() => {
     if (props.allChecked) {
-      setCheckedList(cartData.map((el) => el.id));
+      setCheckedList(cartData?.map((el) => el.id));
       return <t.CheckBox type="checkbox" defaultChecked={true} />;
     } else {
       setCheckedList([]);
@@ -93,14 +76,6 @@ const ItemList = (props: PropsType) => {
       dispatch(setCheckedItems(checkedList));
     }
   }, [checkedList]);
-
-  const handleBuy = (data: orderDataType) => {
-    // let cartList = [];
-    // cartList.push(data);
-    // dispatch(setOrderData(cartList));
-    // window.location.href = "/payment";
-  };
-  console.log("order", orderData);
 
   return (
     <>

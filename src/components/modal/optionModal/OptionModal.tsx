@@ -69,7 +69,7 @@ const OptionModal = (props: ModalType) => {
       }
     }
   }, [props.option]);
-  console.log(product);
+
   // 옵션 리스트 추가
   function addOptionList(color: string, size: string, optionPrice: number) {
     let isOption = false;

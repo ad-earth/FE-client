@@ -34,9 +34,8 @@ const Header = () => {
   const viewport = useViewport();
   const { isDropped, dropRef, handleRemove } = useDropDown();
   const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
-  const [infoIsOpen, setInfoIsOpen] = useState(false);
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
   const [cartData, setCartData] = useState<CartType[]>();
-  console.log("cartData: ", cartData);
 
   const goHome = () => {
     window.location.href = "/";
