@@ -23,6 +23,7 @@ export const Wrap = styled.div`
   @media (max-width: 990px) {
     width: 80vw;
     height: 80vh;
-    padding-top: 1%;
+    padding: 1% 0;
+    margin-bottom: 2%;
   }
 `;
