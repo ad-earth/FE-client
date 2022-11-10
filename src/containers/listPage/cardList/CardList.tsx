@@ -2,7 +2,6 @@ import * as t from "./cardList.style";
 import { CardListType } from "./cardList.type";
 import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
 import Card from "../../../components/card/Card";
-
 import CateDrop from "../../../components/listPage/catDrop/CateDrop";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
