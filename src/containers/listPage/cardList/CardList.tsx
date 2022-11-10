@@ -6,7 +6,7 @@ import CateDrop from "../../../components/listPage/catDrop/CateDrop";
 import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
 import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 
-const ListPage = (props: CardListType) => {
+const CardList = (props: CardListType) => {
   return (
     <t.CardArea>
       <CateDrop />
@@ -42,4 +42,4 @@ const ListPage = (props: CardListType) => {
   );
 };
 
-export default ListPage;
+export default CardList;
