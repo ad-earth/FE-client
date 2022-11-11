@@ -14,7 +14,7 @@ const ProductOptions = () => {
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
 
   useEffect(() => {
-    if (detailData?.product.p_Option.length > 1) {
+    if (detailData?.product.p_Option[0] || detailData?.product.p_Option[3]) {
       setHaveOptions(true);
     }
   }, [detailData.product.p_Option]);
