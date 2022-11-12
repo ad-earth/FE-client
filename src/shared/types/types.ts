@@ -41,37 +41,21 @@ export interface ReviewType {
   createdAt: string;
 }
 
-// cart
-// 인덱스에서 get하는 데이터
-export interface CartType {
-  id: number;
-  keywordNo: number;
-  productNo: number;
-  thumbnail: string[];
-  category: string;
-  brand: string;
-  name: string;
-  price: number;
-  discount: number;
-  option: OptionArrType[];
-  totalPrice: number;
-  totalCnt: number;
+export interface CartListType {
+  k_No: number;
+  p_No: number;
+  p_Thumbnail: string[];
+  p_Category: string;
+  a_Brand: string;
+  p_Name: string;
+  p_Cost: number;
+  p_Discount: number;
+  p_Option: OptionArrType[];
+  p_Price: number;
+  p_Cnt: number;
 }
-// 로그인할 때 서버에서 받는 데이터
 export interface CartResponseType {
-  cartList: {
-    k_No: number;
-    p_No: string;
-    p_Thumbnail: string[];
-    p_Category: string;
-    a_Brand: string;
-    p_Name: string;
-    p_Cost: number;
-    p_Discount: number;
-    p_Option: OptionArrType[];
-    p_Price: number;
-    p_Cnt: number;
-  }[];
+  cartList: CartListType[];
 }
 export interface CartPayType {
   id: number;

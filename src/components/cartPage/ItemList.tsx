@@ -8,16 +8,19 @@ import { useAppDispatch, useAppSelector } from "../../redux/store";
 import { setCheckedItems } from "../../redux/reducer/cartSlice";
 import { useViewport } from "../../hooks/useViewport";
 import { getAllCartDB } from "../../hooks/useAllCartDB";
-import { CartType } from "../../shared/types/types";
+import { CartPayType } from "../../shared/types/types";
 import { OptionArrType } from "./../../../src/shared/types/types";
 import { PropsType } from "./itemList.type";
 import { setModalOpen, setReplace } from "../../redux/reducer/optionSlice";
+import { putAllPaymentDB } from "../../shared/utils/putPaymentDB";
+import { useNavigate } from "react-router-dom";
 
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const replace = useAppSelector((state) => state.optionSlice.replace);
-  const [cartData, setCartData] = useState<CartType[]>();
+  const [cartData, setCartData] = useState<CartPayType[]>();
   const [productNo, setProductNo] = useState<number>(0);
   const [option, setOption] = useState([] || null);
   const [checkedList, setCheckedList] = useState([]);
@@ -71,6 +74,11 @@ const ItemList = (props: PropsType) => {
     }
   }, [checkedList]);
 
+  const handleBuy = (val: CartPayType) => {
+    putAllPaymentDB([val]);
+    navigate("/payment");
+  };
+
   return (
     <>
       <OptionModal productNo={productNo} option={option} />
@@ -119,7 +127,7 @@ const ItemList = (props: PropsType) => {
                     <p>{val?.totalPrice}원</p>
                   </t.DetailInfo>
                   <t.DetailInfo>
-                    <span>상품금액(총 {val?.totalCnt}개)</span>
+                    <span>상품금액(총 {val?.totalQty}개)</span>
                     <span>{val?.totalPrice}원</span>
                   </t.DetailInfo>
                   <t.DetailInfo>
@@ -148,6 +156,7 @@ const ItemList = (props: PropsType) => {
                       width={"49%"}
                       fontWeight={"normal"}
                       radius={"30px"}
+                      onClick={() => handleBuy(val)}
                     >
                       바로구매
                     </MainButton>
@@ -198,7 +207,7 @@ const ItemList = (props: PropsType) => {
                   <t.Close2 />
                 </t.ProdInfo>
                 <t.DetailInfo className="mid">
-                  <span>{val?.totalCnt}</span>
+                  <span>{val?.totalQty}</span>
                   <MainButton
                     width={"106px"}
                     fontWeight={"normal"}
@@ -219,7 +228,7 @@ const ItemList = (props: PropsType) => {
                     width={"106px"}
                     fontWeight={"normal"}
                     radius={"30px"}
-                    // onClick={() => handleBuy(val)}
+                    onClick={() => handleBuy(val)}
                   >
                     바로구매
                   </MainButton>
