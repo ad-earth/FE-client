@@ -14,13 +14,8 @@ import { ProductDetailType } from "../../../shared/types/types";
 const OptionModal = (props: ModalType) => {
   const dispatch = useAppDispatch();
   const [product, setProduct] = useState<ProductDetailType>();
-  // const product = useAppSelector((state) => state.detailSlice.details.product);
-  console.log("product: ", product);
   const modalOpen = useAppSelector((state) => state.optionSlice.cartModalOpen);
   const productData = useGetDetailQuery(String(props.productNo), null);
-  console.log("props.productNo: ", props.productNo);
-  const detailData = useAppSelector((state) => state.detailSlice.details);
-  console.log("detailData: ", detailData);
 
   useEffect(() => {
     if (props.option) {
@@ -30,7 +25,7 @@ const OptionModal = (props: ModalType) => {
         colorCode: opt[1],
         size: opt[2],
         extraCost: opt[3],
-        price: opt[5],
+        price: opt[5] / opt[4],
         qty: opt[4],
       }));
       dispatch(setOptionData(optList));
@@ -65,29 +60,6 @@ const OptionModal = (props: ModalType) => {
               </t.ItemInfo>
               <ProductOptions />
             </t.OptContents>
-            {/* <t.OptBtn>
-              <MainButton
-                width={"49%"}
-                fontWeight={"normal"}
-                radius={"30px"}
-                border={`0.5px solid ${theme.ls03}`}
-                bgColor={theme.bg01}
-                color={theme.fc14}
-                hBorder={`0.5px solid ${theme.ls11}`}
-                hBgColor={theme.bg01}
-                onClick={() => props.handleClose()}
-              >
-                취소
-              </MainButton>
-              <MainButton
-                width={"49%"}
-                fontWeight={"normal"}
-                radius={"30px"}
-                onClick={handleUpdateOptList}
-              >
-                변경
-              </MainButton>
-            </t.OptBtn> */}
           </t.OptContainer>
         </Modal>
       )}

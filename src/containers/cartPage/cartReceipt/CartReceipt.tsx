@@ -1,25 +1,39 @@
 import * as t from "./cartReceipt.style";
 import { theme } from "../../../style/theme";
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import { useViewport } from "../../../hooks/useViewport";
 import { getAllCartDB } from "../../../hooks/useAllCartDB";
-import { CartType } from "../../../shared/types/types";
+import { CartPayType } from "../../../shared/types/types";
+import { setReplace } from "../../../redux/reducer/optionSlice";
+import { putAllPaymentDB } from "../../../shared/utils/putPaymentDB";
 
 type ObjType = {
   [id: string]: number;
 };
 
 const CartReceipt = () => {
+  const navigate = useNavigate();
   const viewport = useViewport();
-  const [cartData, setCartData] = useState<CartType[]>();
+  const dispatch = useAppDispatch();
+  const replace = useAppSelector((state) => state.optionSlice.replace);
+  const [cartData, setCartData] = useState<CartPayType[]>();
   const checkedItems = useAppSelector((state) => state.cartSlice.checkedItems);
 
   useEffect(() => {
     const result = getAllCartDB();
     result.then((res) => setCartData(res));
   }, []);
+
+  useEffect(() => {
+    if (replace) {
+      const result = getAllCartDB();
+      result.then((res) => setCartData(res));
+      dispatch(setReplace(false));
+    }
+  }, [replace]);
 
   // 총 주문 금액
   const totalAmount = useMemo(() => {
@@ -55,8 +69,8 @@ const CartReceipt = () => {
         }
       }
     }
-    // dispatch(setOrderData(cartList));
-    window.location.href = "/payment";
+    putAllPaymentDB(cartList);
+    navigate("/payment");
   };
 
   return (

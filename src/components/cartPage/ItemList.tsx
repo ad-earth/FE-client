@@ -11,42 +11,35 @@ import { getAllCartDB } from "../../hooks/useAllCartDB";
 import { CartType } from "../../shared/types/types";
 import { OptionArrType } from "./../../../src/shared/types/types";
 import { PropsType } from "./itemList.type";
-import { setModalOpen } from "../../redux/reducer/optionSlice";
+import { setModalOpen, setReplace } from "../../redux/reducer/optionSlice";
 
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
   const dispatch = useAppDispatch();
+  const replace = useAppSelector((state) => state.optionSlice.replace);
   const [cartData, setCartData] = useState<CartType[]>();
-  console.log("cartData: ", cartData);
-
-  const [optionIsOpen, setOptionIsOpen] = useState<boolean>(false);
   const [productNo, setProductNo] = useState<number>(0);
   const [option, setOption] = useState([] || null);
-  const [price, setPrice] = useState<number>(0);
-  const [discount, setDiscount] = useState<number>(0);
-  const [keywordNo, setKeywordNo] = useState<number>(0);
   const [checkedList, setCheckedList] = useState([]);
 
-  const handleOption = (
-    productNo: number,
-    option: OptionArrType[],
-    price: number,
-    discount: number,
-    keywordNo: number
-  ) => {
+  const handleOption = (productNo: number, option: OptionArrType[]) => {
     dispatch(setModalOpen(true));
-    // setOptionIsOpen(true);
     setProductNo(productNo);
     setOption(option);
-    setPrice(price);
-    setDiscount(discount);
-    setKeywordNo(keywordNo);
   };
 
   useEffect(() => {
     const result = getAllCartDB();
     result.then((res) => setCartData(res));
   }, []);
+
+  useEffect(() => {
+    if (replace) {
+      const result = getAllCartDB();
+      result.then((res) => setCartData(res));
+      dispatch(setReplace(false));
+    }
+  }, [replace]);
 
   // 개별 상품 선택 | 해제
   const handleCheck = useCallback(
@@ -80,15 +73,7 @@ const ItemList = (props: PropsType) => {
 
   return (
     <>
-      <OptionModal
-        isOpen={optionIsOpen}
-        handleClose={() => setOptionIsOpen(false)}
-        productNo={productNo}
-        option={option}
-        price={price}
-        discount={discount}
-        keywordNo={keywordNo}
-      />
+      <OptionModal productNo={productNo} option={option} />
       {viewport <= 990 ? (
         <>
           {cartData?.map((val, i: number) => (
@@ -155,15 +140,7 @@ const ItemList = (props: PropsType) => {
                       color={theme.fc14}
                       hBorder={`0.5px solid ${theme.ls03}`}
                       hBgColor={theme.bg01}
-                      onClick={() =>
-                        handleOption(
-                          val?.productNo,
-                          val?.option,
-                          val?.price,
-                          val?.discount,
-                          val?.keywordNo
-                        )
-                      }
+                      onClick={() => handleOption(val?.productNo, val?.option)}
                     >
                       옵션 / 수량 변경
                     </MainButton>
@@ -231,15 +208,7 @@ const ItemList = (props: PropsType) => {
                     color={theme.fc14}
                     hBorder={`0.5px solid ${theme.ls03}`}
                     hBgColor={theme.bg01}
-                    onClick={() =>
-                      handleOption(
-                        val?.productNo,
-                        val?.option,
-                        val?.price,
-                        val?.discount,
-                        val?.keywordNo
-                      )
-                    }
+                    onClick={() => handleOption(val?.productNo, val?.option)}
                   >
                     옵션 / 수량 변경
                   </MainButton>

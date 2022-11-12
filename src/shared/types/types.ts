@@ -73,3 +73,17 @@ export interface CartResponseType {
     p_Cnt: number;
   }[];
 }
+export interface CartPayType {
+  id: number;
+  keywordNo: number;
+  productNo: number;
+  thumbnail: string[];
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: OptionArrType[];
+  totalPrice: number;
+  totalQty: number;
+}
