@@ -1,4 +1,4 @@
-import * as t from "./ScrollHeader.style";
+import * as t from "./scrollHeader.style";
 import { Link, useNavigate } from "react-router-dom";
 import { useScrHeaderVisible } from "./useScrollHeader";
 import scrollLogo from "../../../assets/logo/scrollLogo.png";

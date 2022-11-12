@@ -1,4 +1,4 @@
-import * as t from "../SearchForm.style";
+import * as t from "../searchForm.style";
 import { theme } from "../../../../../style/theme";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -7,30 +7,20 @@ import {
   ResetPassValidation,
   SearchPassValidation,
 } from "../../../../../shared/utils/yup";
+import { PassValueType, ResetValueType } from "./searchPass.type";
 import Input from "../../../../../elements/input/Input";
 import { MainButton } from "../../../../../elements/buttons/Buttons";
 import { useSearchPass } from "./useSearchPass";
 import { useResetPass } from "./useResetPass";
 
-type PassValue = {
-  userId: string;
-  userName: string;
-  contact: string;
-};
-
-type ResetValue = {
-  password: string;
-  password2: string;
-};
-
 const SearchPass = () => {
-  const [isYourPw, setIsYourPw] = useState<PassValue>({
+  const [isYourPw, setIsYourPw] = useState<PassValueType>({
     userId: "",
     userName: "",
     contact: "",
   });
   const [resetOpen, setResetOpen] = useState(false);
-  const [resetPw, setResetPw] = useState<ResetValue>({
+  const [resetPw, setResetPw] = useState<ResetValueType>({
     password: "",
     password2: "",
   });
@@ -39,7 +29,7 @@ const SearchPass = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<PassValue>({
+  } = useForm<PassValueType>({
     mode: "onSubmit",
     resolver: yupResolver(SearchPassValidation),
     defaultValues: {
@@ -53,7 +43,7 @@ const SearchPass = () => {
     register: register2,
     handleSubmit: handleSubmit2,
     formState: { errors: errors2 },
-  } = useForm<ResetValue>({
+  } = useForm<ResetValueType>({
     mode: "onChange",
     resolver: yupResolver(ResetPassValidation),
     defaultValues: {
@@ -68,7 +58,7 @@ const SearchPass = () => {
     u_Phone: isYourPw.contact,
   };
 
-  const handelSearch = (data: PassValue) => {
+  const handelSearch = (data: PassValueType) => {
     setIsYourPw(data);
     refetch();
   };
@@ -98,7 +88,7 @@ const SearchPass = () => {
     });
   };
 
-  const handleReset = (data: ResetValue) => {
+  const handleReset = (data: ResetValueType) => {
     setResetPw(data);
   };
 

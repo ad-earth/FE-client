@@ -12,6 +12,7 @@ import {
 } from "../../../elements/buttons/Buttons";
 import Buttons from "../buttons/Buttons";
 import { useDiscount } from "../productName/useDiscount";
+import CartButtons from "../../modal/optionModal/cartButtons/CartButtons";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const ProductQty = (props: PropsType) => {
 
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
+  const modalOpen = useAppSelector((state) => state.optionSlice.cartModalOpen);
   const [qty, setQty] = useState<number>(1);
   const price = useDiscount(
     detailData.product.p_Cost,
@@ -76,13 +78,23 @@ const ProductQty = (props: PropsType) => {
           </t.Price>
         </div>
       )}
-      <Buttons
-        optionList={optionData}
-        qty={qty}
-        totalOptionPrice={totalOptionPrice}
-        totalOptionQty={totalOptionQty}
-        totalPrice={props.price * qty}
-      />
+      {modalOpen ? (
+        <CartButtons
+          optionList={optionData}
+          qty={qty}
+          totalOptionPrice={totalOptionPrice}
+          totalOptionQty={totalOptionQty}
+          totalPrice={props.price * qty}
+        />
+      ) : (
+        <Buttons
+          optionList={optionData}
+          qty={qty}
+          totalOptionPrice={totalOptionPrice}
+          totalOptionQty={totalOptionQty}
+          totalPrice={props.price * qty}
+        />
+      )}
     </div>
   );
 };

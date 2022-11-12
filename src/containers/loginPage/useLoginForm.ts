@@ -2,18 +2,14 @@ import { postLogin } from "../../shared/apis/api";
 import { useMutation } from "react-query";
 import { useAppDispatch } from "../../redux/store";
 import { setUserData } from "../../redux/reducer/userSlice";
+import { LoginDataType } from "./loginForm.type";
 
-interface Data {
-  u_Id: string;
-  u_Pw: string;
-}
-
-const PostLogin = async (data: Data) => {
+const PostLogin = async (data: LoginDataType) => {
   const res = await postLogin(data.u_Id, data.u_Pw);
   return res.data;
 };
 
-export const useLoginForm = (data: Data) => {
+export const useLoginForm = (data: LoginDataType) => {
   const dispatch = useAppDispatch();
   return useMutation(() => PostLogin(data), {
     onSuccess: (data) => {
@@ -22,6 +18,7 @@ export const useLoginForm = (data: Data) => {
         dispatch(setUserData(data.userInfo));
       }
       if (data.cartList) {
+        console.log("data.cartList: ", data.cartList);
         return data.cartList;
       }
     },

@@ -1,28 +1,10 @@
-import React, {
-  useMemo,
-  useRef,
-  useState,
-  Dispatch,
-  SetStateAction,
-  useEffect,
-} from "react";
-import * as t from "./Profile.style";
+import * as t from "./profile.style";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import ReactS3Client from "react-aws-s3-typescript";
 import { s3Config } from "../../../shared/utils/s3Config";
 import { IConfig } from "../../../../node_modules/react-aws-s3-typescript/dist/types";
 import { useAppSelector } from "../../../redux/store";
-
-interface PropsType {
-  imgUrl: string;
-  setImgUrl: Dispatch<SetStateAction<string>>;
-}
-
-type UploadImg = {
-  file: File;
-  fileName: string;
-  thumbnail: string;
-  type: string;
-};
+import { PropsType, UploadImg } from "./profile.type";
 
 const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
