@@ -3,10 +3,12 @@ import { OptionListType } from "../../shared/types/types";
 
 export interface optionDataType {
   optionData: OptionListType;
+  cartModalOpen: boolean;
 }
 
 const initialState: optionDataType = {
   optionData: [],
+  cartModalOpen: false,
 };
 
 const optionSlice = createSlice({
@@ -16,8 +18,11 @@ const optionSlice = createSlice({
     setOptionData: (state, action) => {
       state.optionData = action.payload;
     },
+    setModalOpen: (state, action) => {
+      state.cartModalOpen = action.payload;
+    },
   },
 });
 
-export const { setOptionData } = optionSlice.actions;
+export const { setOptionData, setModalOpen } = optionSlice.actions;
 export default optionSlice.reducer;

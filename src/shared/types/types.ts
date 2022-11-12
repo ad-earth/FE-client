@@ -46,7 +46,7 @@ export interface ReviewType {
 export interface CartType {
   id: number;
   keywordNo: number;
-  prodNo: string;
+  productNo: number;
   thumbnail: string[];
   category: string;
   brand: string;

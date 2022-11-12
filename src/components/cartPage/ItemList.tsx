@@ -9,37 +9,38 @@ import { setCheckedItems } from "../../redux/reducer/cartSlice";
 import { useViewport } from "../../hooks/useViewport";
 import { getAllCartDB } from "../../hooks/useAllCartDB";
 import { CartType } from "../../shared/types/types";
-
-interface PropsType {
-  allChecked: boolean;
-}
+import { OptionArrType } from "./../../../src/shared/types/types";
+import { PropsType } from "./itemList.type";
+import { setModalOpen } from "../../redux/reducer/optionSlice";
 
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
   const dispatch = useAppDispatch();
   const [cartData, setCartData] = useState<CartType[]>();
+  console.log("cartData: ", cartData);
 
-  const [optionIsOpen, setOptionIsOpen] = useState(false);
-  const [prodNo, setProdNo] = useState("");
+  const [optionIsOpen, setOptionIsOpen] = useState<boolean>(false);
+  const [productNo, setProductNo] = useState<number>(0);
   const [option, setOption] = useState([] || null);
-  const [price, setPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
-  const [kNo, setkNo] = useState(0);
+  const [price, setPrice] = useState<number>(0);
+  const [discount, setDiscount] = useState<number>(0);
+  const [keywordNo, setKeywordNo] = useState<number>(0);
   const [checkedList, setCheckedList] = useState([]);
 
   const handleOption = (
-    prodNo: string,
-    option: Array<string | number | null>[],
+    productNo: number,
+    option: OptionArrType[],
     price: number,
     discount: number,
-    kNo: number
+    keywordNo: number
   ) => {
-    setOptionIsOpen(true);
-    setProdNo(prodNo);
+    dispatch(setModalOpen(true));
+    // setOptionIsOpen(true);
+    setProductNo(productNo);
     setOption(option);
     setPrice(price);
     setDiscount(discount);
-    setkNo(kNo);
+    setKeywordNo(keywordNo);
   };
 
   useEffect(() => {
@@ -82,11 +83,11 @@ const ItemList = (props: PropsType) => {
       <OptionModal
         isOpen={optionIsOpen}
         handleClose={() => setOptionIsOpen(false)}
-        prodNo={prodNo}
+        productNo={productNo}
         option={option}
         price={price}
         discount={discount}
-        kNo={kNo}
+        keywordNo={keywordNo}
       />
       {viewport <= 990 ? (
         <>
@@ -122,8 +123,8 @@ const ItemList = (props: PropsType) => {
                       <div>
                         <SquareBadge />
                         <span>
-                          {opt[0] ? opt[0] : ""} {opt[0] && opt[1] && "/"}
-                          {opt[1] ? opt[1] : ""} - {opt[3]}개
+                          {opt[0] ? opt[0] : ""} {opt[0] && opt[2] && "/"}
+                          {opt[2] ? opt[2] : ""} - {opt[4]}개
                         </span>
                       </div>
                     </t.OptDiv>
@@ -156,7 +157,7 @@ const ItemList = (props: PropsType) => {
                       hBgColor={theme.bg01}
                       onClick={() =>
                         handleOption(
-                          val?.prodNo,
+                          val?.productNo,
                           val?.option,
                           val?.price,
                           val?.discount,
@@ -209,8 +210,8 @@ const ItemList = (props: PropsType) => {
                         <div>
                           <SquareBadge />
                           <span>
-                            {opt[0] ? opt[0] : ""} {opt[0] && opt[1] && "/"}
-                            {opt[1] ? opt[1] : ""} - {opt[3]}개
+                            {opt[0] ? opt[0] : ""} {opt[0] && opt[2] && "/"}
+                            {opt[2] ? opt[2] : ""} - {opt[4]}개
                           </span>
                         </div>
                         <t.Close />
@@ -232,7 +233,7 @@ const ItemList = (props: PropsType) => {
                     hBgColor={theme.bg01}
                     onClick={() =>
                       handleOption(
-                        val?.prodNo,
+                        val?.productNo,
                         val?.option,
                         val?.price,
                         val?.discount,
