@@ -41,6 +41,10 @@ const LoginForm = () => {
     mutate();
   };
 
+  const goAdmin = () => {
+    window.location.href = "https://adearth-admin.shop/";
+  };
+
   return (
     <>
       <SearchModal
@@ -78,6 +82,18 @@ const LoginForm = () => {
             아이디 ∙ 비밀번호 찾기
           </t.AddInfo>
         </t.AddWrapper>
+        <MainButton
+          radius="30px"
+          fontSize={theme.fs14}
+          border={`0.5px solid ${theme.ls03}`}
+          bgColor={theme.bg01}
+          color={theme.fc14}
+          hBorder={`0.5px solid ${theme.ls03}`}
+          hBgColor={theme.bg08}
+          onClick={() => goAdmin()}
+        >
+          광고주 솔루션 바로가기
+        </MainButton>
       </t.LogInWrapper>
     </>
   );
