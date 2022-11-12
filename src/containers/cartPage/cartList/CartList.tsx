@@ -1,50 +1,38 @@
-import * as t from "./CartList.style";
+import * as t from "./cartList.style";
 import { theme } from "../../../style/theme";
-import { useState } from "react";
-import { openDB } from "idb";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../redux/store";
+import { CartType } from "../../../shared/types/types";
 import { MainButton } from "../../../elements/buttons/Buttons";
 import ItemList from "../../../components/cartPage/ItemList";
+import { getAllCartDB } from "../../../hooks/useAllCartDB";
+import { delCartDB } from "../../../shared/utils/delCartDB";
 
 const token = localStorage.getItem("token");
 
 const CartList = () => {
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [cartData, setCartData] = useState<CartType[]>();
   const [allChecked, setAllChecked] = useState(false);
   const checkedId = useAppSelector((state) => state.cartSlice.checkedItems);
+
   const handleCheck = () => {
     setAllChecked(!allChecked);
   };
 
-  const delCart = async () => {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    try {
-      for (let i = 0; i < checkedId.length; i++) {
-        store.delete(checkedId[i]);
-        window.location.reload();
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  useEffect(() => {
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
+  }, []);
 
   // 선택상품 삭제
   const handleDelete = () => {
     if (checkedId.length > 0) {
-      delCart();
+      delCartDB(checkedId);
     }
   };
 
   if (!token) {
+    alert("로그인 후 이용해주세요!");
     window.location.href = "/";
   }
 

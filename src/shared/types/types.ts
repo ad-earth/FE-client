@@ -42,19 +42,48 @@ export interface ReviewType {
 }
 
 // cart
+// 인덱스에서 get하는 데이터
 export interface CartType {
+  id: number;
+  keywordNo: number;
+  productNo: number;
+  thumbnail: string[];
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: OptionArrType[];
+  totalPrice: number;
+  totalCnt: number;
+}
+// 로그인할 때 서버에서 받는 데이터
+export interface CartResponseType {
   cartList: {
-    id: number;
-    keywordNo: number;
-    prodNo: string;
-    thumbnail: string;
-    category: string;
-    brand: string;
-    name: string;
-    price: number;
-    discount: number;
-    option: Array<string | number | null>[];
-    totalPrice: number;
-    totalCnt: number;
+    k_No: number;
+    p_No: string;
+    p_Thumbnail: string[];
+    p_Category: string;
+    a_Brand: string;
+    p_Name: string;
+    p_Cost: number;
+    p_Discount: number;
+    p_Option: OptionArrType[];
+    p_Price: number;
+    p_Cnt: number;
   }[];
+}
+export interface CartPayType {
+  id: number;
+  keywordNo: number;
+  productNo: number;
+  thumbnail: string[];
+  category: string;
+  brand: string;
+  name: string;
+  price: number;
+  discount: number;
+  option: OptionArrType[];
+  totalPrice: number;
+  totalQty: number;
 }

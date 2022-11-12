@@ -1,9 +1,6 @@
-import * as t from "./Header.style";
+import * as t from "./header.style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { openDB } from "idb";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setCartData } from "../../redux/reducer/cartSlice";
 import { SearchBar } from "../../elements/searchBar/SearchBar";
 import headLogo from "./../../assets/logo/headLogo.png";
 import SchProdModal from "../../components/modal/schProdModal/SchProdModal";
@@ -12,6 +9,9 @@ import MenuDrop from "../../elements/menuDrop/MenuDrop";
 import useDropDown from "../../hooks/useDropDown";
 import AsideHeader from "../../components/header/aside/AsideHeader";
 import { useLogOut } from "./useLogout";
+import { useViewport } from "../../hooks/useViewport";
+import { getAllCartDB } from "../../hooks/useAllCartDB";
+import { CartType } from "../../shared/types/types";
 
 let cateData: {
   id: number;
@@ -31,68 +31,38 @@ let cateData: {
 const token = localStorage.getItem("token");
 
 const Header = () => {
-  const [viewport, setViewport] = useState(visualViewport.width);
-  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
-  const [infoIsOpen, setInfoIsOpen] = useState(false);
+  const viewport = useViewport();
   const { isDropped, dropRef, handleRemove } = useDropDown();
-  const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [cartData, setCartData] = useState<CartType[]>();
 
   const goHome = () => {
     window.location.href = "/";
   };
 
   useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
-
-  // 장바구니 정보 가져오기
-  const getCart = async () => {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readonly").objectStore("cart");
-    const request = store.getAll();
-    try {
-      request.then((response) => {
-        dispatch(setCartData(response));
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    if (token) {
-      getCart();
-    }
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
   }, []);
 
-  const CData = {
-    cartList: cartData,
-  };
+  // const CData = {
+  //   cartList: cartData,
+  // };
 
-  const { mutate, isSuccess, data } = useLogOut(CData);
+  // const { mutate, isSuccess, data } = useLogOut(CData);
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log("Success");
-      localStorage.clear();
-      window.location.href = "/";
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     console.log("Success");
+  //     localStorage.clear();
+  //     window.location.href = "/";
+  //   }
+  // }, [isSuccess]);
 
   const handelLogOut = () => {
-    mutate();
+    localStorage.clear();
+    //   mutate();
   };
 
   return (
@@ -126,7 +96,6 @@ const Header = () => {
                     <Link to={"/signup"}>
                       <span>회원가입</span>
                     </Link>
-
                     <t.ShopIcon
                       onClick={() => alert("로그인 먼저 해주세요!")}
                     />

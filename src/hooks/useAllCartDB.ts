@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 
-export const useAllCartDB = async () => {
+export const getAllCartDB = async () => {
   let store;
   const db = await openDB("cart", 1, {
     upgrade(db) {
