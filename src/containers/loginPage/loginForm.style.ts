@@ -10,6 +10,7 @@ export const LogInWrapper = styled.div`
   align-items: center;
   @media (max-width: 990px) {
     width: 90%;
+    margin-bottom: 70px;
   }
 `;
 export const BtnDiv = styled.div`
@@ -21,7 +22,7 @@ export const AddWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 10px 0 30px 0;
 `;
 export const AddInfo = styled.span`
   font-size: ${theme.fs15};

@@ -18,8 +18,8 @@ const CartReceipt = () => {
   const navigate = useNavigate();
   const viewport = useViewport();
   const dispatch = useAppDispatch();
-  const replace = useAppSelector((state) => state.optionSlice.replace);
   const [cartData, setCartData] = useState<CartPayType[]>();
+  const replace = useAppSelector((state) => state.optionSlice.replace);
   const checkedItems = useAppSelector((state) => state.cartSlice.checkedItems);
 
   useEffect(() => {
