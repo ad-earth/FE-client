@@ -18,7 +18,6 @@ const Card = (props: CardCompoType) => {
   }
   const optionColor = new Set(optionArr);
   const newColorCode = [...optionColor];
-  console.log(props.pOption);
 
   return (
     <>
