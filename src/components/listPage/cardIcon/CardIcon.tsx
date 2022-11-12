@@ -4,7 +4,7 @@ import { useQueryClient } from "react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { useIcon } from "./useCardIconQuery";
 import { ProductsType } from "../../../containers/listPage/cardList/cardList.type";
-import ListModal from "../../../containers/listPage/listModal/ListModal";
+import ListModal from "../../modal/listModal/ListModal";
 import { useGetDetailQuery } from "../../../containers/detailPage/details/useGetDetailQuery";
 
 const CardIcon = ({
@@ -32,18 +32,20 @@ const CardIcon = ({
         setPlus(include ? plus - 1 : plus + 1);
         queryClient.invalidateQueries("cardList");
       },
+      onError: () => {
+        alert("로그인 후 사용가능합니다.");
+      },
     });
   };
 
   //-- 리스트 모달
   const { refetch } = useGetDetailQuery(
-    val.p_No ? String(val.p_No) : null,
+    productNo ? String(productNo) : null,
     keyParams !== undefined ? keyParams : null
   );
   const ModalClick = () => {
     setInfoIsOpen(true);
     setProductNo(val.p_No);
-    refetch();
   };
 
   return (

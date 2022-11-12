@@ -64,6 +64,7 @@ const ContentBox = styled.div`
   background-color: ${({ theme }) => theme.bg01};
   z-index: 10000;
   overflow: hidden;
+  overflow-y: scroll;
 `;
 const ModalBackdrop = styled.div`
   width: 100vw;

@@ -43,8 +43,6 @@ const CateDrop = () => {
         >
           <MenuItem value="recent">등록순</MenuItem>
           <MenuItem value="like">인기순</MenuItem>
-          <MenuItem value="minprice">낮은가격순</MenuItem>
-          <MenuItem value="maxprice">높은가격순</MenuItem>
         </Select>
       </FormControl>
     </t.SelectWrap>

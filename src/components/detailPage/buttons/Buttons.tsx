@@ -1,7 +1,7 @@
 import * as t from "./buttons.style";
 import { theme } from "../../../style/theme";
 import { useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { PropsType } from "./buttons.type";
 import { usePostLikeQuery } from "./usePostLikeQuery";
 import { useOptionList } from "./useOptionList";
@@ -13,7 +13,6 @@ import { MainButton } from "../../../elements/buttons/Buttons";
 import { useDiscount } from "../productName/useDiscount";
 
 const Buttons = (props: PropsType) => {
-  const { productNo } = useParams();
   const navigate = useNavigate();
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
@@ -31,7 +30,7 @@ const Buttons = (props: PropsType) => {
     [detailData]
   );
 
-  const { mutate } = usePostLikeQuery(productNo);
+  const { mutate } = usePostLikeQuery(String(detailData.product.p_No));
 
   const [open, setOpen] = useState<boolean>(false);
 
