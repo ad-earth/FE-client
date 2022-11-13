@@ -56,3 +56,6 @@ export const CartIcon = styled(Cart)`
   width: 20px;
   cursor: pointer;
 `;
+export const ModalDiv = styled.div`
+  opacity: 0.99;
+`;

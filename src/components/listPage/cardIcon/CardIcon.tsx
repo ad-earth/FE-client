@@ -48,19 +48,19 @@ const CardIcon = ({
     setProductNo(val.p_No);
   };
 
+  const MessageClick = () => {
+    navigate({
+      pathname: `/detail/${val.p_No}`,
+      search: `category=${category}&keyword=${keyParams}`,
+    });
+  };
+
   return (
     <>
       <t.CardCp>
         <t.IconDiv>
           <t.IconSpan>
-            <t.MessageIcon
-              onClick={() =>
-                navigate({
-                  pathname: `/detail/${val.p_No}`,
-                  search: `category=${category}&keyword=${keyParams}`,
-                })
-              }
-            />
+            <t.MessageIcon onClick={MessageClick} />
             <t.Count>{val.p_Review}</t.Count>
           </t.IconSpan>
           <t.IconSpan>
@@ -71,11 +71,13 @@ const CardIcon = ({
             )}
             <t.Count>{plus}</t.Count>
           </t.IconSpan>
-          <ListModal
-            isOpen={infoIsOpen}
-            handleClose={() => setInfoIsOpen(false)}
-          />
           <t.CartIcon onClick={ModalClick} />
+          <t.ModalDiv>
+            <ListModal
+              isOpen={infoIsOpen}
+              handleClose={() => setInfoIsOpen(false)}
+            />
+          </t.ModalDiv>
         </t.IconDiv>
       </t.CardCp>
     </>

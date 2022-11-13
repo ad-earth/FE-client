@@ -1,5 +1,5 @@
-import { AreaPage } from "./pageBtn.sytle";
-import { Pagination, PaginationItem } from "@mui/material";
+import * as t from "./pageBtn.sytle";
+import { PaginationItem } from "@mui/material";
 import { editPagNo } from "../../../redux/reducer/listSlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
@@ -15,15 +15,15 @@ const PageBtn = ({ cnt }: { cnt: number }) => {
 
   return (
     <>
-      <AreaPage>
-        <Pagination
+      <t.AreaPage>
+        <t.PaginationRoot
           count={pageNum}
           defaultPage={1}
           page={pageNo}
           onChange={onPageChange}
           renderItem={(item) => <PaginationItem {...item} />}
         />
-      </AreaPage>
+      </t.AreaPage>
     </>
   );
 };

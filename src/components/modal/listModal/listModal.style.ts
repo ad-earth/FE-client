@@ -20,6 +20,7 @@ export const BtnDiv = styled.div`
 `;
 export const Wrap = styled.div`
   padding-bottom: 20px;
+  opacity: 0.99;
   @media (max-width: 990px) {
     width: 80vw;
     height: 80vh;
