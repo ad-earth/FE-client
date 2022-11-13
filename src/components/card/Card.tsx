@@ -91,7 +91,7 @@ const Card = (props: CardCompoType) => {
           {props.pOption ? (
             <t.IconDiv>
               {newColorCode.map((v) => {
-                return v === null ? null : (
+                return v === null || v === "" ? null : (
                   <t.Icon>
                     <ColorIcon colorCode={v} />
                   </t.Icon>
