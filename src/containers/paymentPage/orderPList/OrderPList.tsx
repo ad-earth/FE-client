@@ -16,6 +16,7 @@ import { FreeShipping } from "../../../components/paymentPage/orderPdtInfo/Order
 import PayMethodInput from "../../../components/paymentPage/payMethodInput/PayMethodInput";
 import { useAllPaymentDB } from "../../../hooks/useAllPaymentDB";
 import { useDeletePayDB } from "../../../hooks/useDeletePayDB";
+import { delCartDB } from "../../../shared/utils/delCartDB";
 import { editClear } from "../../../redux/reducer/payCheckSlice";
 import {
   RootState,
@@ -44,6 +45,11 @@ const OrderPList = () => {
   const products = useAppSelector((state) => state.payPdtSlice.products);
   const state = useAppSelector((state) => state.payCheckSlice);
   const [cartData, setCartData] = useState<DataPropsType[]>();
+
+  //-- deleteDB에 넣어야할 값
+  const pNo = products.map((v: any) => {
+    return v.productNo;
+  });
 
   //-- redux
   const { name, dNo, pNumber, zipcode, address1, address2, memo } =
@@ -86,6 +92,7 @@ const OrderPList = () => {
       alert("상세 주소를 입력해주세요");
     } else {
       mutate();
+      delCartDB(pNo);
     }
   };
 
