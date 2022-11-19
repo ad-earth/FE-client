@@ -45,7 +45,7 @@ const OrderDetail = () => {
             price={orderDetail.o_Price}
             products={orderDetail.products}
           />
-          {findCancelPrice && (
+          {findCancelPrice.length > 0 && (
             <OrderAmount
               price={orderDetail.o_Price}
               products={orderDetail.products}
