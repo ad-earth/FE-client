@@ -73,6 +73,7 @@ const Buttons = (props: PropsType) => {
               border={`0.5px solid ${theme.ls03}`}
               bgColor={theme.bg01}
               color={theme.fc09}
+              hColor={theme.fc09}
               hBorder={`0.5px solid ${theme.ls11}`}
               hBgColor={theme.bg01}
               onClick={() => {
@@ -97,6 +98,7 @@ const Buttons = (props: PropsType) => {
           border={`0.5px solid ${theme.ls03}`}
           bgColor={theme.bg01}
           color={theme.fc09}
+          hColor={theme.fc09}
           hBorder={`0.5px solid ${theme.ls11}`}
           hBgColor={theme.bg01}
           onClick={() => mutate()}
