@@ -1,5 +1,5 @@
 import { putCancel } from "../../../shared/apis/api";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 interface Data {
   oNo: string;
@@ -11,7 +11,10 @@ const PutCancelList = async (data: Data) => {
 };
 
 const useCancelDetail = (data: Data) => {
-  return useMutation(() => PutCancelList(data), {});
+  const queryClient = useQueryClient();
+  return useMutation(() => PutCancelList(data), {
+    onSuccess: () => queryClient.invalidateQueries("orderList"),
+  });
 };
 
 export default useCancelDetail;
