@@ -1,15 +1,10 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import * as t from "./cateButton.style";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../redux/store";
+import { editPagNo, editSort } from "../../../redux/reducer/listSlice";
 
-const CateButton = ({
-  setPage,
-  setSort,
-}: {
-  setPage: Dispatch<SetStateAction<number>>;
-  setSort: Dispatch<SetStateAction<string>>;
-}) => {
+const CateButton = () => {
   const categoryList: string[] = [
     "전체",
     "욕실",
@@ -22,12 +17,13 @@ const CateButton = ({
   ];
   const navigate = useNavigate();
   const [active, setActive] = useState<string>("");
+  const dispatch = useAppDispatch();
 
   const CateClick = (e: React.FormEvent<HTMLButtonElement>) => {
     const category = e.currentTarget.value;
     navigate(`/list/${category}`);
-    setPage(1);
-    setSort(`like`);
+    dispatch(editPagNo(1));
+    dispatch(editSort("recent"));
     setActive(e.currentTarget.value);
   };
 

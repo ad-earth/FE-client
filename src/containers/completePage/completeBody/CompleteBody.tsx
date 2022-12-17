@@ -1,8 +1,8 @@
 import * as t from "./completeBody.style";
-import { MainButton } from "../../../elements/Buttons";
-import { useComplete } from "./useCompleteBody";
-import { CompleteType } from "../completeBody/completeBody.type";
 import { useNavigate } from "react-router-dom";
+import { CompleteType } from "../completeBody/completeBody.type";
+import { useComplete } from "./useCompleteBodyQuery";
+import { MainButton } from "../../../elements/buttons/Buttons";
 
 const CompleteBody = () => {
   const navigate = useNavigate();

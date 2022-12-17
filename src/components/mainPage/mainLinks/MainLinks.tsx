@@ -1,14 +1,14 @@
+import * as t from "./mainLinks.style";
 import { useNavigate } from "react-router-dom";
-
 import {
   instagram,
   jigushopGrocery,
   plasticBag,
 } from "../../../shared/utils/imgUrls";
-import * as t from "./mainLinks.style";
 
 const MainLinks = () => {
   const navigate = useNavigate();
+
   return (
     <t.Background>
       <t.MainContainer>

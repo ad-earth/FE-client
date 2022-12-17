@@ -1,11 +1,10 @@
-import { useState } from "react";
-
 import * as t from "./productImgs.style";
-import { PropsType } from "./productImgs.type";
+import { useState } from "react";
 import { useAppSelector } from "../../../redux/store";
 
-const ProductImgs = (props: PropsType) => {
+const ProductImgs = () => {
   const [url, setUrl] = useState<string>(null);
+
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
   return (
@@ -19,18 +18,16 @@ const ProductImgs = (props: PropsType) => {
         }
       />
       <t.SubImgWrapper>
-        {detailData?.product.p_Thumbnail.map((img, idx) => {
-          return (
-            <t.SubImg
-              alt="상품 이미지"
-              key={idx}
-              src={img}
-              onMouseEnter={() => {
-                setUrl(detailData?.product.p_Thumbnail[idx]);
-              }}
-            />
-          );
-        })}
+        {detailData?.product.p_Thumbnail.map((img, idx) => (
+          <t.SubImg
+            alt="상품 이미지"
+            key={idx}
+            src={img}
+            onMouseEnter={() => {
+              setUrl(detailData?.product.p_Thumbnail[idx]);
+            }}
+          />
+        ))}
       </t.SubImgWrapper>
     </t.MainContainer>
   );

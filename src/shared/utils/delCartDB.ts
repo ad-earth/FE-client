@@ -11,5 +11,11 @@ export const delCartDB = async (item: any) => {
     },
   });
   store = db.transaction("cart", "readwrite").objectStore("cart");
-  store.delete(item);
+  try {
+    for (let i = 0; i < item.length; i++) {
+      store.delete(item[i]);
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };

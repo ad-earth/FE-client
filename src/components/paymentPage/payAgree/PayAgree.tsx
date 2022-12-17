@@ -1,11 +1,11 @@
-import { editAgree } from "../../../redux/reducer/payErrorSlice";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import * as t from "./payAgree.style";
+import { editAgree } from "../../../redux/reducer/payCheckSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
 
 const PayAgree = () => {
   const dispatch = useAppDispatch();
-  const state = useAppSelector((state) => state.payErrorSlice);
-
+  const state = useAppSelector((state) => state.payCheckSlice);
+  //-- 체크 확인
   const checkHandler = (checked: boolean) => {
     if (checked) {
       dispatch(editAgree(true));

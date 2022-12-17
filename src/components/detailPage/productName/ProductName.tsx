@@ -1,12 +1,11 @@
 import * as t from "./productName.style";
-import { Badge } from "../../../elements/Badge";
 import { useDiscount } from "./useDiscount";
 import { useAppSelector } from "../../../redux/store";
+import { Badge } from "../../../elements/badge/Badge";
 
 const ProductName = () => {
   const detailData = useAppSelector((store) => store.detailSlice.details);
 
-  // 상품 할인가 계산
   const discountedPrice = useDiscount(
     detailData?.product.p_Cost,
     detailData?.product.p_Discount

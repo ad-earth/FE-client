@@ -1,34 +1,35 @@
-import { useRef, useState } from "react";
 import * as t from "../components/searchPage/sqSearchBar/sqSearchBar.style";
-
-import SearchBody from "../containers/searchPage/searchBody/SearchBody";
-import useSearchDataList from "../containers/searchPage/searchBody/useSearchBody";
+import { useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import PageBtn from "../components/listPage/pagination/PageBtn";
+import { EmptyDiv } from "../components/searchPage/searchNav/SearchNav";
+import SearchBody from "../containers/searchPage/searchBody/SearchBody";
 import { SearchType } from "../containers/searchPage/searchBody/searchPage.type";
-import { useNavigate } from "react-router-dom";
+import useSearchDataList from "../containers/searchPage/searchBody/useSearchBodyQuery";
+import { useAppSelector } from "../redux/store";
 
 const SearchPage = () => {
   const navigate = useNavigate();
-  const [keyParams, setKeyParams] = useState<string>("욕실");
-  const [pageParams, setPageParams] = useState<number>(1);
 
+  const [keyword, setKeyword] = useState<string>("");
+  const { keyParams } = useParams();
+  const { pageNo } = useAppSelector((state) => state.listSlice);
   const keywordRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const submitHandler = (event: React.FormEvent) => {
-    const keyParams = keywordRef.current!.value;
-    navigate(`/search/${keyParams}`);
+    const keyword = keywordRef.current!.value;
+    navigate(`/search/${keyword}`);
     event.preventDefault();
-    setKeyParams(keyParams);
+    keyParams ? setKeyword(keyParams) : setKeyword(keyword);
   };
 
   const SearchListData: SearchType = useSearchDataList(
     keyParams,
-    String(pageParams)
+    String(pageNo)
   );
 
   const onClearInput = () => {
     keywordRef.current.value = "";
   };
-
   return (
     <>
       {SearchListData && (
@@ -37,7 +38,12 @@ const SearchPage = () => {
             <t.Div>
               <t.InputDiv>
                 <t.SearchIcon onClick={submitHandler} />
-                <input placeholder="검색" type="text" ref={keywordRef} />
+                <input
+                  placeholder="검색"
+                  type="text"
+                  defaultValue={keyParams ? keyParams : null}
+                  ref={keywordRef}
+                />
                 <t.Officon onClick={onClearInput} />
               </t.InputDiv>
             </t.Div>
@@ -49,11 +55,10 @@ const SearchPage = () => {
             cnt={SearchListData.cnt}
             pageNo={SearchListData.pageNo}
           />
-          <PageBtn
-            page={pageParams}
-            setPage={setPageParams}
-            cnt={SearchListData.cnt}
-          />
+          {SearchListData.cnt === 0 ? (
+            <EmptyDiv message={"검색된 정보가 없습니다."} />
+          ) : null}
+          <PageBtn cnt={SearchListData.cnt} />
         </>
       )}
     </>

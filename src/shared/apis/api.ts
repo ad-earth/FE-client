@@ -1,6 +1,6 @@
-import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
 import axiosInstance from "./instance";
-import { CartType } from "../types/types";
+import { PayProductsData } from "../../containers/paymentPage/orderPList/orderPList.type";
+import { CartResponseType } from "../types/types";
 //마이페이지
 export const getOrders = (page: number) =>
   axiosInstance.get(`/orders?page=${page}&maxpost=10`);
@@ -39,7 +39,7 @@ export const getMain = () => axiosInstance.get(`/main`);
 
 // 상세페이지 상품 상세 정보 조회
 export const getDetails = (productNo: string, keyword?: string) =>
-  axiosInstance.get(`/products/${productNo}?${keyword && keyword}`);
+  axiosInstance.get(`/products/${productNo}?keyword=${keyword}`);
 
 // 상세페이지 구매평 조회
 export const getReviews = (productNo: string, page: number) =>
@@ -48,10 +48,6 @@ export const getReviews = (productNo: string, page: number) =>
 // 상세페이지 구매평 삭제
 export const deleteReview = (reviewNo: number) =>
   axiosInstance.delete(`/reviews/${reviewNo}`);
-
-//장보기페이지
-export const getList = (sort: string, pageNo: string) =>
-  axiosInstance.get(`/main/products?sort=${sort}&page=${pageNo}&maxpost=20`);
 
 //카테고리 조회
 export const getCate = (category: string, sort: string, pageNo: string) =>
@@ -145,7 +141,7 @@ export const putNewPw = (u_Idx: number, u_Pw: string) => {
 };
 
 //로그아웃시 서버 데이터 전달
-export const postCartData = (cartList: CartType) =>
+export const postCartData = (cartList: CartResponseType) =>
   axiosInstance.post(`/carts`, {
     cartList: cartList,
   });

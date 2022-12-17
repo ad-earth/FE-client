@@ -20,4 +20,7 @@ export const ButtonBox = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
+  width: 200px;
+  margin: 0 auto;
+  justify-content: space-between;
 `;

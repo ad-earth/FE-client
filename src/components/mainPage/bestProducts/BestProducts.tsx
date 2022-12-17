@@ -1,7 +1,7 @@
 import * as t from "./bestProducts.style";
+import { PropsType } from "./bestProducts.type";
 import BestCards from "../bestCards/BestCards";
 import { bestProduct } from "../../../shared/utils/imgUrls";
-import { PropsType } from "./bestProducts.type";
 
 const BestProducts = (props: PropsType) => {
   return (

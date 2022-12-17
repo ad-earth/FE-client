@@ -1,12 +1,12 @@
-import { useEffect } from "react";
-import { setPriceData } from "../../../redux/reducer/payPdtSlice";
-import { useAppDispatch } from "../../../redux/store";
-import { DataType } from "../pdtInfo/pdInfo.type";
 import * as t from "./paySummary.style";
+import { useEffect } from "react";
+import { DataPropsType } from "../pdtInfo/pdInfo.type";
+import { useAppDispatch } from "../../../redux/store";
+import { setPriceData } from "../../../redux/reducer/payPdtSlice";
 
-const PaySummary = (props: DataType) => {
+const PaySummary = ({ data }: { data: DataPropsType[] }) => {
   const dispatch = useAppDispatch();
-  const totalP = props.data.reduce((a, currentObject) => {
+  const totalP = data.reduce((a: any, currentObject: any) => {
     return a + currentObject.totalPrice;
   }, 0);
 
@@ -15,7 +15,7 @@ const PaySummary = (props: DataType) => {
   });
   return (
     <>
-      {props.data && (
+      {data && (
         <>
           <t.DivArea>
             <t.Div>

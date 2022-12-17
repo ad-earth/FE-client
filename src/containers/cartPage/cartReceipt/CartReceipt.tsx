@@ -1,31 +1,44 @@
-import * as t from "./CartReceipt.style";
+import * as t from "./cartReceipt.style";
 import { theme } from "../../../style/theme";
-import { MainButton } from "../../../elements/Buttons";
 import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { setOrderData } from "../../../redux/reducer/cartSlice";
+import { MainButton } from "../../../elements/buttons/Buttons";
+import { useViewport } from "../../../hooks/useViewport";
+import { getAllCartDB } from "../../../hooks/useAllCartDB";
+import { CartPayType } from "../../../shared/types/types";
+import { setReplace } from "../../../redux/reducer/optionSlice";
+import { putAllPaymentDB } from "../../../shared/utils/putPaymentDB";
 
 type ObjType = {
   [id: string]: number;
 };
 
 const CartReceipt = () => {
+  const navigate = useNavigate();
+  const viewport = useViewport();
   const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [cartData, setCartData] = useState<CartPayType[]>();
+  const replace = useAppSelector((state) => state.optionSlice.replace);
   const checkedItems = useAppSelector((state) => state.cartSlice.checkedItems);
-  const [viewport, setViewport] = useState(visualViewport.width);
 
   useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
+  }, []);
+
+  useEffect(() => {
+    if (replace) {
+      const result = getAllCartDB();
+      result.then((res) => setCartData(res));
+      dispatch(setReplace(false));
+    }
+  }, [replace]);
 
   // 총 주문 금액
   const totalAmount = useMemo(() => {
     if (checkedItems.length > 0) {
-      const total = cartData.map((el) => {
+      const total = cartData?.map((el) => {
         const tObj: ObjType = {};
         tObj["id"] = el.id;
         tObj["totalPrice"] = el.totalPrice;
@@ -56,8 +69,8 @@ const CartReceipt = () => {
         }
       }
     }
-    dispatch(setOrderData(cartList));
-    window.location.href = "/payment";
+    putAllPaymentDB(cartList);
+    navigate("/payment");
   };
 
   return (

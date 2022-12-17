@@ -1,16 +1,15 @@
 import * as t from "./cardList.style";
-//pages//
-import Card from "../../../components/card/Card";
-import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
-import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
-import CateDrop from "../../../components/listPage/catDrop/CateDrop";
 import { CardListType } from "./cardList.type";
 import { SProductsType } from "../../searchPage/searchBody/searchPage.type";
+import Card from "../../../components/card/Card";
+import CateDrop from "../../../components/listPage/catDrop/CateDrop";
+import CardIcon from "../../../components/listPage/cardIcon/CardIcon";
+import CardBadge from "../../../components/listPage/cardBadge/CardBadge";
 
-const ListPage = (props: CardListType) => {
+const CardList = (props: CardListType) => {
   return (
     <t.CardArea>
-      <CateDrop sort={props.sort} sortChange={props.sortChange} />
+      <CateDrop />
       <t.CardWrap>
         {props.products.map((val: SProductsType, i: number) => {
           return (
@@ -43,4 +42,4 @@ const ListPage = (props: CardListType) => {
   );
 };
 
-export default ListPage;
+export default CardList;

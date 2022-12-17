@@ -7,17 +7,18 @@ export const MainContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${theme.bg01};
-  border-radius: 15px;
   gap: 8px;
+  border-radius: 15px;
   padding: 50px;
+  background: ${theme.bg01};
   color: ${theme.fc15};
   @media (max-width: 990px) {
     width: 97%;
-    padding: 20px;
     gap: 0px;
+    padding: 20px;
   }
 `;
+
 export const Category = styled.div`
   font-size: ${theme.fs18};
   font-weight: 600;
@@ -26,6 +27,7 @@ export const Category = styled.div`
     font-weight: 400;
   }
 `;
+
 export const Amount = styled.div`
   font-size: ${theme.fs30};
   font-weight: 600;

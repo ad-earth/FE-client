@@ -1,11 +1,19 @@
-import * as t from "./SchProdModal.style";
+import * as t from "./schProdModal.style";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ModalType } from "./schProdModal.type";
 import Modal from "../Modal";
-interface ModalType {
-  isOpen?: boolean;
-  handleClose: () => void;
-}
 
 const SchProdModal = (props: ModalType) => {
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState<string>("");
+
+  const handleSubmit = () => {
+    navigate(`/search/${keyword}`);
+    props.handleClose();
+    setKeyword("");
+  };
+
   return (
     <>
       {props.isOpen && (
@@ -13,7 +21,15 @@ const SchProdModal = (props: ModalType) => {
           <t.SchContainer>
             <t.Close onClick={() => props.handleClose()} />
             <t.SchInput>
-              <input type="text" placeholder="검색" />
+              <input
+                type="text"
+                placeholder="검색"
+                value={keyword}
+                onChange={(e) => setKeyword(e.target.value)}
+                onKeyDown={(e) => {
+                  e.key === "Enter" && handleSubmit();
+                }}
+              />
               <t.SchIcon />
             </t.SchInput>
           </t.SchContainer>

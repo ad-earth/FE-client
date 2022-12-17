@@ -1,17 +1,18 @@
-import * as t from "./Header.style";
+import * as t from "./header.style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { openDB } from "idb";
-import { useAppDispatch, useAppSelector } from "../../redux/store";
-import { setCartData } from "../../redux/reducer/cartSlice";
-import { SearchBar } from "./../../elements/SearchBar";
-import headLogo from "./../../assets/logo/headLogo.png";
-import SchProdModal from "../../components/modal/schProdModal/SchProdModal";
-import ScrollHeader from "../../components/header/scroll/ScrollHeader";
-import MenuDrop from "../../elements/MenuDrop";
-import useDropDown from "../../hooks/useDropDown";
-import AsideHeader from "../../components/header/aside/AsideHeader";
+import { SearchBar } from "../../elements/searchBar/SearchBar";
+import { delCartDB } from "../../shared/utils/delCartDB";
+import { getAllCartDB } from "../../hooks/useAllCartDB";
 import { useLogOut } from "./useLogout";
+import { useViewport } from "../../hooks/useViewport";
+import { CartListType, CartPayType } from "../../shared/types/types";
+import useDropDown from "../../hooks/useDropDown";
+import headLogo from "./../../assets/logo/headLogo.png";
+import MenuDrop from "../../elements/menuDrop/MenuDrop";
+import ScrollHeader from "../../components/header/scroll/ScrollHeader";
+import AsideHeader from "../../components/header/aside/AsideHeader";
+import SchProdModal from "../../components/modal/schProdModal/SchProdModal";
 
 let cateData: {
   id: number;
@@ -31,61 +32,55 @@ let cateData: {
 const token = localStorage.getItem("token");
 
 const Header = () => {
-  const [viewport, setViewport] = useState(visualViewport.width);
-  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
-  const [infoIsOpen, setInfoIsOpen] = useState(false);
+  const viewport = useViewport();
   const { isDropped, dropRef, handleRemove } = useDropDown();
-  const dispatch = useAppDispatch();
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
+  const [infoIsOpen, setInfoIsOpen] = useState<boolean>(false);
+  const [cartData, setCartData] = useState<CartPayType[]>();
+  const [cartList, setCartList] = useState<CartListType[]>();
+  const [idList, setIdList] = useState([]);
 
   const goHome = () => {
     window.location.href = "/";
   };
 
   useEffect(() => {
-    const resizeListener = () => {
-      setViewport(visualViewport.width);
-    };
-    window.addEventListener("resize", resizeListener);
-  });
-
-  // 장바구니 정보 가져오기
-  const getCart = async () => {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
+    const result = getAllCartDB();
+    result.then((res) => {
+      setCartData(res);
     });
-    store = db.transaction("cart", "readonly").objectStore("cart");
-    const request = store.getAll();
-    try {
-      request.then((response) => {
-        dispatch(setCartData(response));
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    if (token) {
-      getCart();
-    }
   }, []);
 
-  const CData = {
-    cartList: cartData,
+  useEffect(() => {
+    if (cartData) {
+      const list = cartData.map((item) => ({
+        k_No: item.keywordNo,
+        p_No: item.productNo,
+        p_Thumbnail: item.thumbnail,
+        p_Category: item.category,
+        a_Brand: item.brand,
+        p_Name: item.name,
+        p_Cost: item.price,
+        p_Discount: item.discount,
+        p_Option: item.option,
+        p_Price: item.totalPrice,
+        p_Cnt: item.totalQty,
+      }));
+      const idList = list.map((item) => item.p_No);
+      setCartList(list);
+      setIdList(idList);
+    }
+  }, [cartData]);
+
+  const logOutData = {
+    cartList: cartList,
   };
 
-  const { mutate, isSuccess, data } = useLogOut(CData);
+  const { mutate, isSuccess } = useLogOut(logOutData);
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Success");
+      delCartDB(idList);
       localStorage.clear();
       window.location.href = "/";
     }
@@ -126,7 +121,6 @@ const Header = () => {
                     <Link to={"/signup"}>
                       <span>회원가입</span>
                     </Link>
-
                     <t.ShopIcon
                       onClick={() => alert("로그인 먼저 해주세요!")}
                     />

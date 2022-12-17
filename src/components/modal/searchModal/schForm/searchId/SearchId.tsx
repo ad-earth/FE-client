@@ -1,4 +1,4 @@
-import * as t from "../SearchForm.style";
+import * as t from "../searchForm.style";
 import { theme } from "../../../../../style/theme";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -6,16 +6,12 @@ import { useForm } from "react-hook-form";
 import { useSearchId } from "./useSearchId";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SearchIdValidation } from "../../../../../shared/utils/yup";
-import Input from "../../../../../elements/Input";
-import { MainButton } from "../../../../../elements/Buttons";
-
-type IdValue = {
-  userName: string;
-  contact: string;
-};
+import { IdValueType } from "./searchId.type";
+import Input from "../../../../../elements/input/Input";
+import { MainButton } from "../../../../../elements/buttons/Buttons";
 
 const SearchId = () => {
-  const [isYourId, setIsYourId] = useState<IdValue>({
+  const [isYourId, setIsYourId] = useState<IdValueType>({
     userName: "",
     contact: "",
   });
@@ -24,7 +20,7 @@ const SearchId = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IdValue>({
+  } = useForm<IdValueType>({
     mode: "onSubmit",
     resolver: yupResolver(SearchIdValidation),
     defaultValues: {
@@ -38,7 +34,7 @@ const SearchId = () => {
     u_Phone: isYourId.contact,
   };
 
-  const handleSearch = (data: IdValue) => {
+  const handleSearch = (data: IdValueType) => {
     setIsYourId(data);
     // refetch();
   };

@@ -1,50 +1,50 @@
-import * as t from "./CartList.style";
+import * as t from "./cartList.style";
 import { theme } from "../../../style/theme";
-import { useState } from "react";
-import { openDB } from "idb";
-import { useAppSelector } from "../../../redux/store";
-import { MainButton } from "../../../elements/Buttons";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { CartPayType } from "../../../shared/types/types";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import ItemList from "../../../components/cartPage/ItemList";
+import { getAllCartDB } from "../../../hooks/useAllCartDB";
+import { delCartDB } from "../../../shared/utils/delCartDB";
+import { setReplace } from "../../../redux/reducer/optionSlice";
 
 const token = localStorage.getItem("token");
 
 const CartList = () => {
-  const cartData = useAppSelector((state) => state.cartSlice.cartData);
+  const dispatch = useAppDispatch();
+  const [cartData, setCartData] = useState<CartPayType[]>();
   const [allChecked, setAllChecked] = useState(false);
   const checkedId = useAppSelector((state) => state.cartSlice.checkedItems);
+  const replace = useAppSelector((state) => state.optionSlice.replace);
+
   const handleCheck = () => {
     setAllChecked(!allChecked);
   };
 
-  const delCart = async () => {
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    try {
-      for (let i = 0; i < checkedId.length; i++) {
-        store.delete(checkedId[i]);
-        window.location.reload();
-      }
-    } catch (err) {
-      console.log(err);
+  useEffect(() => {
+    const result = getAllCartDB();
+    result.then((res) => setCartData(res));
+  }, []);
+
+  useEffect(() => {
+    if (replace) {
+      const result = getAllCartDB();
+      result.then((res) => setCartData(res));
+      dispatch(setReplace(false));
     }
-  };
+  }, [replace]);
 
   // 선택상품 삭제
   const handleDelete = () => {
     if (checkedId.length > 0) {
-      delCart();
+      delCartDB(checkedId);
+      dispatch(setReplace(true));
     }
   };
 
   if (!token) {
+    alert("로그인 후 이용해주세요!");
     window.location.href = "/";
   }
 
@@ -76,6 +76,7 @@ const CartList = () => {
             color={theme.fc14}
             hBorder={`0.5px solid ${theme.ls11}`}
             hBgColor={theme.bg01}
+            onClick={() => handleDelete()}
           >
             선택상품 삭제
           </MainButton>

@@ -8,17 +8,9 @@ import { SignUpValidation } from "../../shared/utils/yup";
 import { useSignUpForm } from "./useSignUpForm";
 import Profile from "../../components/signUpPage/profile/Profile";
 import AddressForm from "../../components/signUpPage/addressForm/AddressForm";
-import Input from "../../elements/Input";
-import { MainButton } from "../../elements/Buttons";
-
-interface FormValue {
-  userId: string;
-  password: string;
-  password2: string;
-  userName: string;
-  gender: string;
-  contact: string;
-}
+import Input from "../../elements/input/Input";
+import { MainButton } from "../../elements/buttons/Buttons";
+import { FormValueType } from "./signUpForm.type";
 
 const SignUpForm = () => {
   const navigate = useNavigate();
@@ -26,7 +18,7 @@ const SignUpForm = () => {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [extraAddress, setExtraAddress] = useState("");
-  const [formValue, setFormValue] = useState<FormValue>({
+  const [formValue, setFormValue] = useState<FormValueType>({
     userId: "",
     password: "",
     password2: "",
@@ -40,7 +32,7 @@ const SignUpForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValue>({
+  } = useForm<FormValueType>({
     mode: "onChange",
     resolver: yupResolver(SignUpValidation),
     defaultValues: {
@@ -53,7 +45,7 @@ const SignUpForm = () => {
     },
   });
 
-  const submitHandler = (data: FormValue) => {
+  const submitHandler = (data: FormValueType) => {
     setFormValue(data);
     mutate();
   };

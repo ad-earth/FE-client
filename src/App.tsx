@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 //query
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { queryClient } from "./shared/utils/errorHandler";
 
 import Header from "./containers/header/Header";
 import LogInPage from "./pages/LogInPage";
@@ -16,7 +17,7 @@ import DetailPage from "./pages/DetailPage";
 import PaymentPage from "./pages/PaymentPage";
 import CompletePage from "./pages/CompletePage";
 import Footer from "./containers/footer/Footer";
-
+import NotFound from "./pages/NotFound";
 //mypage
 import Mypage from "./pages/MyPage";
 import Order from "./containers/myPage/order/Order";
@@ -27,9 +28,10 @@ import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 //style
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
-import Loading from "./elements/Loading";
+import Loading from "./elements/loading/Loading";
+import { Toaster } from "react-hot-toast";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
         <GlobalStyle />
         <div className="App">
           <Header />
+          <Toaster />
           <Loading />
           <Routes>
             <Route path="/login" element={<LogInPage />}></Route>
@@ -50,24 +53,18 @@ function App() {
                 <Route path="cancel-call/:id" element={<CancelDetail />} />
               </Route>
               <Route path="wish" element={<Wish />} />
-
               <Route path="cancel">
                 <Route index element={<Cancel />} />
                 <Route path=":id" element={<OrderDetail />} />
               </Route>
             </Route>
             <Route path="/cart" element={<CartPage />}></Route>
-            <Route path="/list" element={<ListPage />}>
-              <Route path=":category" element={<ListPage />}></Route>
-            </Route>
-            <Route path="/search" element={<SearchPage />}>
-              <Route path=":keyParams" element={<SearchPage />}></Route>
-            </Route>
+            <Route path="/list/:category" element={<ListPage />}></Route>
+            <Route path="/search/:keyParams" element={<SearchPage />}></Route>
             <Route path="/detail/:productNo" element={<DetailPage />}></Route>
-            <Route path="/payment" element={<PaymentPage />}>
-              <Route path=":prodNo" element={<PaymentPage />}></Route>
-            </Route>
+            <Route path="/payment" element={<PaymentPage />}></Route>
             <Route path="/complete" element={<CompletePage />}></Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
           <ReactQueryDevtools />

@@ -1,15 +1,15 @@
-import * as t from "./LoginForm.style";
+import * as t from "./loginForm.style";
 import { theme } from "../../style/theme";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { openDB } from "idb";
 import { useLoginForm } from "./useLoginForm";
-import { MainButton } from "../../elements/Buttons";
-import Input from "../../elements/Input";
+import { putAllCartDB } from "../../shared/utils/putCartDB";
+import { MainButton } from "../../elements/buttons/Buttons";
+import Input from "../../elements/input/Input";
 import SearchModal from "../../components/modal/searchModal/schModal/SearchModal";
 
 const LoginForm = () => {
-  const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState<boolean>(false);
   const [id, setId] = useState<string>("");
   const [pw, setPw] = useState<string>("");
   const navigate = useNavigate();
@@ -19,48 +19,14 @@ const LoginForm = () => {
     u_Pw: pw,
   };
 
-  const setCart = async () => {
-    console.log(data.cartList);
-    let store;
-    const db = await openDB("cart", 1, {
-      upgrade(db) {
-        store = db.createObjectStore("cart", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-      },
-    });
-    store = db.transaction("cart", "readwrite").objectStore("cart");
-    try {
-      for (let i = 0; i < data.cartList.length; i++) {
-        store.put({
-          id: data.cartList[i].p_No,
-          keywordNo: data.cartList[i].k_No,
-          prodNo: data.cartList[i].p_No,
-          thumbnail: data.cartList[i].p_Thumbnail,
-          category: data.cartList[i].p_Category,
-          brand: data.cartList[i].a_Brand,
-          name: data.cartList[i].p_Name,
-          price: data.cartList[i].p_Cost,
-          discount: data.cartList[i].p_Discount,
-          option: data.cartList[i].p_Option,
-          totalPrice: data.cartList[i].p_Price,
-          totalCnt: data.cartList[i].p_Cnt,
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const { mutate, isSuccess, data } = useLoginForm(loginData);
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Success");
+      putAllCartDB(data);
+      console.log("Success", data);
       navigate("/");
       window.location.href = "/";
-      setCart();
     }
   }, [isSuccess]);
 
@@ -73,6 +39,10 @@ const LoginForm = () => {
 
   const LoginClick = () => {
     mutate();
+  };
+
+  const goAdmin = () => {
+    window.location.href = "https://adearth-admin.shop/";
   };
 
   return (
@@ -112,6 +82,18 @@ const LoginForm = () => {
             아이디 ∙ 비밀번호 찾기
           </t.AddInfo>
         </t.AddWrapper>
+        <MainButton
+          radius="30px"
+          fontSize={theme.fs14}
+          border={`0.5px solid ${theme.ls03}`}
+          bgColor={theme.bg01}
+          color={theme.fc14}
+          hBorder={`0.5px solid ${theme.ls03}`}
+          hBgColor={theme.bg08}
+          onClick={() => goAdmin()}
+        >
+          광고주 솔루션 바로가기
+        </MainButton>
       </t.LogInWrapper>
     </>
   );

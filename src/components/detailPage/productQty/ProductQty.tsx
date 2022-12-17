@@ -1,31 +1,42 @@
-import { useState } from "react";
-
 import * as t from "./productQty.style";
-import { CountButton, OptionCountButton } from "../../../elements/Buttons";
+import { useEffect, useState } from "react";
 import { PropsType } from "./productQty.type";
-import { removeOption } from "../productOptions/optionsHandler";
-import { useTotalPrice } from "./useTotalPrice";
-import { useTotalQty } from "./useTotalQty";
-import Buttons from "../buttons/Buttons";
+import { useTotalOptionPrice } from "./useTotalOptionPrice";
+import { useTotalOptionQty } from "./useTotalOptionQty";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
+import { removeUserOption } from "../productOptions/optionHandler";
+import {
+  CountButton,
+  OptionCountButton,
+} from "../../../elements/buttons/Buttons";
+import Buttons from "../buttons/Buttons";
+import { useDiscount } from "../productName/useDiscount";
+import CartButtons from "../../modal/optionModal/cartButtons/CartButtons";
 
 const ProductQty = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  const optionList = useAppSelector((state) => state.optionSlice.optionData);
+
+  useEffect(() => {
+    dispatch(setOptionData([]));
+  }, []);
+
+  const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
-
+  const modalOpen = useAppSelector((state) => state.optionSlice.cartModalOpen);
   const [qty, setQty] = useState<number>(1);
-  // 상품 총 가격 계산
-  const totalPrice = useTotalPrice(optionList);
-  // 상품 총 수량 계산
-  const totalQty = useTotalQty(optionList);
+  const price = useDiscount(
+    detailData.product.p_Cost,
+    detailData.product.p_Discount
+  );
 
+  const totalOptionQty = useTotalOptionQty(optionData);
+  const totalOptionPrice = useTotalOptionPrice(optionData);
   return (
     <div>
       {props.haveOptions ? (
         <div>
-          {optionList.map((option) => {
+          {optionData.map((option) => {
             return (
               <div key={option.id}>
                 <t.OptBox>
@@ -34,7 +45,7 @@ const ProductQty = (props: PropsType) => {
                     <t.IcX
                       onClick={() =>
                         dispatch(
-                          setOptionData(removeOption(option.id, optionList))
+                          setOptionData(removeUserOption(option.id, optionData))
                         )
                       }
                     />
@@ -48,8 +59,8 @@ const ProductQty = (props: PropsType) => {
             );
           })}
           <t.Price>
-            총 상품 금액({totalQty}개)
-            <span>{totalPrice?.toLocaleString()}원</span>
+            총 상품 금액({totalOptionQty}개)
+            <span>{totalOptionPrice?.toLocaleString()}원</span>
           </t.Price>
         </div>
       ) : (
@@ -58,21 +69,32 @@ const ProductQty = (props: PropsType) => {
             <t.OptWrapper>수량</t.OptWrapper>
             <t.CountWrapper>
               <CountButton qty={qty} setQty={setQty} />
-              {(detailData?.product.p_Cost * qty).toLocaleString()}원
+              {(props.price * qty).toLocaleString()}원
             </t.CountWrapper>
           </t.OptBox>
           <t.Price>
             총 상품 금액({qty}개)
-            <span>{(detailData?.product.p_Cost * qty).toLocaleString()}원</span>
+            <span>{(props.price * qty).toLocaleString()}원</span>
           </t.Price>
         </div>
       )}
-      <Buttons
-        optionList={optionList}
-        qty={qty}
-        totalPrice={totalPrice}
-        totalQty={totalQty}
-      />
+      {modalOpen ? (
+        <CartButtons
+          optionList={optionData}
+          qty={qty}
+          totalOptionPrice={totalOptionPrice}
+          totalOptionQty={totalOptionQty}
+          totalPrice={props.price * qty}
+        />
+      ) : (
+        <Buttons
+          optionList={optionData}
+          qty={qty}
+          totalOptionPrice={totalOptionPrice}
+          totalOptionQty={totalOptionQty}
+          totalPrice={props.price * qty}
+        />
+      )}
     </div>
   );
 };

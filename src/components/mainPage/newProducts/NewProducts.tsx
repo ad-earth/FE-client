@@ -1,6 +1,6 @@
 import * as t from "./newProducts.style";
-import NewCarousel from "../newCarousel/NewCarousel";
 import { PropsType } from "./newProducts.type";
+import NewCarousel from "../newCarousel/NewCarousel";
 
 const NewProducts = (props: PropsType) => {
   return (

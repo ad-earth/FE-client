@@ -1,20 +1,11 @@
-import * as t from "./AddressForm.style";
+import * as t from "./addressForm.style";
 import { theme } from "../../../style/theme";
-import { Dispatch, SetStateAction } from "react";
-import Input from "../../../elements/Input";
-import { MainButton } from "../../../elements/Buttons";
-import { useDaumPostcodePopup } from "react-daum-postcode";
 import { useEffect } from "react";
 import { useAppSelector } from "../../../redux/store";
-
-interface PropsType {
-  zipcode: string;
-  address: string;
-  extraAddress: string;
-  setZipcode: Dispatch<SetStateAction<string>>;
-  setAddress: Dispatch<SetStateAction<string>>;
-  setExtraAddress: Dispatch<SetStateAction<string>>;
-}
+import { useDaumPostcodePopup } from "react-daum-postcode";
+import { PropsType } from "./addressForm.type";
+import { MainButton } from "../../../elements/buttons/Buttons";
+import Input from "../../../elements/input/Input";
 
 const AddressForm = ({
   zipcode,

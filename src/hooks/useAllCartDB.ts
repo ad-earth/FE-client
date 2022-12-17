@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 
-export const useAllCartDB = async () => {
+export const getAllCartDB = async () => {
   let store;
   const db = await openDB("cart", 1, {
     upgrade(db) {
@@ -11,6 +11,5 @@ export const useAllCartDB = async () => {
     },
   });
   store = db.transaction("cart", "readonly").objectStore("cart");
-  let getAllReq = store.getAll();
-  return getAllReq;
+  return store.getAll();
 };

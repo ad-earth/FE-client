@@ -1,4 +1,4 @@
-import { MainButton } from "../../../elements/Buttons";
+import { MainButton } from "../../../elements/buttons/Buttons";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
 // import { useMutation } from "react-query";
@@ -49,6 +49,7 @@ function WithdrawalModal(props: ModalType) {
                 bgColor={`${theme.bg01}`}
                 hBgColor={`${theme.bg05}`}
                 color={`${theme.fc09}`}
+                hColor={`${theme.fc09}`}
                 radius="30px"
                 width="initial"
                 padding="10px 25px"

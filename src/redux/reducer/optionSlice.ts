@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { OptionListType } from "../../components/detailPage/productOptions/productOptions.type";
+import { OptionListType } from "../../shared/types/types";
 
 export interface optionDataType {
   optionData: OptionListType;
+  cartModalOpen: boolean;
+  replace: boolean;
 }
 
 const initialState: optionDataType = {
   optionData: [],
+  cartModalOpen: false,
+  replace: false,
 };
 
 const optionSlice = createSlice({
@@ -16,8 +20,14 @@ const optionSlice = createSlice({
     setOptionData: (state, action) => {
       state.optionData = action.payload;
     },
+    setModalOpen: (state, action) => {
+      state.cartModalOpen = action.payload;
+    },
+    setReplace: (state, action) => {
+      state.replace = action.payload;
+    },
   },
 });
 
-export const { setOptionData } = optionSlice.actions;
+export const { setOptionData, setModalOpen, setReplace } = optionSlice.actions;
 export default optionSlice.reducer;

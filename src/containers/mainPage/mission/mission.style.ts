@@ -3,12 +3,13 @@ import { theme } from "../../../style/theme";
 
 export const Background = styled.div`
   width: 100%;
-  padding: 4% 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4% 0;
   background: ${theme.bg16};
 `;
+
 export const MissionWrapper = styled.div`
   width: 1200px;
   display: flex;
@@ -29,11 +30,12 @@ export const MissionWrapper = styled.div`
     }
   }
 `;
+
 export const BoxWrapper = styled.div`
   width: 97%;
-  margin: 30px auto;
   display: flex;
   justify-content: space-between;
+  margin: 30px auto;
   @media (max-width: 990px) {
     flex-direction: column;
     justify-content: center;
@@ -41,6 +43,7 @@ export const BoxWrapper = styled.div`
     gap: 20px;
   }
 `;
+
 export const Date = styled.div`
   width: 97%;
   text-align: right;
