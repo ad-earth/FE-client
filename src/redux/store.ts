@@ -8,7 +8,6 @@ import payPdtSlice from "./reducer/payPdtSlice";
 import cartSlice from "./reducer/cartSlice";
 import userSlice from "./reducer/userSlice";
 import optionSlice from "./reducer/optionSlice";
-import errorSlice from "./reducer/errorSlice";
 import detailSlice from "./reducer/detailSlice";
 import payCheckSlice from "./reducer/payCheckSlice";
 import reviewSlice from "./reducer/reviewSlice";
@@ -27,7 +26,6 @@ const rootReducer = combineReducers({
   cartSlice: cartSlice,
   userSlice: userSlice,
   optionSlice: optionSlice,
-  errorSlice: errorSlice,
   detailSlice: detailSlice,
   reviewSlice: reviewSlice,
   listSlice: listSlice,
