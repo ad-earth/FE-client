@@ -3,7 +3,6 @@ import { useLocation, useParams } from "react-router-dom";
 import QueryString from "qs";
 import { useGetDetailQuery } from "./useGetDetailQuery";
 import { useViewport } from "../../../hooks/useViewport";
-import Error from "../../../elements/error/Error";
 import ProductCarousel from "../../../components/detailPage/productCarousel/ProductCarousel";
 import ProductImgs from "../../../components/detailPage/productImgs/ProductImgs";
 import ProductName from "../../../components/detailPage/productName/ProductName";
@@ -27,7 +26,6 @@ const Details = () => {
 
   return (
     <t.ProdInfoContainer>
-      <Error />
       {viewport <= 990 ? <ProductCarousel /> : <ProductImgs />}
       <t.InfoWrapper>
         <ProductName />

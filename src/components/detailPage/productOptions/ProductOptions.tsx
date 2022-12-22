@@ -14,10 +14,13 @@ const ProductOptions = () => {
   const [haveOptions, setHaveOptions] = useState<boolean>(false);
 
   useEffect(() => {
-    if (detailData?.product.p_Option[0] || detailData?.product.p_Option[3]) {
+    if (
+      detailData.product.p_Option.length &&
+      (detailData?.product.p_Option[0][0] || detailData?.product.p_Option[0][2])
+    ) {
       setHaveOptions(true);
     }
-  }, [detailData.product.p_Option]);
+  }, [detailData.product.p_Option.length]);
 
   const [optionDropDown, setOptionDropDown] = useState<boolean>(false);
 

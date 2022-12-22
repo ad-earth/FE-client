@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 //query
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { queryClient } from "./shared/utils/errorHandler";
 
 import Header from "./containers/header/Header";
 import LogInPage from "./pages/LogInPage";
@@ -28,8 +29,9 @@ import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
 import Loading from "./elements/loading/Loading";
+import { Toaster } from "react-hot-toast";
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -38,6 +40,7 @@ function App() {
         <GlobalStyle />
         <div className="App">
           <Header />
+          <Toaster />
           <Loading />
           <Routes>
             <Route path="/login" element={<LogInPage />}></Route>
@@ -50,7 +53,6 @@ function App() {
                 <Route path="cancel-call/:id" element={<CancelDetail />} />
               </Route>
               <Route path="wish" element={<Wish />} />
-
               <Route path="cancel">
                 <Route index element={<Cancel />} />
                 <Route path=":id" element={<OrderDetail />} />

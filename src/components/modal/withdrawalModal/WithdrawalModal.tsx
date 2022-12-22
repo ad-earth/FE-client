@@ -49,6 +49,7 @@ function WithdrawalModal(props: ModalType) {
                 bgColor={`${theme.bg01}`}
                 hBgColor={`${theme.bg05}`}
                 color={`${theme.fc09}`}
+                hColor={`${theme.fc09}`}
                 radius="30px"
                 width="initial"
                 padding="10px 25px"
