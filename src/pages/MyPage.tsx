@@ -1,44 +1,51 @@
-import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-//components
-import { Aside } from "../containers/myPage/Aside";
-import UserHead from "../containers/myPage/UserHead";
+import { useEffect } from "react";
+import { useNavigate, Outlet } from "react-router-dom";
+// components
+import UserHeadInfo from "../components/myPage/userHeadInfo/UserHeadInfo";
+import AsideNav from "../components/myPage/asideNav/AsideNav";
+// hooks
+import { useGetLocalStorage } from "../hooks/useGetStorage";
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  // 로그인 유저 확인
+  const isLogin = useGetLocalStorage("token");
+
+  /** login check */
   useEffect(() => {
-    if (token) return;
+    if (isLogin) return;
     navigate("/");
-  }, [token]);
+  }, [isLogin]);
 
   return (
-    <Wrap>
-      <Aside />
-      <Section>
-        <UserHead />
-        <Outlet />
-      </Section>
-    </Wrap>
+    <>
+      {isLogin && (
+        <MypageWrap>
+          <Nav>
+            <AsideNav />
+          </Nav>
+          <Section>
+            <UserHeadInfo />
+            <Outlet />
+          </Section>
+        </MypageWrap>
+      )}
+    </>
   );
 };
 export default MyPage;
 
-const Wrap = styled.div`
+const MypageWrap = styled.div`
   max-width: 1200px;
   margin: 80px auto 100px;
   position: relative;
   display: flex;
   padding: 0 20px;
-
   @media (max-width: 990px) {
-    padding: 0;
     flex-direction: column;
-    margin: 0 auto 100px;
     background-color: ${({ theme }) => theme.bg06};
+    padding: 0;
+    margin: 0 auto 100px;
   }
 `;
 const Section = styled.div`
@@ -49,5 +56,14 @@ const Section = styled.div`
   @media (max-width: 990px) {
     width: 100%;
     border-top: 1px solid ${({ theme }) => theme.ls03};
+  }
+`;
+const Nav = styled.nav`
+  width: 16%;
+  padding: 0 12px;
+  box-sizing: border-box;
+  @media (max-width: 990px) {
+    width: 100%;
+    padding: 0;
   }
 `;
