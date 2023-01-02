@@ -1,11 +1,8 @@
 import { useState } from "react";
 import * as t from "./userHeadInfo.style";
 import { UserInfoType } from "./userHeadInfo.type";
-// hook
 import { useViewport } from "../../../hooks/useViewport";
-//redux
 import { useAppSelector } from "../../../redux/store";
-// components
 import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
 
 export default function UserHeadInfo() {

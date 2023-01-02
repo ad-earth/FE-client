@@ -1,9 +1,7 @@
 import * as t from "./orderNumberDetail.style";
-interface PropsType {
-  no: number;
-  date: string;
-}
-const OrderNumerDetail = ({ no, date }: PropsType) => {
+
+const OrderNumerDetail = (props: { no: number; date: string }) => {
+  const { no, date } = props;
   return (
     <t.OrderNumberBox>
       <t.OrderDate>

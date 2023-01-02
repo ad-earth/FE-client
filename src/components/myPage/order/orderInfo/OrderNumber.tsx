@@ -1,25 +1,26 @@
-import * as t from "./orderNumber.style";
+import * as t from "./orderInfo.style";
 import { Link } from "react-router-dom";
-import { PropsType } from "./orderNumber.type";
 import { useViewport } from "../../../../hooks/useViewport";
 
-const OrderNumber = ({ orderNo, orderDate }: PropsType) => {
+export default function OrderInfo(props: {
+  orderNo: number;
+  orderDate: string;
+}) {
+  const { orderNo, orderDate } = props;
   const viewport = useViewport();
   return (
-    <t.OrderNumberBox>
-      <t.OrderNumberInfo>
-        <t.Label>주문번호</t.Label>
+    <t.Base>
+      <t.OrderNumber>
+        <t.Label> 주문번호 </t.Label>
         <Link to={`${orderNo}`} className="link">
           {viewport > 990 ? <span>{orderNo}</span> : <span>주문상세보기</span>}
           <t.ArrowIcon />
         </Link>
-      </t.OrderNumberInfo>
-      <t.OrderDate>
+      </t.OrderNumber>
+      <t.Date>
         <t.Label> 주문일자 </t.Label>
         <span> {orderDate}</span>
-      </t.OrderDate>
-    </t.OrderNumberBox>
+      </t.Date>
+    </t.Base>
   );
-};
-
-export default OrderNumber;
+}

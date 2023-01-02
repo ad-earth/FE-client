@@ -1,19 +1,10 @@
-import useMobileMediaQuery from "../../../../hooks/useMobileMediaQuery";
+// import useMobileMediaQuery from "../../../../hooks/useMobileMediaQuery";
+import { useViewport } from "../../../../hooks/useViewport";
 import * as t from "./orderAmount.style";
-interface ProductsType {
-  p_Option: Array<
-    [string | null, string | null, number | null, number | null, number]
-  >;
-  o_Status: string;
-}
-interface PropsType {
-  price: number;
-  cancelPrice?: number;
-  products: ProductsType[];
-}
-const OrderAmount = ({ cancelPrice, price, products }: PropsType) => {
-  // console.log(cancelList);
-  const isMobile = useMobileMediaQuery();
+
+const OrderAmount = (props: { price: number; cancelPrice?: number }) => {
+  const { cancelPrice, price } = props;
+  const viewport = useViewport();
   return (
     <t.OrderAmountBox>
       <t.Title>{!cancelPrice ? "주문 금액 상세" : "취소 금액 상세"}</t.Title>
@@ -27,12 +18,16 @@ const OrderAmount = ({ cancelPrice, price, products }: PropsType) => {
           </t.Box>
           <t.ItemBox>
             <t.Box>
-              {isMobile ? <span>ㄴ 상품 금액</span> : <span>상품 금액</span>}
+              {viewport <= 990 ? (
+                <span>ㄴ 상품 금액</span>
+              ) : (
+                <span>상품 금액</span>
+              )}
               <span>{!cancelPrice ? `${price}원` : `${cancelPrice}원`}</span>
             </t.Box>
             <t.Box>
               <span>
-                {isMobile ? <span>ㄴ 배송비</span> : <span>배송비</span>}
+                {viewport <= 990 ? <span>ㄴ 배송비</span> : <span>배송비</span>}
               </span>
               <span>0원</span>
             </t.Box>

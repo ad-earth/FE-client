@@ -1,11 +1,8 @@
 import * as t from "./asideNav.style";
 import { useState } from "react";
-//type
 import { ListType } from "./asideNav.type";
-//component
 import WithdrawalModal from "../../modal/withdrawalModal/WithdrawalModal";
 import UserInfoModal from "../../modal/userInfoModal/UserInfoModal";
-//hooks
 import { useViewport } from "../../../hooks/useViewport";
 
 const desktopList: ListType[] = [
