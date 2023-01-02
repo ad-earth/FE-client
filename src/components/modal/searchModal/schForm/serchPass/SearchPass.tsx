@@ -77,7 +77,7 @@ const SearchPass = () => {
   };
 
   const resetClick = () => {
-    console.log(resetData);
+    // console.log(resetData);
     mutate(resetData, {
       onSuccess: () => {
         alert("비밀번호를 변경했습니다!");
