@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
-export const NavListBox = styled.ul`
+export const DesktopNavBox = styled.ul`
   & li {
     width: 100%;
     margin-bottom: 12px;
@@ -9,7 +10,7 @@ export const NavListBox = styled.ul`
     color: ${({ theme }) => theme.fc14};
   }
 `;
-export const MobileNav = styled.div`
+export const MobileNavBox = styled.div`
   margin-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.ls03};
   width: calc(100% / 3);
@@ -21,5 +22,12 @@ export const MobileNav = styled.div`
     line-height: 40px;
     background-color: ${({ theme }) => theme.bg01};
     color: ${({ theme }) => theme.fc14};
+  }
+`;
+
+export const Nav = styled(NavLink)`
+  border-bottom: 2px solid ${({ theme }) => theme.fc01};
+  &.active {
+    border-bottom: 2px solid ${({ theme }) => theme.fc15};
   }
 `;

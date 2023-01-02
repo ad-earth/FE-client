@@ -22,7 +22,6 @@ import NotFound from "./pages/NotFound";
 import Mypage from "./pages/MyPage";
 import Order from "./containers/myPage/order/Order";
 import Wish from "./containers/myPage/wish/Wish";
-import Cancel from "./containers/myPage/cancel/Cancel";
 import OrderDetail from "./containers/myPage/orderDetail/OrderDetail";
 import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 //style
@@ -54,7 +53,7 @@ function App() {
               </Route>
               <Route path="wish" element={<Wish />} />
               <Route path="cancel">
-                <Route index element={<Cancel />} />
+                <Route index element={<Order />} />
                 <Route path=":id" element={<OrderDetail />} />
               </Route>
             </Route>

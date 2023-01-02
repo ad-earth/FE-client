@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const OrderNumberBox = styled.div`
+export const Base = styled.div`
   line-height: 15px;
   font-size: ${({ theme }) => theme.fs15};
   display: flex;
@@ -11,8 +11,8 @@ export const OrderNumberBox = styled.div`
     padding: 12px 15px;
   }
 `;
-
-export const OrderNumberInfo = styled.div`
+//주문번호
+export const OrderNumber = styled.div`
   color: ${({ theme }) => theme.fc12};
   display: flex;
   & span {
@@ -52,7 +52,8 @@ export const ArrowIcon = styled.button`
     transform: translateX(-50%) rotate(130deg);
   }
 `;
-export const OrderDate = styled.div`
+//주문일자
+export const Date = styled.div`
   color: ${({ theme }) => theme.fc08};
   display: flex;
   & span {
