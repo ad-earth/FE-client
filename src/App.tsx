@@ -2,9 +2,10 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 //query
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { queryClient } from "./shared/utils/errorHandler";
+import { Toaster } from "react-hot-toast";
 
 import Header from "./containers/header/Header";
 import LogInPage from "./pages/LogInPage";
@@ -28,9 +29,7 @@ import CancelDetail from "./containers/myPage/cancelDetail/CancelDetail";
 import { theme } from "./style/theme";
 import GlobalStyle from "./style/GlobalStyle";
 import Loading from "./elements/loading/Loading";
-import { Toaster } from "react-hot-toast";
 
-// const queryClient = new QueryClient();
 
 function App() {
   return (

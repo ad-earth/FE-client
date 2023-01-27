@@ -2,9 +2,11 @@ import toast from "react-hot-toast";
 import { QueryClient } from "react-query";
 
 function errorHandler(error: unknown): void {
-  const title =
-    error instanceof Error ? error.message : "서버가 응답하지 않습니다.";
-  toast.error(title);
+  const message =
+    error instanceof Error
+      ? error.message
+      : "네트워크 상태를 확인하고 다시 시도해주세요.";
+  toast.error(message);
 }
 
 export const queryClient = new QueryClient({
