@@ -3,7 +3,8 @@ interface PropsType {
   u_Name: string;
   u_Phone: number;
 }
-const OrderUserInfo = ({ user }: { user: PropsType }) => {
+const OrderUserInfo = (props: { user: PropsType }) => {
+  const { user } = props;
   return (
     <t.OrderUserInfoBox>
       <t.Title>구매자 정보</t.Title>

@@ -1,8 +1,8 @@
+import * as t from "./orderListDetail.style";
 import { useState } from "react";
 import { MainButton } from "../../../../elements/buttons/Buttons";
 import ReviewModal from "../../../modal/reviewModal/ReviewModal";
 import Product from "../product/Product";
-import * as t from "./orderListDetail.style";
 import { useAppDispatch } from "../../../../redux/store";
 import { setReviewData } from "../../../../redux/reducer/reviewSlice";
 import { useViewport } from "../../../../hooks/useViewport";
@@ -10,13 +10,8 @@ import { PropsType } from "./orderListDetail.type";
 import { Link, useNavigate } from "react-router-dom";
 import { theme } from "../../../../style/theme";
 
-const OrderListDetail = ({
-  products,
-  orderNo,
-}: {
-  products: PropsType[];
-  orderNo: number;
-}) => {
+const OrderListDetail = (props: { products: PropsType[]; orderNo: number }) => {
+  const { products, orderNo } = props;
   const navigate = useNavigate();
   const viewport = useViewport();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 모달
@@ -26,13 +21,16 @@ const OrderListDetail = ({
     dispatch(setReviewData(product));
     setIsModalOpen(!isModalOpen);
   };
+
+  const modal = isModalOpen && (
+    <ReviewModal
+      isOpen={isModalOpen}
+      handleClose={() => setIsModalOpen(false)}
+    />
+  );
   return (
     <>
-      {/* 리뷰모달  */}
-      <ReviewModal
-        isOpen={isModalOpen}
-        handleClose={() => setIsModalOpen(false)}
-      />
+      {modal}
       <t.Table>
         <t.Thead>
           <tr>

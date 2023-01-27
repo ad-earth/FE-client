@@ -1,33 +1,35 @@
-import { useNavigate, Link } from "react-router-dom";
 import * as t from "./orderList.style";
 import { theme } from "../../../../style/theme";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { ProductType } from "../../../../containers/myPage/order/order.type";
 import Product from "../product/Product";
 import { MainButton } from "../../../../elements/buttons/Buttons";
-import { ProductType } from "../../../../containers/myPage/order/order.type";
-import { PropsType } from "./orderList.type";
+import ReviewModal from "../../../modal/reviewModal/ReviewModal";
 import { useAppDispatch } from "../../../../redux/store";
 import { setReviewData } from "../../../../redux/reducer/reviewSlice";
-import ReviewModal from "../../../modal/reviewModal/ReviewModal";
-import { useState } from "react";
 
-const OrderList = ({ products, orderNo }: PropsType) => {
+const OrderList = (props: { products: ProductType[]; orderNo?: number }) => {
+  const { products, orderNo } = props;
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false); // 리뷰모달
-
-  //구매평 작성 클릭 => 모달 open
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+
   const addReviweClick = (product: ProductType) => {
     dispatch(setReviewData(product));
     setIsModalOpen(!isModalOpen);
   };
+
+  const modal = isModalOpen && (
+    <ReviewModal
+      isOpen={isModalOpen}
+      handleClose={() => setIsModalOpen(false)}
+    />
+  );
+
   return (
     <>
-      {/* 리뷰모달  */}
-      <ReviewModal
-        isOpen={isModalOpen}
-        handleClose={() => setIsModalOpen(false)}
-      />
-      {/* 주문정보 리스트  */}
+      {modal}
       {products.map((list, idx: number) => (
         <t.OderListBox key={idx}>
           <t.ProductBox>
@@ -37,7 +39,7 @@ const OrderList = ({ products, orderNo }: PropsType) => {
             </Link>
           </t.ProductBox>
           <t.ButtonBox>
-            {/* 주문완료, 취소완료 , 배송완료  */}
+            {/**  주문완료, 취소완료 , 배송완료  */}
             {list.o_Status === "주문완료" && (
               <MainButton
                 bgColor="transparent"

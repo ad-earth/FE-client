@@ -6,54 +6,35 @@ import OrderUserInfo from "../../../components/myPage/order/orderUserInfo/OrderU
 import OrderAddress from "../../../components/myPage/order/orderAddress/OrderAddress";
 import OrderAmount from "../../../components/myPage/order/orderAmount/OrderAmount";
 import OrderPaymentMethod from "../../../components/myPage/order/orderPaymentMethod/OrderPaymentMethod";
-import useOrderDetail from "./useOrderDetail";
-import { OrderType } from "./orderDetail.type";
+import useGetOrderDetail from "./useGetOrderDetail";
 import { useViewport } from "../../../hooks/useViewport";
 
 const OrderDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const viewport = useViewport();
-  const orderDetail: OrderType = useOrderDetail(id);
+  const { isLoading, orderInfo, cancelPrice } = useGetOrderDetail(id);
 
-  // 취소금액 확인
-  const findCancelPrice: number[] = orderDetail?.products
-    .filter((data) => data.o_Status.includes("취소완료"))
-    .map((data) => {
-      let price: number = 0;
-      for (let i = 0; i < data.p_Option.length; i++)
-        price += data.p_Option[i][4];
-      return price;
-    });
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <t.Section>
       <t.Title>
         <span onClick={() => navigate(-1)}></span>
         주문 상세 내역
       </t.Title>
-      {orderDetail && (
-        <>
-          <OrderNumerDetail no={orderDetail.o_No} date={orderDetail.o_Date} />
-          <OrderListDetail
-            products={orderDetail.products}
-            orderNo={orderDetail.o_No}
-          />
-          <OrderUserInfo user={orderDetail.userInfo} />
-          <OrderAddress address={orderDetail.address} />
-          <OrderAmount
-            price={orderDetail.o_Price}
-            products={orderDetail.products}
-          />
-          {findCancelPrice.length > 0 && (
-            <OrderAmount
-              price={orderDetail.o_Price}
-              products={orderDetail.products}
-              cancelPrice={findCancelPrice[0]}
-            />
-          )}
-        </>
-      )}
+      <>
+        <OrderNumerDetail no={orderInfo.o_No} date={orderInfo.o_Date} />
+        <OrderListDetail
+          products={orderInfo.products}
+          orderNo={orderInfo.o_No}
+        />
+        <OrderUserInfo user={orderInfo.userInfo} />
+        <OrderAddress address={orderInfo.address} />
+        <OrderAmount price={orderInfo.o_Price} />
+        {cancelPrice > 0 && (
+          <OrderAmount price={orderInfo.o_Price} cancelPrice={cancelPrice} />
+        )}
+      </>
       {viewport <= 990 && <OrderPaymentMethod />}
     </t.Section>
   );

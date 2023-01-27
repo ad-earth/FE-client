@@ -1,83 +1,46 @@
-import React, { useState, useEffect } from "react";
+import * as t from "./wish.style";
 import WishCard from "../../../components/myPage/wishCard/WishCard";
-import styled from "styled-components";
-import { useInView } from "react-intersection-observer";
-import useWish from "./useWish";
+import useGetWishQuery from "./useGetWishQuery";
 import { WishListType } from "./wish.type";
-const Wish = () => {
-  const [state, setState] = useState(null);
+import useIntersectHandler from "../../../hooks/useIntersectHandler";
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useWish();
-  const { ref, inView } = useInView();
-  useEffect(() => {
-    inView && hasNextPage && fetchNextPage();
-  }, [inView]);
+export default function Wish() {
+  const {
+    isLoading,
+    data: wishList,
+    isFetching,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useGetWishQuery();
 
-  if (data?.pages[0]?.cnt === 0) {
-    return <DataNull>위시리스트가 없습니다.</DataNull>;
-  }
+  const target = useIntersectHandler(() => {
+    if (!hasNextPage || isFetchingNextPage) return;
+    fetchNextPage();
+  });
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!wishList.wishData) return <span>No data found</span>;
+  if (wishList.cnt === 0)
+    return <t.DataNull>위시리스트가 없습니다.</t.DataNull>;
+
   return (
-    <Section>
-      <OrderListBox>
-        <Title>
-          위시리스트 <span>{data?.pages[0]?.cnt}</span>
-        </Title>
-        <CardContent>
-          {data &&
-            data.pages[0].wishList.map((list: WishListType, i: number) => (
-              <List key={i}>
-                <WishCard list={list} />
-              </List>
-            ))}
-        </CardContent>
-        {isFetchingNextPage ? <div>...Loading</div> : <div ref={ref}></div>}
-      </OrderListBox>
-    </Section>
+    <section>
+      <t.Title>
+        위시리스트 <span>{wishList.cnt}</span>
+      </t.Title>
+      <t.CardContent>
+        {wishList.wishData.map((list: WishListType, i: number) => (
+          <t.List key={i}>
+            <WishCard list={list} />
+          </t.List>
+        ))}
+      </t.CardContent>
+      {isFetching && !isFetchingNextPage ? (
+        "Loading more..."
+      ) : (
+        <div ref={target}></div>
+      )}
+    </section>
   );
-};
-
-export default Wish;
-
-const Section = styled.div``;
-const OrderListBox = styled.div``;
-const Title = styled.div`
-  font-size: ${({ theme }) => theme.fs21};
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  & span {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-size: ${({ theme }) => theme.fs11};
-    line-height: 20px;
-    color: ${({ theme }) => theme.fc01};
-    background-color: ${({ theme }) => theme.bg11};
-    border-radius: 100%;
-    border-color: ${({ theme }) => theme.ls11};
-    display: inline-block;
-    margin-left: 10px;
-    padding: 0;
-  }
-`;
-const CardContent = styled.div`
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -10px;
-`;
-const List = styled.div`
-  max-width: 25%;
-  @media (max-width: 990px) {
-    max-width: 50%;
-  }
-`;
-const DataNull = styled.div`
-  width: 100%;
-  font-size: ${({ theme }) => theme.fs15};
-  text-align: center;
-  color: ${({ theme }) => theme.fc05};
-  padding: 70px;
-  box-sizing: border-box;
-`;
+}

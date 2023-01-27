@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Section = styled.div``;
-export const OrderListBox = styled.div``;
 export const Title = styled.div`
   font-size: 21px;
   font-weight: 600;
