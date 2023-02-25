@@ -13,7 +13,7 @@ import { OptionArrType } from "./../../../src/shared/types/types";
 import { PropsType } from "./itemList.type";
 import { setModalOpen, setReplace } from "../../redux/reducer/optionSlice";
 import { putAllPaymentDB } from "../../shared/utils/putPaymentDB";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
