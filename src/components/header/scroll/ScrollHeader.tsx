@@ -23,13 +23,17 @@ const ScrollHeader = () => {
     });
   }, []);
 
+  const goHome = () => {
+    window.location.href = "/";
+  };
+
   return (
     <>
       {!isHeaderVisible ? (
         <t.ScHeadContainer>
           <t.ScHeadWrapper>
-            <t.LeftDiv onClick={() => navigate("/list")}>장보기</t.LeftDiv>
-            <img src={scrollLogo} />
+            <t.LeftDiv onClick={() => navigate("/list/전체")}>장보기</t.LeftDiv>
+            <img src={scrollLogo} onClick={goHome} />
             <t.RightDiv>
               {!token ? (
                 <>
