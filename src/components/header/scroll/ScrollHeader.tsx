@@ -1,16 +1,27 @@
 import * as t from "./scrollHeader.style";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useScrHeaderVisible } from "./useScrollHeader";
+import { CartPayType } from "../../../shared/types/types";
 import scrollLogo from "../../../assets/logo/scrollLogo.png";
+import { getAllCartDB } from "../../../hooks/useAllCartDB";
 
 const token = localStorage.getItem("token");
 
 const ScrollHeader = () => {
   const { isHeaderVisible } = useScrHeaderVisible();
+  const [cartData, setCartData] = useState<CartPayType[]>();
   const navigate = useNavigate();
   const handelLogOut = () => {
     localStorage.clear();
   };
+
+  useEffect(() => {
+    const result = getAllCartDB();
+    result.then((res) => {
+      setCartData(res);
+    });
+  }, []);
 
   return (
     <>
@@ -45,7 +56,7 @@ const ScrollHeader = () => {
                   </Link>
                   <div>
                     <Link to={"/cart"}>
-                      <t.CountBadge badgeContent={1}>
+                      <t.CountBadge badgeContent={cartData && cartData.length}>
                         <t.ShopIcon />
                       </t.CountBadge>
                     </Link>
