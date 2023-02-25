@@ -13,7 +13,7 @@ import { OptionArrType } from "./../../../src/shared/types/types";
 import { PropsType } from "./itemList.type";
 import { setModalOpen, setReplace } from "../../redux/reducer/optionSlice";
 import { putAllPaymentDB } from "../../shared/utils/putPaymentDB";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ItemList = (props: PropsType) => {
   const viewport = useViewport();
@@ -103,7 +103,9 @@ const ItemList = (props: PropsType) => {
                 )}
                 <t.SmallDiv>
                   <t.ProdInfo>
-                    <t.InfoDiv>
+                    <t.InfoDiv
+                      onClick={() => navigate(`/detail/${val?.productNo}`)}
+                    >
                       <img src={val?.thumbnail[0]} />
                       <p>
                         [{val?.brand}] {val?.name}
@@ -186,9 +188,12 @@ const ItemList = (props: PropsType) => {
                       }}
                     />
                   )}
-                  <img src={val?.thumbnail[0]} />
+                  <img
+                    src={val?.thumbnail[0]}
+                    onClick={() => navigate(`/detail/${val?.productNo}`)}
+                  />
                   <t.InfoDiv>
-                    <p>
+                    <p onClick={() => navigate(`/detail/${val?.productNo}`)}>
                       [{val?.brand}] {val?.name}
                     </p>
                     {val?.option.map((opt, i: number) => (
