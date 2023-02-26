@@ -1,5 +1,5 @@
 import * as t from "./productOptions.style";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDiscount } from "../productName/useDiscount";
 import { addUserOption } from "./optionHandler";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
@@ -11,48 +11,28 @@ const ProductOptions = () => {
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
   const detailData = useAppSelector((state) => state.detailSlice.details);
 
-  const [haveOptions, setHaveOptions] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (
-      detailData.product.p_Option.length &&
-      (detailData?.product.p_Option[0][0] || detailData?.product.p_Option[0][2])
-    ) {
-      setHaveOptions(true);
-    }
-  }, [detailData.product.p_Option.length]);
+  const { isOptionProduct } = useMemo(
+    () => ({
+      isOptionProduct: detailData.product.p_Option.length > 0 ? detailData?.product.p_Option[0][0] !== null || detailData?.product.p_Option[0][2] !== null : false,
+    }),
+    [detailData]
+  );
 
   const [optionDropDown, setOptionDropDown] = useState<boolean>(false);
 
-  const price = useDiscount(
-    detailData?.product.p_Cost,
-    detailData?.product.p_Discount
-  );
+  const price = useDiscount(detailData?.product.p_Cost, detailData?.product.p_Discount);
 
   const [optionId, setOptionId] = useState<number>(0);
 
-  const handleUserOptionList = (
-    selectedColor: string,
-    selectedColorCode: string,
-    userSize: string,
-    userExtraCost: number
-  ) => {
-    const { userOption, newOptionId } = addUserOption(
-      selectedColor,
-      selectedColorCode,
-      userSize,
-      userExtraCost,
-      price,
-      optionData,
-      optionId
-    );
+  const handleUserOptionList = (selectedColor: string, selectedColorCode: string, userSize: string, userExtraCost: number) => {
+    const { userOption, newOptionId } = addUserOption(selectedColor, selectedColorCode, userSize, userExtraCost, price, optionData, optionId);
     dispatch(setOptionData([...optionData, userOption]));
     setOptionId(newOptionId);
   };
 
   return (
     <t.MainContainer>
-      {haveOptions ? (
+      {isOptionProduct ? (
         <>
           <t.Option>옵션</t.Option>
           <t.OptDropDown
@@ -72,14 +52,7 @@ const ProductOptions = () => {
                     key={idx}
                     onClick={() => {
                       {
-                        option[4] != 0
-                          ? handleUserOptionList(
-                              option[0],
-                              option[1],
-                              option[2],
-                              option[3]
-                            )
-                          : alert("선택하신 상품은 재고가 없습니다.");
+                        option[4] != 0 ? handleUserOptionList(option[0], option[1], option[2], option[3]) : alert("선택하신 상품은 재고가 없습니다.");
                       }
                       setOptionDropDown(!optionDropDown);
                     }}
@@ -100,7 +73,7 @@ const ProductOptions = () => {
           ) : null}
         </>
       ) : null}
-      <ProductQty haveOptions={haveOptions} price={price} />
+      <ProductQty haveOptions={isOptionProduct} price={price} />
     </t.MainContainer>
   );
 };
