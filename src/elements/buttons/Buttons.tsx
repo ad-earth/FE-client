@@ -1,4 +1,5 @@
 import * as t from "./buttons.style";
+import { useEffect, useState } from "react";
 import { BtnType, PropsType, NotFoundType } from "./buttons.type";
 import { changeUserOptionQty } from "../../components/detailPage/productOptions/optionHandler";
 import { setOptionData } from "../../redux/reducer/optionSlice";
@@ -10,14 +11,17 @@ export const MainButton = (props: BtnType) => {
 
 export const CountButton = (props: PropsType) => {
   let qty = props.qty;
+
+  useEffect(() => {
+    props.setQty(qty);
+  }, [qty]);
+
   function addQty() {
     qty += 1;
-    props.setQty(qty);
   }
   function substractQty() {
     if (qty !== 0) {
       qty -= 1;
-      props.setQty(qty);
     }
   }
   return (
@@ -25,7 +29,7 @@ export const CountButton = (props: PropsType) => {
       <t.Minus onClick={() => substractQty()}>
         <t.RemoveIcon />
       </t.Minus>
-      <t.Input>{qty}</t.Input>
+      <t.Input value={qty} onChange={(e) => (parseInt(e.target.value) ? props.setQty(parseInt(e.target.value)) : props.setQty(1))} />
       <t.Plus onClick={() => addQty()}>
         <t.AddIcon />
       </t.Plus>
@@ -37,15 +41,18 @@ export const OptionCountButton = (props: PropsType) => {
   const dispatch = useAppDispatch();
   const optionList = useAppSelector((state) => state.optionSlice.optionData);
 
-  let qty = props.qty;
-  function addQty() {
-    qty += 1;
+  const [qty, setQty] = useState<number>(props.qty);
+
+  useEffect(() => {
     dispatch(setOptionData(changeUserOptionQty(props.id, qty, optionList)));
+  }, [qty]);
+
+  function addQty() {
+    setQty((prev) => prev + 1);
   }
   function substractQty() {
     if (qty !== 1) {
-      qty -= 1;
-      dispatch(setOptionData(changeUserOptionQty(props.id, qty, optionList)));
+      setQty((prev) => prev - 1);
     }
   }
   return (
@@ -53,7 +60,7 @@ export const OptionCountButton = (props: PropsType) => {
       <t.Minus onClick={() => substractQty()}>
         <t.RemoveIcon />
       </t.Minus>
-      <t.Input>{qty}</t.Input>
+      <t.Input value={qty} onChange={(e) => (parseInt(e.target.value) ? setQty(parseInt(e.target.value)) : setQty(1))} />
       <t.Plus onClick={() => addQty()}>
         <t.AddIcon />
       </t.Plus>
@@ -66,30 +73,14 @@ export const NotFoundBtn = (props: NotFoundType) => {
   const { type, text, children, onClick } = props;
   if (type === "back") {
     return (
-      <t.Btn
-        onClick={onClick}
-        width="200px"
-        radius="5px"
-        bgColor="transparent"
-        hBgColor="transparent"
-        border="1px solid #000"
-        hBorder="1px solid #000"
-        hColor="#000"
-        color="#000"
-      >
+      <t.Btn onClick={onClick} width="200px" radius="5px" bgColor="transparent" hBgColor="transparent" border="1px solid #000" hBorder="1px solid #000" hColor="#000" color="#000">
         {text ? text : children}
       </t.Btn>
     );
   }
   if (type === "home") {
     return (
-      <t.Btn
-        onClick={onClick}
-        width="200px"
-        radius="5px"
-        bgColor="#000"
-        hBgColor="#000"
-      >
+      <t.Btn onClick={onClick} width="200px" radius="5px" bgColor="#000" hBgColor="#000">
         {text ? text : children}
       </t.Btn>
     );
