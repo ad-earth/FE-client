@@ -75,7 +75,8 @@ const CartList = () => {
             bgColor={theme.bg01}
             color={theme.fc14}
             hBorder={`0.5px solid ${theme.ls11}`}
-            hBgColor={theme.bg01}
+            hBgColor={theme.bg07}
+            hColor={theme.fc14}
             onClick={() => handleDelete()}
           >
             선택상품 삭제
@@ -88,7 +89,8 @@ const CartList = () => {
             bgColor={theme.bg01}
             color={theme.fc14}
             hBorder={`0.5px solid ${theme.ls11}`}
-            hBgColor={theme.bg01}
+            hBgColor={theme.bg07}
+            hColor={theme.fc14}
           >
             품절상품 삭제
           </MainButton>
@@ -123,7 +125,8 @@ const CartList = () => {
           bgColor={theme.bg01}
           color={theme.fc14}
           hBorder={`0.5px solid ${theme.ls11}`}
-          hBgColor={theme.bg01}
+          hBgColor={theme.bg07}
+          hColor={theme.fc14}
           onClick={() => handleDelete()}
         >
           선택상품 삭제
@@ -136,7 +139,8 @@ const CartList = () => {
           bgColor={theme.bg01}
           color={theme.fc14}
           hBorder={`0.5px solid ${theme.ls11}`}
-          hBgColor={theme.bg01}
+          hBgColor={theme.bg07}
+          hColor={theme.fc14}
         >
           품절상품 삭제
         </MainButton>
