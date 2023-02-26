@@ -6,10 +6,7 @@ import { useTotalOptionQty } from "./useTotalOptionQty";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
 import { setOptionData } from "../../../redux/reducer/optionSlice";
 import { removeUserOption } from "../productOptions/optionHandler";
-import {
-  CountButton,
-  OptionCountButton,
-} from "../../../elements/buttons/Buttons";
+import { CountButton, OptionCountButton } from "../../../elements/buttons/Buttons";
 import Buttons from "../buttons/Buttons";
 import { useDiscount } from "../productName/useDiscount";
 import CartButtons from "../../modal/optionModal/cartButtons/CartButtons";
@@ -22,13 +19,8 @@ const ProductQty = (props: PropsType) => {
   }, []);
 
   const optionData = useAppSelector((state) => state.optionSlice.optionData);
-  const detailData = useAppSelector((state) => state.detailSlice.details);
   const modalOpen = useAppSelector((state) => state.optionSlice.cartModalOpen);
   const [qty, setQty] = useState<number>(1);
-  const price = useDiscount(
-    detailData.product.p_Cost,
-    detailData.product.p_Discount
-  );
 
   const totalOptionQty = useTotalOptionQty(optionData);
   const totalOptionPrice = useTotalOptionPrice(optionData);
@@ -42,13 +34,7 @@ const ProductQty = (props: PropsType) => {
                 <t.OptBox>
                   <t.OptWrapper>
                     {option?.color} {option?.size}
-                    <t.IcX
-                      onClick={() =>
-                        dispatch(
-                          setOptionData(removeUserOption(option.id, optionData))
-                        )
-                      }
-                    />
+                    <t.IcX onClick={() => dispatch(setOptionData(removeUserOption(option.id, optionData)))} />
                   </t.OptWrapper>
                   <t.CountWrapper>
                     <OptionCountButton id={option.id} qty={option.qty} />
@@ -79,21 +65,9 @@ const ProductQty = (props: PropsType) => {
         </div>
       )}
       {modalOpen ? (
-        <CartButtons
-          optionList={optionData}
-          qty={qty}
-          totalOptionPrice={totalOptionPrice}
-          totalOptionQty={totalOptionQty}
-          totalPrice={props.price * qty}
-        />
+        <CartButtons optionList={optionData} qty={qty} totalOptionPrice={totalOptionPrice} totalOptionQty={totalOptionQty} totalPrice={props.price * qty} />
       ) : (
-        <Buttons
-          optionList={optionData}
-          qty={qty}
-          totalOptionPrice={totalOptionPrice}
-          totalOptionQty={totalOptionQty}
-          totalPrice={props.price * qty}
-        />
+        <Buttons optionList={optionData} qty={qty} totalOptionPrice={totalOptionPrice} totalOptionQty={totalOptionQty} totalPrice={props.price * qty} />
       )}
     </div>
   );

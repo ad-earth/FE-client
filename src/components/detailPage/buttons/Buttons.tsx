@@ -1,6 +1,6 @@
 import * as t from "./buttons.style";
 import { theme } from "../../../style/theme";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { PropsType } from "./buttons.type";
@@ -35,25 +35,33 @@ const Buttons = (props: PropsType) => {
 
   const handleClickCart = () => {
     if (isOptionProduct) {
-      if (optionList.length) {
+      if (detailData?.product.p_Cnt < props.totalOptionQty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 개입니다.`);
+      else if (optionList.length) {
         putCartDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
         setOpen(true);
       } else toast.error("옵션을 선택해주세요.");
     } else {
-      putCartDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
-      setOpen(true);
+      if (detailData?.product.p_Cnt < props.qty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 개입니다.`);
+      else {
+        putCartDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
+        setOpen(true);
+      }
     }
   };
 
   const handleClickPay = () => {
     if (isOptionProduct) {
-      if (optionList.length) {
+      if (detailData?.product.p_Cnt < props.totalOptionQty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 입니다.`);
+      else if (optionList.length) {
         putPaymentDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
         navigate(`/payment`);
       } else toast.error("옵션을 선택해주세요.");
     } else {
-      putPaymentDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
-      navigate(`/payment`);
+      if (detailData?.product.p_Cnt < props.qty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 입니다.`);
+      else {
+        putPaymentDB(detailData, optionList, props.qty, props.totalOptionPrice, props.totalOptionQty, props.totalPrice);
+        navigate(`/payment`);
+      }
     }
   };
 
