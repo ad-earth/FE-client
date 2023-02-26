@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { toast } from "react-hot-toast";
 
 const axiosConfig: AxiosRequestConfig = {
   timeout: 3000,
@@ -22,4 +23,12 @@ axiosInstance.interceptors.request.use(
   }
 );
 
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const { response } = error;
+    if (response) toast.error(response.data.errorMessage.toString());
+    return Promise.reject(error);
+  }
+);
 export default axiosInstance;
