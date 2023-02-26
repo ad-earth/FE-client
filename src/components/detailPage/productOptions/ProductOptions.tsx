@@ -1,5 +1,5 @@
 import * as t from "./productOptions.style";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useDiscount } from "../productName/useDiscount";
 import { addUserOption } from "./optionHandler";
 import { useAppDispatch, useAppSelector } from "../../../redux/store";
