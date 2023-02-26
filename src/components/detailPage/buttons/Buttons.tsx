@@ -32,8 +32,13 @@ const Buttons = (props: PropsType) => {
   const { mutate } = usePostLikeQuery(String(detailData.product.p_No));
 
   const [open, setOpen] = useState<boolean>(false);
+  const token = localStorage.getItem("token");
 
   const handleClickCart = () => {
+    if (!token) {
+      toast.error("로그인 후 사용해주세요.");
+      return;
+    }
     if (isOptionProduct) {
       if (detailData?.product.p_Cnt < props.totalOptionQty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 개입니다.`);
       else if (optionList.length) {
@@ -50,6 +55,10 @@ const Buttons = (props: PropsType) => {
   };
 
   const handleClickPay = () => {
+    if (!token) {
+      toast.error("로그인 후 사용해주세요.");
+      return;
+    }
     if (isOptionProduct) {
       if (detailData?.product.p_Cnt < props.totalOptionQty) toast.error(`최대 구매 수량은 ${detailData?.product.p_Cnt} 입니다.`);
       else if (optionList.length) {
