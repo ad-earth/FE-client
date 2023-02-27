@@ -9,7 +9,8 @@ import { PropsType, UploadImg } from "./profile.type";
 const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [imgFile, setImgFile] = useState<UploadImg | null>(null);
-  const defaultImg = useAppSelector((state) => state.userSlice.userData.u_Img);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // const defaultImg = useAppSelector((state) => state.userSlice.userData.u_Img);
 
   const handleClickFileInput = () => {
     fileInputRef.current?.click();
@@ -40,19 +41,19 @@ const Profile = ({ imgUrl, setImgUrl }: PropsType) => {
   };
 
   const showImage = useMemo(() => {
-    if (defaultImg || imgFile == null) {
-      return <t.UserImg src={defaultImg} alt="default profile" />;
+    if (userInfo?.u_Img || imgFile == null) {
+      return <t.UserImg src={userInfo?.u_Img} alt="default profile" />;
     }
-    if (!defaultImg && imgFile) {
+    if (!userInfo?.u_Img && imgFile) {
       return <t.UserImg src={imgFile.thumbnail} alt={imgFile.type} />;
     }
-  }, [imgFile, defaultImg]);
+  }, [imgFile, userInfo?.u_Img]);
 
   useEffect(() => {
-    if (defaultImg && !imgFile) {
-      setImgUrl(defaultImg);
+    if (userInfo?.u_Img && !imgFile) {
+      setImgUrl(userInfo?.u_Img);
     }
-  }, [defaultImg]);
+  }, [userInfo?.u_Img]);
 
   return (
     <t.ProfWrapper>

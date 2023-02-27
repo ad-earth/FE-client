@@ -1,6 +1,6 @@
 import * as t from "./asideHeader.style";
 import { theme } from "../../../style/theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../redux/store";
 import { AsideType } from "./asideHeader.type";
 import useDropDown from "../../../hooks/useDropDown";
@@ -35,10 +35,18 @@ let data: {
 ];
 
 const AsideHeader = (props: AsideType) => {
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   const { isDropped, dropRef, handleRemove } = useDropDown();
   const [infoIsOpen, setInfoIsOpen] = useState(false);
-  const userName = useAppSelector((state) => state.userSlice.userData.u_Name);
-  const userId = useAppSelector((state) => state.userSlice.userData.u_Id);
+  //   useEffect(()=>{
+  // if(userInfo){
+  //   const u_Name = userInfo.u_Name;
+  //   const u_Img = userInfo.u_Img;
+  //   const u_Id = userInfo.u_Id;
+  // }
+  //   },[userInfo])
+  // const userName = useAppSelector((state) => state.userSlice.userData.u_Name);
+  // const userId = useAppSelector((state) => state.userSlice.userData.u_Id);
 
   return (
     <>
@@ -57,9 +65,10 @@ const AsideHeader = (props: AsideType) => {
                     props.handleClose();
                   }}
                 >
-                  <t.UserImg src="" />
+                  <t.UserImg src={userInfo?.u_Img ? userInfo.u_Img : ""} />
                   <span>
-                    <strong>{userName}</strong> [{userId}]
+                    <strong>{userInfo?.u_Name ? userInfo.u_Name : ""}</strong>{" "}
+                    {userInfo?.u_Id ? `[${userInfo.u_Id}]` : ""}
                   </span>
                 </div>
                 <t.EtcIcon onClick={handleRemove} />

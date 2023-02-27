@@ -103,7 +103,9 @@ const ItemList = (props: PropsType) => {
                 )}
                 <t.SmallDiv>
                   <t.ProdInfo>
-                    <t.InfoDiv>
+                    <t.InfoDiv
+                      onClick={() => navigate(`/detail/${val?.productNo}`)}
+                    >
                       <img src={val?.thumbnail[0]} />
                       <p>
                         [{val?.brand}] {val?.name}
@@ -186,9 +188,12 @@ const ItemList = (props: PropsType) => {
                       }}
                     />
                   )}
-                  <img src={val?.thumbnail[0]} />
+                  <img
+                    src={val?.thumbnail[0]}
+                    onClick={() => navigate(`/detail/${val?.productNo}`)}
+                  />
                   <t.InfoDiv>
-                    <p>
+                    <p onClick={() => navigate(`/detail/${val?.productNo}`)}>
                       [{val?.brand}] {val?.name}
                     </p>
                     {val?.option.map((opt, i: number) => (

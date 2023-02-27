@@ -27,24 +27,26 @@ const PutUserInfoChange = async (data: Data) => {
 };
 
 export const useUserInfoModal = (data: Data) => {
-  const dispatch = useAppDispatch();
-  const userData = useAppSelector((state) => state.userSlice.userData);
+  // const dispatch = useAppDispatch();
+  // const userData = useAppSelector((state) => state.userSlice.userData);
   return useMutation(() => PutUserInfoChange(data), {
     onSuccess: () => {
       if (data) {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
         const editUserData = {
-          token: userData.token,
-          u_Idx: userData.u_Idx,
-          u_Id: userData.u_Id,
+          // token: userData.token,
+          u_Idx: userInfo.u_Idx,
+          u_Id: userInfo.u_Id,
           u_Address1: data.u_Address1,
           u_Address2: data.u_Address2,
           u_Address3: data.u_Address3,
           u_Gender: data.u_Gender,
-          u_Img: userData.u_Img,
+          u_Img: data.u_Img,
           u_Name: data.u_Name,
           u_Phone: data.u_Phone,
         };
-        dispatch(setUserData(editUserData));
+        localStorage.setItem("userInfo", JSON.stringify(editUserData));
+        // dispatch(setUserData(editUserData));
       }
     },
   });
