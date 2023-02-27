@@ -14,9 +14,14 @@ import { useAppSelector } from "../../../redux/store";
 import { ModalType, FormValueType } from "./userInfoModal.type";
 
 const UserInfoModal = (props: ModalType) => {
-  const uName = useAppSelector((state) => state.userSlice.userData.u_Name);
-  const uGender = useAppSelector((state) => state.userSlice.userData.u_Gender);
-  const uContact = useAppSelector((state) => state.userSlice.userData.u_Phone);
+  const TOKEN = localStorage.getItem("token");
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // const uName: string = userInfo.u_Name;
+  // const uContact: string = userInfo.u_Phone;
+  // const uGender: string = userInfo.u_Gender;
+  // const uName = useAppSelector((state) => state.userSlice.userData.u_Name);
+  // const uGender = useAppSelector((state) => state.userSlice.userData.u_Gender);
+  // const uContact = useAppSelector((state) => state.userSlice.userData.u_Phone);
   const [imgUrl, setImgUrl] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
@@ -36,9 +41,9 @@ const UserInfoModal = (props: ModalType) => {
     mode: "onChange",
     resolver: yupResolver(UserInfoValidation),
     defaultValues: {
-      userName: (uName && uName) || "",
-      gender: (uGender && uGender) || "",
-      contact: (uContact && uContact) || "",
+      userName: (userInfo?.u_Name && userInfo.u_Name) || "",
+      gender: (userInfo?.u_Gender && userInfo.u_Gender) || "",
+      contact: (userInfo?.u_Phone && userInfo.u_Phone) || "",
     },
   });
 
@@ -63,6 +68,9 @@ const UserInfoModal = (props: ModalType) => {
     if (isSuccess) {
       alert(`${formValue.userName}님의 정보를 수정하였습니다!`);
     }
+    // return () => {
+    //   window.location.reload();
+    // };
   }, [isSuccess]);
 
   const handelClick = () => {
@@ -137,7 +145,7 @@ const UserInfoModal = (props: ModalType) => {
                       fontSize={theme.fs14}
                       onClick={() => handelClick()}
                     >
-                      가입하기
+                      {TOKEN ? "정보수정" : "가입하기"}
                     </MainButton>
                   ) : (
                     <MainButton
@@ -145,7 +153,7 @@ const UserInfoModal = (props: ModalType) => {
                       fontSize={theme.fs14}
                       onClick={() => alert("모든 항목을 입력해주세요!")}
                     >
-                      정보 수정
+                      {TOKEN ? "정보수정" : "가입하기"}
                     </MainButton>
                   )}
                 </t.SubmitDiv>

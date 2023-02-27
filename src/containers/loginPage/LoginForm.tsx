@@ -66,11 +66,7 @@ const LoginForm = () => {
           onChange={submitPw}
         />
         <t.BtnDiv>
-          <MainButton
-            radius="30px"
-            fontSize={theme.fs14}
-            onClick={() => LoginClick()}
-          >
+          <MainButton radius="30px" fontSize={theme.fs14} onClick={LoginClick}>
             로그인
           </MainButton>
         </t.BtnDiv>
@@ -90,7 +86,7 @@ const LoginForm = () => {
           color={theme.fc14}
           hBorder={`0.5px solid ${theme.ls03}`}
           hBgColor={theme.bg08}
-          onClick={() => goAdmin()}
+          onClick={goAdmin}
         >
           광고주 솔루션 바로가기
         </MainButton>

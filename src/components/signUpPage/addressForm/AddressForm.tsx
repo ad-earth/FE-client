@@ -17,15 +17,16 @@ const AddressForm = ({
 }: PropsType) => {
   const open = useDaumPostcodePopup();
 
-  const address1 = useAppSelector(
-    (state) => state.userSlice.userData.u_Address1
-  );
-  const address2 = useAppSelector(
-    (state) => state.userSlice.userData.u_Address2
-  );
-  const address3 = useAppSelector(
-    (state) => state.userSlice.userData.u_Address3
-  );
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  // const address1 = useAppSelector(
+  //   (state) => state.userSlice.userData.u_Address1
+  // );
+  // const address2 = useAppSelector(
+  //   (state) => state.userSlice.userData.u_Address2
+  // );
+  // const address3 = useAppSelector(
+  //   (state) => state.userSlice.userData.u_Address3
+  // );
 
   const handleComplete = (data: any) => {
     let fullAddress = data.address;
@@ -59,13 +60,24 @@ const AddressForm = ({
     setExtraAddress(value);
   };
 
+  // useEffect(() => {
+  //   if (userInfo.u_Address1 && userInfo.u_Address2 && userInfo.Address3) {
+  //     setZipcode(userInfo.u_Address1);
+  //     setAddress(userInfo.u_Address2);
+  //     setExtraAddress(userInfo.Address3);
+  //   }
+  // }, [userInfo.u_Address1, userInfo.u_Address2, userInfo.Address3]);
   useEffect(() => {
-    if (address1 && address2 && address3) {
-      setZipcode(address1);
-      setAddress(address2);
-      setExtraAddress(address3);
+    if (userInfo?.u_Address1) {
+      setZipcode(userInfo.u_Address1);
     }
-  }, [address1, address2, address3]);
+    if (userInfo?.u_Address2) {
+      setAddress(userInfo.u_Address2);
+    }
+    if (userInfo?.u_Address3) {
+      setExtraAddress(userInfo.u_Address3);
+    }
+  }, [userInfo]);
 
   return (
     <>
